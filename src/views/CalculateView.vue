@@ -19,23 +19,96 @@
           />
         </div>
         <div class="block">
-          <span class="demonstration">相差日</span>
+          <span class="demonstration">相差日(實際開盤天)</span>
           <el-input v-model="diff" placeholder="輸入數字" />
+        </div>
+        <div class="block">
+          <span class="demonstration">股票種類</span>
+          <el-select v-model="category" filterable placeholder="請選擇">
+            <el-option
+              v-for="category in stock_category_options"
+              :key="category.id"
+              :label="category.category"
+              :value="category.id"
+            >
+            </el-option>
+          </el-select>
+        </div>
+        <div class="block">
+          <span class="demonstration">股票A</span>
+          <el-select v-model="stockA" filterable placeholder="請選擇">
+            <el-option
+              v-for="stock in stockA_options"
+              :key="stock.stock_id"
+              :label="stock.stock_name + '(' + stock.stock_id + ')'"
+              :value="stock.stock_id"
+            >
+            </el-option>
+          </el-select>
+        </div>
+        <div class="block">
+          <span class="demonstration">股票B</span>
+          <el-select v-model="stockB" filterable placeholder="請選擇">
+            <el-option
+              v-for="stock in stockB_options"
+              :key="stock.stock_id"
+              :label="stock.stock_name + '(' + stock.stock_id + ')'"
+              :value="stock.stock_id"
+            >
+            </el-option>
+          </el-select>
         </div>
       </div>
       <el-button plain type="primary" native-type="submit">送出</el-button>
+    </div>
+    <p>{{ result }}</p>
+    <div v-if="stockA_datas.length != 0">
+      <Chart
+        :stockA_datas="stockA_datas"
+        :stockB_datas="stockB_datas"
+        :key="componentKey"
+      />
     </div>
   </el-form>
 </template>
 
 <script>
+import Chart from "@/components/Chart.vue";
+
 export default {
+  name: "CalculateView",
   data() {
     return {
-      startdate: "",
-      enddate: "",
-      diff: "",
+      startdate: "2021-01-01",
+      enddate: "2021-12-01",
+      diff: "2",
+      category: "",
+      stockA: "",
+      stockB: "",
+      result: "",
+      stock_category_options: [],
+      stockA_options: [],
+      stockB_options: [],
+      stockA_datas: [],
+      stockB_datas: [],
+      componentKey: 0,
     };
+  },
+  mounted() {
+    const get_stock_category = this.axios.get(
+      "https://stockworld.ddns.net/api/stock/get_stock_category"
+    );
+    const get_stock_name = this.axios.get(
+      "https://stockworld.ddns.net/api/stock/get_stock_name"
+    );
+
+    this.axios.all([get_stock_category, get_stock_name]).then(
+      this.axios.spread((res1, res2) => {
+        this.stock_category_options = res1.data.success;
+        this.stockA_options = res2.data.success;
+        this.stockB_options = res2.data.success;
+      })
+    );
   },
   methods: {
     cal() {
@@ -44,11 +117,22 @@ export default {
           startdate: this.startdate,
           enddate: this.enddate,
           diff: this.diff,
+          category: this.category,
+          stockA: this.stockA,
+          stockB: this.stockB,
         })
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
+
+          this.result = response.data.success;
+          this.stockA_datas = response.data.stockA_datas;
+          this.stockB_datas = response.data.stockB_datas;
+          this.componentKey += 1;
         });
     },
+  },
+  components: {
+    Chart,
   },
 };
 </script>
