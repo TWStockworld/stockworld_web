@@ -2,8 +2,9 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/calculate">calculate</router-link>
+    <router-link to="/pm25">pm25
+    </router-link>
   </nav>
-  <router-view/>
 </template>
 
 <style>
