@@ -1,12 +1,18 @@
 <template>
 
-  <div id="logintest1">
+  <div id="container">
     <h2>登入</h2>
     <el-form @submit.prevent="login">
       <div class="form-group">
-        <el-input id="inputUsername" v-model="name" placeholder="帳號" />
+        <el-input id="inputAccount" v-model="account" placeholder="帳號" />
         <el-input id="inputPassword" v-model="password" placeholder="密碼, 至少有8位" />
         <el-button plain type="primary" native-type="submit">登入</el-button>
+        <button type="button" class="btn btn-primary ml-5" @click="getData">
+        Get Data
+        </button>
+        <button type="button" class="btn btn-primary" @click="logout">
+        Logout
+        </button>
       </div>
     </el-form>
   </div>
@@ -18,24 +24,61 @@
 export default {
   data() {
     return {
-      name: "",
+      account: "",
       password: "",
+      token: "",
     };
   },
   methods: {
     login() {
+      if(this.account == '' || this.password == ''){
+        alert("帳號或密碼不能為空")
+      }
       this.axios
         .post("https://stockworld.ddns.net/api/auth/login", {
-          name: this.name,
+          account: this.account,
           password: this.password,
         })
+
+
         .then((response) => {
           console.log(response);
+          const token = res.data.token;
+          const expired = res.data.expired;
+          // 將 token 與他的到期時間存到瀏覽器 cookie 裡
+          document.cookie = `loginToken = ${token}; expires = ${new Date(expired * 1000)};`;
+          alert('登入成功')
+        })
+
+
+        .catch(function(error) {
+          if (error.response) {
+            console.log(error.response.status);
+             if(error.response.status == '401'){
+                alert ('資料填寫錯誤')
+              }
+          }
         });
+
+    },
+    getData() {
+      // 先從瀏覽器 cookie 取得 token
+      this.token = document.cookie.replace(/(?:(?:^|.*;\s*)loginToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
+      const api = "https://stockworld.ddns.net/api/auth/login";
+
+      // https://github.com/axios/axios#global-axios-defaults
+      // 並且 header 按照後端 api 文件的規格要求填上 Bearer token 字樣
+      this.axios.defaults.headers.common.Authorization = `this.token`;
+      this.axios.get(api).then((res) => {
+        console.log(res);
+      });
+    },
+    logout() {
+      // 清除瀏覽器 cookie 的 Token
+      document.cookie = `loginToken = ""; expires = "";`;
     },
   },
-};
-
+}
 </script>
 
 <style>
@@ -43,13 +86,13 @@ export default {
 *{
   font-family:微軟正黑體;  
 }
-h2,#inputUsername, #inputPassword{
+h2, #inputAccount, #inputPassword{
   width: 200px;
   height: 20px;
   margin: 10px;
   color: #23995c;
 }
-#logintest1{
+#container{
   //margin: 50px;
   padding: 10px;
   width: 230px;
