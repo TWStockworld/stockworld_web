@@ -2,14 +2,16 @@
     <div id="container1">
     <h3>註冊</h3>
     <el-form @submit.prevent="register">
-     <input type="username" id="inputUsername" v-model="name" placeholder="帳號" />
+    <input type="username" id="inputUsername" v-model="name" placeholder="名字"  />
      <div class="tab"></div>
-     <input type="password" id="inputPassword" v-model="password" placeholder="密碼, 最少8位" />
+     <input type="account" id="inputAccount" v-model="account" placeholder="帳號"  />
+     <div class="tab"></div>
+     <input type="password" id="inputPassword" v-model="password" placeholder="密碼" />
      <div class="tab"></div>
      <input type="email" id="inputEmail" v-model="email" placeholder="Email" />
      <div class="tab"></div>
     
-        <el-button type="primary" class="submit" >註冊</el-button>
+        <el-button type="primary" class="submit" @click="register" >註冊</el-button>
      </el-form> 
     </div> 
 </template>
@@ -23,30 +25,60 @@ export default {
   data() {
      return {
         name: "",
+        account: "",
         password: "",
-        email: "",
+        email: "",     
     };
-  },
+  }, 
+ // mounted(){
+    
+ // },
   methods:{
     register(){
+      if(this.name === ''|| this.account === '' || this.password === '' || this.email === ''){
+        alert('名字、帳號、密碼、信箱不能為空')
+      }
         this.axios
-        .post("https://stockworld.ddns.net/api/auth/register", {
+        .post("https://stockworld.ddns.net/api/auth/register",{
             name: this.name,
+            account: this.account,
             password: this.password,
             email: this.email,
-            
         })
+          
         .then((res) => {
           console.log(res);
+          alert ('註冊成功')
           })
-        .catch(err => {
-        console.log(err);
-      
-    });
         
-    }
- },
- 
+        .catch(function(error) {
+          if (error.response) { 
+            //console.log(error.response.data);
+            console.log(error.response.status);
+            //console.log(error.response.headers);
+             if(error.response.status == '401'){
+                alert ('填寫錯誤')
+              }else if(error.response.status == '402'){
+                alert('資料庫錯誤')
+              }
+          }
+        });
+          
+    },
+    //getData(){
+    //  this.token = document.cookie.replace(/(?:(?:^|.*;\s*)resToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
+    //  const api = 'https://stockworld.ddns.net/api/auth/register';
+    //  axios.defaults.headers.common.Authorization = 'this.token';
+    //  axios.get(api).then((resp) => {
+    //    console.log(resp);
+    //  });
+    //},
+    logout() {
+      document.cookie = `loginToken = ""; expires = "";`;
+    },
+    
+ }
+
 }
 
 
@@ -58,7 +90,7 @@ export default {
 *{
   font-family:微軟正黑體;  
 }
-h3, #inputEmail,#inputUsername, #inputPassword{
+h3, #inputAccount, #inputEmail,#inputUsername, #inputPassword{
   width: 200px;
   height: 20px;
   margin: 10px;
@@ -68,7 +100,7 @@ h3, #inputEmail,#inputUsername, #inputPassword{
   //margin: 50px;
   padding: 10px;
   width: 230px;
-  height: 300px;
+  height: 320px;
   background-color: white;
   border-radius: 5px;
   border-top: 10px solid #23995c;
