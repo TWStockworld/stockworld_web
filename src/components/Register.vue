@@ -37,7 +37,7 @@ export default {
     register(){
       if(this.name === ''|| this.account === '' || this.password === '' || this.email === ''){
         alert('名字、帳號、密碼、信箱不能為空')
-      }
+      }else{
         this.axios
         .post("https://stockworld.ddns.net/api/auth/register",{
             name: this.name,
@@ -49,34 +49,23 @@ export default {
         .then((res) => {
           console.log(res);
           alert ('註冊成功')
+          if(res.status == '200' ){
+            this.$router.push('/pm25')
+            }
           })
         
         .catch(function(error) {
           if (error.response) { 
-            //console.log(error.response.data);
             console.log(error.response.status);
-            //console.log(error.response.headers);
              if(error.response.status == '401'){
-                alert ('填寫錯誤')
+                alert ('資料填寫錯誤')
               }else if(error.response.status == '402'){
-                alert('資料庫錯誤')
+                alert('帳號名稱重複!')
               }
           }
         });
-          
-    },
-    //getData(){
-    //  this.token = document.cookie.replace(/(?:(?:^|.*;\s*)resToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
-    //  const api = 'https://stockworld.ddns.net/api/auth/register';
-    //  axios.defaults.headers.common.Authorization = 'this.token';
-    //  axios.get(api).then((resp) => {
-    //    console.log(resp);
-    //  });
-    //},
-    logout() {
-      document.cookie = `loginToken = ""; expires = "";`;
-    },
-    
+      }   
+    },  
  }
 
 }
