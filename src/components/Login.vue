@@ -21,12 +21,13 @@
 
 <script>
 
+// import Cookies from 'js-cookie'
 export default {
   data() {
     return {
       account: "",
       password: "",
-      token: "",
+      // token: "",
     };
   },
   methods: {
@@ -40,16 +41,17 @@ export default {
           password: this.password,
         })
 
-
-        .then((response) => {
-          console.log(response);
-          const token = res.data.token;
-          const expired = res.data.expired;
-          // 將 token 與他的到期時間存到瀏覽器 cookie 裡
-          document.cookie = `loginToken = ${token}; expires = ${new Date(expired * 1000)};`;
+        .then((res) => {
+          // console.log(response);
+          // const token = res.data.token;
+          // const expired = res.data.expired;
+          // // 將 token 與他的到期時間存到瀏覽器 cookie 裡
+          // document.cookie = `loginToken = ${token}; expires = ${new Date(expired * 1000)};`;
           alert('登入成功')
+          if(res.status == '200' ){
+            this.$router.push('/pm25')
+          }
         })
-
 
         .catch(function(error) {
           if (error.response) {
@@ -61,22 +63,22 @@ export default {
         });
 
     },
-    getData() {
-      // 先從瀏覽器 cookie 取得 token
-      this.token = document.cookie.replace(/(?:(?:^|.*;\s*)loginToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
-      const api = "https://stockworld.ddns.net/api/auth/login";
+    // getData() {
+    //   // 先從瀏覽器 cookie 取得 token
+    //   this.token = document.cookie.replace(/(?:(?:^|.*;\s*)loginToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
+    //   const api = "https://stockworld.ddns.net/api/auth/login";
 
-      // https://github.com/axios/axios#global-axios-defaults
-      // 並且 header 按照後端 api 文件的規格要求填上 Bearer token 字樣
-      this.axios.defaults.headers.common.Authorization = `this.token`;
-      this.axios.get(api).then((res) => {
-        console.log(res);
-      });
-    },
-    logout() {
-      // 清除瀏覽器 cookie 的 Token
-      document.cookie = `loginToken = ""; expires = "";`;
-    },
+    //   // https://github.com/axios/axios#global-axios-defaults
+    //   // 並且 header 按照後端 api 文件的規格要求填上 Bearer token 字樣
+    //   this.axios.defaults.headers.common.Authorization = 'this.token';
+    //   this.axios.get(api).then((res) => {
+    //     console.log(res);
+    //   });
+    // },
+    // logout() {
+    //   // 清除瀏覽器 cookie 的 Token
+    //   document.cookie = 'loginToken = ""; expires = "";';
+    // },
   },
 }
 </script>
