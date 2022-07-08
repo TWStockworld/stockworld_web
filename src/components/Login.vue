@@ -1,39 +1,37 @@
 <template>
-
   <div id="container">
     <h2>登入</h2>
     <el-form @submit.prevent="login">
       <div class="form-group">
         <el-input id="inputAccount" v-model="account" placeholder="帳號" />
-        <el-input id="inputPassword" v-model="password" placeholder="密碼, 至少有8位" />
+        <el-input
+          id="inputPassword"
+          v-model="password"
+          placeholder="密碼, 至少有8位"
+        />
         <el-button plain type="primary" native-type="submit">登入</el-button>
-        <button type="button" class="btn btn-primary ml-5" @click="getData">
-        Get Data
-        </button>
+
         <button type="button" class="btn btn-primary" @click="logout">
-        Logout
+          Logout
         </button>
       </div>
     </el-form>
   </div>
-
 </template>
 
 <script>
-
-// import Cookies from 'js-cookie'
 export default {
   data() {
     return {
       account: "",
       password: "",
-      // token: "",
+      token: "",
     };
   },
   methods: {
     login() {
-      if(this.account == '' || this.password == ''){
-        alert("帳號或密碼不能為空")
+      if (this.account == "" || this.password == "") {
+        alert("帳號或密碼不能為空");
       }
       this.axios
         .post("https://stockworld.ddns.net/api/auth/login", {
@@ -42,26 +40,22 @@ export default {
         })
 
         .then((res) => {
-          // console.log(response);
-          // const token = res.data.token;
-          // const expired = res.data.expired;
-          // // 將 token 與他的到期時間存到瀏覽器 cookie 裡
-          // document.cookie = `loginToken = ${token}; expires = ${new Date(expired * 1000)};`;
-          alert('登入成功')
-          if(res.status == '200' ){
-            this.$router.push('/pm25')
+          console.log(res);
+          const token = res.data.token;
+          this.$Cookies.set("token", token), { expires: 1 };
+          if (this.$Cookies.get("token")) {
+            this.$router.push("/pm25");
           }
         })
 
-        .catch(function(error) {
+        .catch(function (error) {
           if (error.response) {
             console.log(error.response.status);
-             if(error.response.status == '401'){
-                alert ('資料填寫錯誤')
-              }
+            if (error.response.status == "401") {
+              alert("資料填寫錯誤");
+            }
           }
         });
-
     },
     // getData() {
     //   // 先從瀏覽器 cookie 取得 token
@@ -70,31 +64,32 @@ export default {
 
     //   // https://github.com/axios/axios#global-axios-defaults
     //   // 並且 header 按照後端 api 文件的規格要求填上 Bearer token 字樣
-    //   this.axios.defaults.headers.common.Authorization = 'this.token';
+    //   this.axios.defaults.headers.common.Authorization = `this.token`;
     //   this.axios.get(api).then((res) => {
     //     console.log(res);
     //   });
     // },
-    // logout() {
-    //   // 清除瀏覽器 cookie 的 Token
-    //   document.cookie = 'loginToken = ""; expires = "";';
-    // },
+    logout() {
+      // 清除瀏覽器 cookie 的 Token
+      document.cookie = `loginToken = ""; expires = "";`;
+    },
   },
-}
+};
 </script>
 
 <style>
-
-*{
-  font-family:微軟正黑體;  
+* {
+  font-family: 微軟正黑體;
 }
-h2, #inputAccount, #inputPassword{
+h2,
+#inputAccount,
+#inputPassword {
   width: 200px;
   height: 20px;
   margin: 10px;
   color: #23995c;
 }
-#container{
+#container {
   //margin: 50px;
   padding: 10px;
   width: 230px;
@@ -103,23 +98,23 @@ h2, #inputAccount, #inputPassword{
   border-radius: 5px;
   border-top: 10px solid #23995c;
   box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
-  
-   /*定位對齊*/
-  position:relative;   
-  margin: auto;
-  top: 100px;
- //text-align:center; 
-}
-.system_name{
+
   /*定位對齊*/
-  position:relative;   
+  position: relative;
   margin: auto;
   top: 100px;
-  text-align:center; 
+  //text-align:center;
+}
+.system_name {
+  /*定位對齊*/
+  position: relative;
+  margin: auto;
+  top: 100px;
+  text-align: center;
 }
 
-.submit{
-  color: white;  
+.submit {
+  color: white;
   background: #23995c;
   width: 200px;
   height: 30px;
@@ -129,14 +124,13 @@ h2, #inputAccount, #inputPassword{
   border: 0px;
 }
 
-.submit:hover{
+.submit:hover {
   background: #219e53;
 }
-input{
+input {
   padding: 5px;
-  border: none; 
-  border:solid 1px #ccc;
+  border: none;
+  border: solid 1px #ccc;
   border-radius: 5px;
 }
-
 </style>

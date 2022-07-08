@@ -9,10 +9,13 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import Cookies from "js-cookie";
+
+
 const app = createApp(App)
 
 app.use(ElementPlus, {
     locale: zhtw,
   })
-
+app.config.globalProperties.$Cookies = Cookies;
 app.use(router).use(VueAxios, axios).mount('#app')
