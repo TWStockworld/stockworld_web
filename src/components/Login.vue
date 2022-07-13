@@ -10,16 +10,15 @@
           placeholder="密碼, 至少有8位"
         />
         <el-button plain type="primary" native-type="submit">登入</el-button>
-
-        <button type="button" class="btn btn-primary" @click="logout">
-          Logout
-        </button>
       </div>
     </el-form>
   </div>
 </template>
 
 <script>
+//////
+import { ElMessageBox } from "element-plus";
+//////
 export default {
   data() {
     return {
@@ -52,7 +51,19 @@ export default {
           if (error.response) {
             console.log(error.response.status);
             if (error.response.status == "401") {
-              alert("資料填寫錯誤");
+              // alert("資料填寫錯誤");
+              //////
+
+              // ElMessage({
+              //   showClose: true,
+              //   message: "資料填寫錯誤",
+              //   type: "error",
+              // });
+              ElMessageBox.alert("資料填寫錯誤", "錯誤", {
+                confirmButtonText: "OK",
+              });
+
+              //////
             }
           }
         });
@@ -69,10 +80,13 @@ export default {
     //     console.log(res);
     //   });
     // },
-    logout() {
-      // 清除瀏覽器 cookie 的 Token
-      document.cookie = `loginToken = ""; expires = "";`;
-    },
+    // logout() {
+    //   // 清除瀏覽器 cookie 的 Token
+    //   document.cookie = `loginToken = ""; expires = "";`;
+    // <button type="button" class="btn btn-primary" @click="logout">
+    //       Logout
+    //     </button>
+    // },
   },
 };
 </script>
