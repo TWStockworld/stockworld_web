@@ -7,7 +7,8 @@
     <router-link to="/calculate">calculate</router-link> |
     <router-link to="/pm25">pm25</router-link> |
     <router-link to="/register">註冊</router-link> |
-    <router-link to="/login">登入</router-link>
+    <router-link to="/login">登入</router-link> |
+    <router-link to="/aboutstock">關於股票</router-link> |
   </nav>
   <router-view />
 </template>
