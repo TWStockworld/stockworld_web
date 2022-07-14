@@ -1,58 +1,27 @@
 <template>
-    <div class="table1">
-    <el-table
-      :data="rankData"
-      style="width: 50%">
-      <el-table-column
-        prop="rank"
-        label="排行"
-        width="100">
-      </el-table-column>
-      <el-table-column
-        prop="code1"
-        label="代號"
-        width="100">
-      </el-table-column>
-      <el-table-column
-        prop="name1"
-        label="名稱"
-        width="100">
-      </el-table-column>
-      <el-table-column
-        prop="VS"
-        label="VS"
-        width="100">
-      </el-table-column>
-      <el-table-column
-        prop="code2"
-        label="代號"
-        width="100">
-      </el-table-column>
-      <el-table-column
-        prop="name2"
-        label="名稱"
-        width="100">
-      </el-table-column>
-      <el-table-column
-        prop="day"
-        label="天數"
-        width="100">
-      </el-table-column>
-      <el-table-column
-        prop="follow"
-        label="追蹤"
-        width="180">
-      </el-table-column>
+    <div class="table1" >
+    <el-table :data="rankData" style="width: 45%">
+      <el-table-column prop="rank" label="排行" width="100"> </el-table-column>
+
+      <el-table-column prop="code1" label="代號" width="100"> </el-table-column>
+
+      <el-table-column prop="name1" label="名稱" width="100"> </el-table-column>
+
+      <el-table-column prop="VS" label="VS" width="100"> </el-table-column>
+
+      <el-table-column prop="code2" label="代號" width="100"> </el-table-column>
+
+      <el-table-column prop="name2" label="名稱" width="100"> </el-table-column>
+
+      <el-table-column prop="day" label="天數" width="100"> </el-table-column>
+
+      <el-table-column prop="follow" label="追蹤" width="180"> </el-table-column>
     </el-table>
     </div>
 
     <div class="table2" >
     <el-table :data="stockkind">
-        <el-table-column
-        prop="stockname"
-        label="股票種類"
-        width="180" >
-        </el-table-column>
+        <el-table-column prop="stockname" label="股票種類" width="180" > </el-table-column>
     </el-table>
     </div>
 </template>
@@ -112,17 +81,16 @@
     }
   </script>
 
-
 <style>
 .table1{
     position: absolute;
     top: 150px;
     width: 1800px;
-    left: 900px;
+    left: 200px;
 }
 .table2{
     position: absolute;
     top: 150px;
-    left: 350px;
+    left: 10px;
 }
 </style>
