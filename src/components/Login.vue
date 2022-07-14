@@ -3,12 +3,12 @@
     <h2>登入</h2>
     <el-form @submit.prevent="login">
       <div class="form-group">
-        <el-input id="inputAccount" v-model="account" placeholder="帳號" />
+        <el-input id="inputAccount" v-model="account" placeholder="帳號" required/>
         <el-input
           id="inputPassword"
           v-model="password"
           placeholder="密碼, 至少有8位"
-        />
+        required/>
         <el-button plain type="primary" native-type="submit">登入</el-button>
       </div>
     </el-form>
@@ -29,9 +29,9 @@ export default {
   },
   methods: {
     login() {
-      if (this.account == "" || this.password == "") {
-        alert("帳號或密碼不能為空");
-      }
+      // if (this.account == "" || this.password == "") {
+      //   alert("帳號或密碼不能為空");
+      // }
       this.axios
         .post("https://stockworld.ddns.net/api/auth/login", {
           account: this.account,
