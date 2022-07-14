@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <h1>股票分析網頁</h1>
+  </div>
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/calculate">calculate</router-link> |
