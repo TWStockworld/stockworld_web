@@ -11,7 +11,7 @@
         required/>
         <el-button plain type="primary" native-type="submit">登入</el-button>
       </div>
-    </el-form>
+    </el-form>  
   </div>
 </template>
 
