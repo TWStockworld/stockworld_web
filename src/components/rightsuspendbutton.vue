@@ -50,56 +50,56 @@ export default {
 <style>
 .RB1{
     position: absolute;
-    top: 150px;
-    width: 700px;
-    left: 450px;
+    top: 20%;
+    width: 36%;
+    left: 24%;
 }
 .RB2{
     position: absolute;
-    top: 300px;
-    width: 700px;
-    left: 250px;
+    top: 33%;
+    width: 36%;
+    left: 13%;
 }
 .RB3{
     position: absolute;
-    top: 530px;
-    width: 700px;
-    left: 250px;
+    top: 58%;
+    width: 36%;
+    left: 13%;
 }
 .RB4{
     position: absolute;
-    top: 700px;
-    width: 700px;
-    left: 450px;
+    top: 78%;
+    width: 36%;
+    left: 24%;
 }
 .RB5{
     position: absolute;
-    top: 700px;
-    width: 700px;
-    left: 1000px;
+    top: 78%;
+    width: 36%;
+    left: 52%;
 }
 .RB6{
     position: absolute;
-    top: 530px;
-    width: 700px;
-    left: 1200px;
+    top: 58%;
+    width: 36%;
+    left: 62%;
 }
 .RB7{
     position: absolute;
-    top: 300px;
-    width: 700px;
-    left: 1200px;
+    top: 33%;
+    width: 36%;
+    left: 62%;
 }
 .RB8{
     position: absolute;
-    top: 150px;
-    width: 700px;
-    left: 1000px;
+    top: 20%;
+    width: 36%;
+    left: 52%;
 }
 .picture{
     position: absolute;
-    top: 300px;
+    top: 35%;
     width: 700px;
-    left: 700px;
+    left: 38%;
 }
 </style>
