@@ -10,6 +10,10 @@
       <router-link to="/register">註冊</router-link> |
       <router-link to="/login">登入</router-link> |
       <router-link to="/aboutstock">關於股票</router-link> |
+      <router-link to="/aboutstock">
+        <el-button plain type="primary" native-type="submit">登入</el-button>
+      </router-link>
+      |
     </nav>
     <router-view />
   </div>
@@ -25,6 +29,7 @@
 }
 
 nav {
+  border-bottom: 3px solid;
   padding: 30px;
 }
 

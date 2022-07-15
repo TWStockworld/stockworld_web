@@ -17,7 +17,7 @@
 
 <script>
 //////
-import { ElMessageBox } from "element-plus";
+import { ElMessage } from "element-plus";
 //////
 export default {
   data() {
@@ -59,9 +59,7 @@ export default {
               //   message: "資料填寫錯誤",
               //   type: "error",
               // });
-              ElMessageBox.alert("資料填寫錯誤", "錯誤", {
-                confirmButtonText: "OK",
-              });
+              ElMessage.error("帳密錯誤");
 
               //////
             }
