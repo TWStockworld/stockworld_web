@@ -3,7 +3,7 @@
    
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
     <leftbutton />
-    <rightsuspendbutton />
+    
     
   </div>
 </template>
