@@ -5,6 +5,7 @@ import pm25 from '../views/pm25.vue'
 import RegisterView from "../views/RegisterView.vue";
 import LoginView from "../views/LoginView.vue";
 import AboutStockView from "../views/AboutStockView.vue";
+import tsmcView from "../views/tsmcView";
 
 const routes = [{
         path: "/",
@@ -36,6 +37,11 @@ const routes = [{
         name: "aboutstock",
         component: AboutStockView,
     },
+    {
+        path: "/tsmc",
+        name: "tsmc",
+        component: tsmcView,
+    }
 ];
 
 const router = createRouter({
