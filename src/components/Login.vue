@@ -33,7 +33,7 @@ export default {
       //   alert("帳號或密碼不能為空");
       // }
       this.axios
-        .post("https://stockworld.ddns.net/api/auth/login", {
+        .post("https://stock.bakerychu.com/api/auth/login", {
           account: this.account,
           password: this.password,
         })
@@ -71,7 +71,7 @@ export default {
     // getData() {
     //   // 先從瀏覽器 cookie 取得 token
     //   this.token = document.cookie.replace(/(?:(?:^|.*;\s*)loginToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
-    //   const api = "https://stockworld.ddns.net/api/auth/login";
+    //   const api = "https://stock.bakerychu.com/api/auth/login";
 
     //   // https://github.com/axios/axios#global-axios-defaults
     //   // 並且 header 按照後端 api 文件的規格要求填上 Bearer token 字樣
