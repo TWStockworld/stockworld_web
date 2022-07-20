@@ -96,10 +96,10 @@ export default {
   },
   mounted() {
     const get_stock_category = this.axios.get(
-      "https://stockworld.ddns.net/api/stock/get_stock_category"
+      "https://stock.bakerychu.com/api/stock/get_stock_category"
     );
     const get_stock_name = this.axios.get(
-      "https://stockworld.ddns.net/api/stock/get_stock_name"
+      "https:/stock.bakerychu.com/api/stock/get_stock_name"
     );
 
     this.axios.all([get_stock_category, get_stock_name]).then(
@@ -113,7 +113,7 @@ export default {
   methods: {
     cal() {
       this.axios
-        .post("https://stockworld.ddns.net/api/stock/cal_stock", {
+        .post("https://stock.bakerychu.com/api/stock/cal_stock", {
           startdate: this.startdate,
           enddate: this.enddate,
           diff: this.diff,

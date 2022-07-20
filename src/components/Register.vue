@@ -65,7 +65,7 @@ export default {
       //   alert('名字、帳號、密碼、信箱不能為空')
       // }else{
       //   this.axios
-      //   .post("https://stockworld.ddns.net/api/auth/register",{
+      //   .post("https://stock.bakerychu.com/api/auth/register",{
       //       name: this.name,
       //       account: this.account,
       //       password: this.password,
@@ -97,7 +97,7 @@ export default {
         ElMessage.error("名字、帳號、密碼、信箱不能為空")
       } else {
         this.axios
-          .post("https://stockworld.ddns.net/api/auth/register", {
+          .post("https://stock.bakerychu.com/api/auth/register", {
             name: this.name,
             account: this.account,
             password: this.password,
