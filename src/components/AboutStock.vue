@@ -201,12 +201,12 @@ export default {
 <style>
 .table1 {
   position: absolute;
-  top: 150px;
-  left: 10px;
+  top: 150%;
+  left: 10%;
 }
 .table2 {
   position: absolute;
-  top: 500px;
-  left: 10px;
+  top: 500%;
+  left: 10%;
 }
 </style>

@@ -44,6 +44,7 @@ export default {
           this.$Cookies.set("token", token), { expires: 1 };
           if (this.$Cookies.get("token")) {
             this.$router.push("/pm25");
+            // this.$router.push("/");
           }
         })
 

@@ -1,75 +1,77 @@
 <template>
-  <el-form @submit.prevent="cal">
-    <div class="form-group">
-      <div class="demo-date-picker">
-        <div class="block">
-          <span class="demonstration">開始日</span>
-          <el-date-picker
-            v-model="startdate"
-            type="date"
-            placeholder="Pick a day"
-          />
+  <div v-if="token">
+    <el-form @submit.prevent="cal">
+      <div class="form-group">
+        <div class="demo-date-picker">
+          <div class="block">
+            <span class="demonstration">開始日</span>
+            <el-date-picker
+              v-model="startdate"
+              type="date"
+              placeholder="Pick a day"
+            />
+          </div>
+          <div class="block">
+            <span class="demonstration">結束日</span>
+            <el-date-picker
+              v-model="enddate"
+              type="date"
+              placeholder="Pick a day"
+            />
+          </div>
+          <div class="block">
+            <span class="demonstration">相差日(實際開盤天)</span>
+            <el-input v-model="diff" placeholder="輸入數字" />
+          </div>
+          <div class="block">
+            <span class="demonstration">股票種類</span>
+            <el-select v-model="category" filterable placeholder="請選擇">
+              <el-option
+                v-for="category in stock_category_options"
+                :key="category.id"
+                :label="category.category"
+                :value="category.id"
+              >
+              </el-option>
+            </el-select>
+          </div>
+          <div class="block">
+            <span class="demonstration">股票A</span>
+            <el-select v-model="stockA" filterable placeholder="請選擇">
+              <el-option
+                v-for="stock in stockA_options"
+                :key="stock.stock_id"
+                :label="stock.stock_name + '(' + stock.stock_id + ')'"
+                :value="stock.stock_id"
+              >
+              </el-option>
+            </el-select>
+          </div>
+          <div class="block">
+            <span class="demonstration">股票B</span>
+            <el-select v-model="stockB" filterable placeholder="請選擇">
+              <el-option
+                v-for="stock in stockB_options"
+                :key="stock.stock_id"
+                :label="stock.stock_name + '(' + stock.stock_id + ')'"
+                :value="stock.stock_id"
+              >
+              </el-option>
+            </el-select>
+          </div>
         </div>
-        <div class="block">
-          <span class="demonstration">結束日</span>
-          <el-date-picker
-            v-model="enddate"
-            type="date"
-            placeholder="Pick a day"
-          />
-        </div>
-        <div class="block">
-          <span class="demonstration">相差日(實際開盤天)</span>
-          <el-input v-model="diff" placeholder="輸入數字" />
-        </div>
-        <div class="block">
-          <span class="demonstration">股票種類</span>
-          <el-select v-model="category" filterable placeholder="請選擇">
-            <el-option
-              v-for="category in stock_category_options"
-              :key="category.id"
-              :label="category.category"
-              :value="category.id"
-            >
-            </el-option>
-          </el-select>
-        </div>
-        <div class="block">
-          <span class="demonstration">股票A</span>
-          <el-select v-model="stockA" filterable placeholder="請選擇">
-            <el-option
-              v-for="stock in stockA_options"
-              :key="stock.stock_id"
-              :label="stock.stock_name + '(' + stock.stock_id + ')'"
-              :value="stock.stock_id"
-            >
-            </el-option>
-          </el-select>
-        </div>
-        <div class="block">
-          <span class="demonstration">股票B</span>
-          <el-select v-model="stockB" filterable placeholder="請選擇">
-            <el-option
-              v-for="stock in stockB_options"
-              :key="stock.stock_id"
-              :label="stock.stock_name + '(' + stock.stock_id + ')'"
-              :value="stock.stock_id"
-            >
-            </el-option>
-          </el-select>
-        </div>
+        <el-button plain type="primary" native-type="submit">送出</el-button>
       </div>
-      <el-button plain type="primary" native-type="submit">送出</el-button>
-    </div>
-    <p>{{ result }}</p>
-    <div v-if="stockA_datas.length != 0">
-      <Chart
-        :stockA_datas="stockA_datas"
-        :stockB_datas="stockB_datas"
-        :key="componentKey"
-      />
-    </div>
-  </el-form>
+      <p>{{ result }}</p>
+      <div v-if="stockA_datas.length != 0">
+        <Chart
+          :stockA_datas="stockA_datas"
+          :stockB_datas="stockB_datas"
+          :key="componentKey"
+        />
+      </div>
+    </el-form>
+  </div>
 </template>
 
 <script>
@@ -79,6 +81,7 @@ export default {
   name: "CalculateView",
   data() {
     return {
+      token: this.$Cookies.get('token'),
       startdate: "2021-01-01",
       enddate: "2021-12-01",
       diff: "2",
