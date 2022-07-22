@@ -1,92 +1,258 @@
 <template>
-  <div class="table1">
-    <h3>相關度排行</h3>
-    <el-table
-      :data="RankStock1"
-      border
-      stripe
-      style="width: 31%"
-      max-height="200"
-    >
-      <h3>UP</h3>
-      <el-table-column prop="rank1" label="排行" width="70"> </el-table-column>
+  <el-row :gutter="30">
+    <el-col :span="10">
+      <div class="grid-content bg-purple-light">
+        <!--還沒引進來-->
+      </div>
+    </el-col>
+    <el-col :span="10" :offset="11">
+      <div class="grid-content bg-purple-light">
+        <div class="table1">
+          <h3>相關度排行</h3>
+          <el-table
+            :data="RankStock1"
+            border
+            stripe
+            style="width: 55.5%"
+            max-height="150"
+          >
+            <el-table-column prop="UP" label="UP" width="66"> </el-table-column>
+            <el-table-column prop="rank1" label="排行" width="90">
+            </el-table-column>
 
-      <el-table-column prop="code1" label="代號" width="70"> </el-table-column>
+            <el-table-column prop="code1" label="代號" width="90">
+            </el-table-column>
 
-      <el-table-column prop="name1" label="名稱" width="70"> </el-table-column>
+            <el-table-column prop="name1" label="名稱" width="90">
+            </el-table-column>
 
-      <el-table-column prop="VS" label="VS" width="70"> </el-table-column>
+            <el-table-column prop="VS" label="VS" width="90"></el-table-column>
 
-      <el-table-column prop="code2" label="代號" width="70"> </el-table-column>
+            <el-table-column prop="code2" label="代號" width="90">
+            </el-table-column>
 
-      <el-table-column prop="name2" label="名稱" width="70"> </el-table-column>
+            <el-table-column prop="name2" label="名稱" width="90">
+            </el-table-column>
 
-      <el-table-column prop="day" label="天數" width="70"> </el-table-column>
+            <el-table-column prop="day" label="天數" width="90">
+            </el-table-column>
 
-      <el-table-column prop="follow" label="追蹤" width="70">
-      </el-table-column>
-    </el-table>
-    <el-table
-      :data="RankStock2"
-      border
-      stripe
-      style="width: 31%"
-      max-height="200"
-    >
-      <h3>DOWN</h3>
-      <el-table-column prop="rank2" label="排行" width="70"> </el-table-column>
+            <el-table-column prop="follow" label="追蹤" width="86">
+            </el-table-column>
+          </el-table>
 
-      <el-table-column prop="code3" label="代號" width="70"> </el-table-column>
+          <el-table
+            :data="RankStock2"
+            border
+            stripe
+            style="width: 55.5%"
+            max-height="150"
+          >
+            <el-table-column prop="DOWN" label="DOWN" width="66"> </el-table-column>
+            <el-table-column prop="rank2" label="排行" width="90">
+            </el-table-column>
 
-      <el-table-column prop="name3" label="名稱" width="70"> </el-table-column>
+            <el-table-column prop="code3" label="代號" width="90">
+            </el-table-column>
 
-      <el-table-column prop="VS" label="VS" width="70"> </el-table-column>
+            <el-table-column prop="name3" label="名稱" width="90">
+            </el-table-column>
 
-      <el-table-column prop="code4" label="代號" width="70"> </el-table-column>
+            <el-table-column prop="VS" label="VS" width="90"> </el-table-column>
 
-      <el-table-column prop="name4" label="名稱" width="70"> </el-table-column>
+            <el-table-column prop="code4" label="代號" width="90">
+            </el-table-column>
 
-      <el-table-column prop="day" label="天數" width="70"> </el-table-column>
+            <el-table-column prop="name4" label="名稱" width="90">
+            </el-table-column>
 
-      <el-table-column prop="follow" label="追蹤" width="70">
-      </el-table-column>
-    </el-table>
-  </div>
-  <div class="table2">
-    <h3>上市水泥類股-成分股即時資訊</h3>
-    <el-table
-      :data="StockClassification"
-      border
-      stripe
-      style="width: 100%"
-      max-height="200"
-      :default-sort="{ prop: 'code', prop: 'time'}"
-    >
-      <el-table-column prop="code" label="代號" sortable width="80">
-      </el-table-column>
-      <el-table-column prop="name" label="名稱" width="70"> </el-table-column>
-      <el-table-column prop="FinalPrice" label="成交價" width="70">
-      </el-table-column>
-      <el-table-column prop="UPandDown" label="漲跌" width="70">
-      </el-table-column>
-      <el-table-column prop="UPandDownAmplitude" label="漲跌幅" width="70">
-      </el-table-column>
-      <el-table-column prop="buy" label="買進" width="70"> </el-table-column>
-      <el-table-column prop="sell" label="賣出" width="70"> </el-table-column>
-      <el-table-column prop="opening" label="開盤" width="70">
-      </el-table-column>
-      <el-table-column prop="ReceivedYesterday" label="昨收" width="70">
-      </el-table-column>
-      <el-table-column prop="volume" label="成交量" width="70">
-      </el-table-column>
-      <el-table-column prop="time" label="時間" sortable width="80"> </el-table-column>
-    </el-table>
-  </div>
+            <el-table-column prop="day" label="天數" width="90">
+            </el-table-column>
+
+            <el-table-column prop="follow" label="追蹤" width="86">
+            </el-table-column>
+          </el-table>
+        </div>
+      </div>
+    </el-col>
+    <el-col :span="12" :offset="11">
+      <div class="grid-content bg-purple-light">
+        <div class="table2">
+          <h3>上市水泥類股-成分股即時資訊</h3>
+          <el-table
+            :data="StockClassification"
+            border
+            stripe
+            style="width: 100%"
+            max-height="200"
+            :default-sort="{ prop: 'code', prop: 'time' }"
+          >
+            <el-table-column prop="code" label="代號" sortable width="85">
+            </el-table-column>
+            <el-table-column prop="name" label="名稱" width="85">
+            </el-table-column>
+            <el-table-column prop="FinalPrice" label="成交價" width="85">
+            </el-table-column>
+            <el-table-column prop="UPandDown" label="漲跌" width="85">
+            </el-table-column>
+            <el-table-column
+              prop="UPandDownAmplitude"
+              label="漲跌幅"
+              width="85"
+            >
+            </el-table-column>
+            <el-table-column prop="buy" label="買進" width="85">
+            </el-table-column>
+            <el-table-column prop="sell" label="賣出" width="85">
+            </el-table-column>
+            <el-table-column prop="opening" label="開盤" width="85">
+            </el-table-column>
+            <el-table-column prop="ReceivedYesterday" label="昨收" width="85">
+            </el-table-column>
+            <el-table-column prop="volume" label="成交量" width="85">
+            </el-table-column>
+            <el-table-column prop="time" label="時間" sortable width="85">
+            </el-table-column>
+          </el-table>
+        </div>
+      </div>
+    </el-col>
+  </el-row>
 </template>
 <script>
 export default {
   data() {
     return {
+      RankStock1: [
+        {
+          rank1: "1",
+          code1: "1171",
+          name1: "永光",
+          code2: "3010",
+          name2: "華立",
+          day: "3",
+          follow: "",
+        },
+        {
+          rank1: "2",
+          code1: "1717",
+          name1: "長興",
+          code2: "1711",
+          name2: "永光",
+          day: "3",
+          follow: "",
+        },
+        {
+          rank1: "3",
+          code1: "5434",
+          name1: "崇越",
+          code2: "1717",
+          name2: "長興",
+          day: "3",
+          follow: "",
+        },
+        {
+          rank1: "4",
+          code1: "8091",
+          name1: "翔名",
+          code2: "5434",
+          name2: "崇越",
+          day: "3",
+          follow: "",
+        },
+        {
+          rank1: "8",
+          code1: "1171",
+          name1: "永光",
+          code2: "3010",
+          name2: "華立",
+          day: "3",
+          follow: "",
+        },
+        {
+          rank1: "6",
+          code1: "1171",
+          name1: "永光",
+          code2: "3010",
+          name2: "華立",
+          day: "3",
+          follow: "",
+        },
+        {
+          rank1: "7",
+          code1: "1171",
+          name1: "永光",
+          code2: "3010",
+          name2: "華立",
+          day: "3",
+          follow: "",
+        },
+      ],
+      RankStock2: [
+        {
+          rank2: "1",
+          code3: "1171",
+          name3: "永光",
+          code4: "3010",
+          name4: "華立",
+          day: "3",
+          follow: "",
+        },
+        {
+          rank2: "2",
+          code3: "1717",
+          name3: "長興",
+          code4: "1711",
+          name4: "永光",
+          day: "3",
+          follow: "",
+        },
+        {
+          rank2: "3",
+          code3: "5434",
+          name3: "崇越",
+          code4: "1717",
+          name4: "長興",
+          day: "3",
+          follow: "",
+        },
+        {
+          rank2: "4",
+          code3: "8091",
+          name3: "翔名",
+          code4: "5434",
+          name4: "崇越",
+          day: "3",
+          follow: "",
+        },
+        {
+          rank2: "8",
+          code3: "1171",
+          name3: "永光",
+          code4: "3010",
+          name4: "華立",
+          day: "3",
+          follow: "",
+        },
+        {
+          rank2: "6",
+          code3: "1171",
+          name3: "永光",
+          code4: "3010",
+          name4: "華立",
+          day: "3",
+          follow: "",
+        },
+        {
+          rank2: "7",
+          code3: "1171",
+          name3: "永光",
+          code4: "3010",
+          name4: "華立",
+          day: "3",
+          follow: "",
+        },
+      ],
       StockClassification: [
         {
           code: "--",
@@ -196,17 +362,35 @@ export default {
     };
   },
 };
+// .table1 {
+//   position: absolute;
+//   top: 150%;
+//   left: 10%;
+// }
+// .table2 {
+//   position: absolute;
+//   top: 500%;
+//   left: 10%;
+// }
 </script>
 
 <style>
-.table1 {
-  position: absolute;
-  top: 150%;
-  left: 10%;
+.el-row {
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
-.table2 {
-  position: absolute;
-  top: 500%;
-  left: 10%;
+.el-col {
+  border-radius: 4px;
 }
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
+}
+.row-bg {
+  padding: 10px 0;
+  background-color: #f9fafc;
+}
+
 </style>
