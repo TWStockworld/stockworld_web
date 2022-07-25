@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h5>股票分析</h5>
+  <div class="start">
+    股票分析
     <el-button type="text" class="startbutton" @click="start">START</el-button>
   </div>
 </template>
@@ -14,17 +14,16 @@ export default {
 };
 </script>
 <style>
-.startbutton {
-  position: absolute;
+.start {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-size: 200px;
-  top: 65%;
-  left: 37%;
-  cursor: pointer;
 }
-h5{
-  position: absolute;
-  font-size: 180px;
-  top: 0;
-  left: 33%;
+.startbutton {
+  height: auto;
+  font-size: 200px;
+  cursor: pointer;
 }
 </style>
