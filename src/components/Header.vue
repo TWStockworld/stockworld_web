@@ -1,16 +1,36 @@
 <template>
-  <div class="word bak">
-    <Header :currentroute="this.$route.path"/>
-    <router-view />
-  </div>
+  <nav v-if="currentroute!='/'">
+    <router-link to="/"> home </router-link> |
+    <router-link to="/calculate">
+      <el-button plain type="primary" native-type="submit">calculate</el-button>
+    </router-link>
+    |
+    <router-link to="/pm25">
+      <el-button plain type="primary" native-type="submit">pm25</el-button>
+    </router-link>
+    |
+    <router-link to="/aboutstock">
+      <el-button plain type="primary" native-type="submit">關於股票</el-button>
+    </router-link>
+    |
+    <router-link to="/register">
+      <el-button plain type="primary" native-type="submit">註冊</el-button>
+    </router-link>
+    |
+    <router-link to="/login">
+      <el-button plain type="primary" native-type="submit">登入</el-button>
+    </router-link>
+    |
+    <router-link to="/login">
+      <el-button plain type="primary" native-type="submit">登出</el-button>
+    </router-link>
+    |
+  </nav>
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
 export default {
-  components: {
-    Header,
-  },
+   props: ["currentroute"],
 };
 </script>
 
