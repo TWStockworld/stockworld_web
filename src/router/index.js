@@ -6,9 +6,11 @@ import RegisterView from "../views/RegisterView.vue";
 import LoginView from "../views/LoginView.vue";
 import AboutStockView from "../views/AboutStockView.vue";
 import tsmcView from "../views/tsmcView";
+import StartView from "../views/StartView";
+import SortView from "../views/SortView";
 
 const routes = [{
-        path: "/",
+        path: "/home",
         name: "home",
         component: HomeView,
     },
@@ -41,7 +43,17 @@ const routes = [{
         path: "/tsmc",
         name: "tsmc",
         component: tsmcView,
-    }
+    },
+    {
+        path: "/",
+        name: "start",
+        component: StartView, 
+    },
+    {
+        path: "/sort",
+        name: "sort",
+        component: SortView,
+    },
 ];
 
 const router = createRouter({
