@@ -1,11 +1,11 @@
 <template>
   <div class="word bak">
-    <div>
+    <!--<div>
       <h1>股票分析網頁</h1>
-    </div>
+    </div>-->
     <nav>
       <router-link to="/">
-        <el-button plain type="primary" native-type="submit">Home</el-button>
+        home
       </router-link> |
       <router-link to="/calculate">
         <el-button plain type="primary" native-type="submit">calculate</el-button>
@@ -47,7 +47,7 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #000000;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");

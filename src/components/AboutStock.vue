@@ -15,9 +15,10 @@
             stripe
             style="width: 55.5%"
             max-height="150"
+            :default-sort="{ prop: 'rank1'}"
           >
-            <el-table-column prop="UP" label="UP" width="66"> </el-table-column>
-            <el-table-column prop="rank1" label="排行" width="90">
+            <el-table-column prop="UP" label="UP" width="67"> </el-table-column>
+            <el-table-column prop="rank1" label="排行" sortable width="90">
             </el-table-column>
 
             <el-table-column prop="code1" label="代號" width="90">
@@ -47,8 +48,10 @@
             stripe
             style="width: 55.5%"
             max-height="150"
+            :default-sort="{ prop: 'rank2'}"
           >
-            <el-table-column prop="DOWN" label="DOWN" width="66"> </el-table-column>
+            <el-table-column prop="DOWN" label="DOWN" sortable width="67">
+            </el-table-column>
             <el-table-column prop="rank2" label="排行" width="90">
             </el-table-column>
 
@@ -119,7 +122,9 @@
     </el-col>
   </el-row>
 </template>
+<!--//////-->
 <script>
+//////
 export default {
   data() {
     return {
@@ -392,5 +397,4 @@ export default {
   padding: 10px 0;
   background-color: #f9fafc;
 }
-
 </style>

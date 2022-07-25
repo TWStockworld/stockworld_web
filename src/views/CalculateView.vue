@@ -102,7 +102,7 @@ export default {
       "https://stock.bakerychu.com/api/stock/get_stock_category"
     );
     const get_stock_name = this.axios.get(
-      "https:/stock.bakerychu.com/api/stock/get_stock_name"
+      "https://stock.bakerychu.com/api/stock/get_stock_name"
     );
 
     this.axios.all([get_stock_category, get_stock_name]).then(
