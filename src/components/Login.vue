@@ -11,13 +11,13 @@
         required/>
         <el-button plain type="primary" native-type="submit">登入</el-button>
       </div>
-    </el-form>
+    </el-form>  
   </div>
 </template>
 
 <script>
 //////
-import { ElMessageBox } from "element-plus";
+import { ElMessage } from "element-plus";
 //////
 export default {
   data() {
@@ -43,7 +43,8 @@ export default {
           const token = res.data.token;
           this.$Cookies.set("token", token), { expires: 1 };
           if (this.$Cookies.get("token")) {
-            this.$router.push("/pm25");
+            // this.$router.push("/pm25");
+            this.$router.push("/");
           }
         })
 
@@ -59,9 +60,7 @@ export default {
               //   message: "資料填寫錯誤",
               //   type: "error",
               // });
-              ElMessageBox.alert("資料填寫錯誤", "錯誤", {
-                confirmButtonText: "OK",
-              });
+              ElMessage.error("帳密錯誤");
 
               //////
             }

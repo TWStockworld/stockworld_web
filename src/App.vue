@@ -1,15 +1,27 @@
 <template>
-  <div class="word bak" >
-    <div>
+  <div class="word bak">
+    <!--<div>
       <h1>股票分析網頁</h1>
-    </div>
+    </div>-->
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/calculate">calculate</router-link> |
-      <router-link to="/pm25">pm25</router-link> |
-      <router-link to="/register">註冊</router-link> |
-      <router-link to="/login">登入</router-link> |
-      <router-link to="/aboutstock">關於股票</router-link> |
+      <router-link to="/">
+        home
+      </router-link> |
+      <router-link to="/calculate">
+        <el-button plain type="primary" native-type="submit">calculate</el-button>
+      </router-link> |
+      <router-link to="/pm25">
+        <el-button plain type="primary" native-type="submit">pm25</el-button>
+      </router-link> |
+      <router-link to="/register">
+        <el-button plain type="primary" native-type="submit">註冊</el-button>
+      </router-link> |
+      <router-link to="/login">
+        <el-button plain type="primary" native-type="submit">登入</el-button>
+      </router-link> |
+      <router-link to="/aboutstock">
+        <el-button plain type="primary" native-type="submit">關於股票</el-button>
+      </router-link> |
     </nav>
     <router-view />
   </div>
@@ -25,6 +37,7 @@
 }
 
 nav {
+  border-bottom: 3px solid;
   padding: 30px;
 }
 
@@ -34,7 +47,7 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #000000;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
