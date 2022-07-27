@@ -1,7 +1,7 @@
 <template>
   <div class="start">
     股票分析
-    <el-button type="text" class="startbutton" @click="start">START</el-button>
+    <el-link type="primary" class="startbutton" @click="start" :underline="false">START</el-link>
   </div>
 </template>
 <script>
