@@ -1,7 +1,12 @@
 <template>
   <div class="RB1">
     <el-button @click="dialogTableVisible = true">相關度排行</el-button>
-    <el-dialog v-model="dialogTableVisible" title="相關度排行" width="50%" class="dialog">
+    <el-dialog
+      v-model="dialogTableVisible"
+      title="相關度排行"
+      width="50%"
+      class="dialog"
+    >
       <correlation />
     </el-dialog>
   </div>
@@ -27,7 +32,7 @@
     <el-button @click="dialogTableVisible = true">SU3CL3RWEER</el-button>
   </div>
   <div class="picture">
-    <img alt="tsmc logo" src="../assets/tsmc.png" />
+    <img alt="tsmc logo" src="../assets/tsmc.png" style="width: 25%" />
   </div>
 </template>
 <script>
@@ -36,12 +41,12 @@ export default {
   components: {
     correlation,
   },
-   data() {
+  data() {
     return {
-       dialogTableVisible: false
+      dialogTableVisible: false,
     };
   },
-}
+};
 </script>
 
 <style>
@@ -96,8 +101,7 @@ export default {
 .picture {
   position: absolute;
   top: 35%;
-  width: 700px;
-  left: 38%;
+  left: 23%;
 }
 .dialog {
   position: fixed;
