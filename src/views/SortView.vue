@@ -1,14 +1,35 @@
 <template>
   <div>
-    <el-button class="sb1">上市</el-button>
-    <el-button class="sb2" >上櫃</el-button>
-    <el-button class="sb3" >概念股</el-button>
-    <el-button class="sb4" >集團</el-button>
-    <el-button class="sb5" >電子股</el-button>
-    
+    <el-button class="sb1" @click="kindtable = true">上市</el-button>
+    </div>
+    <div>
+    <el-dialog v-model="kindtable" width="50%">
+      <el-button v-for="sort in sorts" :key="sort.id">
+        {{ sort.kind }}
+      </el-button>
+    </el-dialog>
+  </div>
+  <div>
+    <el-button class="sb2">上櫃</el-button>
+    <el-button class="sb3">概念股</el-button>
+    <el-button class="sb4">集團</el-button>
+    <el-button class="sb5">電子股</el-button>
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      sorts: [
+       
+      ],
+      kindtable: false,
+    };
+  },
+  methods: {},
+};
+</script>
 <style>
 .sb1 {
   position: absolute;

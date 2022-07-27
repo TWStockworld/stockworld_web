@@ -1,6 +1,6 @@
 <template>
   <nav v-if="currentroute!='/'">
-    <router-link to="/"> home </router-link> |
+    <router-link to="/home"> home </router-link> |
     <router-link to="/calculate">
       <el-button plain type="primary" native-type="submit">calculate</el-button>
     </router-link>

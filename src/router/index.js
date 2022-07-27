@@ -8,6 +8,7 @@ import AboutStockView from "../views/AboutStockView.vue";
 import tsmcView from "../views/tsmcView";
 import StartView from "../views/StartView";
 import SortView from "../views/SortView";
+import AllrankView from "../views/AllrankView";
 
 const routes = [{
         path: "/home",
@@ -53,6 +54,11 @@ const routes = [{
         path: "/sort",
         name: "sort",
         component: SortView,
+    },
+    {
+        path: "/allrank",
+        name: "allrank",
+        component: AllrankView,
     },
 ];
 
