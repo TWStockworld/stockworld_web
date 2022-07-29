@@ -3,8 +3,9 @@
     <h2>登入</h2>
     <el-form @submit.prevent="login">
       <div class="form-group">
-        <el-input id="inputAccount" v-model="account" placeholder="帳號" required/>
+        <el-input type="account" id="inputAccount" v-model="account" placeholder="帳號" required/>
         <el-input
+          type="password"
           id="inputPassword"
           v-model="password"
           placeholder="密碼, 至少有8位"
@@ -29,9 +30,6 @@ export default {
   },
   methods: {
     login() {
-      // if (this.account == "" || this.password == "") {
-      //   alert("帳號或密碼不能為空");
-      // }
       this.axios
         .post("https://stock.bakerychu.com/api/auth/login", {
           account: this.account,
@@ -43,7 +41,6 @@ export default {
           const token = res.data.token;
           this.$Cookies.set("token", token), { expires: 1 };
           if (this.$Cookies.get("token")) {
-            // this.$router.push("/pm25");
             this.$router.push("/");
           }
         })
@@ -52,40 +49,11 @@ export default {
           if (error.response) {
             console.log(error.response.status);
             if (error.response.status == "401") {
-              // alert("資料填寫錯誤");
-              //////
-
-              // ElMessage({
-              //   showClose: true,
-              //   message: "資料填寫錯誤",
-              //   type: "error",
-              // });
               ElMessage.error("帳密錯誤");
-
-              //////
             }
           }
         });
     },
-    // getData() {
-    //   // 先從瀏覽器 cookie 取得 token
-    //   this.token = document.cookie.replace(/(?:(?:^|.*;\s*)loginToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
-    //   const api = "https://stock.bakerychu.com/api/auth/login";
-
-    //   // https://github.com/axios/axios#global-axios-defaults
-    //   // 並且 header 按照後端 api 文件的規格要求填上 Bearer token 字樣
-    //   this.axios.defaults.headers.common.Authorization = `this.token`;
-    //   this.axios.get(api).then((res) => {
-    //     console.log(res);
-    //   });
-    // },
-    // logout() {
-    //   // 清除瀏覽器 cookie 的 Token
-    //   document.cookie = `loginToken = ""; expires = "";`;
-    // <button type="button" class="btn btn-primary" @click="logout">
-    //       Logout
-    //     </button>
-    // },
   },
 };
 </script>
