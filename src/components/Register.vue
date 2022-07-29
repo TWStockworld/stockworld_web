@@ -135,9 +135,7 @@ export default {
 </script>
 
 <style>
-* {
-  font-family: 微軟正黑體;
-}
+
 h3,
 #inputAccount,
 #inputEmail,
@@ -149,7 +147,7 @@ h3,
   color: #23995c;
 }
 #container1 {
-  //margin: 50px;
+  margin: 50px;
   padding: 10px;
   width: 230px;
   height: 320px;
@@ -162,7 +160,7 @@ h3,
   position: relative;
   margin: auto;
   top: 100px;
-  //text-align:center;
+  text-align:center;
 }
 .system_name {
   /*定位對齊*/

@@ -91,9 +91,7 @@ export default {
 </script>
 
 <style>
-* {
-  font-family: 微軟正黑體;
-}
+ 
 h2,
 #inputAccount,
 #inputPassword {
@@ -103,7 +101,7 @@ h2,
   color: #23995c;
 }
 #container {
-  //margin: 50px;
+  margin: 50px;
   padding: 10px;
   width: 230px;
   height: 300px;
@@ -116,7 +114,7 @@ h2,
   position: relative;
   margin: auto;
   top: 100px;
-  //text-align:center;
+  text-align:center;
 }
 .system_name {
   /*定位對齊*/
