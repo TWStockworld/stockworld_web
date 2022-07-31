@@ -9,6 +9,7 @@ import tsmcView from "../views/tsmcView";
 import StartView from "../views/StartView";
 import SortView from "../views/SortView";
 import AllrankView from "../views/AllrankView";
+import TeachingView from "../views/TeachingView";
 
 const routes = [{
         path: "/home",
@@ -59,6 +60,11 @@ const routes = [{
         path: "/allrank",
         name: "allrank",
         component: AllrankView,
+    },
+    {
+        path: "/teaching",
+        name: "teaching",
+        component: TeachingView,
     },
 ];
 
