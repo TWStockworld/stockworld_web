@@ -8,6 +8,7 @@
         ></span
       ></span>
     </router-link>
+
     <router-link to="/calculate">
       <span class="txt"
         >calculate<span
@@ -16,30 +17,34 @@
         ></span
       ></span>
     </router-link>
+
     <router-link to="/pm25">
       <span class="txt"
         >pm25<span
           class="bar"
           style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
         ></span
-      ></span> 
+      ></span>
     </router-link>
-    <router-link to="/aboutstock"> 
+
+    <router-link to="/aboutstock">
       <span class="txt"
         >關於股票<span
           class="bar"
           style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
         ></span
-      ></span> 
+      ></span>
     </router-link>
+
     <router-link to="/register">
       <span class="txt"
         >註冊<span
           class="bar"
           style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
         ></span
-      ></span> 
+      ></span>
     </router-link>
+
     <router-link to="/login">
       <span class="txt"
         >登入<span
@@ -48,6 +53,7 @@
         ></span
       ></span>
     </router-link>
+
     <router-link to="/login">
       <span class="txt"
         >登出<span
@@ -56,6 +62,7 @@
         ></span
       ></span>
     </router-link>
+
     <router-link to="/headertest">
       <span class="txt"
         >headertest<span
@@ -64,17 +71,46 @@
         ></span
       ></span>
     </router-link>
+
+    <el-input
+      size="large"
+      placeholder="收尋:"
+      v-model="input3"
+      class="input-with-select"
+    >
+      <template #append>
+        <el-button type="primary" class="submit2" @click="findbutton" size="small">收尋</el-button>
+      </template>
+    </el-input>
   </nav>
 </template>
 
 <script>
-export default {
+import { defineComponent, ref } from "vue";
+
+export default defineComponent({
+  setup() {
+    return {
+      input3: ref(""),
+    };
+  },
   props: ["currentroute"],
-};
+});
+
+// export default {
+//   props: ["currentroute"],
+// };
 </script>
 
 <style>
-/* .txt {
+
+.input-with-select {
+  background-color: #fff;
+  left: 10px;
+  width: 200px;
+}
+
+.txt {
   position: relative;
   display: block;
 }
@@ -114,5 +150,5 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #000000;
-} */
+}
 </style>
