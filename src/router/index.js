@@ -63,15 +63,12 @@ const routes = [{
         component: AllrankView,
     },
     {
-<<<<<<< HEAD
         path: "/teaching",
         name: "teaching",
         component: TeachingView,
-=======
         path: "/headertest",
         name: "headertest",
         component: HeaderTestView,
->>>>>>> origin/develop
     },
 ];
 
