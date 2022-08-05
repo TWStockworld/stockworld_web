@@ -1,87 +1,105 @@
 <template>
   <nav v-if="currentroute != '/'">
-    <router-link to="/home">
-      <span class="txt"
-        >home<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
+    <div>
+      <router-link to="/home">
+        <span class="txt"
+          >home<span
+            class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
+          ></span
+        ></span>
+      </router-link>
 
-    <router-link to="/calculate">
-      <span class="txt"
-        >calculate<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
+      <router-link to="/calculate">
+        <span class="txt"
+          >calculate<span
+            class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
+          ></span
+        ></span>
+      </router-link>
 
-    <router-link to="/pm25">
-      <span class="txt"
-        >pm25<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
+      <router-link to="/pm25">
+        <span class="txt"
+          >pm25<span
+            class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
+          ></span
+        ></span>
+      </router-link>
 
-    <router-link to="/aboutstock">
-      <span class="txt"
-        >關於股票<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
+      <router-link to="/aboutstock">
+        <span class="txt"
+          >關於股票<span
+            class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
+          ></span
+        ></span>
+      </router-link>
 
-    <router-link to="/register">
-      <span class="txt"
-        >註冊<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
+      <router-link to="/register">
+        <span class="txt"
+          >註冊<span
+            class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
+          ></span
+        ></span>
+      </router-link>
 
-    <router-link to="/login">
-      <span class="txt"
-        >登入<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
+      <router-link to="/login">
+        <span class="txt"
+          >登入<span
+            class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
+          ></span
+        ></span>
+      </router-link>
 
-    <router-link to="/login">
-      <span class="txt"
-        >登出<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
+      <router-link to="/login">
+        <span class="txt"
+          >登出<span
+            class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
+          ></span
+        ></span>
+      </router-link>
 
-    <router-link to="/headertest">
-      <span class="txt"
-        >headertest<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
+      <router-link to="/headertest">
+        <span class="txt"
+          >headertest<span
+            class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
+          ></span
+        ></span>
+      </router-link>
 
-    <el-input
-      size="large"
-      placeholder="收尋:"
-      v-model="input3"
-      class="input-with-select"
-    >
-      <template #append>
-        <el-button type="primary" class="submit2" @click="findbutton" size="small">收尋</el-button>
-      </template>
-    </el-input>
+      <el-input
+        size="large"
+        placeholder="收尋:"
+        v-model="input3"
+        class="input-with-select"
+      >
+        <template #append>
+          <el-button
+            type="primary"
+            class="submit2"
+            @click="findbutton"
+            size="small"
+            >收尋</el-button
+          >
+        </template>
+      </el-input>
+      <div>
+        <figure class="img-responsive1" style="width: 60px; height: 60px">
+          <img
+            class="img-responsive"
+            src="../assets/anime.jpg"
+            alt="頭像"
+            style="height: 100%; width: 100%; border-radius: 100%"
+          />
+        </figure>
+      </div>
+    </div>
   </nav>
 </template>
 
@@ -103,7 +121,6 @@ export default defineComponent({
 </script>
 
 <style>
-
 .input-with-select {
   background-color: #fff;
   left: 10px;
@@ -150,5 +167,12 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #000000;
+}
+
+.img-responsive1 {
+  margin-top: -60px;
+  margin-right: 0px;
+  margin-bottom: auto;
+  margin-left: auto;
 }
 </style>
