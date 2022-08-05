@@ -2,7 +2,37 @@
   <el-row :gutter="30">
     <el-col :span="10">
       <div class="grid-content bg-purple-light">
-        <!--還沒引進來-->
+        <div class="tradingview-widget-container">
+          <div id="tradingview_b4ac4"></div>
+          <div class="tradingview-widget-copyright">
+            <a
+              href="https://tw.tradingview.com/symbols/NASDAQ-AAPL/"
+              rel="noopener"
+              target="_blank"
+              ><span class="blue-text">AAPL圖表</span></a
+            >由TradingView提供
+          </div>
+
+          <component
+            :is="'script'"
+            type="text/javascript"
+            src="https://s3.tradingview.com/tv.js"
+          ></component>
+          <component :is="'script'" type="text/javascript">
+            new TradingView.widget({ 
+              autosize: true, 
+              symbol: "NASDAQ:AAPL",
+              interval: "D", 
+              timezone: "Etc/UTC", 
+              theme: "light", 
+              style: "1",
+              locale: "zh_TW", 
+              toolbar_bg: "#f1f3f6", 
+              enable_publishing: false,
+              allow_symbol_change: true, 
+             container_id: "tradingview_3242b", });
+          </component>
+        </div>
       </div>
     </el-col>
     <el-col :span="10" :offset="11">
@@ -15,7 +45,7 @@
             stripe
             style="width: 55.5%"
             max-height="150"
-            :default-sort="{ prop: 'rank1'}"
+            :default-sort="{ prop: 'rank1' }"
           >
             <el-table-column prop="UP" label="UP" width="67"> </el-table-column>
             <el-table-column prop="rank1" label="排行" sortable width="90">
@@ -48,7 +78,7 @@
             stripe
             style="width: 55.5%"
             max-height="150"
-            :default-sort="{ prop: 'rank2'}"
+            :default-sort="{ prop: 'rank2' }"
           >
             <el-table-column prop="DOWN" label="DOWN" sortable width="67">
             </el-table-column>
@@ -122,9 +152,8 @@
     </el-col>
   </el-row>
 </template>
-<!--//////-->
+
 <script>
-//////
 export default {
   data() {
     return {
@@ -367,16 +396,6 @@ export default {
     };
   },
 };
-// .table1 {
-//   position: absolute;
-//   top: 150%;
-//   left: 10%;
-// }
-// .table2 {
-//   position: absolute;
-//   top: 500%;
-//   left: 10%;
-// }
 </script>
 
 <style>
@@ -390,5 +409,33 @@ export default {
 .row-bg {
   padding: 10px 0;
   background-color: #f9fafc;
+}
+.tradingview-widget-copyright {
+  font-size: 13px !important;
+  line-height: 32px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Trebuchet MS", Roboto, Ubuntu,
+    sans-serif !important;
+  color: #9db2bd !important;
+}
+.tradingview-widget-copyright .blue-text {
+  color: #2962ff !important;
+}
+.tradingview-widget-copyright a {
+  text-decoration: none !important;
+  color: #9db2bd !important;
+}
+.tradingview-widget-copyright a:visited {
+  color: #9db2bd !important;
+}
+.tradingview-widget-copyright a:hover .blue-text {
+  color: #1e53e5 !important;
+}
+.tradingview-widget-copyright a:active .blue-text {
+  color: #1848cc !important;
+}
+.tradingview-widget-copyright a:visited .blue-text {
+  color: #2962ff !important;
 }
 </style>

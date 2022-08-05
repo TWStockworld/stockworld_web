@@ -117,6 +117,10 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
+
+h3,
+=======
 * {
   font-family: 微軟正黑體;
 }
@@ -126,6 +130,7 @@ h3 {
   margin: 10px;
   color: #23995c;
 }
+>>>>>>> origin/develop
 #inputAccount,
 #inputEmail,
 #inputUsername,

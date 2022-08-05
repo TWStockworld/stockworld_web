@@ -1,7 +1,7 @@
 <template>
   <div class="start">
     股票分析
-    <el-link type="primary" class="startbutton" @click="start" :underline="false">START</el-link>
+    <el-link type="primary" class="startbutton " @click="start" :underline="false" >START</el-link>
   </div>
 </template>
 <script>
@@ -14,6 +14,7 @@ export default {
 };
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Press+Start+2P&display=swap');
 .start {
   height: 100vh;
   display: flex;
@@ -23,7 +24,25 @@ export default {
 }
 .startbutton {
   height: auto;
-  font-size: 200px;
+  font-size: 100px;
   cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  animation: OpacityBreath 2s ease-in-out infinite;
+  opacity: 0.3;
 }
+@keyframes OpacityBreath {
+    0% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.65;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
+
+
 </style>

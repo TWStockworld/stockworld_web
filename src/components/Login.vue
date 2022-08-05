@@ -88,9 +88,7 @@ export default {
 </script>
 
 <style>
-* {
-  font-family: 微軟正黑體;
-}
+
 h2 {
   margin: auto;
   color: #23995c;
