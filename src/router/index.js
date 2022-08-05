@@ -66,6 +66,8 @@ const routes = [{
         path: "/teaching",
         name: "teaching",
         component: TeachingView,
+    },
+    {
         path: "/headertest",
         name: "headertest",
         component: HeaderTestView,
