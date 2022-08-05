@@ -10,6 +10,7 @@ import StartView from "../views/StartView";
 import SortView from "../views/SortView";
 import AllrankView from "../views/AllrankView";
 import TeachingView from "../views/TeachingView";
+import HeaderTestView from "../views/HeaderTestView";
 
 const routes = [{
         path: "/home",
@@ -62,9 +63,15 @@ const routes = [{
         component: AllrankView,
     },
     {
+<<<<<<< HEAD
         path: "/teaching",
         name: "teaching",
         component: TeachingView,
+=======
+        path: "/headertest",
+        name: "headertest",
+        component: HeaderTestView,
+>>>>>>> origin/develop
     },
 ];
 

@@ -1,17 +1,47 @@
 <template>
-  <div id="container">
-    <h2>登入</h2>
-    <el-form @submit.prevent="login">
-      <div class="form-group">
-        <el-input id="inputAccount" v-model="account" placeholder="帳號" required/>
-        <el-input
-          id="inputPassword"
-          v-model="password"
-          placeholder="密碼, 至少有8位"
-        required/>
-        <el-button plain type="primary" native-type="submit">登入</el-button>
-      </div>
-    </el-form>  
+  <div id="login">
+    <el-row>
+      <el-col :span="16"
+        ><div class="" />
+        <div id="container">
+          <img
+            alt="anime"
+            src="../assets/anime.jpg"
+            style="height: 100%; width: 100%; border-radius: 10px"
+          />
+        </div>
+      </el-col>
+      <el-col :span="8"
+        ><div class="" />
+        <div id="container">
+          <h2>登入</h2>
+          <div class="tab2"></div>
+          <el-form @submit.prevent="login">
+            <div class="form-group">
+              <input
+                type="account"
+                id="inputAccount1"
+                v-model="account"
+                placeholder="帳號"
+                required
+              />
+              <div class="tab2"></div>
+              <input
+                type="password"
+                id="inputPassword1"
+                v-model="password"
+                placeholder="密碼, 至少有8位"
+                required
+              />
+              <div class="tab2"></div>
+              <el-button plain type="primary" native-type="submit1"
+                >登入</el-button
+              >
+            </div>
+          </el-form>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -29,9 +59,6 @@ export default {
   },
   methods: {
     login() {
-      // if (this.account == "" || this.password == "") {
-      //   alert("帳號或密碼不能為空");
-      // }
       this.axios
         .post("https://stock.bakerychu.com/api/auth/login", {
           account: this.account,
@@ -43,7 +70,6 @@ export default {
           const token = res.data.token;
           this.$Cookies.set("token", token), { expires: 1 };
           if (this.$Cookies.get("token")) {
-            // this.$router.push("/pm25");
             this.$router.push("/");
           }
         })
@@ -52,96 +78,55 @@ export default {
           if (error.response) {
             console.log(error.response.status);
             if (error.response.status == "401") {
-              // alert("資料填寫錯誤");
-              //////
-
-              // ElMessage({
-              //   showClose: true,
-              //   message: "資料填寫錯誤",
-              //   type: "error",
-              // });
               ElMessage.error("帳密錯誤");
-
-              //////
             }
           }
         });
     },
-    // getData() {
-    //   // 先從瀏覽器 cookie 取得 token
-    //   this.token = document.cookie.replace(/(?:(?:^|.*;\s*)loginToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
-    //   const api = "https://stock.bakerychu.com/api/auth/login";
-
-    //   // https://github.com/axios/axios#global-axios-defaults
-    //   // 並且 header 按照後端 api 文件的規格要求填上 Bearer token 字樣
-    //   this.axios.defaults.headers.common.Authorization = `this.token`;
-    //   this.axios.get(api).then((res) => {
-    //     console.log(res);
-    //   });
-    // },
-    // logout() {
-    //   // 清除瀏覽器 cookie 的 Token
-    //   document.cookie = `loginToken = ""; expires = "";`;
-    // <button type="button" class="btn btn-primary" @click="logout">
-    //       Logout
-    //     </button>
-    // },
   },
 };
 </script>
 
 <style>
- 
-h2,
-#inputAccount,
-#inputPassword {
-  width: 200px;
-  height: 20px;
-  margin: 10px;
+
+h2 {
+  margin: auto;
   color: #23995c;
 }
-#container {
-  margin: 50px;
-  padding: 10px;
-  width: 230px;
-  height: 300px;
-  background-color: white;
-  border-radius: 5px;
-  border-top: 10px solid #23995c;
-  box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
 
-  /*定位對齊*/
-  position: relative;
-  margin: auto;
-  top: 100px;
-  text-align:center;
-}
-.system_name {
-  /*定位對齊*/
-  position: relative;
-  margin: auto;
-  top: 100px;
-  text-align: center;
-}
-
-.submit {
-  color: white;
-  background: #23995c;
+#inputAccount1 {
   width: 200px;
   height: 30px;
   margin: 10px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 0px;
+  color: #23995c;
+}
+#inputPassword1 {
+  width: 200px;
+  height: 30px;
+  margin: 10px;
+  color: #23995c;
+}
+.tab2 {
+  height: 40px;
+  margin: 10px;
 }
 
-.submit:hover {
-  background: #219e53;
+#container {
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
 }
+
 input {
   padding: 5px;
   border: none;
   border: solid 1px #ccc;
   border-radius: 5px;
 }
+#login {
+  width: 70%;
+  margin: auto;
+}
 </style>
+

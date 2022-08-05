@@ -399,9 +399,6 @@ export default {
 </script>
 
 <style>
-.el-row {
-  margin-bottom: 20px;
-}
 .el-col {
   border-radius: 4px;
 }
