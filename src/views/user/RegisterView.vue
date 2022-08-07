@@ -1,59 +1,65 @@
 <template>
-  <el-row :gutter="20">
-    <el-col :span="6" :offset="4"
-      ><div class="grid-content ep-bg-purple" />
-      <div id="container1">
-        <h3>註冊</h3>
-        <div class="tab1"></div>
-        <el-form @submit.prevent="register">
-          <input
-            type="username"
-            id="inputUsername"
-            v-model="name"
-            placeholder="名字"
-            required
-          />
-          <div class="tab"></div>
-          <input
-            type="account"
-            id="inputAccount"
-            v-model="account"
-            placeholder="帳號"
-            required
-          />
-          <div class="tab"></div>
-          <input
-            type="password"
-            id="inputPassword"
-            v-model="password"
-            placeholder="密碼"
-            required
-          />
-          <div class="tab"></div>
-          <input
-            type="email"
-            id="inputEmail"
-            v-model="email"
-            placeholder="Email"
-            required
-          />
-          <div class="tab"></div>
+  <div>
+    <el-row :gutter="20">
+      <el-col :span="6" :offset="4"
+        ><div class="grid-content ep-bg-purple" />
+        <div id="container1">
+          <h3>註冊</h3>
+          <div class="tab1"></div>
+          <el-form @submit.prevent="register">
+            <input
+              type="username"
+              id="inputUsername"
+              v-model="name"
+              placeholder="名字"
+              required
+            />
+            <div class="tab"></div>
+            <input
+              type="account"
+              id="inputAccount"
+              v-model="account"
+              placeholder="帳號"
+              required
+            />
+            <div class="tab"></div>
+            <input
+              type="password"
+              id="inputPassword"
+              v-model="password"
+              placeholder="密碼"
+              required
+            />
+            <div class="tab"></div>
+            <input
+              type="email"
+              id="inputEmail"
+              v-model="email"
+              placeholder="Email"
+              required
+            />
+            <div class="tab"></div>
 
-          <el-button type="primary" class="submit" @click="register"
-            >註冊</el-button
-          >
-        </el-form>
-      </div>
-    </el-col>
-    <el-col :span="11" 
-      ><div class="grid-content ep-bg-purple" />
-      <div id="container1">
-        <div class="picture2">
-          <img alt="anime" src="../assets/anime.jpg" style="width: 90%;border-radius: 10px;" />
+            <el-button type="primary" class="submit" @click="register"
+              >註冊</el-button
+            >
+          </el-form>
         </div>
-      </div>
-    </el-col>
-  </el-row>
+      </el-col>
+      <el-col :span="11"
+        ><div class="grid-content ep-bg-purple" />
+        <div id="container1">
+          <div class="picture2">
+            <img
+              alt="anime"
+              src="@/assets/img/anime.jpg"
+              style="width: 90%; border-radius: 10px"
+            />
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
@@ -117,20 +123,12 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
-
-h3,
-=======
-* {
-  font-family: 微軟正黑體;
-}
 h3 {
   width: 100%;
   height: 70px;
   margin: 10px;
   color: #23995c;
 }
->>>>>>> origin/develop
 #inputAccount,
 #inputEmail,
 #inputUsername,
@@ -161,8 +159,8 @@ h3 {
   margin: 5px;
 }
 .system_name {
-/*定位對齊*/
-position: relative;
+  /*定位對齊*/
+  position: relative;
   margin: auto;
   top: 100px;
   text-align: center;
@@ -194,7 +192,6 @@ input {
   top: -10px;
   left: -50px;
   width: 988px;
- 
 }
 
 .tab1 {

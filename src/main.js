@@ -13,11 +13,11 @@ import Cookies from "js-cookie";
 import Tradingview from "./assets/js/tradingview";
 
 //下雪特效
-import Snow from "./assets/snow/snowstorm";
+import Snow from "./plugins/snow/snowstorm";
 
 //自訂html head
-import { createHead } from '@vueuse/head'
-const head = createHead()
+import { createHead } from "@vueuse/head";
+const head = createHead();
 
 const app = createApp(App);
 

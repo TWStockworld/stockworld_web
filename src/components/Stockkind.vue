@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="AllrankData" class="allrank" >
+  <el-table :data="AllrankData" class="allrank">
     <el-table-column prop="rank" label="排行" sortable />
 
     <el-table-column prop="code1" label="代號" />
@@ -19,9 +19,9 @@
 </template>
 <script>
 export default {
-    data(){
-        return{
-            AllrankData: [
+  data() {
+    return {
+      AllrankData: [
         {
           rank: "1",
           code1: "1171",
@@ -86,17 +86,16 @@ export default {
           follow: "",
         },
       ],
-        }
-    }
-}
+    };
+  },
+};
 </script>
 <style>
-.allrank{
-    position: absolute;
-    width: 60%;
-    top: 20%;
-    left: 30%;
-    font-size: 20px;
-    
+.allrank {
+  position: absolute;
+  width: 60%;
+  top: 20%;
+  left: 30%;
+  font-size: 20px;
 }
 </style>

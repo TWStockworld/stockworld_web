@@ -6,7 +6,7 @@
         <div id="container">
           <img
             alt="anime"
-            src="../assets/anime.jpg"
+            src="@/assets/img/anime.jpg"
             style="height: 100%; width: 100%; border-radius: 10px"
           />
         </div>
@@ -88,7 +88,6 @@ export default {
 </script>
 
 <style>
-
 h2 {
   margin: auto;
   color: #23995c;

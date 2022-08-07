@@ -2,7 +2,7 @@
   <nav v-if="currentroute != '/'">
     <router-link to="/home">
       <span class="txt"
-        >home<span
+        >主頁<span
           class="bar"
           style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
         ></span
@@ -11,16 +11,25 @@
 
     <router-link to="/calculate">
       <span class="txt"
-        >calculate<span
+        >相關度計算<span
           class="bar"
           style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
         ></span
       ></span>
     </router-link>
 
-    <router-link to="/pm25">
+    <router-link to="/learning">
       <span class="txt"
-        >pm25<span
+        >投資小學堂<span
+          class="bar"
+          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
+        ></span
+      ></span>
+    </router-link>
+
+    <router-link to="/sort">
+      <span class="txt"
+        >台股分類<span
           class="bar"
           style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
         ></span
@@ -36,7 +45,7 @@
       ></span>
     </router-link>
 
-    <router-link to="/register">
+    <router-link to="/register" v-if="!token">
       <span class="txt"
         >註冊<span
           class="bar"
@@ -45,7 +54,7 @@
       ></span>
     </router-link>
 
-    <router-link to="/login">
+    <router-link to="/login" v-if="!token">
       <span class="txt"
         >登入<span
           class="bar"
@@ -54,7 +63,7 @@
       ></span>
     </router-link>
 
-    <router-link to="/login">
+    <router-link to="/logout" v-if="token" @click="logout">
       <span class="txt"
         >登出<span
           class="bar"
@@ -63,23 +72,14 @@
       ></span>
     </router-link>
 
-    <router-link to="/headertest">
-      <span class="txt"
-        >headertest<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
-
     <el-input
       size="large"
-      placeholder="收尋:"
+      placeholder="股票代號或名稱:"
       v-model="input3"
       class="input-with-select"
     >
       <template #append>
-        <el-button type="primary" class="submit2" @click="findbutton" size="small">收尋</el-button>
+        <el-button type="primary" class="submit2" size="small">搜尋</el-button>
       </template>
     </el-input>
   </nav>
@@ -95,15 +95,21 @@ export default defineComponent({
     };
   },
   props: ["currentroute"],
+  data() {
+    return {
+      token: this.$Cookies.get("token"),
+    };
+  },
+  methods: {
+    logout() {
+      this.$Cookies.remove("token");
+      this.$router.push("/home");
+    },
+  },
 });
-
-// export default {
-//   props: ["currentroute"],
-// };
 </script>
 
 <style>
-
 .input-with-select {
   background-color: #fff;
   left: 10px;
