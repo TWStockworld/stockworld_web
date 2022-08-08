@@ -52,7 +52,7 @@ body {
 
 .bak {
   background-color: #6ea5e9;
-  background-image: url("assets/Snow.svg");
+  background-image: url("assets/img/Snow.svg");
   position: fixed;
   width: 100%;
   height: 100%;

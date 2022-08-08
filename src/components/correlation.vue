@@ -1,12 +1,12 @@
 <template>
   <div>
     <td width="180">
-      <el-table :data="stockkind" class="table2" >
+      <el-table :data="stockkind" class="table2">
         <el-table-column prop="stockname" label="股票種類" />
       </el-table>
     </td>
-    <td >
-      <el-table :data="rankData"  class="table1">
+    <td>
+      <el-table :data="rankData" class="table1">
         <el-table-column prop="rank" label="排行" sortable />
 
         <el-table-column prop="code1" label="代號" />
@@ -127,6 +127,5 @@ export default {
 }
 .table2 {
   position: relative;
- 
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="token">
+  <div>
     <el-form @submit.prevent="cal">
       <div class="form-group">
         <div class="demo-date-picker">
@@ -81,7 +81,7 @@ export default {
   name: "CalculateView",
   data() {
     return {
-      token: this.$Cookies.get('token'),
+      token: this.$Cookies.get("token"),
       startdate: "2021-01-01",
       enddate: "2021-12-01",
       diff: "2",

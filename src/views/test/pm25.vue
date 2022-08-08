@@ -1,11 +1,12 @@
 <template>
-  <div>
-    <AboutStock />
+  <div v-if="token">
+    <h1>台中空氣品質</h1>
+    <taichung />
   </div>
 </template>
 
 <script>
-import AboutStock from "@/components/AboutStock.vue";
+import taichung from "@/components/test/taichung.vue";
 
 export default {
   data() {
@@ -13,9 +14,9 @@ export default {
       token: this.$Cookies.get("token"),
     };
   },
-  name: "aboutstock",
+  name: "pm25",
   components: {
-    AboutStock,
+    taichung,
   },
 };
 </script>

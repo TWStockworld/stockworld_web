@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-button class="sb1" @click="kindtable = true">上市</el-button>
-    </div>
-    <div>
+  </div>
+  <div>
     <el-dialog v-model="kindtable" width="50%">
       <el-button v-for="sort in sorts" :key="sort.id">
         {{ sort.kind }}
@@ -21,9 +21,7 @@
 export default {
   data() {
     return {
-      sorts: [
-       
-      ],
+      sorts: [],
       kindtable: false,
     };
   },
