@@ -74,7 +74,7 @@
 
     <el-input
       size="large"
-      placeholder="股票代號或名稱:"
+      placeholder="輸入股票代號或名稱"
       v-model="input3"
       class="input-with-select"
     >
@@ -82,6 +82,16 @@
         <el-button type="primary" class="submit2" size="small">搜尋</el-button>
       </template>
     </el-input>
+    <div>
+      <figure class="img-responsive1" style="width: 60px; height: 60px">
+        <img
+          class="img-responsive"
+          src="../assets/anime.jpg"
+          alt="頭像"
+          style="height: 100%; width: 100%; border-radius: 100%"
+        />
+      </figure>
+    </div>
   </nav>
 </template>
 
@@ -156,5 +166,12 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #000000;
+}
+
+.img-responsive1 {
+  margin-top: -60px;
+  margin-right: 0px;
+  margin-bottom: auto;
+  margin-left: auto;
 }
 </style>
