@@ -1,15 +1,15 @@
 <template>
-  <Leftbutton />
+  <LeftBulletin />
   <Stockkind />
 </template>
 
 <script>
-import Leftbutton from "@/components/Leftbutton.vue";
+import LeftBulletin from "@/components/LeftBulletin.vue";
 import Stockkind from "@/components/Stockkind.vue";
 
 export default {
   components: {
-    Leftbutton,
+    LeftBulletin,
     Stockkind,
   },
 };

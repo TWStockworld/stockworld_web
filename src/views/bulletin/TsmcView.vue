@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Leftbutton />
+    <LeftBulletin />
     <div class="RB1">
       <el-button @click="dialogTableVisible = true" class="corrbutton"
         >半導體製程設備</el-button
       >
       <el-dialog v-model="dialogTableVisible" title="相關度排行" width="50%">
-        <Correlation />
+        <Competition />
       </el-dialog>
     </div>
     <div class="RB2">
@@ -62,14 +62,14 @@
 </template>
 
 <script>
-import Leftbutton from "@/components/Leftbutton.vue";
-import Correlation from "@/components/Correlation.vue";
+import LeftBulletin from "@/components/LeftBulletin.vue";
+import Competition from "@/components/Competition.vue";
 
 export default {
   name: "tsmc",
   components: {
-    Leftbutton,
-    Correlation,
+    LeftBulletin,
+    Competition,
   },
   data() {
     return {
