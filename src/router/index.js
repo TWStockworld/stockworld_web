@@ -18,6 +18,7 @@ import LoginView from "../views/user/LoginView.vue";
 import RankingView from "../views/bulletin/RankingView";
 import TsmcView from "../views/bulletin/TsmcView";
 
+//t
 const routes = [
   {
     path: "/",
