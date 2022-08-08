@@ -1,15 +1,15 @@
 <template>
   <div class="home">
-    <Leftbutton />
+    <LeftBulletin />
   </div>
 </template>
 
 <script>
-import Leftbutton from "@/components/Leftbutton.vue";
+import LeftBulletin from "@/components/LeftBulletin.vue";
 export default {
   name: "HomeView",
   components: {
-    Leftbutton,
+    LeftBulletin,
   },
 };
 </script>
