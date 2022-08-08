@@ -86,7 +86,7 @@
       <figure class="img-responsive1" style="width: 60px; height: 60px">
         <img
           class="img-responsive"
-          src="@/assets/anime.jpg"
+          src="@/assets/img/anime.jpg"
           alt="頭像"
           style="height: 100%; width: 100%; border-radius: 100%"
         />
