@@ -6,8 +6,14 @@
       class="startbutton"
       @click="start"
       :underline="false"
-      >START</el-link
     >
+      START
+    </el-link>
+    <router-view v-slot="{ Component }">
+      <transition name="fade">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </div>
 </template>
 <script>
@@ -15,6 +21,8 @@ export default {
   methods: {
     start() {
       this.$router.push("/home");
+      
+      
     },
   },
 };
