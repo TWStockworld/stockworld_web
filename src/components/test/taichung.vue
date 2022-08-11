@@ -1,4 +1,7 @@
 <template>
+<!--
+  
+-->
   <div>
     <button @click.once="get_pm25_data">取得</button>
     <div class="diplay-ex">

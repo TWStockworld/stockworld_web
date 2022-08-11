@@ -1,6 +1,6 @@
 <template>
-  <div v-if="token">
-    <h1>台中空氣品質</h1>
+  <div>
+    <h1>menutest</h1>
     <taichung />
   </div>
 </template>
@@ -9,11 +9,6 @@
 import taichung from "@/components/test/taichung.vue";
 
 export default {
-  data() {
-    return {
-      token: this.$Cookies.get("token"),
-    };
-  },
   name: "pm25",
   components: {
     taichung,
