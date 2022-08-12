@@ -72,7 +72,6 @@
       ></span>
     </router-link>
 
-
     <el-input
       size="large"
       placeholder="輸入股票代號或名稱"
@@ -87,36 +86,53 @@
     <div class="navigation">
       <div class="userBx">
         <div class="imgBx">
-          <img 
-          class="img-responsive1"
-          src="@/assets/img/logo.png">
+          <img class="img-responsive1" src="@/assets/img/logo.png" />
         </div>
         <p class="username1">Jo Jo</p>
       </div>
       <div class="menuToggle"></div>
       <ul class="menu">
-        <li class="menuset"><a class="menuset2" href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
-        <li class="menuset"><a class="menuset2" href="#"><ion-icon name="chatbox-outline"></ion-icon>Message</a></li>
-        <li class="menuset"><a class="menuset2" href="#"><ion-icon name="notifications-outline"></ion-icon>Notification</a></li>
-        <li class="menuset"><a class="menuset2" href="#"><ion-icon name="settings-outline"></ion-icon>Settings</a></li>
-        <li class="menuset"><a class="menuset2" href="#"><ion-icon name="help-outline"></ion-icon>Help & Support</a></li>         
+        <li class="menuset">
+          <a class="menuset2" href="#"
+            ><ion-icon name="person-outline"></ion-icon>My Profile</a
+          >
+        </li>
+        <li class="menuset">
+          <a class="menuset2" href="#"
+            ><ion-icon name="chatbox-outline"></ion-icon>Message</a
+          >
+        </li>
+        <li class="menuset">
+          <a class="menuset2" href="#"
+            ><ion-icon name="notifications-outline"></ion-icon>Notification</a
+          >
+        </li>
+        <li class="menuset">
+          <a class="menuset2" href="#"
+            ><ion-icon name="settings-outline"></ion-icon>Settings</a
+          >
+        </li>
+        <li class="menuset">
+          <a class="menuset2" href="#"
+            ><ion-icon name="help-outline"></ion-icon>Help & Support</a
+          >
+        </li>
       </ul>
     </div>
     <component :is="'script'">
-      let menuToggle = document.querySelector('.menuToggle');
-      let navigation = document.querySelector('.navigation');
-      menuToggle.onclick = function(){
-        navigation.classList.toggle('active')
-      }
+      let menuToggle = document.querySelector('.menuToggle'); let navigation =
+      document.querySelector('.navigation'); menuToggle.onclick = function(){
+      navigation.classList.toggle('active') }
     </component>
-    <component 
+    <component
       :is="'script'"
-      type="module" 
+      type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
     ></component>
-    <component 
+    <component
       :is="'script'"
-      nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></component>
 
     <!--
@@ -137,22 +153,20 @@
   </nav>
 </template>
 <script>
-  import { defineComponent, ref } from "vue";
+import { defineComponent, ref } from "vue";
 
-  
-  // var menuToggle = document.querySelector('.menuToggle');
-  // var navigation = document.querySelector('.navigation');
-  // menuToggle.onclick = function(){
-  //   navigation.classList.toggle('active')
-  // }
-  
+// var menuToggle = document.querySelector('.menuToggle');
+// var navigation = document.querySelector('.navigation');
+// menuToggle.onclick = function(){
+//   navigation.classList.toggle('active')
+// }
 
-  export default defineComponent({
-    setup() {
-      return {
-        input3: ref(""),
-      };
-    },
+export default defineComponent({
+  setup() {
+    return {
+      input3: ref(""),
+    };
+  },
   props: ["currentroute"],
   data() {
     return {
@@ -165,9 +179,7 @@
       this.$router.push("/home");
     },
   },
-  
 });
-  
 </script>
 
 <style>
@@ -205,7 +217,7 @@ nav {
   box-sizing: border-box;
   border-bottom: 2px solid;
   padding: 21px;
-  background-color: rgb(204, 195, 195);
+  background-color: rgb(255 255 255);
 }
 
 nav a {
@@ -213,7 +225,7 @@ nav a {
   margin-left: 20px;
   font-size: 20px;
   font-weight: bold;
-  color: #2c3e50;
+  color: #000000;
 }
 
 nav a.router-link-exact-active {
@@ -227,8 +239,7 @@ nav a.router-link-exact-active {
   margin-left: auto;
 } */
 
-.navigation
-{
+.navigation {
   position: fixed;
   top: 0px;
   right: 20px;
@@ -238,19 +249,17 @@ nav a.router-link-exact-active {
   box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
-  transition: height 0.5s, width 0.5s;
-  transition-delay: 0s, 0.75s;
+  transition: height 0.2s, width 0.2s;
+  transition-delay: 0s, 0.4s;
   overflow: hidden;
 }
-.navigation.active
-{
+.navigation.active {
   width: 300px;
   height: 350px;
-  transition: width 0.5s, height 0.5s;
-  transition-delay: 0s, 0.75s;
+  transition: width 0.2s, height 0.2s;
+  transition-delay: 0s, 0.4s;
 }
-.navigation .userBx
-{
+.navigation .userBx {
   position: relative;
   width: 80px;
   height: 80px;
@@ -258,22 +267,19 @@ nav a.router-link-exact-active {
   display: flex;
   align-items: center;
   overflow: hidden;
-  transition: 0.5s;
-  transition-delay: 0.5s;
+  transition: 0.2s;
+  transition-delay: 0.2s;
 }
-.navigation.active .userBx
-{
+.navigation.active .userBx {
   width: calc(100% - 80px);
   transition-delay: 0s;
 }
-.navigation .userBx .username1
-{
+.navigation .userBx .username1 {
   white-space: nowrap;
   color: #555;
   font-size: 1.1em;
 }
-.navigation .userBx .imgBx
-{
+.navigation .userBx .imgBx {
   position: relative;
   min-width: 60px;
   height: 60px;
@@ -282,8 +288,7 @@ nav a.router-link-exact-active {
   border-radius: 50%;
   border: 10px solid rgb(255, 255, 255);
 }
-.navigation .userBx .imgBx .img-responsive1
-{
+.navigation .userBx .imgBx .img-responsive1 {
   position: absolute;
   top: 0;
   left: 0;
@@ -292,8 +297,7 @@ nav a.router-link-exact-active {
   object-fit: cover;
 }
 
-.navigation .menuToggle
-{
+.navigation .menuToggle {
   position: relative;
   width: 80px;
   height: 80px;
@@ -302,38 +306,33 @@ nav a.router-link-exact-active {
   justify-content: center;
   align-items: center;
 }
-.navigation .menuToggle::before
-{
-  content: '';
+.navigation .menuToggle::before {
+  content: "";
   position: absolute;
   width: 48px;
   height: 4px;
   background: #555;
   transform: translateY(-10px);
   box-shadow: 0 10px #555;
-  transition: 0.5s;
+  transition: 0.2s;
 }
-.navigation .menuToggle::after
-{
-  content: '';
+.navigation .menuToggle::after {
+  content: "";
   position: absolute;
   width: 48px;
   height: 4px;
   background: #555;
   transform: translateY(10px);
-  transition: 0.5s;
+  transition: 0.2s;
 }
-.navigation.active .menuToggle::before
-{
+.navigation.active .menuToggle::before {
   transform: translateY(0px) rotate(45deg);
   box-shadow: 0 0 #555;
 }
-.navigation.active .menuToggle::after
-{
+.navigation.active .menuToggle::after {
   transform: translateY(0px) rotate(-45deg);
 }
-.menu
-{
+.menu {
   position: absolute;
   width: 100%;
   height: calc(100% - 80px);
@@ -341,12 +340,10 @@ nav a.router-link-exact-active {
   padding: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
-.menu .menuset
-{
+.menu .menuset {
   list-style: none;
 }
-.menu .menuset .menuset2
-{
+.menu .menuset .menuset2 {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -355,13 +352,10 @@ nav a.router-link-exact-active {
   text-decoration: none;
   color: #555;
 }
-.menu .menuset .menuset2:hover
-{
+.menu .menuset .menuset2:hover {
   color: #4e65ff;
 }
-.menu .menuset .menuset2 ion-icon
-{
+.menu .menuset .menuset2 ion-icon {
   font-size: 1.5em;
 }
-
 </style>

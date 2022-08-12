@@ -1,15 +1,17 @@
 <template>
-  <el-row :gutter="30">
-    <div class="grid-content bg-purple-light ktable" >
-      <div class="tradingview-widget-container">
-        <div id="tradingview_3242b"></div>
-        <div class="tradingview-widget-copyright">
-          <a
-            href="https://tw.tradingview.com/symbols/NASDAQ-AAPL/"
-            rel="noopener"
-            target="_blank"
-          ></a>
-        </div>
+  <el-row>
+    <el-col :lg="6">
+      <div class="grid-content bg-purple-light">
+        <div class="tradingview-widget-container">
+          <div id="tradingview_b4ac4"></div>
+          <div class="tradingview-widget-copyright">
+            <a
+              href="https://tw.tradingview.com/symbols/NASDAQ-AAPL/"
+              rel="noopener"
+              target="_blank"
+              ><span class="blue-text">AAPL圖表</span></a
+            >由TradingView提供
+          </div>
 
         <component
           :is="'script'"
