@@ -145,10 +145,22 @@ export default {
   position: absolute;
   top: 35%;
   left: 23%;
+  display: inline-block;
+  animation: movepoint 8s infinite;
+	-webkit-animation: movepoint 8s infinite;
 }
 .corrbutton {
   width: 20%;
   height: 50px;
   font-size: 20px;
 }
+@keyframes movepoint {
+  70% {
+    top: 34%;
+  }
+  100% {
+    top: 36%;
+  }
+}
+
 </style>
