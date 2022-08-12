@@ -1,147 +1,155 @@
 <template>
   <el-row>
-    <el-col :lg="6">
+    <el-col :lg="10" :sm="24" :xs="24">
       <div class="grid-content bg-purple-light">
         <div class="tradingview-widget-container">
-          <div id="tradingview_b4ac4"></div>
+          <div id="tradingview_3242b"></div>
           <div class="tradingview-widget-copyright">
             <a
               href="https://tw.tradingview.com/symbols/NASDAQ-AAPL/"
               rel="noopener"
               target="_blank"
-              ><span class="blue-text">AAPL圖表</span></a
-            >由TradingView提供
+            ></a>
           </div>
 
-        <component
-          :is="'script'"
-          type="text/javascript"
-          src="https://s3.tradingview.com/tv.js"
-        ></component>
-        <component :is="'script'" type="text/javascript">
-          new TradingView.widget({ "width": 800, "height": 500, symbol:
-          "NASDAQ:AAPL", interval: "D", timezone: "Etc/UTC", theme: "light",
-          style: "1", locale: "zh_TW", toolbar_bg: "#f1f3f6", enable_publishing:
-          false, allow_symbol_change: true, container_id: "tradingview_3242b",
-          });
-        </component>
-      </div>
-    </div>
-
-    <el-col :span="10" :offset="11">
-      <div class="grid-content bg-purple-light">
-        <div class="table1">
-          <h3>相關度排行</h3>
-          <el-table
-            :data="RankStock1"
-            border
-            stripe
-            style="width: 55.5%"
-            max-height="150"
-            :default-sort="{ prop: 'rank1' }"
-          >
-            <el-table-column prop="UP" label="UP" width="67"> </el-table-column>
-            <el-table-column prop="rank1" label="排行" sortable width="90">
-            </el-table-column>
-
-            <el-table-column prop="code1" label="代號" width="90">
-            </el-table-column>
-
-            <el-table-column prop="name1" label="名稱" width="90">
-            </el-table-column>
-
-            <el-table-column prop="VS" label="VS" width="90"></el-table-column>
-
-            <el-table-column prop="code2" label="代號" width="90">
-            </el-table-column>
-
-            <el-table-column prop="name2" label="名稱" width="90">
-            </el-table-column>
-
-            <el-table-column prop="day" label="天數" width="90">
-            </el-table-column>
-
-            <el-table-column prop="follow" label="追蹤" width="86">
-            </el-table-column>
-          </el-table>
-
-          <el-table
-            :data="RankStock2"
-            border
-            stripe
-            style="width: 55.5%"
-            max-height="150"
-            :default-sort="{ prop: 'rank2' }"
-          >
-            <el-table-column prop="DOWN" label="DOWN" sortable width="67">
-            </el-table-column>
-            <el-table-column prop="rank2" label="排行" width="90">
-            </el-table-column>
-
-            <el-table-column prop="code3" label="代號" width="90">
-            </el-table-column>
-
-            <el-table-column prop="name3" label="名稱" width="90">
-            </el-table-column>
-
-            <el-table-column prop="VS" label="VS" width="90"> </el-table-column>
-
-            <el-table-column prop="code4" label="代號" width="90">
-            </el-table-column>
-
-            <el-table-column prop="name4" label="名稱" width="90">
-            </el-table-column>
-
-            <el-table-column prop="day" label="天數" width="90">
-            </el-table-column>
-
-            <el-table-column prop="follow" label="追蹤" width="86">
-            </el-table-column>
-          </el-table>
+          <component
+            :is="'script'"
+            type="text/javascript"
+            src="https://s3.tradingview.com/tv.js"
+          ></component>
+          <component :is="'script'" type="text/javascript">
+            new TradingView.widget({ "width": 800, "height": 500, symbol:
+            "NASDAQ:AAPL", interval: "D", timezone: "Etc/UTC", theme: "light",
+            style: "1", locale: "zh_TW", toolbar_bg: "#f1f3f6",
+            enable_publishing: false, allow_symbol_change: true, container_id:
+            "tradingview_3242b", });
+          </component>
         </div>
       </div>
     </el-col>
-    <el-col :span="12" :offset="11">
-      <div class="grid-content bg-purple-light">
-        <div class="table2">
-          <h3>上市水泥類股-成分股即時資訊</h3>
-          <el-table
-            :data="StockClassification"
-            border
-            stripe
-            style="width: 100%"
-            max-height="200"
-            :default-sort="{ prop: 'code', prop: 'time' }"
-          >
-            <el-table-column prop="code" label="代號" sortable width="85">
-            </el-table-column>
-            <el-table-column prop="name" label="名稱" width="85">
-            </el-table-column>
-            <el-table-column prop="FinalPrice" label="成交價" width="85">
-            </el-table-column>
-            <el-table-column prop="UPandDown" label="漲跌" width="85">
-            </el-table-column>
-            <el-table-column
-              prop="UPandDownAmplitude"
-              label="漲跌幅"
-              width="85"
+
+    <el-col :lg="14" :sm="24" :xs="24">
+      <el-row>
+        <div class="grid-content bg-purple-light">
+          <div class="table1">
+            <h3>相關度排行</h3>
+            <el-table
+              :data="RankStock1"
+              border
+              stripe
+              style="width: 55.5%"
+              max-height="150"
+              :default-sort="{ prop: 'rank1' }"
             >
-            </el-table-column>
-            <el-table-column prop="buy" label="買進" width="85">
-            </el-table-column>
-            <el-table-column prop="sell" label="賣出" width="85">
-            </el-table-column>
-            <el-table-column prop="opening" label="開盤" width="85">
-            </el-table-column>
-            <el-table-column prop="ReceivedYesterday" label="昨收" width="85">
-            </el-table-column>
-            <el-table-column prop="volume" label="成交量" width="85">
-            </el-table-column>
-            <el-table-column prop="time" label="時間" sortable width="85">
-            </el-table-column>
-          </el-table>
+              <el-table-column prop="UP" label="UP" width="67">
+              </el-table-column>
+              <el-table-column prop="rank1" label="排行" sortable width="90">
+              </el-table-column>
+
+              <el-table-column prop="code1" label="代號" width="90">
+              </el-table-column>
+
+              <el-table-column prop="name1" label="名稱" width="90">
+              </el-table-column>
+
+              <el-table-column
+                prop="VS"
+                label="VS"
+                width="90"
+              ></el-table-column>
+
+              <el-table-column prop="code2" label="代號" width="90">
+              </el-table-column>
+
+              <el-table-column prop="name2" label="名稱" width="90">
+              </el-table-column>
+
+              <el-table-column prop="day" label="天數" width="90">
+              </el-table-column>
+
+              <el-table-column prop="follow" label="追蹤" width="86">
+              </el-table-column>
+            </el-table>
+
+            <el-table
+              :data="RankStock2"
+              border
+              stripe
+              style="width: 55.5%"
+              max-height="150"
+              :default-sort="{ prop: 'rank2' }"
+            >
+              <el-table-column prop="DOWN" label="DOWN" sortable width="67">
+              </el-table-column>
+              <el-table-column prop="rank2" label="排行" width="90">
+              </el-table-column>
+
+              <el-table-column prop="code3" label="代號" width="90">
+              </el-table-column>
+
+              <el-table-column prop="name3" label="名稱" width="90">
+              </el-table-column>
+
+              <el-table-column prop="VS" label="VS" width="90">
+              </el-table-column>
+
+              <el-table-column prop="code4" label="代號" width="90">
+              </el-table-column>
+
+              <el-table-column prop="name4" label="名稱" width="90">
+              </el-table-column>
+
+              <el-table-column prop="day" label="天數" width="90">
+              </el-table-column>
+
+              <el-table-column prop="follow" label="追蹤" width="86">
+              </el-table-column>
+            </el-table>
+          </div>
         </div>
-      </div>
+      </el-row>
+      <el-row>
+        <div class="grid-content bg-purple-light">
+          <div class="table2">
+            <h3>上市水泥類股-成分股即時資訊</h3>
+            <el-table
+              :data="StockClassification"
+              border
+              stripe
+              style="width: 100%"
+              max-height="200"
+              :default-sort="{ prop: 'code', prop: 'time' }"
+            >
+              <el-table-column prop="code" label="代號" sortable width="85">
+              </el-table-column>
+              <el-table-column prop="name" label="名稱" width="85">
+              </el-table-column>
+              <el-table-column prop="FinalPrice" label="成交價" width="85">
+              </el-table-column>
+              <el-table-column prop="UPandDown" label="漲跌" width="85">
+              </el-table-column>
+              <el-table-column
+                prop="UPandDownAmplitude"
+                label="漲跌幅"
+                width="85"
+              >
+              </el-table-column>
+              <el-table-column prop="buy" label="買進" width="85">
+              </el-table-column>
+              <el-table-column prop="sell" label="賣出" width="85">
+              </el-table-column>
+              <el-table-column prop="opening" label="開盤" width="85">
+              </el-table-column>
+              <el-table-column prop="ReceivedYesterday" label="昨收" width="85">
+              </el-table-column>
+              <el-table-column prop="volume" label="成交量" width="85">
+              </el-table-column>
+              <el-table-column prop="time" label="時間" sortable width="85">
+              </el-table-column>
+            </el-table>
+          </div>
+        </div>
+      </el-row>
     </el-col>
   </el-row>
 </template>
@@ -392,7 +400,6 @@ export default {
 </script>
 
 <style>
-/* // */
 .el-col {
   border-radius: 4px;
 }
@@ -432,20 +439,5 @@ export default {
 .tradingview-widget-copyright a:visited .blue-text {
   color: #2962ff !important;
 }
-.ktable {
-  position: absolute;
-  left: 1%;
-  width: 8%;
-}
-.rtable {
-  position: absolute;
-  left: 60%;
-  width: 8%;
-}
-.uptable {
-  position: absolute;
-  left: 60%;
-  width: 8%;
-  top: 50%;
-}
+
 </style>
