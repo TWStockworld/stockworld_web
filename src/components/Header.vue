@@ -72,6 +72,15 @@
       ></span>
     </router-link>
 
+    <router-link to="/userprofile" v-if="!token">
+      <span class="txt"
+        >使用者介面<span
+          class="bar"
+          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
+        ></span
+      ></span>
+    </router-link>
+
     <el-input
       size="large"
       placeholder="輸入股票代號或名稱"

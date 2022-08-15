@@ -13,6 +13,7 @@ import pm25 from "../views/test/pm25.vue";
 //user
 import RegisterView from "../views/user/RegisterView.vue";
 import LoginView from "../views/user/LoginView.vue";
+import UserProfileView from "../views/UserProfileView.vue";
 
 //bulletin 公告欄
 import RankingView from "../views/bulletin/RankingView";
@@ -74,6 +75,11 @@ const routes = [
     path: "/learning",
     name: "Learning",
     component: LearningView,
+  },
+  {
+    path: "/userprofile",
+    name: "userprofile",
+    component: UserProfileView,
   },
 ];
 
