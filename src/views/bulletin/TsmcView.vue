@@ -1,5 +1,5 @@
 <template>
-  <div>
+    <el-col :xs="24" :sm="24" :lg="10" >
     <LeftBulletin />
     <div class="RB1">
       <el-button @click="dialogTableVisible = true" class="corrbutton"
@@ -58,7 +58,7 @@
     <div class="picture">
       <img alt="tsmc logo" src="@/assets/img/tsmc.png" style="width: 25%" />
     </div>
-  </div>
+    </el-col>
 </template>
 
 <script>
@@ -80,6 +80,7 @@ export default {
 </script>
 
 <style>
+@media only screen and (min-width: 576px) {
 .RB1 {
   position: absolute;
   top: 20%;
@@ -152,7 +153,9 @@ export default {
 .corrbutton {
   width: 20%;
   height: 50px;
-  font-size: 20px;
+  font-size: 2vh;
+  overflow: hidden;
+  
 }
 @keyframes movepoint {
   70% {
@@ -163,4 +166,5 @@ export default {
   }
 }
 
+}
 </style>
