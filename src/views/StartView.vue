@@ -9,20 +9,14 @@
     >
       START
     </el-link>
-    <router-view v-slot="{ Component }">
-      <transition name="fade">
-        <component :is="Component" />
-      </transition>
-    </router-view>
   </div>
+  <div class="slide"></div>
 </template>
 <script>
 export default {
   methods: {
     start() {
       this.$router.push("/home");
-      
-      
     },
   },
 };
@@ -55,6 +49,25 @@ export default {
 
   100% {
     opacity: 0.3;
+  }
+}
+
+.start:active{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  animation-name: slide;
+  animation-duration: 2s;
+}
+@keyframes slide {
+  0% {
+    background-color: white;
+    left: 0%;
+  }
+
+  100% {
+    background-color: white;
+    left: 100%;
   }
 }
 </style>
