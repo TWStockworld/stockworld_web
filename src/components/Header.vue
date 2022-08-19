@@ -45,7 +45,8 @@
       ></span>
     </router-link>
 
-    <router-link to="/register" v-if="!token">
+    <!--
+      <router-link to="/register" v-if="!token">
       <span class="txt"
         >註冊<span
           class="bar"
@@ -63,18 +64,28 @@
       ></span>
     </router-link>
 
-    <router-link to="/logout" v-if="token" @click="logout">
+    <router-link to="/personalfile" v-if="!token">
       <span class="txt"
-        >登出<span
+        >使用者介面<span
           class="bar"
           style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
         ></span
       ></span>
     </router-link>
 
-    <router-link to="/userprofile" v-if="!token">
+    <router-link to="/favorite" v-if="!token">
       <span class="txt"
-        >使用者介面<span
+        >最愛<span
+          class="bar"
+          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
+        ></span
+      ></span>
+    </router-link>
+    -->
+
+    <router-link to="/logout" v-if="token" @click="logout">
+      <span class="txt"
+        >登出<span
           class="bar"
           style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
         ></span
@@ -100,33 +111,23 @@
         <p class="username1">Jo Jo</p>
       </div>
       <div class="menuToggle"></div>
-      <ul class="menu">
-        <li class="menuset">
+      <div class="menu">
+        <router-link to="/personalfile" v-if="!token" class="menuset">
           <a class="menuset2" href="#"
             ><ion-icon name="person-outline"></ion-icon>My Profile</a
           >
-        </li>
-        <li class="menuset">
+        </router-link>
+
+        <router-link to="/register" v-if="!token" class="menuset">
+          <a class="menuset2" href="#"><ion-icon name="add"></ion-icon>註冊</a>
+        </router-link>
+
+        <router-link to="/login" v-if="!token" class="menuset">
           <a class="menuset2" href="#"
-            ><ion-icon name="chatbox-outline"></ion-icon>Message</a
+            ><ion-icon name="log-in-outline"></ion-icon>登入</a
           >
-        </li>
-        <li class="menuset">
-          <a class="menuset2" href="#"
-            ><ion-icon name="notifications-outline"></ion-icon>Notification</a
-          >
-        </li>
-        <li class="menuset">
-          <a class="menuset2" href="#"
-            ><ion-icon name="settings-outline"></ion-icon>Settings</a
-          >
-        </li>
-        <li class="menuset">
-          <a class="menuset2" href="#"
-            ><ion-icon name="help-outline"></ion-icon>Help & Support</a
-          >
-        </li>
-      </ul>
+        </router-link>
+      </div>
     </div>
     <component :is="'script'">
       let menuToggle = document.querySelector('.menuToggle'); let navigation =
@@ -263,7 +264,7 @@ nav a.router-link-exact-active {
   overflow: hidden;
 }
 .navigation.active {
-  width: 300px;
+  width: 240px;
   height: 350px;
   transition: width 0.2s, height 0.2s;
   transition-delay: 0s, 0.4s;
@@ -342,6 +343,7 @@ nav a.router-link-exact-active {
   transform: translateY(0px) rotate(-45deg);
 }
 .menu {
+  z-index: 10;
   position: absolute;
   width: 100%;
   height: calc(100% - 80px);
@@ -356,7 +358,7 @@ nav a.router-link-exact-active {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 20px 0;
+  margin: 20px;
   font-size: 1em;
   text-decoration: none;
   color: #555;

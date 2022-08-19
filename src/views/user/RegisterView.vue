@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <el-row :gutter="20">
-      <el-col :span="6" :offset="4"
-        ><div class="grid-content ep-bg-purple" />
+  <div id="register">
+    <el-row>
+      <!--<el-col :span="6" :offset="4"-->
+      <el-col :span="8"
+        ><!--<div class="grid-content ep-bg-purple" />-->
+        <div class="" />
         <div id="container1">
           <h3>註冊</h3>
           <div class="tab1"></div>
@@ -46,16 +48,23 @@
           </el-form>
         </div>
       </el-col>
-      <el-col :span="11"
-        ><div class="grid-content ep-bg-purple" />
+      <el-col :span="16"
+        ><!--<div class="grid-content ep-bg-purple" />-->
+        <div class="" />
         <div id="container1">
-          <div class="picture2">
+          <!--<div class="picture2">
             <img
               alt="anime"
               src="@/assets/img/anime.jpg"
               style="width: 90%; border-radius: 10px"
             />
-          </div>
+            </div>
+            -->
+          <img
+            alt="anime"
+            src="@/assets/img/anime.jpg"
+            style="height: 100%; width: 100%; border-radius: 10px"
+          />
         </div>
       </el-col>
     </el-row>
@@ -123,10 +132,14 @@ export default {
 </script>
 
 <style>
-h3 {
+/* h3 {
   width: 100%;
   height: 70px;
   margin: 10px;
+  color: #23995c;
+} */
+h3 {
+  margin: auto;
   color: #23995c;
 }
 #inputAccount,
@@ -134,11 +147,11 @@ h3 {
 #inputUsername,
 #inputPassword {
   width: 200px;
-  height: 20px;
+  height: 30px;
   margin: 10px;
   color: #23995c;
 }
-#container1 {
+/* #container1 {
   margin: 50px;
   padding: 10px;
   width: 100%;
@@ -146,25 +159,32 @@ h3 {
   background-color: white;
   border-radius: 10px;
   border-top: 10px solid #23995c;
-  box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1); */
 
-  /*定位對齊*/
-  position: relative;
+/*定位對齊*/
+/* position: relative;
   margin: auto;
   top: 100px;
   text-align: center;
-}
-.tab {
+} */
+/* .tab {
   height: 5px;
   margin: 5px;
+} */
+
+.tab {
+  height: 20px;
+  margin: 10px;
 }
-.system_name {
+
+/* .system_name { */
   /*定位對齊*/
-  position: relative;
+  /* position: relative;
   margin: auto;
   top: 100px;
   text-align: center;
-}
+
+} */
 
 .submit {
   color: white;
@@ -187,15 +207,27 @@ input {
   border-radius: 5px;
 }
 
-.picture2 {
+/* .picture2 {
   position: absolute;
   top: -10px;
   left: -50px;
   width: 988px;
-}
+} */
 
 .tab1 {
   height: 20px;
   margin: 10px;
 }
+/**/
+#container1 {
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
+}
+#register {
+  width: 70%;
+  margin: auto;
+}
+/**/
 </style>

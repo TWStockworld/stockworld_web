@@ -7,31 +7,36 @@
       <p class="username2">Jo Jo</p>
     </div>
     <div class="sidebar1">
-      <li class="userprofile2">
+      <router-link to="/personalfile" class="userprofile2">
         <a class="userprofile3" href="#"
           ><ion-icon name="person-outline"></ion-icon>個人檔案</a
         >
-      </li>
-      <li class="userprofile2">
+      </router-link>
+      
+      <router-link to="/changepassword" class="userprofile2">
         <a class="userprofile3" href="#"
           ><ion-icon name="lock-closed-outline"></ion-icon>更改密碼</a
         >
-      </li>
-      <li class="userprofile2">
+      </router-link>
+
+      <router-link to="/favorite" class="userprofile2">
         <a class="userprofile3" href="#"
           ><ion-icon name="star-half-outline"></ion-icon>追蹤最愛</a
         >
-      </li>
+      </router-link>
+
       <li class="userprofile2">
         <a class="userprofile3" href="#"
           ><ion-icon name="notifications-outline"></ion-icon>通知</a
         >
       </li>
+
       <li class="userprofile2">
         <a class="userprofile3" href="#"
           ><ion-icon name="settings-outline"></ion-icon>設定</a
         >
       </li>
+
       <li class="userprofile2">
         <a class="userprofile3" href="#"
           ><ion-icon name="help-outline"></ion-icon>Help & Support</a

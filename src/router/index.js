@@ -13,7 +13,11 @@ import pm25 from "../views/test/pm25.vue";
 //user
 import RegisterView from "../views/user/RegisterView.vue";
 import LoginView from "../views/user/LoginView.vue";
-import UserProfileView from "../views/UserProfileView.vue";
+
+//user_profile
+import PersonalFileView from "../views/user_profile/PersonalFileView";
+import ChangePasswordView from "../views/user_profile/ChangePasswordView";
+import FavoriteView from "../views/user_profile/FavoriteView";
 
 //bulletin 公告欄
 import RankingView from "../views/bulletin/RankingView";
@@ -76,10 +80,26 @@ const routes = [
     name: "Learning",
     component: LearningView,
   },
+  // {
+  //   path: "/userprofile",
+  //   name: "userprofile",
+  //   component: UserProfileView,
+  // },
+ 
   {
-    path: "/userprofile",
-    name: "userprofile",
-    component: UserProfileView,
+    path: "/personalfile",
+    name: "personalfile",
+    component: PersonalFileView,
+  },
+  {
+    path: "/changepassword",
+    name: "changepassword",
+    component: ChangePasswordView,
+  },
+  {
+    path: "/favorite",
+    name: "favorite",
+    component: FavoriteView,
   },
 ];
 
