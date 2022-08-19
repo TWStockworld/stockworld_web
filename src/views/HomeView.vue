@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <LeftBulletin />
+    <el-row>
+      <el-col :xs="24" :sm="24" :lg="4">
+        <LeftBulletin />
+      </el-col>
+    </el-row>
   </div>
 </template>
 

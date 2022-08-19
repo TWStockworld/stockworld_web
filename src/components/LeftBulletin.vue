@@ -1,29 +1,39 @@
 <template>
   <div class="LB1">
-    <el-main
-      ><el-button
-        @click="ranking"
-        style="width: 100%; height: 50px; font-size: 19px"
-        >關係度總排行</el-button
-      ></el-main
-    >
-    <el-main
-      ><el-button
-        @click="tsmc"
-        style="width: 100%; height: 50px; font-size: 20px"
-        >台積電</el-button
-      ></el-main
-    >
-    <el-main
-      ><el-button style="width: 100%; height: 50px; font-size: 20px"
-        >鴻海電動車</el-button
-      ></el-main
-    >
-    <el-main
-      ><el-button style="width: 100%; height: 50px; font-size: 20px"
-        >電動車</el-button
-      ></el-main
-    >
+    <el-row>
+      <el-col :xs="6" :sm="6" :lg="24">
+        <el-main
+          ><el-button
+            @click="ranking"
+            style="width: auto; height: 50px; font-size: 2vh"
+            >關係度總排行</el-button
+          ></el-main
+        >
+      </el-col>
+      <el-col :xs="6" :sm="6" :lg="24">
+        <el-main
+          ><el-button
+            @click="tsmc"
+            style="width: auto; height: 50px; font-size: 2vh"
+            >台積電</el-button
+          ></el-main
+        >
+      </el-col>
+      <el-col :xs="6" :sm="6" :lg="24">
+        <el-main
+          ><el-button style="width: auto; height: 50px; font-size: 2vh"
+            >鴻海電動車</el-button
+          ></el-main
+        >
+      </el-col>
+      <el-col :xs="6" :sm="6" :lg="24">
+        <el-main
+          ><el-button style="width: auto; height: 50px; font-size: 2vh"
+            >電動車</el-button
+          ></el-main
+        >
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script>
@@ -43,10 +53,12 @@ export default {
 </script>
 
 <style>
-.LB1 {
-  position: absolute;
-  left: 5%;
-  width: 8%;
-  line-height: 100px;
+@media only screen and (min-width: 576px) {
+  .LB1 {
+    position: relative;
+    left: 5%;
+    line-height: 100px;
+    overflow: hidden
+  }
 }
 </style>
