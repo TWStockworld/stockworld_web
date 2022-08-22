@@ -132,12 +132,6 @@ export default {
 </script>
 
 <style>
-/* h3 {
-  width: 100%;
-  height: 70px;
-  margin: 10px;
-  color: #23995c;
-} */
 h3 {
   margin: auto;
   color: #23995c;
@@ -151,40 +145,11 @@ h3 {
   margin: 10px;
   color: #23995c;
 }
-/* #container1 {
-  margin: 50px;
-  padding: 10px;
-  width: 100%;
-  height: 526px;
-  background-color: white;
-  border-radius: 10px;
-  border-top: 10px solid #23995c;
-  box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1); */
-
-/*定位對齊*/
-/* position: relative;
-  margin: auto;
-  top: 100px;
-  text-align: center;
-} */
-/* .tab {
-  height: 5px;
-  margin: 5px;
-} */
 
 .tab {
   height: 20px;
   margin: 10px;
 }
-
-/* .system_name { */
-  /*定位對齊*/
-  /* position: relative;
-  margin: auto;
-  top: 100px;
-  text-align: center;
-
-} */
 
 .submit {
   color: white;
@@ -207,13 +172,6 @@ input {
   border-radius: 5px;
 }
 
-/* .picture2 {
-  position: absolute;
-  top: -10px;
-  left: -50px;
-  width: 988px;
-} */
-
 .tab1 {
   height: 20px;
   margin: 10px;
@@ -227,7 +185,11 @@ input {
 }
 #register {
   width: 70%;
-  margin: auto;
+  /* margin: auto; */
+  margin-top: 6%;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
 }
 /**/
 </style>

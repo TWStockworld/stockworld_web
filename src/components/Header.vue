@@ -45,44 +45,6 @@
       ></span>
     </router-link>
 
-    <!--
-      <router-link to="/register" v-if="!token">
-      <span class="txt"
-        >註冊<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
-
-    <router-link to="/login" v-if="!token">
-      <span class="txt"
-        >登入<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
-
-    <router-link to="/personalfile" v-if="!token">
-      <span class="txt"
-        >使用者介面<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
-
-    <router-link to="/favorite" v-if="!token">
-      <span class="txt"
-        >最愛<span
-          class="bar"
-          style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-        ></span
-      ></span>
-    </router-link>
-    -->
-
     <router-link to="/logout" v-if="token" @click="logout">
       <span class="txt"
         >登出<span
@@ -144,32 +106,10 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></component>
-
-    <!--
-      
-
-      <div>
-      <figure class="img-responsive1" style="width: 60px; height: 60px">
-        <img
-          class="img-responsive"
-          src="@/assets/img/anime.jpg"
-          alt="頭像"
-          style="height: 100%; width: 100%; border-radius: 100%"
-        />
-      </figure>
-    </div>
-
-    -->
   </nav>
 </template>
 <script>
 import { defineComponent, ref } from "vue";
-
-// var menuToggle = document.querySelector('.menuToggle');
-// var navigation = document.querySelector('.navigation');
-// menuToggle.onclick = function(){
-//   navigation.classList.toggle('active')
-// }
 
 export default defineComponent({
   setup() {
@@ -242,13 +182,6 @@ nav a.router-link-exact-active {
   color: #000000;
 }
 
-/* .img-responsive1 {
-  margin-top: -60px;
-  margin-right: 0px;
-  margin-bottom: auto;
-  margin-left: auto;
-} */
-
 .navigation {
   position: fixed;
   top: 0px;
@@ -259,15 +192,15 @@ nav a.router-link-exact-active {
   box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
-  transition: height 0.2s, width 0.2s;
-  transition-delay: 0s, 0.4s;
+  transition: height 0.05s, width 0.05s;
+  transition-delay: 0s, 0.1s;
   overflow: hidden;
 }
 .navigation.active {
   width: 240px;
   height: 350px;
-  transition: width 0.2s, height 0.2s;
-  transition-delay: 0s, 0.4s;
+  transition: width 0.05s, height 0.05s;
+  transition-delay: 0s, 0.1s;
 }
 .navigation .userBx {
   position: relative;
@@ -343,7 +276,7 @@ nav a.router-link-exact-active {
   transform: translateY(0px) rotate(-45deg);
 }
 .menu {
-  z-index: 10;
+  z-index: 999;
   position: absolute;
   width: 100%;
   height: calc(100% - 80px);

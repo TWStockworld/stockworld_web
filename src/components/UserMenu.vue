@@ -37,11 +37,11 @@
         >
       </li>
 
-      <li class="userprofile2">
+      <router-link to="/help_support" class="userprofile2">
         <a class="userprofile3" href="#"
           ><ion-icon name="help-outline"></ion-icon>Help & Support</a
         >
-      </li>
+      </router-link>
 
       <component
         :is="'script'"

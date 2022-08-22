@@ -125,7 +125,11 @@ input {
 }
 #login {
   width: 70%;
-  margin: auto;
+  /* margin: auto; */
+  margin-top: 6%;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
 }
 </style>
 

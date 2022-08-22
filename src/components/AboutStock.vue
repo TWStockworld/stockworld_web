@@ -1,5 +1,5 @@
 <template>
-  <el-row>
+  <el-row class="aboutstock">
     <el-col :lg="10" :sm="24" :xs="24">
       <div class="grid-content bg-purple-light">
         <div class="tradingview-widget-container">
@@ -400,6 +400,9 @@ export default {
 </script>
 
 <style>
+.aboutstock {
+  z-index: -1;
+}
 .el-col {
   border-radius: 4px;
 }
