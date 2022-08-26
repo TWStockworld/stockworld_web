@@ -183,7 +183,7 @@ export default {
   left: 25%;
   width: 75%;
   height: 100%;
-  background: rgb(240, 240, 240);
+  background: rgb(255, 255, 255);
   box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
 }
 .favorite2 {

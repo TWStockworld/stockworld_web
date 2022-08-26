@@ -34,7 +34,7 @@ export default {
   left: 25%;
   width: 75%;
   height: 100%;
-  background: rgb(240, 240, 240);
+  background: rgb(255, 255, 255);
   box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
 }
 .PersonalFileTitle {
@@ -62,7 +62,7 @@ export default {
   align-items: center;
   gap: 20px;
   margin: 30px 0;
-  font-size: 2.5em;
+  font-size: 1.5em;
   text-decoration: none;
   color: #555;
 }
