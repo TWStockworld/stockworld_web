@@ -141,7 +141,7 @@ export default {
 </script>
 <style scoped>
 .block {
-  z-index: -1;
+  z-index: 1;
 }
 .demo-date-picker {
   display: flex;

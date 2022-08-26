@@ -195,7 +195,7 @@ export default defineComponent({
 <style>
 @media only screen and (max-width: 768px) {
   nav {
-    height: 11vh;
+    height: 12vh;
   }
   .computer_size {
     display: none;
@@ -210,6 +210,7 @@ export default defineComponent({
     width: 450px;
   }
   .navigation {
+    z-index: 10;
     position: fixed;
     top: 0px;
     right: 20px;
@@ -304,7 +305,7 @@ export default defineComponent({
     transform: translateY(0px) rotate(-45deg);
   }
   .menu {
-    z-index: 999;
+    z-index: 2;
     position: absolute;
     width: 100%;
     height: calc(100% - 80px);
@@ -343,6 +344,7 @@ export default defineComponent({
     width: 200px;
   }
   .navigation {
+    z-index: 10;
     position: fixed;
     top: 0px;
     right: 20px;
@@ -437,7 +439,7 @@ export default defineComponent({
     transform: translateY(0px) rotate(-45deg);
   }
   .menu {
-    z-index: 999;
+    z-index: 2;
     position: absolute;
     width: 100%;
     height: calc(100% - 80px);
@@ -499,7 +501,7 @@ a {
 nav {
   box-sizing: border-box;
   /* border-bottom: 2px solid; */
-  padding: 21px;
+  padding: 22px;
   background-color: rgb(240, 240, 240);
 }
 

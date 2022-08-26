@@ -401,7 +401,7 @@ export default {
 
 <style>
 .aboutstock {
-  z-index: -1;
+  z-index: 1;
 }
 .el-col {
   border-radius: 4px;
