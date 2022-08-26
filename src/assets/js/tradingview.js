@@ -33,7 +33,7 @@
           return e.useWidgetHost ? l.widgetHost : l.host;
         },
         embedStylesForCopyright: function () {
-          var e = document.createElement("style");
+          const e = document.createElement("style");
           return (
             (e.innerHTML =
               ".tradingview-widget-copyright {font-size: 13px !important; line-height: 32px !important; text-align: center !important; vertical-align: middle !important; font-family: " +
@@ -57,7 +57,7 @@
           );
         },
         embedStylesForFullHeight: function (e, t, o) {
-          var i = t ? "calc(" + e + " - 32px)" : e,
+          const i = t ? "calc(" + e + " - 32px)" : e,
             n = document.querySelector("#" + o);
           (n.parentElement.style.height = i), (n.style.height = "100%");
         },
@@ -71,16 +71,16 @@
           return "%" === e;
         },
         getSuffix: function (e) {
-          var t = e.toString().match(/(%|px|em|ex)/);
+          const t = e.toString().match(/(%|px|em|ex)/);
           return t ? t[0] : "px";
         },
         hasCopyright: function (e) {
-          var t = document.getElementById(e),
+          const t = document.getElementById(e),
             o = t && t.parentElement;
           return !!o && !!o.querySelector(".tradingview-widget-copyright");
         },
         calculateWidgetHeight: function (e, t) {
-          var o = parseInt(e),
+          const o = parseInt(e),
             i = this.getSuffix(e),
             n = this.isPersentHeight(i),
             r = t && this.hasCopyright(t);
@@ -96,7 +96,7 @@
             : window.attachEvent("onload", e);
         },
         css: function (e) {
-          var t,
+          let t,
             o = document.getElementsByTagName("head")[0],
             i = document.createElement("style");
           (i.type = "text/css"),
@@ -117,8 +117,8 @@
         },
         cloneSimpleObject: function (e) {
           if (null == e || "object" != typeof e) return e;
-          var t = e.constructor();
-          for (var o in e) e.hasOwnProperty(o) && (t[o] = e[o]);
+          const t = e.constructor();
+          for (const o in e) e.hasOwnProperty(o) && (t[o] = e[o]);
           return t;
         },
         isArray: function (e) {
@@ -278,7 +278,7 @@
         },
         widget: function (e) {
           this.id = e.id || l.gId();
-          var t = l.getUrlParams(),
+          let t = l.getUrlParams(),
             o =
               e.tvwidgetsymbol ||
               t.tvwidgetsymbol ||
@@ -287,7 +287,7 @@
               "NASDAQ:AAPL",
             i = e.logo || "";
           i.src && (i = i.src), i && i.replace(".png", "");
-          var n = l.calculateWidgetHeight(e.height || 500, e.container_id);
+          const n = l.calculateWidgetHeight(e.height || 500, e.container_id);
           (this.options = {
             whitelabel: e.whitelabel || "",
             width: e.width || 800,
@@ -459,7 +459,7 @@
           : l.WidgetAbstract.prototype.fixSize(this.options.height);
       },
       addWrapperFrame: function (e, t, o) {
-        var i = l.WidgetAbstract.prototype.height.call(this),
+        const i = l.WidgetAbstract.prototype.height.call(this),
           n = l.WidgetAbstract.prototype.width.call(this);
         o = o || "transparent";
         return (
@@ -485,7 +485,7 @@
         );
       },
       addFooterLogo: function (e, t) {
-        var o = (t || {}).greyText || "powered by",
+        const o = (t || {}).greyText || "powered by",
           i = (t || {}).linkText || "tradingview.com",
           n = (t || {}).href || "https://www.tradingview.com/";
         return l.WidgetAbstract.prototype.addWrapperFrame.call(
@@ -510,12 +510,12 @@
     }),
       (l.ChatWidgetEmbed.prototype = {
         createWidget: function () {
-          var e = this.widgetCode();
+          let e = this.widgetCode();
           (e = l.WidgetAbstract.prototype.addFooterLogo.call(this, e)),
             h(e, this.options.container);
         },
         widgetCode: function () {
-          var e = this.options.room
+          const e = this.options.room
               ? "#" + encodeURIComponent(this.options.room)
               : "",
             t =
@@ -541,9 +541,9 @@
       }),
       (l.IdeaWidget.prototype = {
         createWidget: function () {
-          var e = this.widgetCode();
+          const e = this.widgetCode();
           h(e, this.options.container);
-          var t = this,
+          const t = this,
             o = document.getElementById(this.id);
           (this.postMessage = l.postMessageWrapper(o.contentWindow, this.id)),
             this.postMessage.on(
@@ -555,7 +555,7 @@
             );
         },
         widgetCode: function () {
-          var e = l.createUrlParams({
+          const e = l.createUrlParams({
             id: this.id,
             width: this.options.width,
             height: this.options.height,
@@ -565,7 +565,7 @@
             locale: this.options.locale,
           });
           this.options.type = "idea";
-          var t = "&" + l.generateUtmForUrlParams(this.options),
+          const t = "&" + l.generateUtmForUrlParams(this.options),
             o = l.ideasHost + "/idea-popup/?" + e + t;
           return (
             '<iframe id="' +
@@ -587,16 +587,16 @@
       }),
       (l.EventsWidget.prototype = {
         createWidget: function () {
-          var e = this.widgetCode();
+          const e = this.widgetCode();
           h(e, this.options.container);
         },
         widgetCode: function () {
-          var e = l.createUrlParams({
+          const e = l.createUrlParams({
             currency: this.options.currency,
             importance: this.options.importance,
           });
           this.options.type = "events";
-          var t = "&" + l.generateUtmForUrlParams(this.options);
+          const t = "&" + l.generateUtmForUrlParams(this.options);
           return (
             '<iframe src="' +
             (l.getHost(this.options) + "/eventswidgetembed/?" + e + t) +
@@ -612,21 +612,21 @@
       }),
       (l.IdeasStreamWidget.prototype = {
         createWidget: function () {
-          var e = this.widgetCode();
+          const e = this.widgetCode();
           h(e, this.options.container);
-          var t = this,
+          const t = this,
             o = document.getElementById(this.id);
           (this.postMessage = l.postMessageWrapper(o.contentWindow, this.id)),
             l.bindEvent(o, "load", function () {
               t._ready = !0;
-              for (var e = t._ready_handlers.length; e--; )
+              for (let e = t._ready_handlers.length; e--; )
                 t._ready_handlers[e].call(t);
             }),
             t.postMessage.on(
               "resize",
               function (e) {
                 if (e.id === t.id) {
-                  var i = Math.max(e.height, 450);
+                  const i = Math.max(e.height, 450);
                   o.style.height = i + "px";
                 }
               },
@@ -634,7 +634,7 @@
             );
         },
         widgetCode: function () {
-          var e = this.options,
+          const e = this.options,
             t = l.createUrlParams({
               id: this.id,
               width: e.width,
@@ -669,7 +669,7 @@
           );
         },
         setSymbol: function (e) {
-          var t = document.getElementById(this.id);
+          const t = document.getElementById(this.id);
           this.postMessage.post(t.contentWindow, "setSymbol", e);
         },
         ready: function (e) {
@@ -678,10 +678,10 @@
       }),
       (l.MiniWidget.prototype = {
         createWidget: function () {
-          var e = this.widgetCode(),
+          let e = this.widgetCode(),
             t = this.options;
           if (!t.noLogoOverlay && !t.whitelabel) {
-            var o = this.options.greyText || "Quotes by";
+            const o = this.options.greyText || "Quotes by";
             e = l.WidgetAbstract.prototype.addFooterLogo.call(this, e, {
               greyText: o,
               linkText: "TradingView",
@@ -690,7 +690,7 @@
           h(e, t.container);
         },
         widgetCode: function () {
-          var e = "",
+          let e = "",
             t = "",
             o = "",
             i = "/miniwidgetembed/",
@@ -743,15 +743,15 @@
             g >= 0;
             g--
           ) {
-            var m = c[g],
+            const m = c[g],
               u = this.options[m];
             p += u ? "&" + m + "=" + encodeURIComponent(u) : "";
           }
-          var y = function (e) {
+          const y = function (e) {
             for (var t = [], i = 0; i < e.length; i++) {
-              var n = e[i];
+              const n = e[i];
               if (l.isArray(n)) {
-                var r = encodeURIComponent(n[0]),
+                const r = encodeURIComponent(n[0]),
                   s = encodeURIComponent(n[1]);
                 t.push(r), (o += "&" + r + "=" + s);
               } else "string" == typeof n && t.push(encodeURIComponent(n));
@@ -760,8 +760,8 @@
           };
           if (this.options.tabs) {
             g = 0;
-            for (var w = this.options.tabs.length; g < w; g++) {
-              var b = this.options.tabs[g];
+            for (let w = this.options.tabs.length; g < w; g++) {
+              const b = this.options.tabs[g];
               this.options.symbols[b] &&
                 (e +=
                   (e ? "&" : "") +
@@ -773,14 +773,14 @@
           } else
             this.options.symbols && (e = "symbols=" + y(this.options.symbols));
           if (this.options.symbols_description)
-            for (var f in this.options.symbols_description)
+            for (const f in this.options.symbols_description)
               o +=
                 "&" +
                 encodeURIComponent(f) +
                 "=" +
                 encodeURIComponent(this.options.symbols_description[f]);
           this.options.customer && (i = "/" + this.options.customer + i);
-          var v =
+          const v =
             l.getHost(this.options) +
             i +
             "?" +
@@ -809,24 +809,24 @@
           );
         },
         remove: function () {
-          var e = document.getElementById("tradingview_widget");
+          const e = document.getElementById("tradingview_widget");
           e.parentNode.removeChild(e);
         },
       }),
       (l.MediumWidget.prototype = {
         createWidget: function () {
-          var e = this.widgetCode();
+          const e = this.widgetCode();
           h(e, this.options.container);
         },
         widgetCode: function () {
-          var e = "",
+          let e = "",
             t =
               "symbols=" +
               (function (t) {
                 for (var o = [], i = 0; i < t.length; i++) {
-                  var n = t[i];
+                  const n = t[i];
                   if (l.isArray(n)) {
-                    var r = encodeURIComponent(n[0]),
+                    const r = encodeURIComponent(n[0]),
                       s = encodeURIComponent(n[1]);
                     o.push(r), 2 === n.length && (e += "&" + r + "=" + s);
                   } else "string" == typeof n && o.push(encodeURIComponent(n));
@@ -837,7 +837,7 @@
             i = "&height=" + encodeURIComponent(this.options.height),
             n = "&colorTheme=" + encodeURIComponent(this.options.colorTheme);
           this.options.type = "symbol-overview";
-          var r = "&" + l.generateUtmForUrlParams(this.options);
+          const r = "&" + l.generateUtmForUrlParams(this.options);
           for (
             var s = [
                 "gridLineColor",
@@ -871,11 +871,11 @@
             d >= 0;
             d--
           ) {
-            var h = s[d],
+            const h = s[d],
               c = this.options[h];
             a += c ? "&" + h + "=" + encodeURIComponent(c) : "";
           }
-          var p = this.options.chartOnly ? "&chartOnly=1" : "",
+          let p = this.options.chartOnly ? "&chartOnly=1" : "",
             g = this.options.whitelabel ? "&whitelabel=1" : "",
             m = this.options.isTransparent ? "&isTransparent=1" : "",
             u = this.options.showFloatingTooltip
@@ -885,7 +885,7 @@
             w = this.options.hideDateRanges ? "&hideDateRanges=1" : "",
             b = "/mediumwidgetembed/";
           this.options.customer && (b = "/" + this.options.customer + b);
-          var f =
+          const f =
             l.getHost(this.options) +
             b +
             "?" +
@@ -916,7 +916,7 @@
           );
         },
         remove: function () {
-          var e = document.getElementById("tradingview_widget");
+          const e = document.getElementById("tradingview_widget");
           e.parentNode.removeChild(e);
         },
       }),
@@ -925,12 +925,12 @@
           this.options.type = this.options.fundamental
             ? "fundamental"
             : "chart";
-          var e = this.render(),
+          let e = this.render(),
             t = this;
           this.options.noLogoOverlay ||
             (e = l.WidgetAbstract.prototype.addWrapperFrame.call(this, e)),
             h(e, this.options.container);
-          var o = document.getElementById("tradingview-copyright");
+          const o = document.getElementById("tradingview-copyright");
           o && o.parentElement && o.parentElement.removeChild(o),
             (this.iframe = document.getElementById(this.id)),
             (this.postMessage = l.postMessageWrapper(
@@ -939,7 +939,7 @@
             )),
             l.bindEvent(this.iframe, "load", function () {
               t.postMessage.get("widgetReady", {}, function () {
-                var e;
+                let e;
                 for (t._ready = !0, e = t._ready_handlers.length; e--; )
                   t._ready_handlers[e].call(t);
               });
@@ -949,7 +949,7 @@
                 t._logoOverlay &&
                   (t._logoOverlay.parentNode.removeChild(t._logoOverlay),
                   delete t._logoOverlay);
-                var o = document.createElement("a");
+                const o = document.createElement("a");
                 e.text &&
                   ((o.textContent = e.text), (o.style.color = "transparent")),
                   (o.style.position = "absolute"),
@@ -982,12 +982,12 @@
                 n >= 0;
                 n--
               ) {
-                var r = i[n],
+                const r = i[n],
                   s = e[r];
                 s && (o[r] = s);
               }
               o.show_popup_button = !1;
-              var a = t.options.popup_width || 900,
+              const a = t.options.popup_width || 900,
                 d = t.options.popup_height || 600,
                 h = (screen.width - a) / 2,
                 c = (screen.height - d) / 2,
@@ -1010,7 +1010,7 @@
           this._ready ? e.call(this) : this._ready_handlers.push(e);
         },
         render: function () {
-          var e = this.generateUrl();
+          const e = this.generateUrl();
           return (
             '<iframe id="' +
             this.id +
@@ -1020,7 +1020,7 @@
           );
         },
         generateUrl: function (e) {
-          var t;
+          let t;
           function o(t, o) {
             return (
               (o = o || t),
@@ -1133,12 +1133,12 @@
         },
         image: function (e) {
           this.postMessage.get("imageURL", {}, function (t) {
-            var o = l.host + "/x/" + t + "/";
+            const o = l.host + "/x/" + t + "/";
             e(o);
           });
         },
         subscribeToQuote: function (e) {
-          var t = document.getElementById(this.id);
+          const t = document.getElementById(this.id);
           this.postMessage.post(t.contentWindow, "quoteSubscribe"),
             this.postMessage.on("quoteUpdate", e);
         },
@@ -1146,11 +1146,11 @@
           this.postMessage.get("symbolInfo", {}, e);
         },
         remove: function () {
-          var e = document.getElementById(this.id);
+          const e = document.getElementById(this.id);
           e.parentNode.removeChild(e);
         },
         reload: function () {
-          var e = document.getElementById(this.id),
+          const e = document.getElementById(this.id),
             t = e.parentNode;
           t.removeChild(e), (t.innerHTML = this.render());
         },
@@ -1158,7 +1158,7 @@
       (l.chart.prototype = {
         create: function () {
           this.isMobile = l.isMobileDevice.any;
-          var e,
+          let e,
             t = this.render(),
             o = this;
           l.chartCssAttached ||
@@ -1166,12 +1166,12 @@
             h(t, this.options.container),
             (e = document.getElementById(this.id)),
             l.bindEvent(e, "load", function () {
-              var e;
+              let e;
               for (o._ready = !0, e = o._ready_handlers.length; e--; )
                 o._ready_handlers[e].call(o);
             }),
             l.onready(function () {
-              var t = !1;
+              let t = !1;
               if (
                 (document.querySelector &&
                   document.querySelector(
@@ -1181,7 +1181,7 @@
                 !t)
               )
                 for (
-                  var i = document.getElementsByTagName("a"),
+                  let i = document.getElementsByTagName("a"),
                     n = new RegExp("/v/" + o.options.chart + "/$"),
                     r = new RegExp(
                       "/chart/([0-9a-zA-Z:+*-/()]+)/" + o.options.chart
@@ -1210,7 +1210,7 @@
           return ".tradingview-widget {position: relative;}";
         },
         render: function () {
-          var e =
+          const e =
               this.options.mobileStatic && this.isMobile
                 ? l.host + "/embed-static/"
                 : l.host + "/embed/",
@@ -1250,7 +1250,7 @@
           );
         },
         toggleFullscreen: function (e) {
-          var t = document.getElementById(this.id);
+          const t = document.getElementById(this.id);
           e
             ? ((t.style.position = "fixed"),
               (t.style.width = "100vw"),
@@ -1278,11 +1278,11 @@
       (l.stream.prototype = {
         create: function () {
           this.isMobile = l.isMobileDevice.any;
-          var e = this.render();
+          const e = this.render();
           h(e, this.options.container);
         },
         render: function () {
-          var e =
+          const e =
             "?" +
             (this.options.locale
               ? "&locale=" + encodeURIComponent(this.options.locale)
@@ -1326,7 +1326,7 @@
         (s = 0),
         window.addEventListener &&
           window.addEventListener("message", function (e) {
-            var n;
+            let n;
             try {
               n = JSON.parse(e.data);
             } catch (e) {
@@ -1338,7 +1338,7 @@
                 i[n.name].forEach(function (e) {
                   "function" == typeof e &&
                     e.call(n, n.data, function (e) {
-                      var o = {
+                      const o = {
                         id: n.id,
                         type: "on",
                         name: n.name,
@@ -1372,11 +1372,11 @@
               },
               off: function (e, t) {
                 if (!i[e]) return !1;
-                var o = i[e].indexOf(t);
+                const o = i[e].indexOf(t);
                 o > -1 && i[e].splice(o, 1);
               },
               get: function (e, t, i) {
-                var s = {
+                const s = {
                   id: r++,
                   type: "get",
                   name: e,
@@ -1387,7 +1387,7 @@
                 (o[a][s.id] = i), n[a].postMessage(JSON.stringify(s), "*");
               },
               post: function (e, t, o) {
-                var i = {
+                const i = {
                   id: s++,
                   type: "post",
                   name: t,
@@ -1418,18 +1418,18 @@
         return r;
       }),
       (l.createUrlParams = function (e) {
-        var t = [];
-        for (var o in e)
+        const t = [];
+        for (const o in e)
           e.hasOwnProperty(o) &&
             null != e[o] &&
             t.push(encodeURIComponent(o) + "=" + encodeURIComponent(e[o]));
         return t.join("&");
       });
     var h = function (e, t) {
-        var o = document.getElementById(t);
+        const o = document.getElementById(t);
         if (o) {
           o.innerHTML = e;
-          var i =
+          const i =
             o.parentElement &&
             o.parentElement.querySelector(".tradingview-widget-copyright");
           i && (i.style.width = o.querySelector("iframe").style.width);
@@ -1437,7 +1437,7 @@
         document.body.appendChild(l.embedStylesForCopyright());
       },
       c = function (e, t) {
-        for (var o in t)
+        for (const o in t)
           "object" == typeof t[o] && e.hasOwnProperty(o)
             ? c(e[o], t[o])
             : (e[o] = t[o]);
