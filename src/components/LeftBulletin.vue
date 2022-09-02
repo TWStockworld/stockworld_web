@@ -33,6 +33,7 @@
           ></el-main
         >
       </el-col>
+      
     </el-row>
   </div>
 </template>
@@ -53,10 +54,10 @@ export default {
 </script>
 
 <style>
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 1200px) {
   .LB1 {
     position: relative;
-    left: 5%;
+    left: 0%;
     line-height: 100px;
     overflow: hidden
   }

@@ -79,7 +79,8 @@
       </div>
       <div class="menuToggle"></div>
       <div class="menu">
-        <div class="phone_size">
+         <!--在裡面加入row col-->
+        <div class="phone_size"> 
           <el-input
             size="large"
             placeholder="輸入股票代號或名稱"
@@ -92,6 +93,7 @@
               >
             </template>
           </el-input>
+       
           <router-link to="/home" class="menuset">
             <a class="menuset2" href="#"
               ><ion-icon name="home-outline"></ion-icon>主頁</a
@@ -195,7 +197,7 @@ export default defineComponent({
 <style>
 @media only screen and (max-width: 768px) {
   nav {
-    height: 12vh;
+    height: 10vh;
   }
   .computer_size {
     display: none;
@@ -251,6 +253,7 @@ export default defineComponent({
     color: #555;
     font-size: 1.1em;
   }
+  
   .navigation .userBx .imgBx {
     position: relative;
     min-width: 60px;
@@ -384,7 +387,9 @@ export default defineComponent({
     white-space: nowrap;
     color: #555;
     font-size: 1.1em;
+    /* height: 30%; */
   }
+  
   .navigation .userBx .imgBx {
     position: relative;
     min-width: 60px;
@@ -516,6 +521,13 @@ nav a {
 nav a.router-link-exact-active {
   color: #000000;
 }
+
+/* **** */
+.navigation .userBx .username1:hover{
+    color: rgb(255, 3, 3);
+    height: 50%;
+  }
+  /* **** */
 
 /* .navigation {
   position: fixed;

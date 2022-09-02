@@ -4,7 +4,7 @@
       <div class="photo">
         <img class="img-responsive2" src="@/assets/img/logo.png" />
       </div>
-      <p class="username2">Jo Jo</p>
+      <!-- <p class="username2">Jo Jo</p> -->
     </div>
     <div class="sidebar1">
       <router-link to="/personalfile" class="userprofile2">

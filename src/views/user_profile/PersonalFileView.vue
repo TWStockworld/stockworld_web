@@ -62,7 +62,7 @@ export default {
   align-items: center;
   gap: 20px;
   margin: 30px 0;
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-decoration: none;
   color: #555;
 }
