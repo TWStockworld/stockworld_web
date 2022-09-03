@@ -47,6 +47,10 @@ export default {
 <style>
 @media only screen and (max-width: 1200px) {
   ul {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 8rem ;
+    grid-gap: 3rem;
     list-style-type: none;
     width: 100%;
     overflow-x: scroll;
@@ -54,7 +58,6 @@ export default {
 
   li {
     display: inline;
-
   }
 }
 
@@ -69,7 +72,7 @@ export default {
     position: relative;
     left: 0%;
     line-height: 100px;
-    overflow: hidden
+    
   }
 }
 </style>
