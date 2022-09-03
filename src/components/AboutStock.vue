@@ -1,32 +1,7 @@
 <template>
-  <el-row class="aboutstock">
-    <el-col :lg="10" :sm="24" :xs="24">
+  <el-row>
+    <el-col :lg="10" :sm="24" :xs="24" >
       <Tradeviewchart />
-      <!-- <div class="grid-content bg-purple-light">
-        <div class="tradingview-widget-container">
-          <div id="tradingview_3242b"></div>
-          <div class="tradingview-widget-copyright">
-            <a
-              href="https://tw.tradingview.com/symbols/NASDAQ-AAPL/"
-              rel="noopener"
-              target="_blank"
-            ></a>
-          </div>
-
-          <component
-            :is="'script'"
-            type="text/javascript"
-            src="https://s3.tradingview.com/tv.js"
-          ></component>
-          <component :is="'script'" type="text/javascript">
-            new TradingView.widget({ "width": 800, "height": 500, symbol:
-            "NASDAQ:AAPL", interval: "D", timezone: "Etc/UTC", theme: "light",
-            style: "1", locale: "zh_TW", toolbar_bg: "#f1f3f6",
-            enable_publishing: false, allow_symbol_change: true, container_id:
-            "tradingview_3242b", });
-          </component>
-        </div>
-      </div> -->
     </el-col>
 
     <el-col :lg="14" :sm="24" :xs="24">
@@ -35,7 +10,7 @@
           <div class="table1">
             <h3>相關度排行</h3>
             <el-table :data="RankStock1" border stripe style="width: 55.5%" max-height="150"
-              :default-sort="{ prop: 'rank1' }">
+            :default-sort="{ prop: 'rank1' }">
               <el-table-column prop="UP" label="UP" width="67">
               </el-table-column>
               <el-table-column prop="rank1" label="排行" sortable width="90">
@@ -47,7 +22,8 @@
               <el-table-column prop="name1" label="名稱" width="90">
               </el-table-column>
 
-              <el-table-column prop="VS" label="VS" width="90"></el-table-column>
+              <el-table-column prop="VS" label="VS" width="90">
+              </el-table-column>
 
               <el-table-column prop="code2" label="代號" width="90">
               </el-table-column>
@@ -64,9 +40,9 @@
 
             <el-table :data="RankStock2" border stripe style="width: 55.5%" max-height="150"
               :default-sort="{ prop: 'rank2' }">
-              <el-table-column prop="DOWN" label="DOWN" sortable width="67">
+              <el-table-column prop="DOWN" label="DOWN"  width="67">
               </el-table-column>
-              <el-table-column prop="rank2" label="排行" width="90">
+              <el-table-column prop="rank2" label="排行" sortable width="90">
               </el-table-column>
 
               <el-table-column prop="code3" label="代號" width="90">
@@ -394,43 +370,7 @@ export default defineComponent({
   min-height: 36px;
 }
 
-.row-bg {
-  padding: 10px 0;
-  background-color: #f9fafc;
-}
 
-.tradingview-widget-copyright {
-  font-size: 13px !important;
-  line-height: 32px !important;
-  text-align: center !important;
-  vertical-align: middle !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Trebuchet MS", Roboto, Ubuntu,
-    sans-serif !important;
-  color: #9db2bd !important;
-}
 
-.tradingview-widget-copyright .blue-text {
-  color: #2962ff !important;
-}
 
-.tradingview-widget-copyright a {
-  text-decoration: none !important;
-  color: #9db2bd !important;
-}
-
-.tradingview-widget-copyright a:visited {
-  color: #9db2bd !important;
-}
-
-.tradingview-widget-copyright a:hover .blue-text {
-  color: #1e53e5 !important;
-}
-
-.tradingview-widget-copyright a:active .blue-text {
-  color: #1848cc !important;
-}
-
-.tradingview-widget-copyright a:visited .blue-text {
-  color: #2962ff !important;
-}
 </style>
