@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <el-row>
+    <el-row class="home1">
       <el-col :xs="24" :sm="24" :lg="4">
         <LeftBulletin />
       </el-col>
@@ -18,3 +18,8 @@ export default {
 };
 </script>
 
+<style>
+.home1{
+  z-index: 1;
+}
+</style>

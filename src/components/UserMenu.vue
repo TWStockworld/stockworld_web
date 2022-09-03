@@ -4,7 +4,7 @@
       <div class="photo">
         <img class="img-responsive2" src="@/assets/img/logo.png" />
       </div>
-      <p class="username2">Jo Jo</p>
+      <!-- <p class="username2">Jo Jo</p> -->
     </div>
     <div class="sidebar1">
       <router-link to="/personalfile" class="userprofile2">
@@ -37,11 +37,11 @@
         >
       </li>
 
-      <li class="userprofile2">
+      <router-link to="/help_support" class="userprofile2">
         <a class="userprofile3" href="#"
           ><ion-icon name="help-outline"></ion-icon>Help & Support</a
         >
-      </li>
+      </router-link>
 
       <component
         :is="'script'"
@@ -67,14 +67,14 @@
   left: 0px;
   width: 25%;
   height: 100%;
-  background: #fff;
-  box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
+  background: rgb(240, 240, 240);
+  /* box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1); */
 }
 .userprofile1 .top {
   position: relative;
   width: 200px;
   height: 200px;
-  background: rgb(255, 255, 255);
+  background: rgb(240, 240, 240);
   display: flex;
   align-items: center;
   /* overflow: hidden;
@@ -93,7 +93,7 @@
   overflow: hidden;
   background: rgb(0, 0, 0);
   border-radius: 50%;
-  border: 10px solid rgb(255, 255, 255);
+  border: 10px solid rgb(240, 240, 240);
 }
 .userprofile1 .top .photo .img-responsive2 {
   position: relative;
@@ -109,7 +109,7 @@
   height: calc(100% - 200px);
   margin-top: 50px;
   padding: 20px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  /* border-top: 1px solid rgba(0, 0, 0, 0.1); */
 }
 .sidebar1 .userprofile2 {
   list-style: none;
@@ -119,7 +119,7 @@
   align-items: center;
   gap: 20px;
   margin: 30px 0;
-  font-size: 2em;
+  font-size: 19px;
   text-decoration: none;
   color: #555;
 }

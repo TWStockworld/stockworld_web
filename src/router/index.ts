@@ -18,6 +18,7 @@ import LoginView from "../views/user/LoginView.vue";
 import PersonalFileView from "../views/user_profile/PersonalFileView";
 import ChangePasswordView from "../views/user_profile/ChangePasswordView";
 import FavoriteView from "../views/user_profile/FavoriteView";
+import Help_SupportView from "../views/user_profile/Help_SupportView";
 
 //bulletin 公告欄
 import RankingView from "../views/bulletin/RankingView";
@@ -100,6 +101,11 @@ const routes = [
     path: "/favorite",
     name: "favorite",
     component: FavoriteView,
+  },
+  {
+    path: "/help_support",
+    name: "help_support",
+    component: Help_SupportView,
   },
 ];
 

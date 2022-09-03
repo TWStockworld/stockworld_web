@@ -1,5 +1,5 @@
 <template>
-  <el-row>
+  <el-row class="aboutstock">
     <el-col :lg="10" :sm="24" :xs="24">
       <Tradeviewchart />
       <!-- <div class="grid-content bg-purple-light">
@@ -382,6 +382,9 @@ export default defineComponent({
 </script>
 
 <style>
+.aboutstock {
+  z-index: 1;
+}
 .el-col {
   border-radius: 4px;
 }
