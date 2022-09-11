@@ -1,104 +1,89 @@
 <template>
-  <el-row>
+  <el-row >
     <el-col :lg="10" :sm="24" :xs="24" >
       <Tradeviewchart />
+      <Header :input3="StockName" />
     </el-col>
 
     <el-col :lg="14" :sm="24" :xs="24">
       <el-row>
-        <div class="grid-content bg-purple-light">
-          <div class="table1">
-            <h3>相關度排行</h3>
-            <el-table :data="RankStock1" border stripe style="width: 55.5%" max-height="150"
+        <div class="grid-content bg-purple-light" >
+          <h3>相關度排行</h3>
+          <el-table :data="RankStock1" border stripe style="width: 100%"  
             :default-sort="{ prop: 'rank1' }">
-              <el-table-column prop="UP" label="UP" width="67">
-              </el-table-column>
-              <el-table-column prop="rank1" label="排行" sortable width="90">
-              </el-table-column>
 
-              <el-table-column prop="code1" label="代號" width="90">
-              </el-table-column>
+            <el-table-column label="UP" width="67" />
 
-              <el-table-column prop="name1" label="名稱" width="90">
-              </el-table-column>
+            <el-table-column prop="rank1" label="排行" sortable width="90" />
 
-              <el-table-column prop="VS" label="VS" width="90">
-              </el-table-column>
+            <el-table-column prop="code1" label="代號" width="90" />
 
-              <el-table-column prop="code2" label="代號" width="90">
-              </el-table-column>
+            <el-table-column prop="name1" label="名稱" width="90" />
 
-              <el-table-column prop="name2" label="名稱" width="90">
-              </el-table-column>
+            <el-table-column prop="VS" label="VS" width="90" />
 
-              <el-table-column prop="day" label="天數" width="90">
-              </el-table-column>
+            <el-table-column prop="code2" label="代號" width="90" />
 
-              <el-table-column prop="follow" label="追蹤" width="86">
-              </el-table-column>
-            </el-table>
+            <el-table-column prop="name2" label="名稱" width="90" />
 
-            <el-table :data="RankStock2" border stripe style="width: 55.5%" max-height="150"
-              :default-sort="{ prop: 'rank2' }">
-              <el-table-column prop="DOWN" label="DOWN"  width="67">
-              </el-table-column>
-              <el-table-column prop="rank2" label="排行" sortable width="90">
-              </el-table-column>
+            <el-table-column prop="day" label="天數" width="90" />
 
-              <el-table-column prop="code3" label="代號" width="90">
-              </el-table-column>
+            <el-table-column prop="follow" label="追蹤" width="86" />
 
-              <el-table-column prop="name3" label="名稱" width="90">
-              </el-table-column>
+          </el-table>
 
-              <el-table-column prop="VS" label="VS" width="90">
-              </el-table-column>
+          <el-table :data="RankStock2" border stripe style="width: 100%"  
+            :default-sort="{ prop: 'rank2' }">
 
-              <el-table-column prop="code4" label="代號" width="90">
-              </el-table-column>
+            <el-table-column label="DOWN" width="67" />
 
-              <el-table-column prop="name4" label="名稱" width="90">
-              </el-table-column>
+            <el-table-column prop="rank2" label="排行" sortable width="90" />
 
-              <el-table-column prop="day" label="天數" width="90">
-              </el-table-column>
+            <el-table-column prop="code3" label="代號" width="90" />
 
-              <el-table-column prop="follow" label="追蹤" width="86">
-              </el-table-column>
-            </el-table>
-          </div>
+            <el-table-column prop="name3" label="名稱" width="90" />
+
+            <el-table-column prop="VS" label="VS" width="90" />
+
+            <el-table-column prop="code4" label="代號" width="90" />
+
+            <el-table-column prop="name4" label="名稱" width="90" />
+
+            <el-table-column prop="day" label="天數" width="90" />
+
+            <el-table-column prop="follow" label="追蹤" width="86" />
+
+          </el-table>
         </div>
       </el-row>
       <el-row>
-        <div class="grid-content bg-purple-light">
-          <div class="table2">
-            <h3>上市水泥類股-成分股即時資訊</h3>
-            <el-table :data="StockClassification" border stripe style="width: 100%" max-height="200"
-              :default-sort="{ prop: 'code', prop: 'time' }">
-              <el-table-column prop="code" label="代號" sortable width="85">
-              </el-table-column>
-              <el-table-column prop="name" label="名稱" width="85">
-              </el-table-column>
-              <el-table-column prop="FinalPrice" label="成交價" width="85">
-              </el-table-column>
-              <el-table-column prop="UPandDown" label="漲跌" width="85">
-              </el-table-column>
-              <el-table-column prop="UPandDownAmplitude" label="漲跌幅" width="85">
-              </el-table-column>
-              <el-table-column prop="buy" label="買進" width="85">
-              </el-table-column>
-              <el-table-column prop="sell" label="賣出" width="85">
-              </el-table-column>
-              <el-table-column prop="opening" label="開盤" width="85">
-              </el-table-column>
-              <el-table-column prop="ReceivedYesterday" label="昨收" width="85">
-              </el-table-column>
-              <el-table-column prop="volume" label="成交量" width="85">
-              </el-table-column>
-              <el-table-column prop="time" label="時間" sortable width="85">
-              </el-table-column>
-            </el-table>
-          </div>
+        <div class="grid-content2 bg-purple-light" >
+          <h3>上市水泥類股-成分股即時資訊</h3>
+          <el-table :data="StockClassification" border stripe style="width: 100%" 
+            :default-sort="{ prop: 'code', prop: 'time' }">
+            <el-table-column prop="code" label="代號" sortable width="85" />
+
+            <el-table-column prop="name" label="名稱" width="85" />
+
+            <el-table-column prop="FinalPrice" label="成交價" width="85" />
+
+            <el-table-column prop="UPandDown" label="漲跌" width="85" />
+
+            <el-table-column prop="UPandDownAmplitude" label="漲跌幅" width="85" />
+
+            <el-table-column prop="buy" label="買進" width="85" />
+
+            <el-table-column prop="sell" label="賣出" width="85" />
+
+            <el-table-column prop="opening" label="開盤" width="85" />
+
+            <el-table-column prop="ReceivedYesterday" label="昨收" width="85" />
+
+            <el-table-column prop="volume" label="成交量" width="85" />
+
+            <el-table-column prop="time" label="時間" sortable width="85" />
+
+          </el-table>
         </div>
       </el-row>
     </el-col>
@@ -116,6 +101,7 @@ export default defineComponent({
   },
   data() {
     return {
+      StockName:"",
       RankStock1: [
         {
           rank1: "1",
@@ -358,17 +344,23 @@ export default defineComponent({
 </script>
 
 <style>
+ 
 .aboutstock {
   z-index: 1;
 }
+
 .el-col {
   border-radius: 4px;
+  
 }
-
 .grid-content {
   border-radius: 4px;
-  min-height: 36px;
+  height: 35vh;
+  overflow-x: auto;
 }
-
-
+.grid-content2 {
+  border-radius: 4px;
+  height: 35vh;
+  overflow-x: auto;
+}
 </style>
