@@ -1,6 +1,6 @@
 <template>
-  <el-row class="aboutstock">
-    <el-col :lg="10" :sm="24" :xs="24">
+  <el-row>
+    <el-col :lg="10" :sm="24" :xs="24" >
       <Tradeviewchart />
     </el-col>
 
@@ -10,7 +10,7 @@
           <div class="table1">
             <h3>相關度排行</h3>
             <el-table :data="RankStock1" border stripe style="width: 55.5%" max-height="150"
-              :default-sort="{ prop: 'rank1' }">
+            :default-sort="{ prop: 'rank1' }">
               <el-table-column prop="UP" label="UP" width="67">
               </el-table-column>
               <el-table-column prop="rank1" label="排行" sortable width="90">
@@ -22,7 +22,8 @@
               <el-table-column prop="name1" label="名稱" width="90">
               </el-table-column>
 
-              <el-table-column prop="VS" label="VS" width="90"></el-table-column>
+              <el-table-column prop="VS" label="VS" width="90">
+              </el-table-column>
 
               <el-table-column prop="code2" label="代號" width="90">
               </el-table-column>
@@ -39,9 +40,9 @@
 
             <el-table :data="RankStock2" border stripe style="width: 55.5%" max-height="150"
               :default-sort="{ prop: 'rank2' }">
-              <el-table-column prop="DOWN" label="DOWN" sortable width="67">
+              <el-table-column prop="DOWN" label="DOWN"  width="67">
               </el-table-column>
-              <el-table-column prop="rank2" label="排行" width="90">
+              <el-table-column prop="rank2" label="排行" sortable width="90">
               </el-table-column>
 
               <el-table-column prop="code3" label="代號" width="90">

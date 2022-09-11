@@ -16,7 +16,7 @@
 export default {
   methods: {
     start() {
-      this.$router.push("/home");
+      this.$router.push("/ranking");
     },
   },
 };

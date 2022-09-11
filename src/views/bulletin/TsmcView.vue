@@ -46,7 +46,6 @@
             <el-button @click="dialogTableVisible = true" class="corrbutton10">半導體檢測</el-button>
           </div>
         </el-col>
-
       </el-row>
     </el-col>
   </el-row>
@@ -71,11 +70,12 @@ export default {
 </script>
 
 <style>
+ 
 
 @media only screen and (min-width: 1200px) {
   .el-row {
   height: 100%;
-}
+  }
   .RB1 {
     position: absolute;
     top: 10vh;
@@ -141,17 +141,19 @@ export default {
     top: 30vh;
     left: 12%;
     display: inline-block;
-    animation: movepoint 8s infinite;
-    -webkit-animation: movepoint 8s infinite;
+    animation: movepoint 2s infinite alternate;
+    -webkit-animation: movepoint 2s infinite alternate; 
   }
 
   @keyframes movepoint {
-    80% {
-      top: 25vh;
+    0%{
+      top: 29vh;
     }
-
     100% {
-      top: 35vh;
+      top: 32vh;
+    }
+    0% {
+      top: 29vh;
     }
   }
 }
@@ -161,7 +163,5 @@ export default {
     height: 15vh;
   }
 
-  
 }
-
 </style>
