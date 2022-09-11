@@ -114,7 +114,7 @@
 
           <router-link to="/sort" class="menuset">
             <a class="menuset2" href="#"
-              ><ion-icon name="funnel-outline"></ion-icon>台股分類</a
+              ><ion-icon name="funnel-outline"></ion-icon>股票分類</a
             >
           </router-link>
 
@@ -197,7 +197,7 @@ export default defineComponent({
 <style>
 @media only screen and (max-width: 768px) {
   nav {
-    height: 10vh;
+    height: 10%;
   }
   .computer_size {
     display: none;
@@ -207,19 +207,18 @@ export default defineComponent({
   }
   .input-with-select2 {
     background-color: #fff;
-    top: 5px;
-    left: 5px;
-    width: 450px;
+    width: 80%;
   }
   .navigation {
     z-index: 10;
     position: fixed;
-    top: 0px;
-    right: 20px;
-    width: 280px;
-    height: 80px;
+    top: 0%;
+    right: 0%;
+    width: 75%;
+    /* width: 280px; */
+    height: 10%;
+    /* height: 80px; */
     background: rgb(240, 240, 240);
-    /* box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1); */
     display: flex;
     justify-content: space-between;
     transition: height 0.05s, width 0.05s;
@@ -227,8 +226,10 @@ export default defineComponent({
     overflow: hidden;
   }
   .navigation.active {
-    width: 475px;
-    height: 350px;
+    width: 90%;
+    /* width: 475px; */
+    height: 55%;
+    /* height: 350px; */
     transition: width 0.05s, height 0.05s;
     transition-delay: 0s, 0.1s;
   }
@@ -240,7 +241,6 @@ export default defineComponent({
     background: rgb(240, 240, 240);
     display: flex;
     align-items: center;
-    /* overflow: hidden; */
     transition: 0.2s;
     transition-delay: 0.2s;
   }
@@ -354,7 +354,6 @@ export default defineComponent({
     width: 280px;
     height: 80px;
     background: rgb(240, 240, 240);
-    /* box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1); */
     display: flex;
     justify-content: space-between;
     transition: height 0.05s, width 0.05s;
@@ -363,7 +362,7 @@ export default defineComponent({
   }
   .navigation.active {
     width: 280px;
-    height: 280px;
+    height: 300px;
     transition: width 0.05s, height 0.05s;
     transition-delay: 0s, 0.1s;
   }
@@ -375,7 +374,6 @@ export default defineComponent({
     background: rgb(240, 240, 240);
     display: flex;
     align-items: center;
-    /* overflow: hidden; */
     transition: 0.2s;
     transition-delay: 0.2s;
   }
@@ -387,7 +385,6 @@ export default defineComponent({
     white-space: nowrap;
     color: #555;
     font-size: 1.1em;
-    /* height: 30%; */
   }
   
   .navigation .userBx .imgBx {
@@ -472,13 +469,6 @@ export default defineComponent({
   }
 }
 
-/* .input-with-select {
-  background-color: #fff;
-  top: 5px;
-  left: 5px;
-  width: 450px;
-} */
-
 .txt {
   position: relative;
   display: block;
@@ -522,129 +512,29 @@ nav a.router-link-exact-active {
   color: #000000;
 }
 
-/* **** */
-.navigation .userBx .username1:hover{
+
+.navigation.active .userBx .username1{
+  display: inline-block;
     color: rgb(255, 3, 3);
-    height: 50%;
+    /* height: 50%; */
+    animation: movepoint1 3s infinite;
+    -webkit-animation: movepoint1 3s infinite;
   }
-  /* **** */
 
-/* .navigation {
-  position: fixed;
-  top: 0px;
-  right: 20px;
-  width: 160px;
-  height: 80px;
-  background: rgb(240, 240, 240);
-  display: flex;
-  justify-content: space-between;
-  transition: height 0.05s, width 0.05s;
-  transition-delay: 0s, 0.1s;
-  overflow: hidden;
-}
-.navigation.active {
-  width: 240px;
-  height: 350px;
-  transition: width 0.05s, height 0.05s;
-  transition-delay: 0s, 0.1s;
-} */
-/* .navigation .userBx {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  background: rgb(240, 240, 240);
-  display: flex;
-  align-items: center;
-  transition: 0.2s;
-  transition-delay: 0.2s;
-}
-.navigation.active .userBx {
-  width: calc(100% - 80px);
-  transition-delay: 0s;
-}
-.navigation .userBx .username1 {
-  white-space: nowrap;
-  color: #555;
-  font-size: 1.1em;
-}
-.navigation .userBx .imgBx {
-  position: relative;
-  min-width: 60px;
-  height: 60px;
-  overflow: hidden;
-  background: rgb(0, 0, 0);
-  border-radius: 50%;
-  border: 10px solid rgb(240, 240, 240);
-}
-.navigation .userBx .imgBx .img-responsive1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  @keyframes movepoint1 {
+    0% {
+      height: 0%;
+    }
+    50%{
+      height: 60%;
+    }
+    100% {
+      height: 0%;
+    }
+  }
 
-.navigation .menuToggle {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.navigation .menuToggle::before {
-  content: "";
-  position: absolute;
-  width: 48px;
-  height: 4px;
-  background: #555;
-  transform: translateY(-10px);
-  box-shadow: 0 10px #555;
-  transition: 0.2s;
-}
-.navigation .menuToggle::after {
-  content: "";
-  position: absolute;
-  width: 48px;
-  height: 4px;
-  background: #555;
-  transform: translateY(10px);
-  transition: 0.2s;
-}
-.navigation.active .menuToggle::before {
-  transform: translateY(0px) rotate(45deg);
-  box-shadow: 0 0 #555;
-}
-.navigation.active .menuToggle::after {
-  transform: translateY(0px) rotate(-45deg);
-}
-.menu {
-  z-index: 999;
-  position: absolute;
-  width: 100%;
-  height: calc(100% - 80px);
-  margin-top: 80px;
-  padding: 0px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-.menu .menuset {
-  list-style: none;
-}
-.menu .menuset .menuset2 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 15px;
-  font-size: 1em;
-  text-decoration: none;
-  color: #555;
-}
-.menu .menuset .menuset2:hover {
-  color: #4e65ff;
-}
-.menu .menuset .menuset2 ion-icon {
-  font-size: 1.5em;
-} */
+  
+ 
+
+
 </style>

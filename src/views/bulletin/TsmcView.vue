@@ -71,10 +71,11 @@ export default {
 </script>
 
 <style>
-.el-row {
+
+@media only screen and (min-width: 1200px) {
+  .el-row {
   height: 100%;
 }
-@media only screen and (min-width: 1200px) {
   .RB1 {
     position: absolute;
     top: 10vh;
@@ -160,26 +161,7 @@ export default {
     height: 15vh;
   }
 
-  /* .picture {
-    position: absolute;
-    top: 3vh;
-    left: 0%;
-    display: inline-block;
-    animation: movepoint 8s infinite;
-    -webkit-animation: movepoint 8s infinite;
-  }
-  @keyframes movepoint {
-    70% {
-      top: 0vh;
-    }
-    100% {
-      top: 6vh;
-    }
-  } */
+  
 }
 
-/* @media only screen and (min-width: 1200px) {
-  
-  
-} */
 </style>
