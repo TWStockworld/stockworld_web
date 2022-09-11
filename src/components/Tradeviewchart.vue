@@ -4,7 +4,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
 import { Options } from "../types";
-import { defineProps } from "vue";
+
 declare global {
   interface Window {
     TradingView: any;
@@ -18,13 +18,17 @@ export default defineComponent({
       type: Object,
       default: () => ({}),
     },
+    StockName:{
+      type: Object,
+      
+    },  
   },
   setup(props) {
     const container = ref("tradingview-chart");
     const scriptID = ref("tradingview-chart-script");
     const defualtOptions = {
       autosize: true,
-      symbol: "NYSE:TSM",
+      symbol: "",
       interval: "D",
       timezone: "Asia/Taipei",
       theme: "light",
@@ -81,3 +85,8 @@ export default defineComponent({
   },
 });
 </script>
+<style>
+  #tradingview-chart{
+    height:100%;
+  }
+</style>
