@@ -1,12 +1,12 @@
 <template>
   <el-row >
-    <el-col :lg="10" :sm="24" :xs="24" >
+    <el-col :lg="10" :sm="24" :xs="24" class="high">
       <Tradeviewchart />
-      <Header :input3="StockName" />
+      <Header :input3="StockName" ></Header>
     </el-col>
 
     <el-col :lg="14" :sm="24" :xs="24">
-      <el-row>
+      <el-row style="height:50%">
         <div class="grid-content bg-purple-light" >
           <h3>相關度排行</h3>
           <el-table :data="RankStock1" border stripe style="width: 100%"  
@@ -344,7 +344,7 @@ export default defineComponent({
 </script>
 
 <style>
- 
+ @media only screen and (max-width: 1200px) {
 .aboutstock {
   z-index: 1;
 }
@@ -362,5 +362,28 @@ export default defineComponent({
   border-radius: 4px;
   height: 35vh;
   overflow-x: auto;
+}
+.high{
+  height: 50vh;
+}
+}
+ @media only screen and (min-width: 1200px) {
+.aboutstock {
+  z-index: 1;
+}
+.el-col {
+  border-radius: 4px;
+}
+.grid-content {
+  border-radius: 4px;
+  height: 35vh;
+  overflow-x: auto;
+}
+.grid-content2 {
+  border-radius: 4px;
+  height: 35vh;
+  overflow-x: auto;
+}
+
 }
 </style>
