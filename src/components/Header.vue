@@ -30,12 +30,13 @@
         <span class="txt">登出<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
-
-      <el-input size="large" placeholder="輸入股票代號或名稱" v-model="input3" class="input-with-select" type="search">
-        <template #append>
-          <el-button type="primary" class="submit2" size="small">搜尋</el-button>
-        </template>
-      </el-input>
+      <el-form @submit.prevent="stocksearch">
+        <el-input size="large" placeholder="輸入股票代號或名稱" v-model="stockid" class="input-with-select" type="search">
+          
+            <el-button type="primary" class="submit2" size="small" native-type="submit">搜尋</el-button>
+         
+        </el-input>
+      </el-form>
     </div>
 
     <div class="navigation">
@@ -50,6 +51,7 @@
       <div class="menu">
         <!--在裡面加入row col-->
         <div class="phone_size">
+          <!--
           <el-form @submit.prevent="stocksearch">
             <el-input size="large" placeholder="輸入股票代號或名稱" v-model="stockid" class="input-with-select2" type="search">
               <template #append>
@@ -57,6 +59,7 @@
               </template>
             </el-input>
           </el-form>
+          -->
           <router-link to="/home" class="menuset">
             <a class="menuset2" href="#">
               <ion-icon name="home-outline"></ion-icon>主頁
@@ -148,8 +151,12 @@ export default defineComponent({
       this.$router.push("/home");
     },
     stocksearch() {
-      this.router.push("/aboutstock");
-      this.$emit("header_stockid",this.stockid);
+      this.$router.push({
+        name: 'AboutStock',
+        params: {
+          stockid: this.stockid,
+        }
+      });
     }
   },
 });

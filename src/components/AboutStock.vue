@@ -1,8 +1,7 @@
 <template>
   <el-row >
     <el-col :lg="10" :sm="24" :xs="24" class="high">
-      <Tradeviewchart :stockid="aboutstock_stockid" />
-
+      <Tradeviewchart :aboutstock_stockid="stockid" />
     </el-col>
     
     <el-col :lg="14" :sm="24" :xs="24">
@@ -99,9 +98,15 @@ export default defineComponent({
   components: {
     Tradeviewchart,
   },
+  // props:{
+  //   stockid:{
+  //     type: String,
+  //     default:""
+  //   },  
+  // },
   data() {
     return {
-      aboutstock_stockid:"",
+      stockid:this.$route.params.stockid,
       RankStock1: [
         {
           rank1: "1",

@@ -18,9 +18,9 @@ export default defineComponent({
       type: Object,
       default: () => ({}),
     },
-    stockid:{
+    aboutstock_stockid:{
       type: String,
-      default: "",    
+          
     },  
   },
   setup(props) {
@@ -28,7 +28,7 @@ export default defineComponent({
     const scriptID = ref("tradingview-chart-script");
     const defualtOptions = {
       autosize: true,
-      symbol: props.stockid,
+      symbol: props.aboutstock_stockid,
       interval: "D",
       timezone: "Asia/Taipei",
       theme: "light",
