@@ -1,17 +1,22 @@
 <template>
-  <div class="personalfile1">
-    <UserMenu />
-    <h1 class="PersonalFileTitle">個人資料</h1>
-    <el-row class="personalfile2">
-      <el-col class="personalfile3">
-        <div class="personalfile4">使用者名稱: JO JO</div>
-        <div class="personalfile4">性別: 男生</div>
-        <div class="personalfile4">生日: 2115年5月7日</div>
-        <div class="personalfile4">Gmail: xxxxxx@gmail.com</div>
-        <div class="personalfile4">電話: 09xxxxxxxx</div>
-      </el-col>
-    </el-row>
-  </div>
+  <el-row class="personalfile1">
+    <el-col :lg="6" :sm="6" :xs="24">
+      <UserMenu />
+    </el-col>
+    <el-col :lg="18" :sm="18" :xs="24">
+      <h1 class="PersonalFileTitle">個人資料</h1>
+      <el-row class="personalfile2">
+        <el-col class="personalfile3">
+          <div class="personalfile4">使用者名稱: JO JO</div>
+          <div class="personalfile4">性別: 男生</div>
+          <div class="personalfile4">生日: 2115年5月7日</div>
+          <div class="personalfile4">Gmail: xxxxxx@gmail.com</div>
+          <div class="personalfile4">電話: 09xxxxxxxx</div>
+        </el-col>
+      </el-row>
+    </el-col>
+
+  </el-row>
 </template>
 
 <script>
@@ -37,11 +42,13 @@ export default {
   background: rgb(255, 255, 255);
   box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
 }
+
 .PersonalFileTitle {
   font-size: 50px;
   margin: auto;
   color: #23995c;
 }
+
 .personalfile2 {
   width: 70%;
   /* margin: auto; */
@@ -50,6 +57,7 @@ export default {
   margin-bottom: auto;
   margin-left: 20%;
 }
+
 /* .personalfile4 {
   font-size: 30px;
 } */
@@ -57,6 +65,7 @@ export default {
   height: 40px;
   margin: 10px;
 }
+
 .personalfile2 .personalfile3 .personalfile4 {
   display: flex;
   align-items: center;

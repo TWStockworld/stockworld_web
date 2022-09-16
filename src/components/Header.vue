@@ -226,6 +226,12 @@ export default defineComponent({
   .computer_size {
     display: none;
   }
+  .phone_size_ul{
+    padding:0;
+  }
+  .phone_size_li a{
+    margin: 0;
+  }
   .phone_size {
     display: block;
   }
@@ -239,9 +245,7 @@ export default defineComponent({
     top: 0%;
     right: 0%;
     width: 75%;
-    /* width: 280px; */
     height: 10%;
-    /* height: 80px; */
     background: rgb(240, 240, 240);
     display: flex;
     justify-content: space-between;
@@ -251,9 +255,7 @@ export default defineComponent({
   }
   .navigation.active {
     width: 100%;
-    /* width: 475px; */
     height: 100%;
-    /* height: 350px; */
     transition: width 0.05s, height 0.05s;
     transition-delay: 0s, 0.1s;
   }
@@ -526,7 +528,6 @@ a {
 
 nav {
   box-sizing: border-box;
-  /* border-bottom: 2px solid; */
   padding: 22px;
   background-color: rgb(240, 240, 240);
 }
@@ -543,29 +544,25 @@ nav a.router-link-exact-active {
   color: #000000;
 }
 
+
 .navigation.active .userBx .username1{
   display: inline-block;
-    color: rgb(255, 190, 11);
-    height: 60%;
-  }
-/* .navigation.active .userBx .username1{
-  display: inline-block;
-    color: rgb(255, 190, 11);
-    animation: movepoint1 3s infinite;
-    -webkit-animation: movepoint1 3s infinite;
+    color: rgb(230, 173, 15);
+    animation: movepoint1 0.2s;
+    -webkit-animation: movepoint1 0.2s;
   }
 
   @keyframes movepoint1 {
     0% {
-      height: 0%;
+      height: 30%;
     }
     50%{
-      height: 60%;
+      height: 50%;
     }
     100% {
-      height: 0%;
+      height: 30%;
     }
-  } */
+  }
 
   
  
