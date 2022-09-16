@@ -2,69 +2,38 @@
   <nav v-if="currentroute != '/'">
     <div class="computer_size">
       <router-link to="/home">
-        <span class="txt"
-          >主頁<span
-            class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-          ></span
-        ></span>
+        <span class="txt">主頁<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/calculate">
-        <span class="txt"
-          >相關度計算<span
-            class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-          ></span
-        ></span>
+        <span class="txt">相關度計算<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/learning">
-        <span class="txt"
-          >投資小學堂<span
-            class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-          ></span
-        ></span>
+        <span class="txt">投資小學堂<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/sort">
-        <span class="txt"
-          >台股分類<span
-            class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-          ></span
-        ></span>
+        <span class="txt">台股分類<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/aboutstock">
-        <span class="txt"
-          >關於股票<span
-            class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-          ></span
-        ></span>
+        <span class="txt">關於股票<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/logout" v-if="token" @click="logout">
-        <span class="txt"
-          >登出<span
-            class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-          ></span
-        ></span>
+        <span class="txt">登出<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
-      <el-input
-        size="large"
-        placeholder="輸入股票代號或名稱"
-        v-model="input3"
-        class="input-with-select"
-      >
+      <el-input size="large" placeholder="輸入股票代號或名稱" v-model="input3" class="input-with-select" type="search">
         <template #append>
-          <el-button type="primary" class="submit2" size="small"
-            >搜尋</el-button
-          >
+          <el-button type="primary" class="submit2" size="small">搜尋</el-button>
         </template>
       </el-input>
     </div>
@@ -79,77 +48,68 @@
       </div>
       <div class="menuToggle"></div>
       <div class="menu">
-         <!--在裡面加入row col-->
-        <div class="phone_size"> 
-          <el-input
-            size="large"
-            placeholder="輸入股票代號或名稱"
-            v-model="input3"
-            class="input-with-select2"
-          >
-            <template #append>
-              <el-button type="primary" class="submit2" size="small"
-                >搜尋</el-button
-              >
-            </template>
-          </el-input>
-       
+        <!--在裡面加入row col-->
+        <div class="phone_size">
+          <el-form @submit.prevent="stocksearch">
+            <el-input size="large" placeholder="輸入股票代號或名稱" v-model="stockid" class="input-with-select2" type="search">
+              <template #append>
+                <el-button type="primary" class="submit2" size="small">搜尋</el-button>
+              </template>
+            </el-input>
+          </el-form>
           <router-link to="/home" class="menuset">
-            <a class="menuset2" href="#"
-              ><ion-icon name="home-outline"></ion-icon>主頁</a
-            >
+            <a class="menuset2" href="#">
+              <ion-icon name="home-outline"></ion-icon>主頁
+            </a>
           </router-link>
 
           <router-link to="/calculate" class="menuset">
-            <a class="menuset2" href="#"
-              ><ion-icon name="calculator-outline"></ion-icon>相關度計算</a
-            >
+            <a class="menuset2" href="#">
+              <ion-icon name="calculator-outline"></ion-icon>相關度計算
+            </a>
           </router-link>
 
           <router-link to="/learning" class="menuset">
-            <a class="menuset2" href="#"
-              ><ion-icon name="pencil-outline"></ion-icon>投資小學堂</a
-            >
+            <a class="menuset2" href="#">
+              <ion-icon name="pencil-outline"></ion-icon>投資小學堂
+            </a>
           </router-link>
 
           <router-link to="/sort" class="menuset">
-            <a class="menuset2" href="#"
-              ><ion-icon name="funnel-outline"></ion-icon>股票分類</a
-            >
+            <a class="menuset2" href="#">
+              <ion-icon name="funnel-outline"></ion-icon>股票分類
+            </a>
           </router-link>
 
           <router-link to="/aboutstock" class="menuset">
-            <a class="menuset2" href="#"
-              ><ion-icon name="bar-chart-outline"></ion-icon>關於股票</a
-            >
+            <a class="menuset2" href="#">
+              <ion-icon name="bar-chart-outline"></ion-icon>關於股票
+            </a>
           </router-link>
 
-          <router-link
-            to="/logout"
-            v-if="token"
-            @click="logout"
-            class="menuset"
-          >
-            <a class="menuset2" href="#"
-              ><ion-icon name="log-out-outline"></ion-icon>登出</a
-            >
+          <router-link to="/logout" v-if="token" @click="logout" class="menuset">
+            <a class="menuset2" href="#">
+              <ion-icon name="log-out-outline"></ion-icon>登出
+            </a>
           </router-link>
         </div>
         <!--*****************************************************-->
         <router-link to="/personalfile" v-if="!token" class="menuset">
-          <a class="menuset2" href="#"
-            ><ion-icon name="person-outline"></ion-icon>My Profile</a
-          >
+          <a class="menuset2" href="#">
+            <ion-icon name="person-outline"></ion-icon>My Profile
+          </a>
         </router-link>
 
         <router-link to="/register" v-if="!token" class="menuset">
-          <a class="menuset2" href="#"><ion-icon name="add"></ion-icon>註冊</a>
+          <a class="menuset2" href="#">
+            <ion-icon name="add"></ion-icon>註冊
+          </a>
         </router-link>
 
         <router-link to="/login" v-if="!token" class="menuset">
-          <a class="menuset2" href="#"
-            ><ion-icon name="log-in-outline"></ion-icon>登入</a
-          >
+          <a class="menuset2" href="#">
+            <ion-icon name="log-in-outline"></ion-icon>登入
+          </a>
         </router-link>
       </div>
     </div>
@@ -158,30 +118,27 @@
       =document.querySelector('.navigation'); menuToggle.onclick =
       function(){navigation.classList.toggle('active') }
     </component>
-    <component
-      :is="'script'"
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></component>
-    <component
-      :is="'script'"
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></component>
+    <component :is="'script'" type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
+    </component>
+    <component :is="'script'" nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></component>
   </nav>
 </template>
 <script>
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
+  /*
   setup() {
+    const input3 = ref("")
     return {
-      input3: ref(""),
+      input3
     };
   },
+  */
   props: ["currentroute"],
   data() {
     return {
+      stockid: "",
       token: this.$Cookies.get("token"),
     };
   },
@@ -190,6 +147,10 @@ export default defineComponent({
       this.$Cookies.remove("token");
       this.$router.push("/home");
     },
+    stocksearch() {
+      this.router.push("/aboutstock");
+      this.$emit("header_stockid",this.stockid);
+    }
   },
 });
 </script>
@@ -199,16 +160,20 @@ export default defineComponent({
   nav {
     height: 10%;
   }
+
   .computer_size {
     display: none;
   }
+
   .phone_size {
     display: block;
   }
+
   .input-with-select2 {
     background-color: #fff;
     width: 80%;
   }
+
   .navigation {
     z-index: 10;
     position: fixed;
@@ -225,6 +190,7 @@ export default defineComponent({
     transition-delay: 0s, 0.1s;
     overflow: hidden;
   }
+
   .navigation.active {
     width: 90%;
     /* width: 475px; */
@@ -244,16 +210,18 @@ export default defineComponent({
     transition: 0.2s;
     transition-delay: 0.2s;
   }
+
   .navigation.active .userBx {
     width: calc(100% - 80px);
     transition-delay: 0s;
   }
+
   .navigation .userBx .username1 {
     white-space: nowrap;
     color: #555;
     font-size: 1.1em;
   }
-  
+
   .navigation .userBx .imgBx {
     position: relative;
     min-width: 60px;
@@ -263,6 +231,7 @@ export default defineComponent({
     border-radius: 50%;
     border: 10px solid rgb(240, 240, 240);
   }
+
   .navigation .userBx .imgBx .img-responsive1 {
     position: absolute;
     top: 0;
@@ -281,6 +250,7 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
   }
+
   .navigation .menuToggle::before {
     content: "";
     position: absolute;
@@ -291,6 +261,7 @@ export default defineComponent({
     box-shadow: 0 10px #555;
     transition: 0.2s;
   }
+
   .navigation .menuToggle::after {
     content: "";
     position: absolute;
@@ -300,13 +271,16 @@ export default defineComponent({
     transform: translateY(10px);
     transition: 0.2s;
   }
+
   .navigation.active .menuToggle::before {
     transform: translateY(0px) rotate(45deg);
     box-shadow: 0 0 #555;
   }
+
   .navigation.active .menuToggle::after {
     transform: translateY(0px) rotate(-45deg);
   }
+
   .menu {
     z-index: 2;
     position: absolute;
@@ -316,9 +290,11 @@ export default defineComponent({
     padding: 0px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
+
   .menu .menuset {
     list-style: none;
   }
+
   .menu .menuset .menuset2 {
     display: flex;
     align-items: center;
@@ -328,9 +304,11 @@ export default defineComponent({
     text-decoration: none;
     color: #555;
   }
+
   .menu .menuset .menuset2:hover {
     color: #4e65ff;
   }
+
   .menu .menuset .menuset2 ion-icon {
     font-size: 1.5em;
   }
@@ -346,6 +324,7 @@ export default defineComponent({
     left: 5px;
     width: 200px;
   }
+
   .navigation {
     z-index: 10;
     position: fixed;
@@ -360,6 +339,7 @@ export default defineComponent({
     transition-delay: 0s, 0.1s;
     overflow: hidden;
   }
+
   .navigation.active {
     width: 280px;
     height: 300px;
@@ -377,16 +357,18 @@ export default defineComponent({
     transition: 0.2s;
     transition-delay: 0.2s;
   }
+
   .navigation.active .userBx {
     width: calc(100% - 80px);
     transition-delay: 0s;
   }
+
   .navigation .userBx .username1 {
     white-space: nowrap;
     color: #555;
     font-size: 1.1em;
   }
-  
+
   .navigation .userBx .imgBx {
     position: relative;
     min-width: 60px;
@@ -396,6 +378,7 @@ export default defineComponent({
     border-radius: 50%;
     border: 10px solid rgb(240, 240, 240);
   }
+
   .navigation .userBx .imgBx .img-responsive1 {
     position: absolute;
     top: 0;
@@ -414,6 +397,7 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
   }
+
   .navigation .menuToggle::before {
     content: "";
     position: absolute;
@@ -424,6 +408,7 @@ export default defineComponent({
     box-shadow: 0 10px #555;
     transition: 0.2s;
   }
+
   .navigation .menuToggle::after {
     content: "";
     position: absolute;
@@ -433,13 +418,16 @@ export default defineComponent({
     transform: translateY(10px);
     transition: 0.2s;
   }
+
   .navigation.active .menuToggle::before {
     transform: translateY(0px) rotate(45deg);
     box-shadow: 0 0 #555;
   }
+
   .navigation.active .menuToggle::after {
     transform: translateY(0px) rotate(-45deg);
   }
+
   .menu {
     z-index: 2;
     position: absolute;
@@ -449,9 +437,11 @@ export default defineComponent({
     padding: 0px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
+
   .menu .menuset {
     list-style: none;
   }
+
   .menu .menuset .menuset2 {
     display: flex;
     align-items: center;
@@ -461,9 +451,11 @@ export default defineComponent({
     text-decoration: none;
     color: #555;
   }
+
   .menu .menuset .menuset2:hover {
     color: #4e65ff;
   }
+
   .menu .menuset .menuset2 ion-icon {
     font-size: 1.5em;
   }
@@ -473,6 +465,7 @@ export default defineComponent({
   position: relative;
   display: block;
 }
+
 .bar {
   display: block;
   background-color: #000;
@@ -484,6 +477,7 @@ export default defineComponent({
   margin: auto;
   width: 0%;
 }
+
 nav a:hover .bar {
   width: 100%;
   transition: all 0.5s linear;
@@ -513,28 +507,25 @@ nav a.router-link-exact-active {
 }
 
 
-.navigation.active .userBx .username1{
+.navigation.active .userBx .username1 {
   display: inline-block;
-    color: rgb(255, 3, 3);
-    /* height: 50%; */
-    animation: movepoint1 3s infinite;
-    -webkit-animation: movepoint1 3s infinite;
+  color: rgb(255, 3, 3);
+  /* height: 50%; */
+  animation: movepoint1 3s infinite;
+  -webkit-animation: movepoint1 3s infinite;
+}
+
+@keyframes movepoint1 {
+  0% {
+    height: 0%;
   }
 
-  @keyframes movepoint1 {
-    0% {
-      height: 0%;
-    }
-    50%{
-      height: 60%;
-    }
-    100% {
-      height: 0%;
-    }
+  50% {
+    height: 60%;
   }
 
-  
- 
-
-
+  100% {
+    height: 0%;
+  }
+}
 </style>

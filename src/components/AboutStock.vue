@@ -1,10 +1,10 @@
 <template>
   <el-row >
     <el-col :lg="10" :sm="24" :xs="24" class="high">
-      <Tradeviewchart />
-      <Header :input3="StockName" ></Header>
-    </el-col>
+      <Tradeviewchart :stockid="aboutstock_stockid" />
 
+    </el-col>
+    
     <el-col :lg="14" :sm="24" :xs="24">
       <el-row style="height:50%">
         <div class="grid-content bg-purple-light" >
@@ -101,7 +101,7 @@ export default defineComponent({
   },
   data() {
     return {
-      StockName:"",
+      aboutstock_stockid:"",
       RankStock1: [
         {
           rank1: "1",

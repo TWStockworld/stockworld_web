@@ -57,9 +57,10 @@ const routes = [
     component: LoginView,
   },
   {
-    path: "/aboutstock",
+    path: "/aboutstock/:stockid",
     name: "aboutstock",
     component: AboutStockView,
+    props:true,
   },
   {
     path: "/tsmc",
