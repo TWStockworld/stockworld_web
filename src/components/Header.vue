@@ -81,76 +81,100 @@
       <div class="menu">
          <!--在裡面加入row col-->
         <div class="phone_size"> 
-          <el-input
-            size="large"
-            placeholder="輸入股票代號或名稱"
-            v-model="input3"
-            class="input-with-select2"
-          >
-            <template #append>
-              <el-button type="primary" class="submit2" size="small"
-                >搜尋</el-button
+          <ul class="phone_size_ul">
+            <li class="phone_size_li">
+              <el-input
+              size="large"
+              placeholder="輸入股票代號或名稱"
+              v-model="input3"
+              class="input-with-select2"
               >
-            </template>
-          </el-input>
-       
-          <router-link to="/home" class="menuset">
-            <a class="menuset2" href="#"
-              ><ion-icon name="home-outline"></ion-icon>主頁</a
-            >
-          </router-link>
+                <template #append>
+                  <el-button type="primary" class="submit2" size="small"
+                    >搜尋</el-button
+                  >
+                </template>
+              </el-input>
+            </li>
+            
+            <li class="phone_size_li">
+              <router-link to="/home" class="menuset">
+                <a class="menuset2" href="#"
+                  ><ion-icon name="home-outline"></ion-icon>主頁</a
+                >
+              </router-link>
+            </li>
 
-          <router-link to="/calculate" class="menuset">
-            <a class="menuset2" href="#"
-              ><ion-icon name="calculator-outline"></ion-icon>相關度計算</a
-            >
-          </router-link>
+            <li class="phone_size_li">
+              <router-link to="/calculate" class="menuset">
+                <a class="menuset2" href="#"
+                  ><ion-icon name="calculator-outline"></ion-icon>相關度計算</a
+                >
+              </router-link>
+            </li>
 
-          <router-link to="/learning" class="menuset">
-            <a class="menuset2" href="#"
-              ><ion-icon name="pencil-outline"></ion-icon>投資小學堂</a
-            >
-          </router-link>
+            <li class="phone_size_li">
+              <router-link to="/learning" class="menuset">
+                <a class="menuset2" href="#"
+                  ><ion-icon name="pencil-outline"></ion-icon>投資小學堂</a
+                >
+              </router-link>
+            </li>
 
-          <router-link to="/sort" class="menuset">
-            <a class="menuset2" href="#"
-              ><ion-icon name="funnel-outline"></ion-icon>股票分類</a
-            >
-          </router-link>
+            <li class="phone_size_li">
+              <router-link to="/sort" class="menuset">
+                <a class="menuset2" href="#"
+                  ><ion-icon name="funnel-outline"></ion-icon>股票分類</a
+                >
+              </router-link>
+            </li>
 
-          <router-link to="/aboutstock" class="menuset">
-            <a class="menuset2" href="#"
-              ><ion-icon name="bar-chart-outline"></ion-icon>關於股票</a
-            >
-          </router-link>
+            <li class="phone_size_li">
+              <router-link to="/aboutstock" class="menuset">
+                <a class="menuset2" href="#"
+                  ><ion-icon name="bar-chart-outline"></ion-icon>關於股票</a
+                >
+              </router-link>
+            </li>
 
-          <router-link
-            to="/logout"
-            v-if="token"
-            @click="logout"
-            class="menuset"
-          >
-            <a class="menuset2" href="#"
-              ><ion-icon name="log-out-outline"></ion-icon>登出</a
-            >
-          </router-link>
-        </div>
+            <li class="phone_size_li">
+              <router-link
+              to="/logout"
+              v-if="token"
+              @click="logout"
+              class="menuset"
+              >
+                <a class="menuset2" href="#"
+                  ><ion-icon name="log-out-outline"></ion-icon>登出</a
+                >
+              </router-link>
+            </li>
+          </ul>   
+         </div>
         <!--*****************************************************-->
-        <router-link to="/personalfile" v-if="!token" class="menuset">
-          <a class="menuset2" href="#"
-            ><ion-icon name="person-outline"></ion-icon>My Profile</a
-          >
-        </router-link>
+        <ul class="phone_size_ul">
+          <li class="phone_size_li">
+            <router-link to="/personalfile" v-if="!token" class="menuset">
+              <a class="menuset2" href="#"
+                ><ion-icon name="person-outline"></ion-icon>My Profile</a
+              >
+            </router-link>
+          </li>
+          
+          <li class="phone_size_li">
+            <router-link to="/register" v-if="!token" class="menuset">
+              <a class="menuset2" href="#"><ion-icon name="add"></ion-icon>註冊</a>
+            </router-link>
+          </li>
 
-        <router-link to="/register" v-if="!token" class="menuset">
-          <a class="menuset2" href="#"><ion-icon name="add"></ion-icon>註冊</a>
-        </router-link>
-
-        <router-link to="/login" v-if="!token" class="menuset">
-          <a class="menuset2" href="#"
-            ><ion-icon name="log-in-outline"></ion-icon>登入</a
-          >
-        </router-link>
+          <li class="phone_size_li">
+            <router-link to="/login" v-if="!token" class="menuset">
+              <a class="menuset2" href="#"
+                ><ion-icon name="log-in-outline"></ion-icon>登入</a
+              >
+            </router-link>
+          </li>
+        </ul>
       </div>
     </div>
     <component :is="'script'">
@@ -226,9 +250,9 @@ export default defineComponent({
     overflow: hidden;
   }
   .navigation.active {
-    width: 90%;
+    width: 100%;
     /* width: 475px; */
-    height: 55%;
+    height: 100%;
     /* height: 350px; */
     transition: width 0.05s, height 0.05s;
     transition-delay: 0s, 0.1s;
@@ -322,9 +346,9 @@ export default defineComponent({
   .menu .menuset .menuset2 {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     margin: 15px;
-    font-size: 1em;
+    font-size: 0.8em;
     text-decoration: none;
     color: #555;
   }
@@ -333,6 +357,10 @@ export default defineComponent({
   }
   .menu .menuset .menuset2 ion-icon {
     font-size: 1.5em;
+  }
+  .phone_size_li{
+    list-style: none;
+    padding: 2%;
   }
 }
 
@@ -362,7 +390,7 @@ export default defineComponent({
   }
   .navigation.active {
     width: 280px;
-    height: 300px;
+    height: 320px;
     transition: width 0.05s, height 0.05s;
     transition-delay: 0s, 0.1s;
   }
@@ -467,6 +495,9 @@ export default defineComponent({
   .menu .menuset .menuset2 ion-icon {
     font-size: 1.5em;
   }
+  .phone_size_li{
+    list-style: none;
+  }
 }
 
 .txt {
@@ -512,11 +543,14 @@ nav a.router-link-exact-active {
   color: #000000;
 }
 
-
 .navigation.active .userBx .username1{
   display: inline-block;
-    color: rgb(255, 3, 3);
-    /* height: 50%; */
+    color: rgb(255, 190, 11);
+    height: 60%;
+  }
+/* .navigation.active .userBx .username1{
+  display: inline-block;
+    color: rgb(255, 190, 11);
     animation: movepoint1 3s infinite;
     -webkit-animation: movepoint1 3s infinite;
   }
@@ -531,7 +565,7 @@ nav a.router-link-exact-active {
     100% {
       height: 0%;
     }
-  }
+  } */
 
   
  
