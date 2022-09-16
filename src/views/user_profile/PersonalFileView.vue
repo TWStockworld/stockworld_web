@@ -1,5 +1,5 @@
 <template>
-  <el-row class="personalfile1">
+  <el-row>
     <el-col :lg="6" :sm="6" :xs="24">
       <UserMenu />
     </el-col>

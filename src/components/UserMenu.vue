@@ -1,5 +1,5 @@
 <template>
-  <div class="userprofile1">
+  <div >
     <div class="top">
       <div class="photo">
         <img class="img-responsive2" src="@/assets/img/logo.png" />
@@ -90,12 +90,12 @@
       object-fit: cover;
     }
     .sidebar1 {
-      position: absolute;
+      /* position: absolute;
       width: 100%;
       height: calc(100% - 200px);
       margin-top: 50px;
       padding: 20px;
-      /* border-top: 1px solid rgba(0, 0, 0, 0.1); */
+      border-top: 1px solid rgba(0, 0, 0, 0.1); */
     }
     .sidebar1 .userprofile2 {
       list-style: none;
