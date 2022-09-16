@@ -1,7 +1,7 @@
 <template>
   <nav v-if="currentroute != '/'">
     <div class="computer_size">
-      <router-link to="/home">
+      <router-link to="/ranking">
         <span class="txt"
           >主頁<span
             class="bar"
@@ -98,7 +98,7 @@
             </li>
             
             <li class="phone_size_li">
-              <router-link to="/home" class="menuset">
+              <router-link to="/ranking" class="menuset">
                 <a class="menuset2" href="#"
                   ><ion-icon name="home-outline"></ion-icon>主頁</a
                 >
@@ -212,7 +212,7 @@ export default defineComponent({
   methods: {
     logout() {
       this.$Cookies.remove("token");
-      this.$router.push("/home");
+      this.$router.push("/ranking");
     },
   },
 });

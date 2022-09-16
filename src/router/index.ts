@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import StartView from "../views/StartView";
-import HomeView from "../views/HomeView.vue";
 import CalculateView from "../views/CalculateView.vue";
 import AboutStockView from "../views/AboutStockView.vue";
 import SortView from "../views/SortView";
@@ -30,11 +29,6 @@ const routes = [
     path: "/",
     name: "start",
     component: StartView,
-  },
-  {
-    path: "/home",
-    name: "home",
-    component: HomeView,
   },
   {
     path: "/calculate",
