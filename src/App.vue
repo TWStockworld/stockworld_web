@@ -28,10 +28,10 @@ export default {
   },
   mounted() {
     // 下雪
-    this.$Snow.excludeMobile = false;
-    this.$Snow.animationInterval = 33;
-    this.$Snow.followMouse = false;
-    this.$Snow.flakesMaxActive = 35;
+    // this.$Snow.excludeMobile = false;
+    // this.$Snow.animationInterval = 33;
+    // this.$Snow.followMouse = false;
+    // this.$Snow.flakesMaxActive = 35;
     // 下雪
   },
 };
@@ -39,8 +39,11 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
-body {
-  font-family: "Noto Sans TC", sans-serif !important;
+
+body,
+html {
+  margin: 0;
+  padding: 0;
 }
 
 #app {
@@ -48,19 +51,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  font-family: "Noto Sans TC", sans-serif !important;
 }
 
 .bak {
   background-color: #6ea5e9;
   background-image: url("assets/img/Snow.svg");
-  position: fixed;
-  width: 100%;
   height: 100%;
+  width: 100%;
   background-attachment: fixed;
   background-size: cover;
-}
-body {
-  margin: 0;
-  padding: 0;
 }
 </style>

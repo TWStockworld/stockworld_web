@@ -1,28 +1,28 @@
 <template>
   <div class="LB1">
-    <ul>
-      <li>
+    <ul class="leftbulletin_ul">
+      <li class="leftbulletin_li">
         <el-button @click="ranking" style="width: auto; height: 50px; font-size: 2vh">關係度總排行</el-button>
       </li>
-      <li>
+      <li class="leftbulletin_li">
         <el-button @click="tsmc" style="width: auto; height: 50px; font-size: 2vh">台積電</el-button>
       </li>
-      <li>
+      <li class="leftbulletin_li">
         <el-button style="width: auto; height: 50px; font-size: 2vh">鴻海電動車</el-button>
       </li>
-      <li>
+      <li class="leftbulletin_li">
         <el-button style="width: auto; height: 50px; font-size: 2vh">電動車</el-button>
       </li>
-      <li>
+      <li class="leftbulletin_li">
         <el-button style="width: auto; height: 50px; font-size: 2vh">電動車</el-button>
       </li>
-      <li>
+      <li class="leftbulletin_li">
         <el-button style="width: auto; height: 50px; font-size: 2vh">電動車</el-button>
       </li>
-      <li>
+      <li class="leftbulletin_li">
         <el-button style="width: auto; height: 50px; font-size: 2vh">電動車</el-button>
       </li>
-      <li>
+      <li class="leftbulletin_li">
         <el-button style="width: auto; height: 50px; font-size: 2vh">電動車</el-button>
       </li>
     </ul>
@@ -46,7 +46,7 @@ export default {
 
 <style>
 @media only screen and (max-width: 1200px) {
-  ul {
+  .leftbulletin_ul {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 8rem ;
@@ -56,13 +56,13 @@ export default {
     overflow-x: scroll;
   }
 
-  li {
+  .leftbulletin_li {
     display: inline;
   }
 }
 
 @media only screen and (min-width: 1200px) {
-  ul {
+  .leftbulletin_ul {
     list-style-type: none;
     height: 100vh;
     overflow-y: scroll;

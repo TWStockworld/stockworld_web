@@ -19,8 +19,8 @@
   </div>
 
   <div class="sort_cellphonesize">
-    <ul>
-      <li>
+    <ul class="sort_cellphonesize_ul">
+      <li class="sort_cellphonesize_li">
         <el-card class="box-card">
           <template #header>
             <div class="clearfix">
@@ -33,7 +33,7 @@
         </el-card>
       </li>
       <div class="tab11"></div>
-      <li>
+      <li class="sort_cellphonesize_li">
         <el-card class="box-card">
           <template #header>
             <div class="clearfix">
@@ -46,7 +46,7 @@
         </el-card>
       </li>
       <div class="tab11"></div>
-      <li>
+      <li class="sort_cellphonesize_li">
         <el-card class="box-card">
           <template #header>
             <div class="clearfix">
@@ -59,7 +59,7 @@
         </el-card>
       </li>
       <div class="tab11"></div>
-      <li>
+      <li class="sort_cellphonesize_li">
         <el-card class="box-card">
           <template #header>
             <div class="clearfix">
@@ -72,7 +72,7 @@
         </el-card>
       </li>
       <div class="tab11"></div>
-      <li>
+      <li class="sort_cellphonesize_li">
         <el-card class="box-card">
           <template #header>
             <div class="clearfix">
@@ -122,18 +122,18 @@ export default {
       clear: both
     }
     .box-card {
-      width: 75%;
+      width: 90%;
     }
-    ul {
+    .sort_cellphonesize_ul {
       list-style-type: none;
       height: 85vh;
       overflow-y: scroll;
     }
     .tab11{
-      height: 3%;
+      height: 1%;
     }
     .sort_cellphonesize {
-      width: 85%;
+      width: 90%;
       /* margin: auto; */
       margin-top: 6%;
       margin-right: auto;

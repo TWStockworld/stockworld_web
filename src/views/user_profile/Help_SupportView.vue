@@ -1,7 +1,10 @@
 <template>
-  <div class="helpsupport1">
-    <UserMenu />
-    <h1 class="HelpSupportTitle">幫助</h1>
+  <el-row class="helpsupport1">
+    <el-col  :lg="6" :sm="6" :xs="24">
+      <UserMenu />
+    </el-col>
+    <el-col :lg="18" :sm="18" :xs="24">
+      <h1 class="HelpSupportTitle">幫助</h1>
     <el-row class="helpsupport2">
       <el-col class="helpsupport3">
         <div class="helpsupport4">
@@ -24,7 +27,8 @@
         </div>
       </el-col>
     </el-row>
-  </div>
+    </el-col>
+  </el-row>
 </template>
 
 <script>

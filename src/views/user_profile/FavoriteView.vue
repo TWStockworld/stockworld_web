@@ -1,52 +1,47 @@
 <template>
-  <div class="favorite1">
-    <UserMenu />
-    <h1 class="FavoriteTitle">最愛</h1>
-    <el-row class="favorite2">
-      <el-col class="favorite3">
-        <div class="grid-content bg-purple-light">
-          <div class="favorite4">
-            <h3>上市水泥類股-成分股即時資訊</h3>
-            <el-table
-              :data="StockFavorite"
-              border
-              stripe
-              style="width: 100%"
-              max-height="250"
-              :default-sort="{ prop: 'code', prop: 'time' }"
-            >
-              <el-table-column prop="code" label="代號" sortable width="93">
-              </el-table-column>
-              <el-table-column prop="name" label="名稱" width="93">
-              </el-table-column>
-              <el-table-column prop="FinalPrice" label="成交價" width="93">
-              </el-table-column>
-              <el-table-column prop="UPandDown" label="漲跌" width="93">
-              </el-table-column>
-              <el-table-column
-                prop="UPandDownAmplitude"
-                label="漲跌幅"
-                width="93"
-              >
-              </el-table-column>
-              <el-table-column prop="buy" label="買進" width="93">
-              </el-table-column>
-              <el-table-column prop="sell" label="賣出" width="93">
-              </el-table-column>
-              <el-table-column prop="opening" label="開盤" width="93">
-              </el-table-column>
-              <el-table-column prop="ReceivedYesterday" label="昨收" width="93">
-              </el-table-column>
-              <el-table-column prop="volume" label="成交量" width="93">
-              </el-table-column>
-              <el-table-column prop="time" label="時間" sortable width="93">
-              </el-table-column>
-            </el-table>
+  <el-row class="favorite1">
+    <el-col :lg="6" :sm="6" :xs="24">
+      <UserMenu />
+    </el-col>
+    <el-col :lg="6" :sm="6" :xs="24">
+      <h1 class="FavoriteTitle">最愛</h1>
+      <el-row class="favorite2">
+        <el-col class="favorite3">
+          <div class="grid-content bg-purple-light">
+            <div class="favorite4">
+              <h3>上市水泥類股-成分股即時資訊</h3>
+              <el-table :data="StockFavorite" border stripe style="width: 100%" max-height="250"
+                :default-sort="{ prop: 'code', prop: 'time' }">
+                <el-table-column prop="code" label="代號" sortable width="93">
+                </el-table-column>
+                <el-table-column prop="name" label="名稱" width="93">
+                </el-table-column>
+                <el-table-column prop="FinalPrice" label="成交價" width="93">
+                </el-table-column>
+                <el-table-column prop="UPandDown" label="漲跌" width="93">
+                </el-table-column>
+                <el-table-column prop="UPandDownAmplitude" label="漲跌幅" width="93">
+                </el-table-column>
+                <el-table-column prop="buy" label="買進" width="93">
+                </el-table-column>
+                <el-table-column prop="sell" label="賣出" width="93">
+                </el-table-column>
+                <el-table-column prop="opening" label="開盤" width="93">
+                </el-table-column>
+                <el-table-column prop="ReceivedYesterday" label="昨收" width="93">
+                </el-table-column>
+                <el-table-column prop="volume" label="成交量" width="93">
+                </el-table-column>
+                <el-table-column prop="time" label="時間" sortable width="93">
+                </el-table-column>
+              </el-table>
+            </div>
           </div>
-        </div>
-      </el-col>
-    </el-row>
-  </div>
+        </el-col>
+      </el-row>
+    </el-col>
+
+  </el-row>
 </template>
 
 <script>
@@ -57,8 +52,8 @@ export default {
   components: {
     UserMenu,
   },
-  data(){
-    return{
+  data() {
+    return {
       StockFavorite: [
         {
           code: "--",
@@ -176,6 +171,7 @@ export default {
   margin: auto;
   color: #23995c;
 }
+
 .favorite1 {
   z-index: -1;
   position: fixed;
@@ -186,18 +182,21 @@ export default {
   background: rgb(255, 255, 255);
   box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
 }
+
 .favorite2 {
-   width: 70%;
+  width: 70%;
   /* margin: auto; */
   margin-top: 10%;
   margin-right: auto;
   margin-bottom: auto;
   margin-left: auto;
 }
+
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
 }
+
 .favorite3 {
   border-radius: 4px;
 }
