@@ -2,12 +2,8 @@
   <nav v-if="currentroute != '/'">
     <div class="computer_size">
       <router-link to="/ranking">
-        <span class="txt"
-          >主頁<span
-            class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-          ></span
-        ></span>
+        <span class="txt">主頁<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/calculate">
@@ -36,9 +32,9 @@
       </router-link>
       <el-form @submit.prevent="stocksearch">
         <el-input size="large" placeholder="輸入股票代號或名稱" v-model="stockid" class="input-with-select" type="search">
-          
-            <el-button type="primary" class="submit2" size="small" native-type="submit">搜尋</el-button>
-         
+
+          <el-button type="primary" class="submit2" size="small" native-type="submit">搜尋</el-button>
+
         </el-input>
       </el-form>
     </div>
@@ -53,99 +49,89 @@
       </div>
       <div class="menuToggle"></div>
       <div class="menu">
-         <!--在裡面加入row col-->
-        <div class="phone_size"> 
+        <!--在裡面加入row col-->
+        <div class="phone_size">
           <ul class="phone_size_ul">
             <li class="phone_size_li">
-              <el-input
-              size="large"
-              placeholder="輸入股票代號或名稱"
-              v-model="input3"
-              class="input-with-select2"
-              >
+              <el-input size="large" placeholder="輸入股票代號或名稱" v-model="input3" class="input-with-select2">
                 <template #append>
-                  <el-button type="primary" class="submit2" size="small"
-                    >搜尋</el-button
-                  >
+                  <el-button type="primary" class="submit2" size="small">搜尋</el-button>
                 </template>
               </el-input>
             </li>
-            
+
             <li class="phone_size_li">
               <router-link to="/ranking" class="menuset">
-                <a class="menuset2" href="#"
-                  ><ion-icon name="home-outline"></ion-icon>主頁</a
-                >
+                <a class="menuset2" href="#">
+                  <ion-icon name="home-outline"></ion-icon>主頁
+                </a>
               </router-link>
             </li>
 
             <li class="phone_size_li">
               <router-link to="/calculate" class="menuset">
-                <a class="menuset2" href="#"
-                  ><ion-icon name="calculator-outline"></ion-icon>相關度計算</a
-                >
+                <a class="menuset2" href="#">
+                  <ion-icon name="calculator-outline"></ion-icon>相關度計算
+                </a>
               </router-link>
             </li>
 
             <li class="phone_size_li">
               <router-link to="/learning" class="menuset">
-                <a class="menuset2" href="#"
-                  ><ion-icon name="pencil-outline"></ion-icon>投資小學堂</a
-                >
+                <a class="menuset2" href="#">
+                  <ion-icon name="pencil-outline"></ion-icon>投資小學堂
+                </a>
               </router-link>
             </li>
 
             <li class="phone_size_li">
               <router-link to="/sort" class="menuset">
-                <a class="menuset2" href="#"
-                  ><ion-icon name="funnel-outline"></ion-icon>股票分類</a
-                >
+                <a class="menuset2" href="#">
+                  <ion-icon name="funnel-outline"></ion-icon>股票分類
+                </a>
               </router-link>
             </li>
 
             <li class="phone_size_li">
               <router-link to="/aboutstock" class="menuset">
-                <a class="menuset2" href="#"
-                  ><ion-icon name="bar-chart-outline"></ion-icon>關於股票</a
-                >
+                <a class="menuset2" href="#">
+                  <ion-icon name="bar-chart-outline"></ion-icon>關於股票
+                </a>
               </router-link>
             </li>
 
             <li class="phone_size_li">
-              <router-link
-              to="/logout"
-              v-if="token"
-              @click="logout"
-              class="menuset"
-              >
-                <a class="menuset2" href="#"
-                  ><ion-icon name="log-out-outline"></ion-icon>登出</a
-                >
+              <router-link to="/logout" v-if="token" @click="logout" class="menuset">
+                <a class="menuset2" href="#">
+                  <ion-icon name="log-out-outline"></ion-icon>登出
+                </a>
               </router-link>
             </li>
-          </ul>   
-         </div>
+          </ul>
+        </div>
         <!--*****************************************************-->
         <ul class="phone_size_ul">
           <li class="phone_size_li">
             <router-link to="/personalfile" v-if="!token" class="menuset">
-              <a class="menuset2" href="#"
-                ><ion-icon name="person-outline"></ion-icon>My Profile</a
-              >
+              <a class="menuset2" href="#">
+                <ion-icon name="person-outline"></ion-icon>My Profile
+              </a>
             </router-link>
           </li>
-          
+
           <li class="phone_size_li">
             <router-link to="/register" v-if="!token" class="menuset">
-              <a class="menuset2" href="#"><ion-icon name="add"></ion-icon>註冊</a>
+              <a class="menuset2" href="#">
+                <ion-icon name="add"></ion-icon>註冊
+              </a>
             </router-link>
           </li>
 
           <li class="phone_size_li">
             <router-link to="/login" v-if="!token" class="menuset">
-              <a class="menuset2" href="#"
-                ><ion-icon name="log-in-outline"></ion-icon>登入</a
-              >
+              <a class="menuset2" href="#">
+                <ion-icon name="log-in-outline"></ion-icon>登入
+              </a>
             </router-link>
           </li>
         </ul>
@@ -198,6 +184,10 @@ export default defineComponent({
 </script>
 
 <style>
+.el-form {
+  display: inline-block;
+}
+
 @media only screen and (max-width: 768px) {
   nav {
     height: 10%;
@@ -206,12 +196,15 @@ export default defineComponent({
   .computer_size {
     display: none;
   }
-  .phone_size_ul{
-    padding:0;
+
+  .phone_size_ul {
+    padding: 0;
   }
-  .phone_size_li a{
+
+  .phone_size_li a {
     margin: 0;
   }
+
   .phone_size {
     display: block;
   }
@@ -355,7 +348,8 @@ export default defineComponent({
   .menu .menuset .menuset2 ion-icon {
     font-size: 1.5em;
   }
-  .phone_size_li{
+
+  .phone_size_li {
     list-style: none;
     padding: 2%;
   }
@@ -506,7 +500,8 @@ export default defineComponent({
   .menu .menuset .menuset2 ion-icon {
     font-size: 1.5em;
   }
-  .phone_size_li{
+
+  .phone_size_li {
     list-style: none;
   }
 }
@@ -558,25 +553,22 @@ nav a.router-link-exact-active {
 
 .navigation.active .userBx .username1 {
   display: inline-block;
-    color: rgb(230, 173, 15);
-    animation: movepoint1 0.2s;
-    -webkit-animation: movepoint1 0.2s;
+  color: rgb(230, 173, 15);
+  animation: movepoint1 0.2s;
+  -webkit-animation: movepoint1 0.2s;
+}
+
+@keyframes movepoint1 {
+  0% {
+    height: 30%;
   }
 
-  @keyframes movepoint1 {
-    0% {
-      height: 30%;
-    }
-    50%{
-      height: 50%;
-    }
-    100% {
-      height: 30%;
-    }
+  50% {
+    height: 50%;
   }
 
-  
- 
-
-
+  100% {
+    height: 30%;
+  }
+}
 </style>
