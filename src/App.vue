@@ -1,6 +1,6 @@
 <template>
   <div class="bak">
-    <Header :currentroute="this.$route.path" />
+    <Header :currentroute="this.$route.path" @header_stockid="stockid" />
     <router-view />
   </div>
 </template>

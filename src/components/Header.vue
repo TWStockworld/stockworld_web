@@ -11,62 +11,36 @@
       </router-link>
 
       <router-link to="/calculate">
-        <span class="txt"
-          >相關度計算<span
-            class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-          ></span
-        ></span>
+        <span class="txt">相關度計算<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/learning">
-        <span class="txt"
-          >投資小學堂<span
-            class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-          ></span
-        ></span>
+        <span class="txt">投資小學堂<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/sort">
-        <span class="txt"
-          >台股分類<span
-            class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-          ></span
-        ></span>
+        <span class="txt">台股分類<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/aboutstock">
-        <span class="txt"
-          >關於股票<span
-            class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-          ></span
-        ></span>
+        <span class="txt">關於股票<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/logout" v-if="token" @click="logout">
-        <span class="txt"
-          >登出<span
-            class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"
-          ></span
-        ></span>
+        <span class="txt">登出<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
-
-      <el-input
-        size="large"
-        placeholder="輸入股票代號或名稱"
-        v-model="input3"
-        class="input-with-select"
-      >
-        <template #append>
-          <el-button type="primary" class="submit2" size="small"
-            >搜尋</el-button
-          >
-        </template>
-      </el-input>
+      <el-form @submit.prevent="stocksearch">
+        <el-input size="large" placeholder="輸入股票代號或名稱" v-model="stockid" class="input-with-select" type="search">
+          
+            <el-button type="primary" class="submit2" size="small" native-type="submit">搜尋</el-button>
+         
+        </el-input>
+      </el-form>
     </div>
 
     <div class="navigation">
@@ -182,30 +156,27 @@
       =document.querySelector('.navigation'); menuToggle.onclick =
       function(){navigation.classList.toggle('active') }
     </component>
-    <component
-      :is="'script'"
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></component>
-    <component
-      :is="'script'"
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></component>
+    <component :is="'script'" type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
+    </component>
+    <component :is="'script'" nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></component>
   </nav>
 </template>
 <script>
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
+  /*
   setup() {
+    const input3 = ref("")
     return {
-      input3: ref(""),
+      input3
     };
   },
+  */
   props: ["currentroute"],
   data() {
     return {
+      stockid: "",
       token: this.$Cookies.get("token"),
     };
   },
@@ -214,6 +185,14 @@ export default defineComponent({
       this.$Cookies.remove("token");
       this.$router.push("/ranking");
     },
+    stocksearch() {
+      this.$router.push({
+        name: 'AboutStock',
+        params: {
+          stockid: this.stockid,
+        }
+      });
+    }
   },
 });
 </script>
@@ -223,6 +202,7 @@ export default defineComponent({
   nav {
     height: 10%;
   }
+
   .computer_size {
     display: none;
   }
@@ -235,10 +215,12 @@ export default defineComponent({
   .phone_size {
     display: block;
   }
+
   .input-with-select2 {
     background-color: #fff;
     width: 80%;
   }
+
   .navigation {
     z-index: 10;
     position: fixed;
@@ -253,6 +235,7 @@ export default defineComponent({
     transition-delay: 0s, 0.1s;
     overflow: hidden;
   }
+
   .navigation.active {
     width: 100%;
     height: 100%;
@@ -270,16 +253,18 @@ export default defineComponent({
     transition: 0.2s;
     transition-delay: 0.2s;
   }
+
   .navigation.active .userBx {
     width: calc(100% - 80px);
     transition-delay: 0s;
   }
+
   .navigation .userBx .username1 {
     white-space: nowrap;
     color: #555;
     font-size: 1.1em;
   }
-  
+
   .navigation .userBx .imgBx {
     position: relative;
     min-width: 60px;
@@ -289,6 +274,7 @@ export default defineComponent({
     border-radius: 50%;
     border: 10px solid rgb(240, 240, 240);
   }
+
   .navigation .userBx .imgBx .img-responsive1 {
     position: absolute;
     top: 0;
@@ -307,6 +293,7 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
   }
+
   .navigation .menuToggle::before {
     content: "";
     position: absolute;
@@ -317,6 +304,7 @@ export default defineComponent({
     box-shadow: 0 10px #555;
     transition: 0.2s;
   }
+
   .navigation .menuToggle::after {
     content: "";
     position: absolute;
@@ -326,13 +314,16 @@ export default defineComponent({
     transform: translateY(10px);
     transition: 0.2s;
   }
+
   .navigation.active .menuToggle::before {
     transform: translateY(0px) rotate(45deg);
     box-shadow: 0 0 #555;
   }
+
   .navigation.active .menuToggle::after {
     transform: translateY(0px) rotate(-45deg);
   }
+
   .menu {
     z-index: 2;
     position: absolute;
@@ -342,9 +333,11 @@ export default defineComponent({
     padding: 0px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
+
   .menu .menuset {
     list-style: none;
   }
+
   .menu .menuset .menuset2 {
     display: flex;
     align-items: center;
@@ -354,9 +347,11 @@ export default defineComponent({
     text-decoration: none;
     color: #555;
   }
+
   .menu .menuset .menuset2:hover {
     color: #4e65ff;
   }
+
   .menu .menuset .menuset2 ion-icon {
     font-size: 1.5em;
   }
@@ -376,6 +371,7 @@ export default defineComponent({
     left: 5px;
     width: 200px;
   }
+
   .navigation {
     z-index: 10;
     position: fixed;
@@ -390,6 +386,7 @@ export default defineComponent({
     transition-delay: 0s, 0.1s;
     overflow: hidden;
   }
+
   .navigation.active {
     width: 280px;
     height: 320px;
@@ -407,16 +404,18 @@ export default defineComponent({
     transition: 0.2s;
     transition-delay: 0.2s;
   }
+
   .navigation.active .userBx {
     width: calc(100% - 80px);
     transition-delay: 0s;
   }
+
   .navigation .userBx .username1 {
     white-space: nowrap;
     color: #555;
     font-size: 1.1em;
   }
-  
+
   .navigation .userBx .imgBx {
     position: relative;
     min-width: 60px;
@@ -426,6 +425,7 @@ export default defineComponent({
     border-radius: 50%;
     border: 10px solid rgb(240, 240, 240);
   }
+
   .navigation .userBx .imgBx .img-responsive1 {
     position: absolute;
     top: 0;
@@ -444,6 +444,7 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
   }
+
   .navigation .menuToggle::before {
     content: "";
     position: absolute;
@@ -454,6 +455,7 @@ export default defineComponent({
     box-shadow: 0 10px #555;
     transition: 0.2s;
   }
+
   .navigation .menuToggle::after {
     content: "";
     position: absolute;
@@ -463,13 +465,16 @@ export default defineComponent({
     transform: translateY(10px);
     transition: 0.2s;
   }
+
   .navigation.active .menuToggle::before {
     transform: translateY(0px) rotate(45deg);
     box-shadow: 0 0 #555;
   }
+
   .navigation.active .menuToggle::after {
     transform: translateY(0px) rotate(-45deg);
   }
+
   .menu {
     z-index: 2;
     position: absolute;
@@ -479,9 +484,11 @@ export default defineComponent({
     padding: 0px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
+
   .menu .menuset {
     list-style: none;
   }
+
   .menu .menuset .menuset2 {
     display: flex;
     align-items: center;
@@ -491,9 +498,11 @@ export default defineComponent({
     text-decoration: none;
     color: #555;
   }
+
   .menu .menuset .menuset2:hover {
     color: #4e65ff;
   }
+
   .menu .menuset .menuset2 ion-icon {
     font-size: 1.5em;
   }
@@ -506,6 +515,7 @@ export default defineComponent({
   position: relative;
   display: block;
 }
+
 .bar {
   display: block;
   background-color: #000;
@@ -517,6 +527,7 @@ export default defineComponent({
   margin: auto;
   width: 0%;
 }
+
 nav a:hover .bar {
   width: 100%;
   transition: all 0.5s linear;
@@ -545,7 +556,7 @@ nav a.router-link-exact-active {
 }
 
 
-.navigation.active .userBx .username1{
+.navigation.active .userBx .username1 {
   display: inline-block;
     color: rgb(230, 173, 15);
     animation: movepoint1 0.2s;
