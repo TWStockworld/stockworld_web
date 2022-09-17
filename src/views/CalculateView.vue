@@ -5,19 +5,11 @@
         <div class="demo-date-picker">
           <div class="block">
             <span class="demonstration">開始日</span>
-            <el-date-picker
-              v-model="startdate"
-              type="date"
-              placeholder="Pick a day"
-            />
+            <el-date-picker v-model="startdate" type="date" placeholder="Pick a day" />
           </div>
           <div class="block">
             <span class="demonstration">結束日</span>
-            <el-date-picker
-              v-model="enddate"
-              type="date"
-              placeholder="Pick a day"
-            />
+            <el-date-picker v-model="enddate" type="date" placeholder="Pick a day" />
           </div>
           <div class="block">
             <span class="demonstration">相差日(實際開盤天)</span>
@@ -25,37 +17,25 @@
           </div>
           <div class="block">
             <span class="demonstration">股票種類</span>
-            <el-select v-model="category" filterable placeholder="請選擇">
-              <el-option
-                v-for="category in stock_category_options"
-                :key="category.id"
-                :label="category.category"
-                :value="category.id"
-              >
+            <el-select v-model="stock_category_id" filterable placeholder="請選擇">
+              <el-option v-for="category in stock_category_options" :key="category.id" :label="category.category"
+                :value="category.id">
               </el-option>
             </el-select>
           </div>
           <div class="block">
             <span class="demonstration">股票A</span>
             <el-select v-model="stockA" filterable placeholder="請選擇">
-              <el-option
-                v-for="stock in stockA_options"
-                :key="stock.stock_id"
-                :label="stock.stock_name + '(' + stock.stock_id + ')'"
-                :value="stock.stock_id"
-              >
+              <el-option v-for="stock in stockA_options" :key="stock.stock_id"
+                :label="stock.stock_name + '(' + stock.stock_id + ')'" :value="stock.stock_id">
               </el-option>
             </el-select>
           </div>
           <div class="block">
             <span class="demonstration">股票B</span>
             <el-select v-model="stockB" filterable placeholder="請選擇">
-              <el-option
-                v-for="stock in stockB_options"
-                :key="stock.stock_id"
-                :label="stock.stock_name + '(' + stock.stock_id + ')'"
-                :value="stock.stock_id"
-              >
+              <el-option v-for="stock in stockB_options" :key="stock.stock_id"
+                :label="stock.stock_name + '(' + stock.stock_id + ')'" :value="stock.stock_id">
               </el-option>
             </el-select>
           </div>
@@ -64,11 +44,7 @@
       </div>
       <p>{{ result }}</p>
       <div v-if="stockA_datas.length != 0">
-        <Chart
-          :stockA_datas="stockA_datas"
-          :stockB_datas="stockB_datas"
-          :key="componentKey"
-        />
+        <Chart :stockA_datas="stockA_datas" :stockB_datas="stockB_datas" :key="componentKey" />
       </div>
     </el-form>
   </div>
@@ -85,7 +61,7 @@ export default {
       startdate: "2021-01-01",
       enddate: "2021-12-01",
       diff: "2",
-      category: "",
+      stock_category_id: 2,
       stockA: "",
       stockB: "",
       result: "",
@@ -101,8 +77,10 @@ export default {
     const get_stock_category = this.axios.get(
       "https://stock.bakerychu.com/api/stock/get_stock_category"
     );
-    const get_stock_name = this.axios.get(
-      "https://stock.bakerychu.com/api/stock/get_stock_name"
+    const get_stock_name = this.axios.post(
+      "https://stock.bakerychu.com/api/stock/get_stock_name", {
+      stock_category_id: this.stock_category_id,
+    }
     );
 
     this.axios.all([get_stock_category, get_stock_name]).then(
@@ -113,6 +91,20 @@ export default {
       })
     );
   },
+  watch: {
+    async stock_category_id() {
+      this.stockA = "";
+      this.stockB = "";
+      this.axios.post(
+        "https://stock.bakerychu.com/api/stock/get_stock_name", {
+        stock_category_id: this.stock_category_id,
+      }).then((response) => {
+        console.log(response.data);
+        this.stockA_options = response.data.success;
+        this.stockB_options = response.data.success;
+      });
+    }
+  },
   methods: {
     cal() {
       this.axios
@@ -120,7 +112,7 @@ export default {
           startdate: this.startdate,
           enddate: this.enddate,
           diff: this.diff,
-          category: this.category,
+          // stock_category_id: this.stock_category_id,
           stockA: this.stockA,
           stockB: this.stockB,
         })
@@ -143,21 +135,25 @@ export default {
 .block {
   z-index: 1;
 }
+
 .demo-date-picker {
   display: flex;
   width: 100%;
   padding: 0;
   flex-wrap: wrap;
 }
+
 .demo-date-picker .block {
   padding: 30px 0;
   text-align: center;
   border-right: solid 1px var(--el-border-color);
   flex: 1;
 }
+
 .demo-date-picker .block:last-child {
   border-right: none;
 }
+
 .demo-date-picker .demonstration {
   display: block;
   color: var(--el-text-color-secondary);
