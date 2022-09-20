@@ -44,7 +44,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @media only screen and (max-width: 1200px) {
   .leftbulletin_ul {
     display: grid;

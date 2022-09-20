@@ -85,7 +85,7 @@ export default defineComponent({
   },
 });
 </script>
-<style>
+<style scoped>
   #tradingview-chart{
     height:100%;
   }

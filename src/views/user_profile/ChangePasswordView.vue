@@ -49,7 +49,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #changepassword1 {
   z-index: -1;
   position: fixed;

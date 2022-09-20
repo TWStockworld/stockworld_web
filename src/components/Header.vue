@@ -183,7 +183,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
 .el-form {
   display: inline-block;
 }

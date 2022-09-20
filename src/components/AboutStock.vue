@@ -348,7 +348,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
  @media only screen and (max-width: 1200px) {
 .aboutstock {
   z-index: 1;

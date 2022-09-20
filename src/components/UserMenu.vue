@@ -48,7 +48,7 @@
 <script>
 </script>
 
-<style>
+<style scoped>
   @media only screen and (max-width: 768px) {
     .userprofile1 {
       position: fixed;

@@ -165,7 +165,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .FavoriteTitle {
   font-size: 50px;
   margin: auto;

@@ -21,7 +21,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Press+Start+2P&display=swap");
 .start {
   height: 100vh;

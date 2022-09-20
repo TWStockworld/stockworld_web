@@ -122,7 +122,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 /* @media only screen and (min-width: 1200px){
   .table1 {
   position: relative;

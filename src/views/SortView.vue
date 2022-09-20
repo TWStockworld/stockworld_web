@@ -99,7 +99,7 @@ export default {
   methods: {},
 };
 </script>
-<style>
+<style scoped>
   @media only screen and (max-width: 768px) {
     .sort_computersize {
       display: none;

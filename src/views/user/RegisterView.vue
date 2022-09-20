@@ -131,7 +131,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h3 {
   margin: auto;
   color: #23995c;
