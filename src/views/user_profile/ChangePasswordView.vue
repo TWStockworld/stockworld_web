@@ -1,10 +1,10 @@
 <template>
 
-  <el-row id="changepassword1">
+  <el-row>
     <el-col :lg="6" :sm="6" :xs="24">
       <UserMenu />
     </el-col>
-    <el-col :lg="6" :sm="6" :xs="24">
+    <el-col :lg="18" :sm="18" :xs="24">
       <h1 class="ChangePasswordTitle">更改密碼</h1>
       <el-row class="changepassword2">
         <el-col class="changepassword3">

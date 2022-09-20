@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <div class="top">
       <div class="photo">
         <img class="img-responsive2" src="@/assets/img/logo.png" />
@@ -50,15 +50,14 @@
 
 <style>
   @media only screen and (max-width: 768px) {
-    .userprofile1 {
+    /* .userprofile1 {
       position: fixed;
       top: 9%;
       left: 0px;
       width: 25%;
       height: 100%;
       background: rgb(240, 240, 240);
-      /* box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1); */
-    }
+    } */
     .userprofile1 .top {
       position: relative;
       /* width: 200px;
@@ -118,15 +117,14 @@
   }
 
   @media only screen and (min-width: 768px) {
-    .userprofile1 {
+    /* .userprofile1 {
       position: fixed;
       top: 9%;
       left: 0px;
       width: 25%;
       height: 100%;
       background: rgb(240, 240, 240);
-      /* box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1); */
-    }
+    } */
     .userprofile1 .top {
       position: relative;
       width: 200px;

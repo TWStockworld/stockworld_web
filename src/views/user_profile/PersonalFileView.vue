@@ -32,7 +32,7 @@ export default {
 
 
 <style>
-.personalfile1 {
+/* .personalfile1 {
   z-index: -1;
   position: fixed;
   top: 9%;
@@ -41,21 +41,22 @@ export default {
   height: 100%;
   background: rgb(255, 255, 255);
   box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .PersonalFileTitle {
   font-size: 50px;
   margin: auto;
   color: #23995c;
+  background-color: rgb(255, 255, 255);;
 }
 
 .personalfile2 {
-  width: 70%;
-  /* margin: auto; */
+  /* width: 70%;
   margin-top: 5%;
   margin-right: auto;
   margin-bottom: auto;
-  margin-left: 20%;
+  margin-left: 20%; */
+  background-color:rgb(250, 250, 250);
 }
 
 /* .personalfile4 {
@@ -74,5 +75,6 @@ export default {
   font-size: 1.3em;
   text-decoration: none;
   color: #555;
+  
 }
 </style>
