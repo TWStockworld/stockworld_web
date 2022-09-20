@@ -70,7 +70,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 #show {
   display: flex;
   justify-content: center;

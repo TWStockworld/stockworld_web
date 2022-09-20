@@ -43,7 +43,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .helpsupport1 {
   z-index: -1;
   position: fixed;
