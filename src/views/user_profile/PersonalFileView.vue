@@ -47,16 +47,14 @@ export default {
   font-size: 50px;
   margin: auto;
   color: #23995c;
-  background-color: rgb(255, 255, 255);;
 }
 
 .personalfile2 {
-  /* width: 70%;
+  width: 70%;
   margin-top: 5%;
   margin-right: auto;
   margin-bottom: auto;
-  margin-left: 20%; */
-  background-color:rgb(250, 250, 250);
+  margin-left: 20%;
 }
 
 /* .personalfile4 {
