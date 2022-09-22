@@ -21,7 +21,7 @@
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
-      <router-link to="/aboutstock">
+      <router-link to="/aboutstock/2330">
         <span class="txt">關於股票<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
@@ -93,7 +93,7 @@
             </li>
 
             <li class="phone_size_li">
-              <router-link to="/aboutstock" class="menuset">
+              <router-link to="/aboutstock/2330" class="menuset">
                 <a class="menuset2" href="#">
                   <ion-icon name="bar-chart-outline"></ion-icon>關於股票
                 </a>
