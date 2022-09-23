@@ -1,5 +1,5 @@
 <template>
-  <div class="stockkind_computer">
+  <div class="stockkind_computer" :class="[ this.$route.path=='/ranking' ? 'move': '']">
     <el-table :data="AllrankData" class="allrank">
     <el-table-column prop="rank" label="排行" sortable />
 
@@ -123,6 +123,20 @@ export default {
 .stockkind_cellphone{
   display: none;
 }
+.move {
+    animation: movepoint1 2s ease-in-out;
+  }
+
+  @keyframes movepoint1 {
+    0% {
+      left: 100%;
+    }
+
+    50% {
+      left: 30%;
+    }
+
+  }
 }
 @media only screen and (max-width: 1200px) {
   .stockkind_computer{

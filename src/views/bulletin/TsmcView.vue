@@ -4,7 +4,7 @@
       <LeftBulletin />
     </el-col>
     <el-col :xs="24" :sm="24" :lg="20">
-      <el-row>
+      <el-row :class="[ this.$route.path=='/tsmc' ? 'move': '']">
         <div class="tab10"></div>
         <div class="picture">
           <img alt="tsmc logo" src="@/assets/img/tsmc.png" style="width: 25%" />
@@ -66,9 +66,24 @@ export default {
       dialogTableVisible: false,
     };
   },
+  mounted() {
+    window.addEventListener("wheel", this.onScroll)
+  },
+  beforeDestroy() {
+    window.removeEventListener("wheel", this.onScroll)
+  },
+  methods: {
+    onScroll(e) {
+      if (e.deltaY < 0) {
+        this.$router.push("/ranking");
+      } else if (e.deltaY > 0) {
+        this.$router.push("/HHcar");
+      }
+    },
+  },
 };
 </script>
-<style lang="css" src="@/assets/css/bulletin_margintop.css" scoped></style>
+
 
 <style scoped>
  
@@ -156,6 +171,19 @@ export default {
     0% {
       top: 29vh;
     }
+  }
+  .move {
+    animation: movepoint1 2s ease-in-out;
+  }
+  @keyframes movepoint1 {
+    0% {
+      left: 100%;
+    }
+
+    50% {
+      left: 0%;
+    }
+
   }
 }
 
