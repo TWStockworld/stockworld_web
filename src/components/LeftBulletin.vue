@@ -58,6 +58,7 @@ export default {
 
   .leftbulletin_li {
     display: inline;
+
   }
 }
 
