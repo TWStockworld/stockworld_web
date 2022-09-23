@@ -1,6 +1,6 @@
 <template>
   <div class="LB1">
-    <ul class="leftbulletin_ul">
+    <ul class="leftbulletin_ul" @scroll="scrollevent">
       <li class="leftbulletin_li">
         <el-button @click="ranking" style="width: auto; height: 50px; font-size: 2vh">關係度總排行</el-button>
       </li>
@@ -31,6 +31,13 @@
 <script>
 export default {
   methods: {
+    scrollevent(){
+      const li = getElementById("li")
+      li.addEventListener("scroll", () => {
+        const scrolled = document.getElementsById("li").scrollY;
+        console.log(scrolled);      
+      })
+    },
     ranking() {
       this.$router.push("/ranking");
     },
