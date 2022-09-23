@@ -1,7 +1,8 @@
 <template>
   <div class="LB1">
     <ul class="leftbulletin_ul">
-      <li class="leftbulletin_li">
+      <p>{{this.$route.path}}</p>
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/ranking' ? 'select': '']">
         <el-button @click="ranking" style="width: auto; height: 50px; font-size: 2vh">關係度總排行</el-button>
       </li>
       <li class="leftbulletin_li">
@@ -45,11 +46,27 @@ export default {
 </script>
 
 <style scoped>
+.select {
+  background-color: red;
+  background: linear-gradient(to left, salmon 50%, lightblue 50%) right;
+  background-size: 200%;
+  transition: .5s ease-in-out;
+  animation: movepoint1 1s;
+}
+
+
+@keyframes movepoint1 {
+  0% {
+    background-position: left;
+  }
+
+}
+
 @media only screen and (max-width: 1200px) {
   .leftbulletin_ul {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 8rem ;
+    grid-auto-columns: 8rem;
     grid-gap: 3rem;
     list-style-type: none;
     width: 100%;
@@ -72,7 +89,7 @@ export default {
     position: relative;
     left: 0%;
     line-height: 100px;
-    
+
   }
 }
 </style>
