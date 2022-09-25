@@ -75,7 +75,7 @@ export default {
   },
   mounted() {
     const get_stock_category = this.axios.get(
-      "https://stock.bakerychu.com/api/stock/get_stock_category"
+      "/api/stock/get_stock_category"
     );
     const get_stock_name = this.axios.post(
       "/api/stock/get_stock_name", {
