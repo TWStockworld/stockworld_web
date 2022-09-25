@@ -61,10 +61,10 @@ export default {
       startdate: "2021-01-01",
       enddate: "2021-12-01",
       diff: "2",
-      stock_category_id: 2,
+      stock_category_id: 1,
       stockA: "",
       stockB: "",
-      result: "",
+      result: "test",
       stock_category_options: [],
       stockA_options: [],
       stockB_options: [],
@@ -78,7 +78,7 @@ export default {
       "https://stock.bakerychu.com/api/stock/get_stock_category"
     );
     const get_stock_name = this.axios.post(
-      "https://stock.bakerychu.com/api/stock/get_stock_name", {
+      "/api/stock/get_stock_name", {
       stock_category_id: this.stock_category_id,
     }
     );
@@ -96,7 +96,7 @@ export default {
       this.stockA = "";
       this.stockB = "";
       this.axios.post(
-        "https://stock.bakerychu.com/api/stock/get_stock_name", {
+        "/api/stock/get_stock_name", {
         stock_category_id: this.stock_category_id,
       }).then((response) => {
         console.log(response.data);
@@ -108,11 +108,11 @@ export default {
   methods: {
     cal() {
       this.axios
-        .post("https://stock.bakerychu.com/api/stock/cal_stock", {
+        .post("/api/stock/cal_stock", {
           startdate: this.startdate,
           enddate: this.enddate,
           diff: this.diff,
-          // stock_category_id: this.stock_category_id,
+          stock_category_id: this.stock_category_id,
           stockA: this.stockA,
           stockB: this.stockB,
         })

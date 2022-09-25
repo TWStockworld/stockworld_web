@@ -1,42 +1,22 @@
 <template>
   <div id="login">
     <el-row>
-      <el-col :span="16"
-        ><div class="" />
+      <el-col :span="16">
         <div id="container">
-          <img
-            alt="anime"
-            src="@/assets/img/anime.jpg"
-            style="height: 100%; width: 100%; border-radius: 10px"
-          />
+          <img alt="anime" src="@/assets/img/anime.jpg" style="height: 100%; width: 100%; border-radius: 10px" />
         </div>
       </el-col>
-      <el-col :span="8"
-        ><div class="" />
+      <el-col :span="8">
         <div id="container">
           <h2>登入</h2>
           <div class="tab2"></div>
           <el-form @submit.prevent="login">
             <div class="form-group">
-              <input
-                type="account"
-                id="inputAccount1"
-                v-model="account"
-                placeholder="帳號"
-                required
-              />
+              <input type="account" id="inputAccount1" v-model="account" placeholder="帳號" required />
               <div class="tab2"></div>
-              <input
-                type="password"
-                id="inputPassword1"
-                v-model="password"
-                placeholder="密碼, 至少有8位"
-                required
-              />
+              <input type="password" id="inputPassword1" v-model="password" placeholder="密碼, 至少有8位" required />
               <div class="tab2"></div>
-              <el-button plain type="primary" native-type="submit1"
-                >登入</el-button
-              >
+              <el-button plain type="primary" native-type="submit1">登入</el-button>
             </div>
           </el-form>
         </div>
@@ -60,7 +40,7 @@ export default {
   methods: {
     login() {
       this.axios
-        .post("https://stock.bakerychu.com/api/auth/login", {
+        .post("/api/auth/login", {
           account: this.account,
           password: this.password,
         })
@@ -99,12 +79,14 @@ h2 {
   margin: 10px;
   color: #23995c;
 }
+
 #inputPassword1 {
   width: 200px;
   height: 30px;
   margin: 10px;
   color: #23995c;
 }
+
 .tab2 {
   height: 40px;
   margin: 10px;
@@ -123,6 +105,7 @@ input {
   border: solid 1px #ccc;
   border-radius: 5px;
 }
+
 #login {
   width: 70%;
   /* margin: auto; */
