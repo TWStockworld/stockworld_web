@@ -2,6 +2,9 @@
   <div class="LB1">
     <ul class="leftbulletin_ul">
       <li class="leftbulletin_li">
+        <p>{{this.$route.path}}</p>
+      </li>
+      <li class="leftbulletin_li">
         <el-button @click="ranking" style="width: auto; height: 50px; font-size: 2vh">關係度總排行</el-button>
       </li>
       <li class="leftbulletin_li">
@@ -59,6 +62,10 @@ export default {
   .leftbulletin_li {
     display: inline;
 
+  }
+  .leftbulletin_li1 {
+    display: inline;
+    background-color: brown;
   }
 }
 
