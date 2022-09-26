@@ -18,9 +18,26 @@ export default {
     LeftBulletin,
     Stockkind,
   },
+  mounted() {
+    window.addEventListener("wheel", this.onScroll)
+  },
+  beforeDestroy() {
+    window.removeEventListener("wheel", this.onScroll)
+  },
+  methods: {
+    onScroll(e) {
+      if (e.deltaY < 0) {
+        console.log("scrolling up")
+      } else if (e.deltaY > 0) {
+        this.$router.push("/tsmc");
+      }
+    },
+  },
 };
 </script>
-<style lang="css" src="@/assets/css/bulletin_margintop.css" scoped></style>
+<style lang="css" src="@/assets/css/bulletin_margintop.css" scoped>
+
+</style>
 
 <style scoped>
 

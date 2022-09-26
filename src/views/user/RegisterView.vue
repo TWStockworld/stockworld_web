@@ -2,54 +2,28 @@
   <div id="register">
     <el-row>
       <!--<el-col :span="6" :offset="4"-->
-      <el-col :span="8"
-        ><!--<div class="grid-content ep-bg-purple" />-->
+      <el-col :span="8">
+        <!--<div class="grid-content ep-bg-purple" />-->
         <div class="" />
         <div id="container1">
           <h3>註冊</h3>
           <div class="tab1"></div>
           <el-form @submit.prevent="register">
-            <input
-              type="username"
-              id="inputUsername"
-              v-model="name"
-              placeholder="名字"
-              required
-            />
+            <input type="username" id="inputUsername" v-model="name" placeholder="名字" required />
             <div class="tab"></div>
-            <input
-              type="account"
-              id="inputAccount"
-              v-model="account"
-              placeholder="帳號"
-              required
-            />
+            <input type="account" id="inputAccount" v-model="account" placeholder="帳號" required />
             <div class="tab"></div>
-            <input
-              type="password"
-              id="inputPassword"
-              v-model="password"
-              placeholder="密碼"
-              required
-            />
+            <input type="password" id="inputPassword" v-model="password" placeholder="密碼" required />
             <div class="tab"></div>
-            <input
-              type="email"
-              id="inputEmail"
-              v-model="email"
-              placeholder="Email"
-              required
-            />
+            <input type="email" id="inputEmail" v-model="email" placeholder="Email" required />
             <div class="tab"></div>
 
-            <el-button type="primary" class="submit" @click="register"
-              >註冊</el-button
-            >
+            <el-button type="primary" class="submit" @click="register">註冊</el-button>
           </el-form>
         </div>
       </el-col>
-      <el-col :span="16"
-        ><!--<div class="grid-content ep-bg-purple" />-->
+      <el-col :span="16">
+        <!--<div class="grid-content ep-bg-purple" />-->
         <div class="" />
         <div id="container1">
           <!--<div class="picture2">
@@ -60,11 +34,7 @@
             />
             </div>
             -->
-          <img
-            alt="anime"
-            src="@/assets/img/anime.jpg"
-            style="height: 100%; width: 100%; border-radius: 10px"
-          />
+          <img alt="anime" src="@/assets/img/anime.jpg" style="height: 100%; width: 100%; border-radius: 10px" />
         </div>
       </el-col>
     </el-row>
@@ -97,7 +67,7 @@ export default {
         ElMessage.error("名字、帳號、密碼、信箱不能為空");
       } else {
         this.axios
-          .post("https://stock.bakerychu.com/api/auth/register", {
+          .post("/api/auth/register", {
             name: this.name,
             account: this.account,
             password: this.password,
@@ -136,6 +106,7 @@ h3 {
   margin: auto;
   color: #23995c;
 }
+
 #inputAccount,
 #inputEmail,
 #inputUsername,
@@ -165,6 +136,7 @@ h3 {
 .submit:hover {
   background: #23995c;
 }
+
 input {
   padding: 5px;
   border: none;
@@ -176,6 +148,7 @@ input {
   height: 20px;
   margin: 10px;
 }
+
 /**/
 #container1 {
   height: 100%;
@@ -183,6 +156,7 @@ input {
   border-radius: 10px;
   box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
 }
+
 #register {
   width: 70%;
   /* margin: auto; */
@@ -191,5 +165,6 @@ input {
   margin-bottom: auto;
   margin-left: auto;
 }
+
 /**/
 </style>

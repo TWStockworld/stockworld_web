@@ -22,7 +22,13 @@ import Help_SupportView from "../views/user_profile/Help_SupportView";
 //bulletin 公告欄
 import RankingView from "../views/bulletin/RankingView";
 import TsmcView from "../views/bulletin/TsmcView";
-
+import CarView from "../views/bulletin/CarView.vue";
+import MetaView from "../views/bulletin/MetaView.vue"; 
+import CityView from "../views/bulletin/CityView.vue";
+import ICView from "../views/bulletin/ICView.vue";
+import InternetView from "../views/bulletin/InternetView.vue";
+import CloudView from "../views/bulletin/CloudView.vue";
+import HHcarView from "../views/bulletin/HHcarView.vue"
 //ttt
 const routes = [
   {
@@ -101,6 +107,41 @@ const routes = [
     path: "/help_support",
     name: "help_support",
     component: Help_SupportView,
+  },
+  {
+    path: "/city",
+    name: "city",
+    component: CityView,
+  },
+  {
+    path: "/cloud",
+    name: "cloud",
+    component: CloudView,
+  },
+  {
+    path: "/IC",
+    name: "IC",
+    component: ICView,
+  },
+  {
+    path: "/internet",
+    name: "internet",
+    component: InternetView,
+  },
+  {
+    path: "/meta",
+    name: "meta",
+    component: MetaView,
+  },
+  {
+    path: "/car",
+    name: "car",
+    component: CarView,
+  },
+  {
+    path: "/hhcar",
+    name: "hhcar",
+    component: HHcarView,
   },
 ];
 
