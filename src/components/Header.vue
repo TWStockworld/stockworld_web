@@ -39,15 +39,15 @@
       </el-form>
     </div>
 
-    <div class="navigation">
-      <div class="userBx">
+    <div class="navigation" :class="[this.toggle? 'active': '']">
+      <div class=" userBx">
         <div class="imgBx">
           <img class="img-responsive1" src="@/assets/img/logo.png" />
         </div>
         <!--加入姓名錢-->
         <p class="username1">目前剩餘:1000元</p>
       </div>
-      <div class="menuToggle"></div>
+      <div class="menuToggle" @click="menutoggle"></div>
       <div class="menu">
         <!--在裡面加入row col-->
         <div class="phone_size">
@@ -137,11 +137,7 @@
         </ul>
       </div>
     </div>
-    <component :is="'script'">
-      let menuToggle = document.querySelector('.menuToggle'); let navigation
-      =document.querySelector('.navigation'); menuToggle.onclick =
-      function(){navigation.classList.toggle('active') }
-    </component>
+
     <component :is="'script'" type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
     </component>
     <component :is="'script'" nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></component>
@@ -164,9 +160,18 @@ export default defineComponent({
     return {
       stockid: "",
       token: this.$Cookies.get("token"),
+      toggle: false
     };
   },
   methods: {
+    menutoggle() {
+      if (this.toggle) {
+        this.toggle = false;
+      }
+      else {
+        this.toggle = true;
+      }
+    },
     logout() {
       this.$Cookies.remove("token");
       this.$router.push("/ranking");
