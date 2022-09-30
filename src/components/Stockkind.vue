@@ -1,6 +1,6 @@
 <template>
   <div class="stockkind_computer" :class="[ this.$route.path=='/ranking' ? 'move': '']">
-    <el-table :data="AllrankData" class="allrank">
+    <el-table style="width: 100%" :data="AllrankData">
       <el-table-column prop="rank" label="排行" sortable />
 
       <el-table-column prop="code1" label="代號" />
@@ -19,22 +19,9 @@
     </el-table>
   </div>
   <div class="stockkind_cellphone">
-    <el-table :data="AllrankData" class="allrank">
-      <el-table-column prop="rank" label="排行" sortable />
-
-      <el-table-column prop="code1" label="代號" />
-
-      <el-table-column prop="name1" label="名稱" />
-
-      <el-table-column prop="VS" label="VS" />
-
-      <el-table-column prop="code2" label="代號" />
-
-      <el-table-column prop="name2" label="名稱" />
-
-      <el-table-column prop="day" label="天數" />
-
-      <el-table-column prop="follow" label="追蹤" width="180" />
+    <el-table style="width: 100%" :data="getValues" :show-header="false">
+      <el-table-column v-for="(item, index) in getHeaders" :key="index" :prop="item">
+      </el-table-column>
     </el-table>
   </div>
 </template>
@@ -42,6 +29,40 @@
 export default {
   data() {
     return {
+      headers: [
+        {
+          prop: 'rank',
+          label: '排行',
+        },
+        {
+          prop: 'code1',
+          label: '代號',
+        },
+        {
+          prop: 'name1',
+          label: '名稱',
+        },
+        {
+          prop: 'VS',
+          label: 'VS',
+        },
+        {
+          prop: 'code2',
+          label: '代號',
+        },
+        {
+          prop: 'name2',
+          label: '名稱',
+        },
+        {
+          prop: 'day',
+          label: '天數',
+        },
+        {
+          prop: 'follow',
+          label: '追蹤',
+        },
+      ],
       AllrankData: [
         {
           rank: "1",
@@ -109,6 +130,16 @@ export default {
       ],
     };
   },
+  computed: {
+    getHeaders() {
+    return this.AllrankData.reduce((pre, cur, index) => pre.concat(`value${index}`), ['title'])
+  },
+  getValues() {
+    return this.headers.map(item => {
+      return this.AllrankData.reduce((pre, cur, index) => Object.assign(pre, {['value' + index]: cur[item.prop]}), {'title': item.label,});
+    });
+  }
+},
 };
 </script>
 <style scoped>
