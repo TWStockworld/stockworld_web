@@ -26,10 +26,7 @@
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
-      <router-link to="/logout" v-if="token" @click="logout">
-        <span class="txt">登出<span class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
-      </router-link>
+
       <el-form @submit.prevent="stocksearch">
         <el-input size="large" placeholder="輸入股票代號或名稱" v-model="stockid" class="input-with-select" type="search">
 
@@ -112,7 +109,7 @@
         <!--*****************************************************-->
         <ul class="phone_size_ul">
           <li class="phone_size_li">
-            <router-link to="/personalfile" v-if="!token" class="menuset">
+            <router-link to="/personalfile" v-if="token" class="menuset">
               <a class="menuset2" href="#">
                 <ion-icon name="person-outline"></ion-icon>My Profile
               </a>
@@ -132,6 +129,12 @@
               <a class="menuset2" href="#">
                 <ion-icon name="log-in-outline"></ion-icon>登入
               </a>
+            </router-link>
+          </li>
+          <li class="phone_size_li">
+            <router-link to="/logout" v-if="token" @click="logout">
+              <span class="txt">登出<span class="bar"
+                  style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
             </router-link>
           </li>
         </ul>
@@ -155,7 +158,7 @@ export default defineComponent({
     };
   },
   */
-  props: ["currentroute"],
+  props: ["currentroute, keytest"],
   data() {
     return {
       stockid: "",
@@ -175,6 +178,7 @@ export default defineComponent({
     logout() {
       this.$Cookies.remove("token");
       this.$router.push("/ranking");
+      this.$emit('keytest');
     },
     stocksearch() {
       this.$router.push({

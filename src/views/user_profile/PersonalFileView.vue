@@ -7,10 +7,10 @@
       <h1 class="PersonalFileTitle">個人資料</h1>
       <el-row class="personalfile2">
         <el-col class="personalfile3">
-          <div class="personalfile4">使用者名稱: JO JO</div>
+          <div class="personalfile4">使用者名稱: {{ name }}</div>
           <div class="personalfile4">性別: 男生</div>
           <div class="personalfile4">生日: 2115年5月7日</div>
-          <div class="personalfile4">Gmail: xxxxxx@gmail.com</div>
+          <div class="personalfile4">Email: {{ email }}</div>
           <div class="personalfile4">電話: 09xxxxxxxx</div>
         </el-col>
       </el-row>
@@ -27,6 +27,31 @@ export default {
   components: {
     UserMenu,
   },
+  data() {
+    return {
+      name: "",
+      account: "",
+      email: "",
+      token: this.$Cookies.get("token"),
+    }
+  },
+  mounted() {
+    this.axios
+      .get("/api/user", {
+        name: this.name,
+        account: this.account,
+        email: this.email,
+        headers: {
+          Authorization: `Bearer ` + this.token,
+        }
+      })
+      .then((res) => {
+        console.log(res.data);
+        this.name = res.data.user.name;
+        this.account = res.data.user.account;
+        this.email = res.data.user.email;
+      })
+  }
 };
 </script>
 
@@ -73,6 +98,6 @@ export default {
   font-size: 1.3em;
   text-decoration: none;
   color: #555;
-  
+
 }
 </style>

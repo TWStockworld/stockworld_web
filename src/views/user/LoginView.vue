@@ -6,6 +6,7 @@
           <img alt="anime" src="@/assets/img/anime.jpg" style="height: 100%; width: 100%; border-radius: 10px" />
         </div>
       </el-col>
+
       <el-col :span="8">
         <div id="container">
           <h2>登入</h2>
@@ -30,15 +31,30 @@
 import { ElMessage } from "element-plus";
 //////
 export default {
+  props: ["keytest"],
   data() {
     return {
       account: "",
       password: "",
-      token: "",
+
     };
   },
   methods: {
     login() {
+      this.axios
+        .post("/api/auth/login", {
+          account: this.account,
+          password: this.password,
+        })
+        .then((res) => {
+          console.log(res);
+          const token = res.data.token;
+          this.$Cookies.set("token", token), { expires: 1 };
+          this.$router.push("/personalfile");
+          this.$emit('keytest');
+        })
+
+        /*
       this.axios
         .post("/api/auth/login", {
           account: this.account,
@@ -53,7 +69,7 @@ export default {
             this.$router.push("/");
           }
         })
-
+        */
         .catch(function (error) {
           if (error.response) {
             console.log(error.response.status);
@@ -62,6 +78,7 @@ export default {
             }
           }
         });
+
     },
   },
 };
