@@ -1,6 +1,6 @@
 <template>
   <div class="stockkind_computer" :class="[ this.$route.path=='/ranking' ? 'move': '']">
-    <el-table style="width: 100%" :data="AllrankData">
+    <el-table :data="AllrankData">
       <el-table-column prop="rank" label="排行" sortable />
 
       <el-table-column prop="code1" label="代號" />
@@ -19,7 +19,7 @@
     </el-table>
   </div>
   <div class="stockkind_cellphone">
-    <el-table style="width: 100%" :data="getValues" :show-header="false">
+    <el-table :data="getValues" :show-header="false">
       <el-table-column v-for="(item, index) in getHeaders" :key="index" :prop="item">
       </el-table-column>
     </el-table>
@@ -132,19 +132,20 @@ export default {
   },
   computed: {
     getHeaders() {
-    return this.AllrankData.reduce((pre, cur, index) => pre.concat(`value${index}`), ['title'])
+      return this.AllrankData.reduce((pre, cur, index) => pre.concat(`value${index}`), ['title'])
+    },
+    getValues() {
+      return this.headers.map(item => {
+        return this.AllrankData.reduce((pre, cur, index) => Object.assign(pre, { ['value' + index]: cur[item.prop] }), { 'title': item.label, });
+      });
+    }
   },
-  getValues() {
-    return this.headers.map(item => {
-      return this.AllrankData.reduce((pre, cur, index) => Object.assign(pre, {['value' + index]: cur[item.prop]}), {'title': item.label,});
-    });
-  }
-},
 };
 </script>
 <style scoped>
 @media only screen and (min-width: 1200px) {
   .stockkind_computer {
+    box-shadow: 5px 7px #00000026;
     position: absolute;
     width: 60%;
     top: 20%;

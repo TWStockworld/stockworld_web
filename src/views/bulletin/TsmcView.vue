@@ -1,5 +1,5 @@
 <template>
-  <el-row class="el-row">
+  <el-row>
     <el-col :xs="24" :sm="24" :lg="4">
       <LeftBulletin />
     </el-col>

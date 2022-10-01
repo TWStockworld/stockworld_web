@@ -1,7 +1,6 @@
 <template>
   <div class="LB1">
     <ul class="leftbulletin_ul">
-      <p>{{this.$route.path}}</p>
       <li class="leftbulletin_li" :class="[ this.$route.path=='/ranking' ? 'select': '']">
         <el-button @click="ranking" style="width: auto; height: 50px; font-size: 2vh">關係度總排行</el-button>
       </li>
@@ -44,25 +43,25 @@ export default {
     sort() {
       this.$router.push("/sort");
     },
-    HHcar(){
+    HHcar() {
       this.$router.push("/HHcar");
     },
-    car(){
+    car() {
       this.$router.push("/car");
     },
-    meta(){
+    meta() {
       this.$router.push("/meta");
     },
-    ic(){
+    ic() {
       this.$router.push("/IC");
     },
-    cloud(){
+    cloud() {
       this.$router.push("/cloud");
     },
-    city(){
+    city() {
       this.$router.push("/city");
     },
-    internet(){
+    internet() {
       this.$router.push("/internet");
     },
   },
@@ -101,6 +100,7 @@ export default {
     display: inline;
 
   }
+
   .leftbulletin_li1 {
     display: inline;
     background-color: brown;
@@ -112,6 +112,18 @@ export default {
     list-style-type: none;
     height: 100vh;
     overflow-y: scroll;
+  }
+
+  .leftbulletin_ul::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+  }
+
+  .leftbulletin_ul::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 100px;
+    background-color: #8070d4;
+    background-clip: content-box;
   }
 
   .LB1 {
