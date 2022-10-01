@@ -1,6 +1,6 @@
 <template>
   <div class="bak">
-    <Header :currentroute="this.$route.path" @header_stockid="stockid" :key="componentKey" @keytest="keytest" />
+    <Header :key="componentKey" @keytest="keytest" />
     <router-view @keytest="keytest" />
   </div>
 </template>

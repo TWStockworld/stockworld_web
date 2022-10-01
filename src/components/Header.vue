@@ -1,9 +1,10 @@
 <template>
-  <nav v-if="currentroute != '/'">
+  <nav v-if="this.$route.path != '/'">
     <div class="computer_size">
       <router-link to="/ranking">
-        <span class="txt">主頁<span class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
+        <span class="txt">
+          主頁<span class="bar" style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span>
+        </span>
       </router-link>
 
       <router-link to="/calculate">
