@@ -5,28 +5,28 @@
       <li class="leftbulletin_li" :class="[ this.$route.path=='/ranking' ? 'select': '']">
         <el-button @click="ranking" style="width: auto; height: 50px; font-size: 2vh">關係度總排行</el-button>
       </li>
-      <li class="leftbulletin_li">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/tsmc' ? 'select': '']">
         <el-button @click="tsmc" style="width: auto; height: 50px; font-size: 2vh">台積電</el-button>
       </li>
-      <li class="leftbulletin_li">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/HHcar' ? 'select': '']">
         <el-button @click="HHcar" style="width: auto; height: 50px; font-size: 2vh">鴻海電動車</el-button>
       </li>
-      <li class="leftbulletin_li">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/car' ? 'select': '']">
         <el-button @click="car" style="width: auto; height: 50px; font-size: 2vh">電動車</el-button>
       </li>
-      <li class="leftbulletin_li">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/meta' ? 'select': '']">
         <el-button @click="meta" style="width: auto; height: 50px; font-size: 2vh">元宇宙概念股</el-button>
       </li>
-      <li class="leftbulletin_li">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/IC' ? 'select': '']">
         <el-button @click="ic" style="width: auto; height: 50px; font-size: 2vh">IC設計產業</el-button>
       </li>
-      <li class="leftbulletin_li">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/cloud' ? 'select': '']">
         <el-button @click="cloud" style="width: auto; height: 50px; font-size: 2vh">雲端相關</el-button>
       </li>
-      <li class="leftbulletin_li">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/city' ? 'select': '']">
         <el-button @click="city" style="width: auto; height: 50px; font-size: 2vh">智慧城市</el-button>
       </li>
-      <li class="leftbulletin_li">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/internet' ? 'select': '']">
         <el-button @click="internet" style="width: auto; height: 50px; font-size: 2vh">互聯網</el-button>
       </li>
     </ul>
@@ -99,6 +99,11 @@ export default {
 
   .leftbulletin_li {
     display: inline;
+
+  }
+  .leftbulletin_li1 {
+    display: inline;
+    background-color: brown;
   }
 }
 
