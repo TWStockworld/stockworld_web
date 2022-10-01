@@ -7,7 +7,7 @@
             <el-row :class="[ this.$route.path=='/cloud' ? 'move': '']">
                 <div class="tab10"></div>
                 <div class="picture">
-                    <img alt= "cloud logo" src="@/assets/img/cloud.png" style="width: 25%" />
+                    <img alt="cloud logo" src="@/assets/img/cloud.png" style="width: 25%" />
                 </div>
                 <el-col :xs="12" :sm="12">
                     <div class="RB1">
@@ -63,23 +63,32 @@ export default {
     data() {
         return {
             dialogTableVisible: false,
+            timer: '',
+            value: false
         };
     },
     mounted() {
-    window.addEventListener("wheel", this.onScroll)
-  },
-  beforeDestroy() {
-    window.removeEventListener("wheel", this.onScroll)
-  },
-  methods: {
-    onScroll(e) {
-      if (e.deltaY < 0) {
-        this.$router.push("/IC");
-      } else if (e.deltaY > 0) {
-        this.$router.push("/city");
-      }
+        window.addEventListener("wheel", this.onScroll);
+        this.timer = setTimeout(this.get, 1000);
     },
-  },
+    unmounted() {
+        window.removeEventListener("wheel", this.onScroll);
+        clearTimeout(this.timer);
+    },
+    methods: {
+        get() {
+            this.value = true;
+        },
+        onScroll(e) {
+            if (this.value == true) {
+                if (e.deltaY < 0) {
+                    this.$router.push("/IC");
+                } else if (e.deltaY > 0) {
+                    this.$router.push("/city");
+                }
+            }
+        },
+    },
 };
 </script>
 <style scoped>
@@ -170,19 +179,21 @@ export default {
             top: 29vh;
         }
     }
+
     .move {
-    animation: movepoint1 2s ease-in-out;
-  }
-  @keyframes movepoint1 {
-    0% {
-      left: 100%;
+        animation: movepoint1 2s ease-in-out;
     }
 
-    50% {
-      left: 0%;
-    }
+    @keyframes movepoint1 {
+        0% {
+            left: 100%;
+        }
 
-  }
+        50% {
+            left: 0%;
+        }
+
+    }
 }
 
 @media only screen and (max-width: 1200px) {

@@ -18,18 +18,31 @@ export default {
     LeftBulletin,
     Stockkind,
   },
-  mounted() {
-    window.addEventListener("wheel", this.onScroll)
+  data() {
+    return {
+      timer: '',
+      value: false
+    };
   },
-  beforeDestroy() {
-    window.removeEventListener("wheel", this.onScroll)
+  mounted() {
+    window.addEventListener("wheel", this.onScroll);
+    this.timer = setTimeout(this.get, 1000);
+  },
+  unmounted() {
+    window.removeEventListener("wheel", this.onScroll);
+    clearTimeout(this.timer);
   },
   methods: {
+    get() {
+      this.value = true;
+    },
     onScroll(e) {
-      if (e.deltaY < 0) {
-        console.log("scrolling up")
-      } else if (e.deltaY > 0) {
-        this.$router.push("/tsmc");
+      if (this.value == true) {
+        if (e.deltaY < 0) {
+          console.log("scrolling up")
+        } else if (e.deltaY > 0) {
+          this.$router.push("/tsmc");
+        }
       }
     },
   },
