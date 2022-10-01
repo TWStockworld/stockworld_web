@@ -159,7 +159,7 @@ export default defineComponent({
     };
   },
   */
-  props: ["currentroute, keytest"],
+  props: ["keytest"],
   data() {
     return {
       stockid: "",
