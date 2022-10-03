@@ -31,9 +31,9 @@
       <el-form @submit.prevent="stocksearch">
         <el-input size="large" placeholder="輸入股票代號或名稱" v-model="stockid" class="input-with-select" type="search">
 
-          <el-button type="primary" class="submit2" size="small" native-type="submit">搜尋</el-button>
-
         </el-input>
+        <el-button type="primary" class="submit2" size="small" native-type="submit">搜尋</el-button>
+
       </el-form>
     </div>
 
@@ -51,11 +51,13 @@
         <div class="phone_size">
           <ul class="phone_size_ul">
             <li class="phone_size_li">
-              <el-input size="large" placeholder="輸入股票代號或名稱" v-model="input3" class="input-with-select2">
-                <template #append>
-                  <el-button type="primary" class="submit2" size="small">搜尋</el-button>
-                </template>
-              </el-input>
+              <el-form @submit.prevent="stocksearch">
+                <el-input size="large" placeholder="輸入股票代號或名稱" v-model="stockid" class="input-with-select"
+                  type="search">
+                </el-input>
+                <el-button type="primary" class="submit2" size="small" native-type="submit">搜尋</el-button>
+
+              </el-form>
             </li>
 
             <li class="phone_size_li">
@@ -152,14 +154,7 @@
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  /*
-  setup() {
-    const input3 = ref("")
-    return {
-      input3
-    };
-  },
-  */
+
   props: ["keytest"],
   data() {
     return {
