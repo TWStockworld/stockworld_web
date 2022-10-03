@@ -133,10 +133,11 @@
             </router-link>
           </li>
           <li class="phone_size_li">
-            <router-link to="/logout" v-if="token" @click="logout">
+            <button v-if="token" @click="logout">
               <span class="txt">登出<span class="bar"
                   style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
-            </router-link>
+            </button>
+
           </li>
         </ul>
       </div>
@@ -177,9 +178,20 @@ export default defineComponent({
       }
     },
     logout() {
-      this.$Cookies.remove("token");
-      this.$router.push("/ranking");
-      this.$emit('keytest');
+      this.axios
+        .post("/api/logout", {}, {
+          headers: {
+            Authorization: `Bearer ` + this.token,
+          }
+        })
+        .then((res) => {
+          this.$Cookies.remove("token");
+          this.$router.push("/ranking");
+          this.$emit('keytest');
+        })
+      // this.$Cookies.remove("token");
+      // this.$router.push("/ranking");
+      // this.$emit('keytest');
     },
     stocksearch() {
       this.$router.push({

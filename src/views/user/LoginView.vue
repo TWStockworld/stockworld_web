@@ -53,23 +53,6 @@ export default {
           this.$router.push("/personalfile");
           this.$emit('keytest');
         })
-
-        /*
-      this.axios
-        .post("/api/auth/login", {
-          account: this.account,
-          password: this.password,
-        })
-
-        .then((res) => {
-          console.log(res);
-          const token = res.data.token;
-          this.$Cookies.set("token", token), { expires: 1 };
-          if (this.$Cookies.get("token")) {
-            this.$router.push("/");
-          }
-        })
-        */
         .catch(function (error) {
           if (error.response) {
             console.log(error.response.status);
