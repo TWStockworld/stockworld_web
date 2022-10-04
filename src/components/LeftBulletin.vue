@@ -2,31 +2,31 @@
   <div class="LB1">
     <ul class="leftbulletin_ul">
       <p>{{this.$route.path}}</p>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/ranking' ? 'select': '']">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/ranking' ? 'select1': '']">
         <el-button @click="ranking" style="width: auto; height: 50px; font-size: 2vh">關係度總排行</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/tsmc' ? 'select': '']">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/tsmc' ? 'select2': '']">
         <el-button @click="tsmc" style="width: auto; height: 50px; font-size: 2vh">台積電</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/HHcar' ? 'select': '']">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/HHcar' ? 'select3': '']">
         <el-button @click="HHcar" style="width: auto; height: 50px; font-size: 2vh">鴻海電動車</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/car' ? 'select': '']">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/car' ? 'select4': '']">
         <el-button @click="car" style="width: auto; height: 50px; font-size: 2vh">電動車</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/meta' ? 'select': '']">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/meta' ? 'select5': '']">
         <el-button @click="meta" style="width: auto; height: 50px; font-size: 2vh">元宇宙概念股</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/IC' ? 'select': '']">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/IC' ? 'select6': '']">
         <el-button @click="ic" style="width: auto; height: 50px; font-size: 2vh">IC設計產業</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/cloud' ? 'select': '']">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/cloud' ? 'select7': '']">
         <el-button @click="cloud" style="width: auto; height: 50px; font-size: 2vh">雲端相關</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/city' ? 'select': '']">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/city' ? 'select8': '']">
         <el-button @click="city" style="width: auto; height: 50px; font-size: 2vh">智慧城市</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/internet' ? 'select': '']">
+      <li class="leftbulletin_li" :class="[ this.$route.path=='/internet' ? 'select9': '']">
         <el-button @click="internet" style="width: auto; height: 50px; font-size: 2vh">互聯網</el-button>
       </li>
     </ul>
@@ -70,15 +70,70 @@ export default {
 </script>
 
 <style scoped>
-.select {
+.select1 {
   background-color: red;
-  background: linear-gradient(to left, salmon 50%, lightblue 50%) right;
+  background: linear-gradient(to left, rgb(255, 25, 0) 50%, lightblue 50%) right;
   background-size: 200%;
   transition: .5s ease-in-out;
   animation: movepoint1 1s;
 }
 
-
+.select2 {
+  background-color: red;
+  background: linear-gradient(to left, rgb(255, 98, 0) 50%, lightblue 50%) right;
+  background-size: 200%;
+  transition: .5s ease-in-out;
+  animation: movepoint1 1s;
+}
+.select3 {
+  background-color: red;
+  background: linear-gradient(to left, rgb(255, 225, 0) 50%, lightblue 50%) right;
+  background-size: 200%;
+  transition: .5s ease-in-out;
+  animation: movepoint1 1s;
+}
+.select4 {
+  background-color: red;
+  background: linear-gradient(to left, rgb(136, 255, 0) 50%, lightblue 50%) right;
+  background-size: 200%;
+  transition: .5s ease-in-out;
+  animation: movepoint1 1s;
+}
+.select5 {
+  background-color: red;
+  background: linear-gradient(to left, rgb(0, 255, 242) 50%, lightblue 50%) right;
+  background-size: 200%;
+  transition: .5s ease-in-out;
+  animation: movepoint1 1s;
+}
+.select6 {
+  background-color: red;
+  background: linear-gradient(to left, rgb(13, 0, 255) 50%, lightblue 50%) right;
+  background-size: 200%;
+  transition: .5s ease-in-out;
+  animation: movepoint1 1s;
+}
+.select7 {
+  background-color: red;
+  background: linear-gradient(to left, rgb(137, 3, 255) 50%, lightblue 50%) right;
+  background-size: 200%;
+  transition: .5s ease-in-out;
+  animation: movepoint1 1s;
+}
+.select8 {
+  background-color: red;
+  background: linear-gradient(to left, rgb(255, 3, 234) 50%, lightblue 50%) right;
+  background-size: 200%;
+  transition: .5s ease-in-out;
+  animation: movepoint1 1s;
+}
+.select9 {
+  background-color: red;
+  background: linear-gradient(to left, rgb(85, 78, 78) 50%, lightblue 50%) right;
+  background-size: 200%;
+  transition: .5s ease-in-out;
+  animation: movepoint1 1s;
+}
 @keyframes movepoint1 {
   0% {
     background-position: left;
