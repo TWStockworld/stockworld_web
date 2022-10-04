@@ -23,12 +23,13 @@ import Help_SupportView from "../views/user_profile/Help_SupportView";
 import RankingView from "../views/bulletin/RankingView";
 import TsmcView from "../views/bulletin/TsmcView";
 import CarView from "../views/bulletin/CarView.vue";
-import MetaView from "../views/bulletin/MetaView.vue"; 
+import MetaView from "../views/bulletin/MetaView.vue";
 import CityView from "../views/bulletin/CityView.vue";
 import ICView from "../views/bulletin/ICView.vue";
 import InternetView from "../views/bulletin/InternetView.vue";
 import CloudView from "../views/bulletin/CloudView.vue";
-import HHcarView from "../views/bulletin/HHcarView.vue"
+import HHcarView from "../views/bulletin/HHcarView.vue";
+import Vue from "vue";
 //ttt
 const routes = [
   {
@@ -60,7 +61,7 @@ const routes = [
     path: "/aboutstock/:stockid",
     name: "AboutStock",
     component: AboutStockView,
-    props:true,
+    props: true,
   },
   {
     path: "/tsmc",
@@ -87,7 +88,7 @@ const routes = [
   //   name: "userprofile",
   //   component: UserProfileView,
   // },
- 
+
   {
     path: "/personalfile",
     name: "personalfile",

@@ -1,5 +1,5 @@
 <template>
-    <el-row class="el-row">
+    <el-row>
         <el-col :xs="24" :sm="24" :lg="4">
             <LeftBulletin />
         </el-col>
@@ -63,23 +63,32 @@ export default {
     data() {
         return {
             dialogTableVisible: false,
+            timer: '',
+            value: false
         };
     },
     mounted() {
-    window.addEventListener("wheel", this.onScroll)
-  },
-  beforeDestroy() {
-    window.removeEventListener("wheel", this.onScroll)
-  },
-  methods: {
-    onScroll(e) {
-      if (e.deltaY < 0) {
-        this.$router.push("/cloud");
-      } else if (e.deltaY > 0) {
-        console.log("scrolling down")
-      }
+        window.addEventListener("wheel", this.onScroll);
+        this.timer = setTimeout(this.get, 1000);
     },
-  },
+    unmounted() {
+        window.removeEventListener("wheel", this.onScroll);
+        clearTimeout(this.timer);
+    },
+    methods: {
+        get() {
+            this.value = true;
+        },
+        onScroll(e) {
+            if (this.value == true) {
+                if (e.deltaY < 0) {
+                    this.$router.push("/cloud");
+                } else if (e.deltaY > 0) {
+                    console.log("scrolling down")
+                }
+            }
+        },
+    },
 };
 </script>
 <style scoped>
@@ -170,19 +179,21 @@ export default {
             top: 29vh;
         }
     }
+
     .move {
-    animation: movepoint1 2s ease-in-out;
-  }
-  @keyframes movepoint1 {
-    0% {
-      left: 100%;
+        animation: movepoint1 2s ease-in-out;
     }
 
-    50% {
-      left: 0%;
-    }
+    @keyframes movepoint1 {
+        0% {
+            left: 100%;
+        }
 
-  }
+        50% {
+            left: 0%;
+        }
+
+    }
 }
 
 @media only screen and (max-width: 1200px) {

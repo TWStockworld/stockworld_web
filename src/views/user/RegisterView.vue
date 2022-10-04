@@ -80,6 +80,7 @@ export default {
               message: "Congrats, this is a success message.",
               type: "success",
             });
+            this.$router.push("/personalfile");
           })
 
           .catch(function (error) {

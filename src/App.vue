@@ -1,7 +1,7 @@
 <template>
   <div class="bak">
-    <Header :currentroute="this.$route.path" @header_stockid="stockid" />
-    <router-view />
+    <Header :key="componentKey" @keytest="keytest" />
+    <router-view @keytest="keytest" />
   </div>
 </template>
 
@@ -13,6 +13,11 @@ import { useHead } from "@vueuse/head";
 export default {
   components: {
     Header,
+  },
+  data() {
+    return {
+      componentKey: 0,
+    };
   },
   setup() {
     useHead({
@@ -33,6 +38,11 @@ export default {
     // this.$Snow.followMouse = false;
     // this.$Snow.flakesMaxActive = 35;
     // 下雪
+  },
+  methods: {
+    keytest() {
+      this.componentKey += 1;
+    }
   },
 };
 </script>

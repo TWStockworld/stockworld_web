@@ -1,5 +1,5 @@
 <template>
-  <el-row class="el-row">
+  <el-row>
     <el-col :xs="24" :sm="24" :lg="4">
       <LeftBulletin />
     </el-col>
@@ -64,20 +64,29 @@ export default {
   data() {
     return {
       dialogTableVisible: false,
+      timer: '',
+      value: false
     };
   },
   mounted() {
-    window.addEventListener("wheel", this.onScroll)
+    window.addEventListener("wheel", this.onScroll);
+    this.timer = setTimeout(this.get, 1000);
   },
-  beforeDestroy() {
-    window.removeEventListener("wheel", this.onScroll)
+  unmounted() {
+    window.removeEventListener("wheel", this.onScroll);
+    clearTimeout(this.timer);
   },
   methods: {
+    get() {
+      this.value = true;
+    },
     onScroll(e) {
-      if (e.deltaY < 0) {
-        this.$router.push("/ranking");
-      } else if (e.deltaY > 0) {
-        this.$router.push("/HHcar");
+      if (this.value == true) {
+        if (e.deltaY < 0) {
+          this.$router.push("/ranking");
+        } else if (e.deltaY > 0) {
+          this.$router.push("/HHcar");
+        }
       }
     },
   },
@@ -86,12 +95,11 @@ export default {
 
 
 <style scoped>
- 
-
 @media only screen and (min-width: 1200px) {
   .el-row {
-  height: 100%;
+    height: 100%;
   }
+
   .RB1 {
     position: absolute;
     top: 10vh;
@@ -158,23 +166,27 @@ export default {
     left: 12%;
     display: inline-block;
     animation: movepoint 2s infinite alternate;
-    -webkit-animation: movepoint 2s infinite alternate; 
+    -webkit-animation: movepoint 2s infinite alternate;
   }
 
   @keyframes movepoint {
-    0%{
+    0% {
       top: 29vh;
     }
+
     100% {
       top: 32vh;
     }
+
     0% {
       top: 29vh;
     }
   }
+
   .move {
     animation: movepoint1 2s ease-in-out;
   }
+
   @keyframes movepoint1 {
     0% {
       left: 100%;

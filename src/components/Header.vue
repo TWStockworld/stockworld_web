@@ -1,9 +1,10 @@
 <template>
-  <nav v-if="currentroute != '/'">
+  <nav v-if="this.$route.path != '/'">
     <div class="computer_size">
       <router-link to="/ranking">
-        <span class="txt">主頁<span class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
+        <span class="txt">
+          主頁<span class="bar" style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span>
+        </span>
       </router-link>
 
       <router-link to="/calculate">
@@ -26,38 +27,37 @@
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
-      <router-link to="/logout" v-if="token" @click="logout">
-        <span class="txt">登出<span class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
-      </router-link>
+
       <el-form @submit.prevent="stocksearch">
         <el-input size="large" placeholder="輸入股票代號或名稱" v-model="stockid" class="input-with-select" type="search">
 
-          <el-button type="primary" class="submit2" size="small" native-type="submit">搜尋</el-button>
-
         </el-input>
+        <el-button type="primary" class="submit2" size="small" native-type="submit">搜尋</el-button>
+
       </el-form>
     </div>
 
-    <div class="navigation">
-      <div class="userBx">
+    <div class="navigation" :class="[this.toggle? 'active': '']">
+      <div class=" userBx">
         <div class="imgBx">
           <img class="img-responsive1" src="@/assets/img/logo.png" />
         </div>
         <!--加入姓名錢-->
         <p class="username1">目前剩餘:1000元</p>
       </div>
-      <div class="menuToggle"></div>
+      <div class="menuToggle" @click="menutoggle"></div>
       <div class="menu">
         <!--在裡面加入row col-->
         <div class="phone_size">
           <ul class="phone_size_ul">
             <li class="phone_size_li">
-              <el-input size="large" placeholder="輸入股票代號或名稱" v-model="input3" class="input-with-select2">
-                <template #append>
-                  <el-button type="primary" class="submit2" size="small">搜尋</el-button>
-                </template>
-              </el-input>
+              <el-form @submit.prevent="stocksearch">
+                <el-input size="large" placeholder="輸入股票代號或名稱" v-model="stockid" class="input-with-select"
+                  type="search">
+                </el-input>
+                <el-button type="primary" class="submit2" size="small" native-type="submit">搜尋</el-button>
+
+              </el-form>
             </li>
 
             <li class="phone_size_li">
@@ -112,7 +112,7 @@
         <!--*****************************************************-->
         <ul class="phone_size_ul">
           <li class="phone_size_li">
-            <router-link to="/personalfile" v-if="!token" class="menuset">
+            <router-link to="/personalfile" v-if="token" class="menuset">
               <a class="menuset2" href="#">
                 <ion-icon name="person-outline"></ion-icon>My Profile
               </a>
@@ -134,14 +134,17 @@
               </a>
             </router-link>
           </li>
+          <li class="phone_size_li">
+            <button v-if="token" @click="logout">
+              <span class="txt">登出<span class="bar"
+                  style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
+            </button>
+
+          </li>
         </ul>
       </div>
     </div>
-    <component :is="'script'">
-      let menuToggle = document.querySelector('.menuToggle'); let navigation
-      =document.querySelector('.navigation'); menuToggle.onclick =
-      function(){navigation.classList.toggle('active') }
-    </component>
+
     <component :is="'script'" type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
     </component>
     <component :is="'script'" nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></component>
@@ -151,25 +154,39 @@
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  /*
-  setup() {
-    const input3 = ref("")
-    return {
-      input3
-    };
-  },
-  */
-  props: ["currentroute"],
+
+  props: ["keytest"],
   data() {
     return {
       stockid: "",
       token: this.$Cookies.get("token"),
+      toggle: false
     };
   },
   methods: {
+    menutoggle() {
+      if (this.toggle) {
+        this.toggle = false;
+      }
+      else {
+        this.toggle = true;
+      }
+    },
     logout() {
-      this.$Cookies.remove("token");
-      this.$router.push("/ranking");
+      this.axios
+        .post("/api/logout", {}, {
+          headers: {
+            Authorization: `Bearer ` + this.token,
+          }
+        })
+        .then((res) => {
+          this.$Cookies.remove("token");
+          this.$router.push("/ranking");
+          this.$emit('keytest');
+        })
+      // this.$Cookies.remove("token");
+      // this.$router.push("/ranking");
+      // this.$emit('keytest');
     },
     stocksearch() {
       this.$router.push({
