@@ -39,12 +39,18 @@
               </el-option>
             </el-select>
           </div>
+          <div class="block">
+            <span class="demonstration">圖表天數位移</span>
+            <el-checkbox v-model="move" label="是" size="large" />
+
+          </div>
         </div>
         <el-button plain type="primary" native-type="submit">送出</el-button>
       </div>
       <p>{{ result }}</p>
       <div v-if="stockA_datas.length != 0">
-        <Chart :stockA_datas="stockA_datas" :stockB_datas="stockB_datas" :key="componentKey" />
+        <Chart :stockA_datas="stockA_datas" :stockB_datas="stockB_datas" :real_diff="real_diff" :move="move"
+          :key="componentKey" />
       </div>
     </el-form>
   </div>
@@ -58,13 +64,14 @@ export default {
   data() {
     return {
       token: this.$Cookies.get("token"),
-      startdate: "2021-01-01",
-      enddate: "2021-12-01",
-      diff: "2",
+      startdate: "2018-01-01",
+      enddate: "2022-09-01",
+      diff: "1",
       stock_category_id: 1,
-      stockA: "",
-      stockB: "",
-      result: "test",
+      stockA: 2888,
+      stockB: 2883,
+      result: "",
+      move: true,
       stock_category_options: [],
       stockA_options: [],
       stockB_options: [],
@@ -122,6 +129,9 @@ export default {
           this.result = response.data.success;
           this.stockA_datas = response.data.stockA_datas;
           this.stockB_datas = response.data.stockB_datas;
+          this.real_diff = response.data.real_diff;
+
+
           this.componentKey += 1;
         });
     },

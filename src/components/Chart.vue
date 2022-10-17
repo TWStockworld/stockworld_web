@@ -6,7 +6,7 @@ import { createChart } from "lightweight-charts";
 
 export default {
   name: "Chart",
-  props: ["stockA_datas", "stockB_datas"],
+  props: ["stockA_datas", "stockB_datas", "real_diff", "move"],
   data() {
     return {};
   },
@@ -21,6 +21,13 @@ export default {
       localization: {
         dateFormat: "yyyy/MM/dd",
       },
+      rightPriceScale: {
+        scaleMargins: {
+          top: 0.1,
+          bottom: 0.1,
+        },
+        mode: 2,
+      },
       // layout: {
       //   backgroundColor: "#100841",
       //   textColor: "#ffffff",
@@ -28,7 +35,6 @@ export default {
     };
     const domElement = document.getElementById("show");
     const chart = createChart(domElement, chartProperties);
-
     // const candlestickSeries = chart.addCandlestickSeries();
 
     // const cdata = this.stockA_datas.map((stock) => {
@@ -61,8 +67,16 @@ export default {
       lineWidth: 3,
     });
     const dataB = this.stockB_datas.map((stock) => {
+      var d = '';
+      if (this.move == true) {
+        d = new Date(stock["date"]);
+        d.setDate(d.getDate() - this.real_diff + 1);
+        d = d.toLocaleDateString();
+      } else {
+        d = stock["date"];
+      }
       return {
-        time: stock["date"],
+        time: d,
         value: stock["close"],
       };
     });
