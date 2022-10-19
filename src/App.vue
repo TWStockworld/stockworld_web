@@ -14,6 +14,10 @@ export default {
   components: {
     Header,
   },
+  created() {
+    const html = document.documentElement // returns the html tag
+    html.setAttribute('lang', 'zh_TW')
+  },
   data() {
     return {
       componentKey: 0,
