@@ -1,6 +1,7 @@
 <template>
   <nav v-if="this.$route.path != '/'">
     <div class="computer_size">
+      <img src="../assets/img/logo2.png" alt="e" class="logo">
       <router-link to="/ranking">
         <span class="txt">
           主頁<span class="bar" style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span>
@@ -733,5 +734,12 @@ input {
 body,
 input {
   color: #171717;
+}
+
+.logo {
+  left: 6%;
+  position: absolute;
+  width: 3.5%;
+  border-radius: 5px;
 }
 </style>
