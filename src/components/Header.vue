@@ -60,7 +60,7 @@
             </li>
 
             <li class="phone_size_li">
-              <router-link to="/ranking" class="menuset">
+              <router-link to="/ranking" class="menuset" @click="canclemenu">
                 <a class="menuset2" href="#">
                   <ion-icon name="home-outline"></ion-icon>主頁
                 </a>
@@ -68,7 +68,7 @@
             </li>
 
             <li class="phone_size_li">
-              <router-link to="/calculate" class="menuset">
+              <router-link to="/calculate" class="menuset" @click="canclemenu">
                 <a class="menuset2" href="#">
                   <ion-icon name="calculator-outline"></ion-icon>相關度計算
                 </a>
@@ -76,7 +76,7 @@
             </li>
 
             <li class="phone_size_li">
-              <router-link to="/learning" class="menuset">
+              <router-link to="/learning" class="menuset" @click="canclemenu">
                 <a class="menuset2" href="#">
                   <ion-icon name="pencil-outline"></ion-icon>投資小學堂
                 </a>
@@ -84,7 +84,7 @@
             </li>
 
             <li class="phone_size_li">
-              <router-link to="/sort" class="menuset">
+              <router-link to="/sort" class="menuset" @click="canclemenu">
                 <a class="menuset2" href="#">
                   <ion-icon name="funnel-outline"></ion-icon>股票分類
                 </a>
@@ -92,7 +92,7 @@
             </li>
 
             <li class="phone_size_li">
-              <router-link to="/aboutstock/2330" class="menuset">
+              <router-link to="/aboutstock/2330" class="menuset" @click="canclemenu">
                 <a class="menuset2" href="#">
                   <ion-icon name="bar-chart-outline"></ion-icon>關於股票
                 </a>
@@ -111,7 +111,7 @@
         <!--*****************************************************-->
         <ul class="phone_size_ul">
           <li class="phone_size_li">
-            <router-link to="/personalfile" v-if="token" class="menuset">
+            <router-link to="/personalfile" v-if="token" class="menuset" @click="canclemenu">
               <a class="menuset2" href="#">
                 <ion-icon name="person-outline"></ion-icon>My Profile
               </a>
@@ -119,7 +119,7 @@
           </li>
 
           <li class="phone_size_li">
-            <router-link to="/register" v-if="!token" class="menuset">
+            <router-link to="/register" v-if="!token" class="menuset" @click="canclemenu">
               <a class="menuset2" href="#">
                 <ion-icon name="add"></ion-icon>註冊
               </a>
@@ -127,7 +127,7 @@
           </li>
 
           <li class="phone_size_li">
-            <router-link to="/login" v-if="!token" class="menuset">
+            <router-link to="/login" v-if="!token" class="menuset" @click="canclemenu">
               <a class="menuset2" href="#">
                 <ion-icon name="log-in-outline"></ion-icon>登入
               </a>
@@ -163,6 +163,10 @@ export default defineComponent({
     };
   },
   methods: {
+    canclemenu() {
+      this.$emit('keytest');
+    },
+
     menutoggle() {
       if (this.toggle) {
         this.toggle = false;
