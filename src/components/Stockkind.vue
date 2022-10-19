@@ -179,11 +179,11 @@ export default {
   }
 
   .stockkind_cellphone {
-    position: absolute;
+    /* position: absolute;
     width: 70%;
     top: 40vh;
     left: 15%;
-    font-size: 20px;
+    font-size: 20px; */
   }
 }
 </style>

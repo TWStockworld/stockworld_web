@@ -91,6 +91,9 @@ export default {
     },
 };
 </script>
+<style lang="css" src="@/assets/css/bulletin_margintop.css" scoped>
+
+</style>
 <style scoped>
 @media only screen and (min-width: 1200px) {
     .el-row {

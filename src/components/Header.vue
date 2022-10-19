@@ -338,12 +338,11 @@ export default defineComponent({
     z-index: 2;
     position: absolute;
     width: 100%;
-    height: calc(100% - 80px);
-    margin-top: 80px;
+    height: calc(100% - 75px);
+    margin-top: 75px;
     padding: 0px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     background: rgb(240, 240, 240);
-
   }
 
   .menu .menuset {

@@ -64,12 +64,12 @@ export default {
   data() {
     return {
       token: this.$Cookies.get("token"),
-      startdate: "2018-01-01",
+      startdate: "2012-01-01",
       enddate: "2022-09-01",
-      diff: "1",
+      diff: "8",
       stock_category_id: 1,
-      stockA: 2888,
-      stockB: 2883,
+      stockA: 4130,
+      stockB: 3176,
       result: "",
       move: true,
       stock_category_options: [],

@@ -112,6 +112,17 @@ export default {
     display: inline;
     background-color: brown;
   }
+
+  .leftbulletin_ul::-webkit-scrollbar {
+    background-color: #f5f5f500;
+  }
+
+  .leftbulletin_ul::-webkit-scrollbar-thumb {
+    border: 6px solid transparent;
+    border-radius: 100px;
+    background-color: #8070d4;
+    background-clip: content-box;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
