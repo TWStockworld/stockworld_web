@@ -64,11 +64,20 @@ export default {
 }
 
 .bak {
-  background-color: #6ea5e9;
-  background-image: url("assets/img/Snow.svg");
+  background-image: linear-gradient(to top left, #467a91ed, #b7cbd2b5);
   height: 100%;
   width: 100%;
   background-attachment: fixed;
   background-size: cover;
+}
+
+.bulletin_right-col {
+  background-color: #ffffffad;
+  border-radius: 30px;
+}
+
+.bulletin_el-row {
+  padding: 0 1% 7% 0%;
+  height: 100vh;
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
-    <el-row>
+    <el-row class="bulletin_el-row">
         <el-col :xs="24" :sm="24" :lg="4">
             <LeftBulletin />
         </el-col>
-        <el-col :xs="24" :sm="24" :lg="20">
+        <el-col :xs="24" :sm="24" :lg="20" class="bulletin_right-col">
             <el-row>
                 <div class="tab10"></div>
                 <div class="picture">

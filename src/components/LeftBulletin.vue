@@ -19,7 +19,7 @@
       <li class="leftbulletin_li" :class="[ this.$route.path=='/IC' ? 'select': '']">
         <el-button @click="ic" style="width: auto; height: 50px; font-size: 2vh">IC設計產業</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/cloud' ? 'select': '']">
+      <!-- <li class="leftbulletin_li" :class="[ this.$route.path=='/cloud' ? 'select': '']">
         <el-button @click="cloud" style="width: auto; height: 50px; font-size: 2vh">雲端相關</el-button>
       </li>
       <li class="leftbulletin_li" :class="[ this.$route.path=='/city' ? 'select': '']">
@@ -27,7 +27,7 @@
       </li>
       <li class="leftbulletin_li" :class="[ this.$route.path=='/internet' ? 'select': '']">
         <el-button @click="internet" style="width: auto; height: 50px; font-size: 2vh">互聯網</el-button>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>
@@ -110,8 +110,8 @@ export default {
 @media only screen and (min-width: 1200px) {
   .leftbulletin_ul {
     list-style-type: none;
-    height: 100vh;
-    overflow-y: scroll;
+    /* height: 100vh; */
+    /* overflow-y: scroll; */
   }
 
   .leftbulletin_ul::-webkit-scrollbar {
