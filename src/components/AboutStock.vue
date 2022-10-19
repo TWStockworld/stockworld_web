@@ -1,15 +1,13 @@
 <template>
-  <el-row >
+  <el-row>
     <el-col :lg="10" :sm="24" :xs="24" class="high">
-      <Tradeviewchart :aboutstock_stockid="stockid" />
+      <Tradingtest :stockid="stockid" />
     </el-col>
-    
     <el-col :lg="14" :sm="24" :xs="24">
       <el-row style="height:50%">
-        <div class="grid-content bg-purple-light" >
+        <div class="grid-content bg-purple-light">
           <h3>相關度排行</h3>
-          <el-table :data="RankStock1" border stripe style="width: 100%"  
-            :default-sort="{ prop: 'rank1' }">
+          <el-table :data="RankStock1" border stripe style="width: 100%" :default-sort="{ prop: 'rank1' }">
 
             <el-table-column label="UP" width="67" />
 
@@ -31,8 +29,7 @@
 
           </el-table>
 
-          <el-table :data="RankStock2" border stripe style="width: 100%"  
-            :default-sort="{ prop: 'rank2' }">
+          <el-table :data="RankStock2" border stripe style="width: 100%" :default-sort="{ prop: 'rank2' }">
 
             <el-table-column label="DOWN" width="67" />
 
@@ -56,9 +53,9 @@
         </div>
       </el-row>
       <el-row>
-        <div class="grid-content2 bg-purple-light" >
+        <div class="grid-content2 bg-purple-light">
           <h3>上市水泥類股-成分股即時資訊</h3>
-          <el-table :data="StockClassification" border stripe style="width: 100%" 
+          <el-table :data="StockClassification" border stripe style="width: 100%"
             :default-sort="{ prop: 'code', prop: 'time' }">
             <el-table-column prop="code" label="代號" sortable width="85" />
 
@@ -90,13 +87,14 @@
 </template>
 
 <script lang="ts">
-import Tradeviewchart from "@/components/Tradeviewchart.vue";
+
 import { defineComponent } from "vue";
+import Tradingtest from './Tradingtest.vue'
 
 export default defineComponent({
   name: "AboutStock",
   components: {
-    Tradeviewchart,
+    Tradingtest
   },
   // props:{
   //   stockid:{
@@ -106,7 +104,14 @@ export default defineComponent({
   // },
   data() {
     return {
-      stockid:this.$route.params.stockid,
+      ohlcv: [
+        [1551128400000, 33, 37.1, 14, 14, 196],
+        [1551132000000, 13.7, 30, 6.6, 30, 206],
+        [1551135600000, 29.9, 33, 21.3, 21.8, 74],
+        [1551139200000, 21.7, 25.9, 18, 24, 140],
+        [1551142800000, 24.1, 24.1, 24, 24.1, 29],
+      ],
+      stockid: this.$route.params.stockid,
       RankStock1: [
         {
           rank1: "1",
@@ -349,46 +354,53 @@ export default defineComponent({
 </script>
 
 <style scoped>
- @media only screen and (max-width: 1200px) {
-.aboutstock {
-  z-index: 1;
+@media only screen and (max-width: 1200px) {
+  .aboutstock {
+    z-index: 1;
+  }
+
+  .el-col {
+    border-radius: 4px;
+
+  }
+
+  .grid-content {
+    border-radius: 4px;
+    height: 35vh;
+    overflow-x: auto;
+  }
+
+  .grid-content2 {
+    border-radius: 4px;
+    height: 35vh;
+    overflow-x: auto;
+  }
+
+  .high {
+    height: 50vh;
+  }
 }
 
-.el-col {
-  border-radius: 4px;
-  
-}
-.grid-content {
-  border-radius: 4px;
-  height: 35vh;
-  overflow-x: auto;
-}
-.grid-content2 {
-  border-radius: 4px;
-  height: 35vh;
-  overflow-x: auto;
-}
-.high{
-  height: 50vh;
-}
-}
- @media only screen and (min-width: 1200px) {
-.aboutstock {
-  z-index: 1;
-}
-.el-col {
-  border-radius: 4px;
-}
-.grid-content {
-  border-radius: 4px;
-  height: 35vh;
-  overflow-x: auto;
-}
-.grid-content2 {
-  border-radius: 4px;
-  height: 35vh;
-  overflow-x: auto;
-}
+@media only screen and (min-width: 1200px) {
+  .aboutstock {
+    z-index: 1;
+  }
+
+  .el-col {
+    border-radius: 4px;
+  }
+
+  .grid-content {
+    border-radius: 4px;
+    height: 35vh;
+    overflow-x: auto;
+  }
+
+  .grid-content2 {
+    border-radius: 4px;
+    height: 35vh;
+    overflow-x: auto;
+  }
 
 }
 </style>
