@@ -74,7 +74,7 @@ export default {
 }
 
 .bulletin_right-col {
-  background-color: #ffffffad;
+  background-color: #ffffff5e;
   border-radius: 30px;
 }
 
