@@ -53,6 +53,8 @@ export default {
 * {
   padding: 0;
   margin: 0;
+  font-family: "Noto Sans TC", sans-serif !important;
+
 }
 
 #app {
@@ -60,8 +62,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  font-family: "Noto Sans TC", sans-serif !important;
 }
+
 
 .bak {
   background-image: linear-gradient(to top left, #467a91ed, #b7cbd2b5);

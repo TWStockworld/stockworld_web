@@ -159,24 +159,24 @@ export default {
 
     .picture {
         position: absolute;
-        top: 30vh;
-        left: 12%;
+        top: 25vh;
+        width: 100%;
         display: inline-block;
-        animation: movepoint 2s infinite alternate;
-        -webkit-animation: movepoint 2s infinite alternate;
+        animation: movepoint 1.5s infinite alternate;
+        -webkit-animation: movepoint 1.5s infinite alternate;
     }
 
     @keyframes movepoint {
         0% {
-            top: 29vh;
+            top: 25vh;
         }
 
         100% {
-            top: 32vh;
+            top: 23vh;
         }
 
         0% {
-            top: 29vh;
+            top: 25vh;
         }
     }
 }

@@ -1,23 +1,29 @@
 <template>
   <div class="LB1">
     <ul class="leftbulletin_ul">
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/ranking' ? 'select': '']">
-        <el-button @click="ranking" style="width: auto; height: 50px; font-size: 2vh">關係度總排行</el-button>
+      <li class="leftbulletin_li">
+        <el-button @click="ranking" style="width: auto; height: 50px; font-size: 2vh"
+          :class="[ this.$route.path=='/ranking' ? 'select': '']">關係度總排行</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/tsmc' ? 'select': '']">
-        <el-button @click="tsmc" style="width: auto; height: 50px; font-size: 2vh">台積電</el-button>
+      <li class="leftbulletin_li">
+        <el-button @click="tsmc" style="width: auto; height: 50px; font-size: 2vh"
+          :class="[ this.$route.path=='/tsmc' ? 'select': '']">台積電</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/HHcar' ? 'select': '']">
-        <el-button @click="HHcar" style="width: auto; height: 50px; font-size: 2vh">鴻海電動車</el-button>
+      <li class="leftbulletin_li">
+        <el-button @click="HHcar" style="width: auto; height: 50px; font-size: 2vh"
+          :class="[ this.$route.path=='/HHcar' ? 'select': '']">鴻海電動車</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/car' ? 'select': '']">
-        <el-button @click="car" style="width: auto; height: 50px; font-size: 2vh">電動車</el-button>
+      <li class="leftbulletin_li">
+        <el-button @click="car" style="width: auto; height: 50px; font-size: 2vh"
+          :class="[ this.$route.path=='/car' ? 'select': '']">電動車</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/meta' ? 'select': '']">
-        <el-button @click="meta" style="width: auto; height: 50px; font-size: 2vh">元宇宙概念股</el-button>
+      <li class="leftbulletin_li">
+        <el-button @click="meta" style="width: auto; height: 50px; font-size: 2vh"
+          :class="[ this.$route.path=='/meta' ? 'select': '']">元宇宙概念股</el-button>
       </li>
-      <li class="leftbulletin_li" :class="[ this.$route.path=='/IC' ? 'select': '']">
-        <el-button @click="ic" style="width: auto; height: 50px; font-size: 2vh">IC設計產業</el-button>
+      <li class="leftbulletin_li">
+        <el-button @click="ic" style="width: auto; height: 50px; font-size: 2vh"
+          :class="[ this.$route.path=='/IC' ? 'select': '']">IC設計產業</el-button>
       </li>
       <!-- <li class="leftbulletin_li" :class="[ this.$route.path=='/cloud' ? 'select': '']">
         <el-button @click="cloud" style="width: auto; height: 50px; font-size: 2vh">雲端相關</el-button>
@@ -70,11 +76,12 @@ export default {
 
 <style scoped>
 .select {
-  background-color: red;
-  background: linear-gradient(to left, salmon 50%, lightblue 50%) right;
+  border-radius: 10px;
+  background: linear-gradient(to left, #72b6fa 50%, lightblue 50%) right;
   background-size: 200%;
   transition: .5s ease-in-out;
   animation: movepoint1 1s;
+  color: white;
 }
 
 
