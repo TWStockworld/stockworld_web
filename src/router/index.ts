@@ -59,7 +59,7 @@ const routes = [
   },
   {
     // /:stockid
-    path: "/aboutstock",
+    path: "/aboutstock/:stockid",
     name: "AboutStock",
     component: AboutStockView,
     props: true,
