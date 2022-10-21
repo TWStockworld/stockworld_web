@@ -18,8 +18,8 @@
       <el-table-column prop="follow" label="追蹤" width="180" />
     </el-table>
   </div>
-  <div class="stockkind_cellphone">
-    <el-table :data="getValues" :show-header="false">
+  <div class="stockkind_cellphone" :class="[ this.$route.path=='/ranking' ? 'move1': '']">
+    <el-table style="width: 100%" :data="getValues" :show-header="false">
       <el-table-column v-for="(item, index) in getHeaders" :key="index" :prop="item">
       </el-table-column>
     </el-table>
@@ -181,9 +181,23 @@ export default {
   .stockkind_cellphone {
     /* position: absolute;
     width: 70%;
-    top: 40vh;
+    top: 25vh;
     left: 15%;
     font-size: 20px; */
+  }
+  .move1 {
+    animation: movepoint2 2s ease-in-out;
+  }
+
+  @keyframes movepoint2 {
+    0% {
+      left: 100%;
+    }
+
+    50% {
+      left: 15%;
+    }
+
   }
 }
 </style>

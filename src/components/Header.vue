@@ -136,7 +136,7 @@
           </li>
           <li class="phone_size_li">
             <button v-if="token" @click="logout">
-              <span class="txt">登出<span class="bar"
+              <span class="txt"><ion-icon name="log-out-outline"></ion-icon>登出<span class="bar"
                   style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
             </button>
 
