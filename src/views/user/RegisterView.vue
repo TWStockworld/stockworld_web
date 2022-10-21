@@ -1,6 +1,7 @@
 <template>
   <div id="register">
-    <el-row>
+    <div class="register_computer_size">
+      <el-row>
       <!--<el-col :span="6" :offset="4"-->
       <el-col :span="8">
         <!--<div class="grid-content ep-bg-purple" />-->
@@ -38,6 +39,27 @@
         </div>
       </el-col>
     </el-row>
+    </div>
+    <div class="register_cellphone_size">
+      <div class="" />
+        <div id="container1">
+          <h3>註冊</h3>
+          <div class="tab1"></div>
+          <el-form @submit.prevent="register">
+            <input type="username" id="inputUsername" v-model="name" placeholder="名字" required />
+            <div class="tab"></div>
+            <input type="account" id="inputAccount" v-model="account" placeholder="帳號" required />
+            <div class="tab"></div>
+            <input type="password" id="inputPassword" v-model="password" placeholder="密碼" required />
+            <div class="tab"></div>
+            <input type="email" id="inputEmail" v-model="email" placeholder="Email" required />
+            <div class="tab"></div>
+
+            <el-button type="primary" class="submit" @click="register">註冊</el-button>
+          </el-form>
+        </div>
+    </div>
+    
   </div>
 </template>
 
@@ -103,6 +125,16 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (max-width: 768px) {
+  .register_computer_size {
+    display: none;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .register_cellphone_size {
+    display: none;
+  }
+}
 h3 {
   margin: auto;
   color: #23995c;
