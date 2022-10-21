@@ -67,9 +67,9 @@ export default {
       startdate: "2012-01-01",
       enddate: "2022-09-01",
       diff: "8",
-      stock_category_id: 1,
-      stockA: 4130,
-      stockB: 3176,
+      stock_category_id: 0,
+      stockA: "",
+      stockB: "",
       result: "",
       move: true,
       stock_category_options: [],
@@ -95,6 +95,10 @@ export default {
         this.stock_category_options = res1.data.success;
         this.stockA_options = res2.data.success;
         this.stockB_options = res2.data.success;
+        this.stock_category_options.unshift({
+          "id": 0,
+          "category": "全部，不分類",
+        });
       })
     );
   },

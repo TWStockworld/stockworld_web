@@ -9,7 +9,7 @@
       </router-link>
 
       <router-link to="/calculate">
-        <span class="txt">相關度計算<span class="bar"
+        <span class="txt">漲幅機率計算<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
