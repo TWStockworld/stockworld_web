@@ -2,19 +2,19 @@
   <el-row>
     <div class="grid-content bg-purple-light">
       <h3>漲跌機率(漲)</h3>
-      <el-table :data="RankStock1" border stripe style="width: 100%" :default-sort="{ prop: 'rank1' }">
+      <el-table :data="RankStock1" border stripe style="width: 100%" :default-sort="{ prop: 'rank' }">
 
         <el-table-column prop="rank1" label="排行" sortable width="60" />
 
-        <el-table-column prop="code1" label="代號" width="60" />
+        <el-table-column prop="stockA_id" label="代號" width="60" />
 
-        <el-table-column prop="name1" label="名稱" width="60" />
+        <el-table-column prop="stockA_name" label="名稱" width="60" />
 
-        <el-table-column prop="VS" label="VS" width="40" />
+        <el-table-column label="VS" width="40" />
 
-        <el-table-column prop="code2" label="代號" width="60" />
+        <el-table-column prop="stockB_id" label="代號" width="60" />
 
-        <el-table-column prop="name2" label="名稱" width="60" />
+        <el-table-column prop="stockB_name" label="名稱" width="60" />
 
         <el-table-column prop="day" label="天數" width="60" />
 
@@ -26,7 +26,7 @@
     </div>
     <div class="grid-content bg-purple-light">
       <h3>漲跌機率(跌)</h3>
-      <el-table :data="RankStock2" border stripe style="width: 100%" :default-sort="{ prop: 'rank2' }">
+      <el-table :data="RankStock2" border stripe style="width: 100%" :default-sort="{ prop: 'rank' }">
 
         <el-table-column prop="rank2" label="排行" sortable width="60" />
 
@@ -34,7 +34,7 @@
 
         <el-table-column prop="name3" label="名稱" width="60" />
 
-        <el-table-column prop="VS" label="VS" width="40" />
+        <el-table-column label="VS" width="40" />
 
         <el-table-column prop="code4" label="代號" width="60" />
 
@@ -52,7 +52,7 @@
   <el-row>
     <div class="grid-content bg-purple-light">
       <h3>相關漲跌機率(漲)</h3>
-      <el-table :data="RankStock1" border stripe style="width: 100%" :default-sort="{ prop: 'rank1' }">
+      <el-table :data="RelateStock1" border stripe style="width: 100%" :default-sort="{ prop: 'rank' }">
 
         <el-table-column prop="rank1" label="排行" sortable width="60" />
 
@@ -60,7 +60,7 @@
 
         <el-table-column prop="name1" label="名稱" width="60" />
 
-        <el-table-column prop="VS" label="VS" width="40" />
+        <el-table-column label="VS" width="40" />
 
         <el-table-column prop="code2" label="代號" width="60" />
 
@@ -77,7 +77,7 @@
     </div>
     <div class="grid-content bg-purple-light">
       <h3>相關漲跌機率(跌)</h3>
-      <el-table :data="RankStock2" border stripe style="width: 100%" :default-sort="{ prop: 'rank2' }">
+      <el-table :data="RelateStock2" border stripe style="width: 100%" :default-sort="{ prop: 'rank' }">
 
         <el-table-column prop="rank2" label="排行" sortable width="60" />
 
@@ -85,7 +85,7 @@
 
         <el-table-column prop="name3" label="名稱" width="60" />
 
-        <el-table-column prop="VS" label="VS" width="40" />
+        <el-table-column label="VS" width="40" />
 
         <el-table-column prop="code4" label="代號" width="60" />
 
@@ -94,7 +94,6 @@
         <el-table-column prop="day" label="天數" width="60" />
 
         <el-table-column prop="prob" label="機率" width="60" />
-
 
         <el-table-column prop="follow" label="追蹤" width="60" />
 
@@ -133,155 +132,19 @@
   </el-row>
 </template>
 
-<script lang="ts">
+<script >
 
 import { defineComponent } from "vue";
-import Tradingtest from './Tradingtest.vue'
 
 export default defineComponent({
   name: "AboutStock",
-  components: {
-    Tradingtest
-  },
-  // props:{
-  //   stockid:{
-  //     type: String,
-  //     default:""
-  //   },  
-  // },
   data() {
     return {
       stockid: this.$route.params.stockid,
-      RankStock1: [
-        {
-          rank1: "1",
-          code1: "1171",
-          name1: "永光",
-          code2: "3010",
-          name2: "華立",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank1: "2",
-          code1: "1717",
-          name1: "長興",
-          code2: "1711",
-          name2: "永光",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank1: "3",
-          code1: "5434",
-          name1: "崇越",
-          code2: "1717",
-          name2: "長興",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank1: "4",
-          code1: "8091",
-          name1: "翔名",
-          code2: "5434",
-          name2: "崇越",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank1: "8",
-          code1: "1171",
-          name1: "永光",
-          code2: "3010",
-          name2: "華立",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank1: "6",
-          code1: "1171",
-          name1: "永光",
-          code2: "3010",
-          name2: "華立",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank1: "7",
-          code1: "1171",
-          name1: "永光",
-          code2: "3010",
-          name2: "華立",
-          day: "3",
-          follow: "",
-        },
-      ],
-      RankStock2: [
-        {
-          rank2: "1",
-          code3: "1171",
-          name3: "永光",
-          code4: "3010",
-          name4: "華立",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank2: "2",
-          code3: "1717",
-          name3: "長興",
-          code4: "1711",
-          name4: "永光",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank2: "3",
-          code3: "5434",
-          name3: "崇越",
-          code4: "1717",
-          name4: "長興",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank2: "4",
-          code3: "8091",
-          name3: "翔名",
-          code4: "5434",
-          name4: "崇越",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank2: "8",
-          code3: "1171",
-          name3: "永光",
-          code4: "3010",
-          name4: "華立",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank2: "6",
-          code3: "1171",
-          name3: "永光",
-          code4: "3010",
-          name4: "華立",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank2: "7",
-          code3: "1171",
-          name3: "永光",
-          code4: "3010",
-          name4: "華立",
-          day: "3",
-          follow: "",
-        },
-      ],
+      RankStock1: [],
+      RankStock2: [],
+      RelateStock1: [],
+      RelateStock2: [],
       StockClassification: [
         {
           code: "--",
@@ -390,6 +253,46 @@ export default defineComponent({
       ],
     };
   },
+  mounted: function () {
+    this.axios
+      .post("/api/stock/get_stock_probability",)
+      .then((res) => {
+        console.log(res);
+        res.data.probability_up.forEach((rankstock1) => {
+          this.RankStock1.push({
+            stockA_name: rankstock1.stockA_name,
+            stockA_id: rankstock1.stockA_id,
+            stockB_name: rankstock1.stockB_name,
+            stockB_id: rankstock1.stockB_id,
+          })
+        })
+        res.data.probability_down.forEach((rankstock2) => {
+          this.RankStock2.push({
+            stockA_name: rankstock2.stockA_name,
+            stockA_id: rankstock2.stockA_id,
+            stockB_name: rankstock2.stockB_name,
+            stockB_id: rankstock2.stockB_id,
+          })
+        })
+        res.data.relation_up.forEach((relatestock1) => {
+          this.RelateStock1.push({
+            stockA_name: relatestock1.stockA_name,
+            stockA_id: relatestock1.stockA_id,
+            stockB_name: relatestock1.stockB_name,
+            stockB_id: relatestock1.stockB_id,
+          })
+        })
+        res.data.relation_down.forEach((relatestock2) => {
+          this.RelateStock2.push({
+            stockA_name: relatestock2.stockA_name,
+            stockA_id: relatestock2.stockA_id,
+            stockB_name: relatestock2.stockB_name,
+            stockB_id: relatestock2.stockB_id,
+          })
+        })
+      })
+  },
+
 });
 </script>
 
