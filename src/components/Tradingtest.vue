@@ -5,8 +5,8 @@
 
     </el-row>
     <el-row>
-        <el-col :lg="1">
-            <div class="chart-tools-bar" style="width: 100%;display: inline-block; ">
+        <el-col :lg="1" :sm="24" :xs="24">
+            <div class="chart-tools-bar" style="">
                 <div class="icon-wrapper" v-on:click="setShapeType('horizontalStraightLine')">
                     <svg viewBox="0 0 24 24">
                         <rect x="5" y="11.5" width="14" height="1" rx="0.5"></rect>
@@ -207,8 +207,8 @@
                 </div>
             </div>
         </el-col>
-        <el-col :lg="23">
-            <div id="simple_chart" style="height: 100%  " />
+        <el-col :lg="23" :sm="24" :xs="24">
+            <div id="simple_chart" />
         </el-col>
     </el-row>
 
@@ -311,5 +311,34 @@ export default {
 <style scoped>
 div {
     background-color: #F2F3F5;
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .chart-tools-bar {
+        display: flex;
+        align-items: center;
+    }
+
+    .icon-wrapper {
+        width: 100%;
+    }
+
+    #simple_chart {
+        height: 50vh;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .chart-tools-bar {
+        width: 100%;
+        display: inline-block;
+
+    }
+
+    #simple_chart {
+        height: 100%;
+    }
+
 }
 </style>

@@ -1,104 +1,105 @@
 <template>
   <el-row>
-    <div class="grid-content bg-purple-light">
-      <h3>漲跌機率(漲)</h3>
-      <el-table :data="RankStock1" border stripe style="width: 100%" :default-sort="{ prop: 'rank' }">
+    <el-col :lg="11" :sm="24" :xs="24">
+      <div class="grid-content bg-purple-light">
+        <h3>漲跌機率(漲)</h3>
+        <el-table :data="RankStock1" border stripe style="width: 100%" :default-sort="{ prop: 'rank' }">
 
-        <el-table-column prop="rank1" label="排行" sortable width="60" />
+          <el-table-column prop="order" label="排行" sortable width="50" />
 
-        <el-table-column prop="stockA_id" label="代號" width="60" />
 
-        <el-table-column prop="stockA_name" label="名稱" width="60" />
+          <el-table-column prop="stockA_name" label="股票A" width="100%" />
 
-        <el-table-column label="VS" width="40" />
+          <el-table-column label="VS" width="40" />
 
-        <el-table-column prop="stockB_id" label="代號" width="60" />
 
-        <el-table-column prop="stockB_name" label="名稱" width="60" />
+          <el-table-column prop="stockB_name" label="股票B" width="100%" />
 
-        <el-table-column prop="day" label="天數" width="60" />
+          <el-table-column prop="diff" label="天數" width="60" />
 
-        <el-table-column prop="prob" label="機率" width="60" />
+          <el-table-column prop="up" label="機率" width="60" />
 
-        <el-table-column prop="follow" label="追蹤" width="60" />
+          <el-table-column prop="follow" label="追蹤" width="60" />
 
-      </el-table>
-    </div>
-    <div class="grid-content bg-purple-light">
-      <h3>漲跌機率(跌)</h3>
-      <el-table :data="RankStock2" border stripe style="width: 100%" :default-sort="{ prop: 'rank' }">
+        </el-table>
+      </div>
+    </el-col>
+    <el-col :lg="11" :sm="24" :xs="24">
 
-        <el-table-column prop="rank2" label="排行" sortable width="60" />
+      <div class="grid-content bg-purple-light">
+        <h3>漲跌機率(跌)</h3>
+        <el-table :data="RankStock2" border stripe style="width: 100%" :default-sort="{ prop: 'rank' }">
+          <el-table-column prop="order" label="排行" sortable width="50" />
 
-        <el-table-column prop="code3" label="代號" width="60" />
 
-        <el-table-column prop="name3" label="名稱" width="60" />
+          <el-table-column prop="stockA_name" label="股票A" width="100%" />
 
-        <el-table-column label="VS" width="40" />
+          <el-table-column label="VS" width="40" />
 
-        <el-table-column prop="code4" label="代號" width="60" />
 
-        <el-table-column prop="name4" label="名稱" width="60" />
+          <el-table-column prop="stockB_name" label="股票B" width="100%" />
 
-        <el-table-column prop="day" label="天數" width="60" />
+          <el-table-column prop="diff" label="天數" width="60" />
 
-        <el-table-column prop="prob" label="機率" width="60" />
+          <el-table-column prop="down" label="機率" width="60" />
 
-        <el-table-column prop="follow" label="追蹤" width="60" />
+          <el-table-column prop="follow" label="追蹤" width="60" />
+        </el-table>
+      </div>
+    </el-col>
 
-      </el-table>
-    </div>
   </el-row>
   <el-row>
-    <div class="grid-content bg-purple-light">
-      <h3>相關漲跌機率(漲)</h3>
-      <el-table :data="RelateStock1" border stripe style="width: 100%" :default-sort="{ prop: 'rank' }">
+    <el-col :lg="11" :sm="24" :xs="24">
 
-        <el-table-column prop="rank1" label="排行" sortable width="60" />
+      <div class="grid-content bg-purple-light">
+        <h3>相關漲跌機率(漲)</h3>
+        <el-table :data="RelateStock1" border stripe style="width: 100%" :default-sort="{ prop: 'rank' }">
 
-        <el-table-column prop="code1" label="代號" width="60" />
-
-        <el-table-column prop="name1" label="名稱" width="60" />
-
-        <el-table-column label="VS" width="40" />
-
-        <el-table-column prop="code2" label="代號" width="60" />
-
-        <el-table-column prop="name2" label="名稱" width="60" />
-
-        <el-table-column prop="day" label="天數" width="60" />
-
-        <el-table-column prop="prob" label="機率" width="60" />
+          <el-table-column prop="order" label="排行" sortable width="50" />
 
 
-        <el-table-column prop="follow" label="追蹤" width="60" />
+          <el-table-column prop="stockA_name" label="股票A" width="100%" />
 
-      </el-table>
-    </div>
-    <div class="grid-content bg-purple-light">
-      <h3>相關漲跌機率(跌)</h3>
-      <el-table :data="RelateStock2" border stripe style="width: 100%" :default-sort="{ prop: 'rank' }">
+          <el-table-column label="VS" width="40" />
 
-        <el-table-column prop="rank2" label="排行" sortable width="60" />
 
-        <el-table-column prop="code3" label="代號" width="60" />
+          <el-table-column prop="stockB_name" label="股票B" width="100%" />
 
-        <el-table-column prop="name3" label="名稱" width="60" />
+          <el-table-column prop="diff" label="天數" width="60" />
 
-        <el-table-column label="VS" width="40" />
+          <el-table-column prop="up" label="機率" width="60" />
 
-        <el-table-column prop="code4" label="代號" width="60" />
+          <el-table-column prop="follow" label="追蹤" width="60" />
 
-        <el-table-column prop="name4" label="名稱" width="60" />
+        </el-table>
+      </div>
+    </el-col>
+    <el-col :lg="11" :sm="24" :xs="24">
 
-        <el-table-column prop="day" label="天數" width="60" />
+      <div class="grid-content bg-purple-light">
+        <h3>相關漲跌機率(跌)</h3>
+        <el-table :data="RelateStock2" border stripe style="width: 100%" :default-sort="{ prop: 'rank' }">
+          <el-table-column prop="order" label="排行" sortable width="50" />
 
-        <el-table-column prop="prob" label="機率" width="60" />
 
-        <el-table-column prop="follow" label="追蹤" width="60" />
+          <el-table-column prop="stockA_name" label="股票A" width="100%" />
 
-      </el-table>
-    </div>
+          <el-table-column label="VS" width="40" />
+
+
+          <el-table-column prop="stockB_name" label="股票B" width="100%" />
+
+          <el-table-column prop="diff" label="天數" width="60" />
+
+          <el-table-column prop="down" label="機率" width="60" />
+
+          <el-table-column prop="follow" label="追蹤" width="60" />
+
+        </el-table>
+      </div>
+    </el-col>
+
   </el-row>
   <el-row>
     <div class="grid-content2 bg-purple-light">
@@ -140,7 +141,7 @@ export default defineComponent({
   name: "AboutStock",
   data() {
     return {
-      stockid: this.$route.params.stockid,
+      stock_id: this.$route.params.stockid,
       RankStock1: [],
       RankStock2: [],
       RelateStock1: [],
@@ -255,39 +256,46 @@ export default defineComponent({
   },
   mounted: function () {
     this.axios
-      .post("/api/stock/get_stock_probability",)
+      .post("/api/stock/get_stock_probability", {
+        stock_id: this.stock_id,
+        show_zero_diff: 0
+      })
       .then((res) => {
         console.log(res);
         res.data.probability_up.forEach((rankstock1) => {
           this.RankStock1.push({
-            stockA_name: rankstock1.stockA_name,
-            stockA_id: rankstock1.stockA_id,
-            stockB_name: rankstock1.stockB_name,
-            stockB_id: rankstock1.stockB_id,
+            stockA_name: rankstock1.stockA_name + "(" + rankstock1.stockA_id + ")",
+            stockB_name: rankstock1.stockB_name + "(" + rankstock1.stockB_id + ")",
+            diff: rankstock1.diff,
+            up: rankstock1.up,
+            order: rankstock1.order,
           })
         })
         res.data.probability_down.forEach((rankstock2) => {
           this.RankStock2.push({
-            stockA_name: rankstock2.stockA_name,
-            stockA_id: rankstock2.stockA_id,
-            stockB_name: rankstock2.stockB_name,
-            stockB_id: rankstock2.stockB_id,
+            stockA_name: rankstock2.stockA_name + "(" + rankstock2.stockA_id + ")",
+            stockB_name: rankstock2.stockB_name + "(" + rankstock2.stockB_id + ")",
+            diff: rankstock2.diff,
+            down: rankstock2.down,
+            order: rankstock2.order,
           })
         })
         res.data.relation_up.forEach((relatestock1) => {
           this.RelateStock1.push({
-            stockA_name: relatestock1.stockA_name,
-            stockA_id: relatestock1.stockA_id,
-            stockB_name: relatestock1.stockB_name,
-            stockB_id: relatestock1.stockB_id,
+            stockA_name: relatestock1.stockA_name + "(" + relatestock1.stockA_id + ")",
+            stockB_name: relatestock1.stockB_name + "(" + relatestock1.stockB_id + ")",
+            diff: relatestock1.diff,
+            up: relatestock1.up,
+            order: relatestock1.order,
           })
         })
         res.data.relation_down.forEach((relatestock2) => {
           this.RelateStock2.push({
-            stockA_name: relatestock2.stockA_name,
-            stockA_id: relatestock2.stockA_id,
-            stockB_name: relatestock2.stockB_name,
-            stockB_id: relatestock2.stockB_id,
+            stockA_name: relatestock2.stockA_name + "(" + relatestock2.stockA_id + ")",
+            stockB_name: relatestock2.stockB_name + "(" + relatestock2.stockB_id + ")",
+            diff: relatestock2.diff,
+            down: relatestock2.down,
+            order: relatestock2.order,
           })
         })
       })
@@ -297,54 +305,49 @@ export default defineComponent({
 </script>
 
 <style scoped>
-@media only screen and (max-width: 1200px) {
-  .aboutstock {
-    z-index: 1;
-  }
+@media only screen and (max-width: 1200px) {}
 
-  .el-col {
-    border-radius: 4px;
-
-  }
-
+@media only screen and (min-width: 1200px) {
   .grid-content {
-    border-radius: 4px;
     height: 35vh;
-    overflow-x: auto;
   }
 
   .grid-content2 {
-    border-radius: 4px;
     height: 35vh;
-    overflow-x: auto;
-  }
-
-  .high {
-    height: 50vh;
   }
 }
 
-@media only screen and (min-width: 1200px) {
-  .aboutstock {
-    z-index: 1;
-  }
+.grid-content {
+  border-radius: 10px;
+  overflow-x: auto;
+}
 
-  .el-col {
-    border-radius: 4px;
-  }
+.grid-content2 {
+  border-radius: 10px;
+  overflow-x: auto;
+}
 
-  .grid-content {
-    border-radius: 4px;
-    height: 35vh;
-    overflow-x: auto;
-  }
+h3 {
+  background-color: white;
+}
 
-  .grid-content2 {
-    border-radius: 4px;
-    height: 35vh;
-    overflow-x: auto;
-  }
+.el-row {
+  margin-bottom: 1%;
+}
 
+.aboutstock {
+  z-index: 1;
+}
+
+.el-col {
+  border-radius: 4px;
+
+}
+
+
+
+.high {
+  height: 50vh;
 }
 
 .el-row {
