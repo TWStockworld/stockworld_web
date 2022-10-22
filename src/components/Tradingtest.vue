@@ -1,5 +1,10 @@
 <template>
     <el-row>
+        <div>股票名稱 : {{ stock_name }} &nbsp&nbsp 收盤價 : {{ close }} &nbsp&nbsp 成交量: {{ volume }} &nbsp&nbsp 今日漲幅 : {{
+        day_change }} % </div>
+
+    </el-row>
+    <el-row>
         <el-col :lg="1">
             <div class="chart-tools-bar" style="width: 100%;display: inline-block; ">
                 <div class="icon-wrapper" v-on:click="setShapeType('horizontalStraightLine')">
@@ -204,7 +209,6 @@
         </el-col>
         <el-col :lg="23">
             <div id="simple_chart" style="height: 100%  " />
-
         </el-col>
     </el-row>
 
@@ -221,12 +225,20 @@ export default {
     data() {
         return {
             stockdatas: [],
+            stock_name: "",
+            day_change: "",
+            volume: "",
+            close: "",
         }
     },
     mounted: function () {
         this.axios
             .post("/api/stock/get_stock", {
-                stock_id: this.stockid
+                stock_id: this.stockid,
+                day_change: this.day_change,
+                stock_name: this.stock_name,
+                volume: this.volume,
+                close: this.close,
             })
             .then((res) => {
                 console.log(res);
@@ -274,7 +286,12 @@ export default {
                     setShapeType: function (shapeName) {
                         chart.createShape(shapeName)
                     }
-                })
+                });
+                this.stock_name = res.data.stock_name;
+                this.day_change = res.data.last_data.day_change;
+                this.volume = res.data.last_data.volume;
+                this.close = res.data.last_data.close;
+
             })
 
     },
