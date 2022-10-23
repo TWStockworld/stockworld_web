@@ -217,13 +217,12 @@
   
 <script>
 import { dispose, init } from 'klinecharts';
-// import generatedDataList from '../utils/generatedDataList';
 
 export default {
     name: 'SimpleChart',
+    props: ["res1"],
     data() {
         return {
-            stock_id: this.$route.params.stockid,
             stockdatas: [],
             stock_name: "",
             day_change: "",
@@ -231,69 +230,58 @@ export default {
             close: "",
         }
     },
-    mounted: function () {
-        this.axios
-            .post("/api/stock/get_stock", {
-                stock_id: this.stock_id,
-                day_change: this.day_change,
-                stock_name: this.stock_name,
-                volume: this.volume,
-                close: this.close,
-            })
-            .then((res) => {
-                console.log(res);
-                // Init chart
-                this.kLineChart = init('simple_chart');
-                // Create main technical indicator MA
-                this.kLineChart.createTechnicalIndicator('MA', false, { id: 'candle_pane' });
-                // Create sub technical indicator VOL
-                this.kLineChart.createTechnicalIndicator('VOL');
-                res.data.stock_data.forEach((stock_data) => {
-                    // Fill data
-                    const date = new Date(stock_data.date);
-                    const timestamp = date.getTime();
-                    this.stockdatas.push({
-                        close: stock_data.close,
-                        high: stock_data.up,
-                        low: stock_data.down,
-                        open: stock_data.open,
-                        timestamp: timestamp,
-                        volume: stock_data.volume,
-                    })
+    watch: {
+        async res1() {
+            console.log(this.res1);
 
+            // Init chart
+            this.kLineChart = init('simple_chart');
+            // Create main technical indicator MA
+            this.kLineChart.createTechnicalIndicator('MA', false, { id: 'candle_pane' });
+            // Create sub technical indicator VOL
+            this.kLineChart.createTechnicalIndicator('VOL');
+            this.res1.data.stock_data.forEach((stock_data) => {
+                // Fill data
+                const date = new Date(stock_data.date);
+                const timestamp = date.getTime();
+                this.stockdatas.push({
+                    close: stock_data.close,
+                    high: stock_data.up,
+                    low: stock_data.down,
+                    open: stock_data.open,
+                    timestamp: timestamp,
+                    volume: stock_data.volume,
                 })
-                this.kLineChart.applyNewData(this.stockdatas);
-                this.kLineChart.setStyleOptions({
-                    grid: {
-                        show: true,
-                        horizontal: {
-                            show: true,
-                            size: 1,
-                            color: '#393939',
-                            // 'solid'|'dash'
-                            style: 'dash',
-                            dashValue: [2, 2]
-                        },
-                        vertical: {
-                            show: true,
-                            size: 1,
-                            color: '#393939',
-                            // 'solid'|'dash'
-                            style: 'dash',
-                            dashValue: [2, 2]
-                        }
-                    },
-                    setShapeType: function (shapeName) {
-                        chart.createShape(shapeName)
-                    }
-                });
-                this.stock_name = res.data.stock_name;
-                this.day_change = res.data.last_data.day_change;
-                this.volume = res.data.last_data.volume;
-                this.close = res.data.last_data.close;
 
             })
+            this.kLineChart.applyNewData(this.stockdatas);
+            this.kLineChart.setStyleOptions({
+                grid: {
+                    show: true,
+                    horizontal: {
+                        show: true,
+                        size: 1,
+                        color: '#393939',
+                        // 'solid'|'dash'
+                        style: 'dash',
+                        dashValue: [2, 2]
+                    },
+                    vertical: {
+                        show: true,
+                        size: 1,
+                        color: '#393939',
+                        // 'solid'|'dash'
+                        style: 'dash',
+                        dashValue: [2, 2]
+                    }
+                },
+            });
+            this.stock_name = this.res1.data.stock_name;
+            this.day_change = this.res1.data.last_data.day_change;
+            this.volume = this.res1.data.last_data.volume;
+            this.close = this.res1.data.last_data.close;
 
+        }
     },
     destroyed: function () {
         dispose('simple_chart');
