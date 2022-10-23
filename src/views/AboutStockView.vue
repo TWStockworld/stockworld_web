@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :lg="9" :sm="24" :xs="24" class="high">
-      <Tradingtest :stock_id="stock_id" />
+      <Tradingtest />
     </el-col>
     <el-col :lg="15" :sm="24" :xs="24">
       <AboutStock />
@@ -15,7 +15,6 @@ import Tradingtest from '@/components/Tradingtest.vue'
 export default {
   data() {
     return {
-      stock_id: this.$route.params.stock_id,
       token: this.$Cookies.get("token"),
     };
   },
