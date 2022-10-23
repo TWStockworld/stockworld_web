@@ -142,6 +142,7 @@ export default defineComponent({
   data() {
     return {
       stock_id: this.$route.params.stockid,
+      stock_category_id: null,
       RankStock1: [],
       RankStock2: [],
       RelateStock1: [],
@@ -255,10 +256,14 @@ export default defineComponent({
     };
   },
   mounted: function () {
+    if (this.stock_id > 0 && this.stock_id < 34) {
+      this.stock_category_id = this.stock_id
+    }
     this.axios
       .post("/api/stock/get_stock_probability", {
         stock_id: this.stock_id,
-        show_zero_diff: 0
+        show_zero_diff: 0,
+        stock_category_id: this.stock_category_id
       })
       .then((res) => {
         console.log(res);

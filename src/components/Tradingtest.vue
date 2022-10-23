@@ -221,7 +221,7 @@ import { dispose, init } from 'klinecharts';
 
 export default {
     name: 'SimpleChart',
-    props: ["stockid"],
+    props: ["stock_id"],
     data() {
         return {
             stockdatas: [],
@@ -232,9 +232,10 @@ export default {
         }
     },
     mounted: function () {
+
         this.axios
             .post("/api/stock/get_stock", {
-                stock_id: this.stockid,
+                stock_id: this.stock_id,
                 day_change: this.day_change,
                 stock_name: this.stock_name,
                 volume: this.volume,
