@@ -22,8 +22,6 @@ const head = createHead();
 
 import "./assets/css/common.css";
 
-import infiniteScroll from "vue3-infinite-scroll-better";
-
 const app = createApp(App);
 
 app.use(ElementPlus, {
@@ -32,9 +30,4 @@ app.use(ElementPlus, {
 app.config.globalProperties.$Cookies = Cookies;
 // app.config.globalProperties.$Snow = Snow;
 app.config.globalProperties.$Tradingview = Tradingview;
-app
-  .use(router)
-  .use(VueAxios, axios)
-  .use(head)
-  .use(infiniteScroll)
-  .mount("#app");
+app.use(router).use(VueAxios, axios).use(head).mount("#app");
