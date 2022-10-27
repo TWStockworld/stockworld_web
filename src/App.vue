@@ -73,10 +73,15 @@ export default {
 
 .bak {
   background-image: linear-gradient(to top left, #467a91ed, #b7cbd2b5);
-  height: 100%;
   width: 100%;
   background-attachment: fixed;
   background-size: cover;
+}
+
+@media only screen and (min-width: 1200px) {
+  .bak {
+    height: 100%;
+  }
 }
 
 .bulletin_right-col {

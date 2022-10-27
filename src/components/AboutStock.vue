@@ -1,406 +1,272 @@
 <template>
   <el-row>
-    <el-col :lg="10" :sm="24" :xs="24" class="high">
-      <Tradingtest :stockid="stockid" />
+    <el-col :lg="11" :sm="24" :xs="24">
+      <h3>漲跌機率(漲)</h3>
+      <el-table :data="RankStock1" border stripe height="200" :default-sort="{ prop: 'rank' }">
+
+        <el-table-column prop="order" label="排行" sortable />
+
+
+        <el-table-column prop="stockA_name" label="股票A" />
+
+
+
+        <el-table-column prop="stockB_name" label="股票B" />
+
+        <el-table-column prop="diff" label="天數" />
+
+        <el-table-column prop="up" label="機率" />
+
+        <el-table-column prop="follow" label="追蹤" />
+
+      </el-table>
     </el-col>
-    <el-col :lg="14" :sm="24" :xs="24">
-      <el-row style="height:50%">
-        <div class="grid-content bg-purple-light">
-          <h3>相關度排行</h3>
-          <el-table :data="RankStock1" border stripe style="width: 100%" :default-sort="{ prop: 'rank1' }">
+    <el-col :lg="11" :sm="24" :xs="24">
 
-            <el-table-column label="UP" width="67" />
+      <h3>漲跌機率(跌)</h3>
+      <el-table :data="RankStock2" border stripe height="200" :default-sort="{ prop: 'rank' }">
+        <el-table-column prop="order" label="排行" sortable />
 
-            <el-table-column prop="rank1" label="排行" sortable width="90" />
 
-            <el-table-column prop="code1" label="代號" width="90" />
+        <el-table-column prop="stockA_name" label="股票A" />
 
-            <el-table-column prop="name1" label="名稱" width="90" />
 
-            <el-table-column prop="VS" label="VS" width="90" />
 
-            <el-table-column prop="code2" label="代號" width="90" />
+        <el-table-column prop="stockB_name" label="股票B" />
 
-            <el-table-column prop="name2" label="名稱" width="90" />
+        <el-table-column prop="diff" label="天數" />
 
-            <el-table-column prop="day" label="天數" width="90" />
+        <el-table-column prop="down" label="機率" />
 
-            <el-table-column prop="follow" label="追蹤" width="86" />
-
-          </el-table>
-
-          <el-table :data="RankStock2" border stripe style="width: 100%" :default-sort="{ prop: 'rank2' }">
-
-            <el-table-column label="DOWN" width="67" />
-
-            <el-table-column prop="rank2" label="排行" sortable width="90" />
-
-            <el-table-column prop="code3" label="代號" width="90" />
-
-            <el-table-column prop="name3" label="名稱" width="90" />
-
-            <el-table-column prop="VS" label="VS" width="90" />
-
-            <el-table-column prop="code4" label="代號" width="90" />
-
-            <el-table-column prop="name4" label="名稱" width="90" />
-
-            <el-table-column prop="day" label="天數" width="90" />
-
-            <el-table-column prop="follow" label="追蹤" width="86" />
-
-          </el-table>
-        </div>
-      </el-row>
-      <el-row>
-        <div class="grid-content2 bg-purple-light">
-          <h3>上市水泥類股-成分股即時資訊</h3>
-          <el-table :data="StockClassification" border stripe style="width: 100%"
-            :default-sort="{ prop: 'code', prop: 'time' }">
-            <el-table-column prop="code" label="代號" sortable width="85" />
-
-            <el-table-column prop="name" label="名稱" width="85" />
-
-            <el-table-column prop="FinalPrice" label="成交價" width="85" />
-
-            <el-table-column prop="UPandDown" label="漲跌" width="85" />
-
-            <el-table-column prop="UPandDownAmplitude" label="漲跌幅" width="85" />
-
-            <el-table-column prop="buy" label="買進" width="85" />
-
-            <el-table-column prop="sell" label="賣出" width="85" />
-
-            <el-table-column prop="opening" label="開盤" width="85" />
-
-            <el-table-column prop="ReceivedYesterday" label="昨收" width="85" />
-
-            <el-table-column prop="volume" label="成交量" width="85" />
-
-            <el-table-column prop="time" label="時間" sortable width="85" />
-
-          </el-table>
-        </div>
-      </el-row>
+        <el-table-column prop="follow" label="追蹤" />
+      </el-table>
     </el-col>
+
+  </el-row>
+  <el-row>
+    <el-col :lg="11" :sm="24" :xs="24">
+
+      <h3>相關漲跌機率(漲)</h3>
+      <el-table :data="RelateStock1" border stripe height="200" :default-sort="{ prop: 'rank' }">
+
+        <el-table-column prop="order" label="排行" sortable />
+
+
+        <el-table-column prop="stockA_name" label="股票A" />
+
+
+
+        <el-table-column prop="stockB_name" label="股票B" />
+
+        <el-table-column prop="diff" label="天數" />
+
+        <el-table-column prop="up" label="機率" />
+
+        <el-table-column prop="follow" label="追蹤" />
+
+      </el-table>
+    </el-col>
+    <el-col :lg="11" :sm="24" :xs="24">
+
+      <h3>相關漲跌機率(跌){{ page }}</h3>
+      <el-table v-infinite-scroll="handleInfiniteOnLoad" :data="RelateStock2" border stripe height="200"
+        :default-sort="{ prop: 'rank' }">
+        <el-table-column prop="order" label="排行" sortable />
+
+
+        <el-table-column prop="stockA_name" label="股票A" />
+
+
+
+        <el-table-column prop="stockB_name" label="股票B" />
+
+        <el-table-column prop="diff" label="天數" />
+
+        <el-table-column prop="down" label="機率" />
+
+        <el-table-column prop="follow" label="追蹤" />
+
+      </el-table>
+    </el-col>
+
+  </el-row>
+  <el-row>
+    <h3>相關產業股票 </h3>
+    <el-table :data="stock_table" border stripe height="200" :default-sort="{ prop: 'time' }">
+
+      <el-table-column prop="stock_name" label="名稱" />
+
+      <el-table-column prop="stock_id" label="代號" />
+
+      <el-table-column prop="day_change" label="漲跌幅" />
+
+      <el-table-column prop="open" label="開盤價" />
+
+      <el-table-column prop="up" label="最高價" />
+
+      <el-table-column prop="down" label="最低價" />
+
+      <el-table-column prop="close" label="收盤價" />
+
+      <el-table-column prop="money" label="交易金額" />
+
+      <el-table-column prop="volume" label="成交量" />
+
+      <el-table-column prop="turnover" label="成交筆數" />
+      <el-table-column prop="date" label="時間" sortable />
+
+    </el-table>
   </el-row>
 </template>
 
-<script lang="ts">
+<script >
 
 import { defineComponent } from "vue";
-import Tradingtest from './Tradingtest.vue'
 
 export default defineComponent({
   name: "AboutStock",
-  components: {
-    Tradingtest
-  },
-  // props:{
-  //   stockid:{
-  //     type: String,
-  //     default:""
-  //   },  
-  // },
+  props: ["res2", "res3"],
+
   data() {
     return {
-      ohlcv: [
-        [1551128400000, 33, 37.1, 14, 14, 196],
-        [1551132000000, 13.7, 30, 6.6, 30, 206],
-        [1551135600000, 29.9, 33, 21.3, 21.8, 74],
-        [1551139200000, 21.7, 25.9, 18, 24, 140],
-        [1551142800000, 24.1, 24.1, 24, 24.1, 29],
-      ],
-      stockid: this.$route.params.stockid,
-      RankStock1: [
-        {
-          rank1: "1",
-          code1: "1171",
-          name1: "永光",
-          code2: "3010",
-          name2: "華立",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank1: "2",
-          code1: "1717",
-          name1: "長興",
-          code2: "1711",
-          name2: "永光",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank1: "3",
-          code1: "5434",
-          name1: "崇越",
-          code2: "1717",
-          name2: "長興",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank1: "4",
-          code1: "8091",
-          name1: "翔名",
-          code2: "5434",
-          name2: "崇越",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank1: "8",
-          code1: "1171",
-          name1: "永光",
-          code2: "3010",
-          name2: "華立",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank1: "6",
-          code1: "1171",
-          name1: "永光",
-          code2: "3010",
-          name2: "華立",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank1: "7",
-          code1: "1171",
-          name1: "永光",
-          code2: "3010",
-          name2: "華立",
-          day: "3",
-          follow: "",
-        },
-      ],
-      RankStock2: [
-        {
-          rank2: "1",
-          code3: "1171",
-          name3: "永光",
-          code4: "3010",
-          name4: "華立",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank2: "2",
-          code3: "1717",
-          name3: "長興",
-          code4: "1711",
-          name4: "永光",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank2: "3",
-          code3: "5434",
-          name3: "崇越",
-          code4: "1717",
-          name4: "長興",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank2: "4",
-          code3: "8091",
-          name3: "翔名",
-          code4: "5434",
-          name4: "崇越",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank2: "8",
-          code3: "1171",
-          name3: "永光",
-          code4: "3010",
-          name4: "華立",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank2: "6",
-          code3: "1171",
-          name3: "永光",
-          code4: "3010",
-          name4: "華立",
-          day: "3",
-          follow: "",
-        },
-        {
-          rank2: "7",
-          code3: "1171",
-          name3: "永光",
-          code4: "3010",
-          name4: "華立",
-          day: "3",
-          follow: "",
-        },
-      ],
-      StockClassification: [
-        {
-          code: "--",
-          name: "水泥",
-          FinalPrice: "169.89",
-          UPandDown: "跌1.5",
-          UPandDownAmplitude: "-0.86%",
-          buy: "--",
-          sell: "--",
-          opening: "171.35",
-          ReceivedYesterday: "171.36",
-          volume: "8058",
-          time: "13:30",
-        },
-        {
-          code: "1101",
-          name: "台泥",
-          FinalPrice: "41.70",
-          UPandDown: "跌0.40",
-          UPandDownAmplitude: "-0.95%",
-          buy: "42.85",
-          sell: "42.90",
-          opening: "42.00",
-          ReceivedYesterday: "42.10",
-          volume: "15460",
-          time: "14:30",
-        },
-        {
-          code: "1102",
-          name: "亞泥",
-          FinalPrice: "44.40",
-          UPandDown: "跌0.40",
-          UPandDownAmplitude: "-0.89%",
-          buy: "46.50",
-          sell: "46.55",
-          opening: "44.80",
-          ReceivedYesterday: "44.80",
-          volume: "3561",
-          time: "14:30",
-        },
-        {
-          code: "1103",
-          name: "嘉泥",
-          FinalPrice: "18.75",
-          UPandDown: "跌0.05",
-          UPandDownAmplitude: "-0.27%",
-          buy: "20.80",
-          sell: "20.85",
-          opening: "18.80",
-          ReceivedYesterday: "18.80",
-          volume: "282",
-          time: "13:30",
-        },
-        {
-          code: "1104",
-          name: "環泥",
-          FinalPrice: "21.65",
-          UPandDown: "--",
-          UPandDownAmplitude: "0.00%",
-          buy: "18.50",
-          sell: "18.55",
-          opening: "21.65",
-          ReceivedYesterday: "21.65",
-          volume: "373",
-          time: "13:30",
-        },
-        {
-          code: "1108",
-          name: "幸福",
-          FinalPrice: "11.15",
-          UPandDown: "--",
-          UPandDownAmplitude: "0.00%",
-          buy: "7.75",
-          sell: "8.17",
-          opening: "11.15",
-          ReceivedYesterday: "11.15",
-          volume: "115",
-          time: "13:30",
-        },
-        {
-          code: "1109",
-          name: "信大",
-          FinalPrice: "20.05",
-          UPandDown: "漲0.10",
-          UPandDownAmplitude: "+0.50%",
-          buy: "18.80",
-          sell: "18.85",
-          opening: "19.95",
-          ReceivedYesterday: "19.95",
-          volume: "62",
-          time: "13:30",
-        },
-        {
-          code: "1110",
-          name: "東泥",
-          FinalPrice: "20.00",
-          UPandDown: "跌0.25",
-          UPandDownAmplitude: "-1.23%",
-          buy: "16.55",
-          sell: "17.00",
-          opening: "20.20",
-          ReceivedYesterday: "20.25",
-          volume: "176",
-          time: "13:30",
-        },
-      ],
+      stock_category_id: null,
+      RankStock1: [],
+      RankStock2: [],
+      RelateStock1: [],
+      RelateStock2: [],
+      stock_table: [],
+      page: 0
     };
   },
+  methods: {
+    load() {
+      this.page += 1
+    }
+  },
+  watch: {
+    async res2() {
+      console.log(this.res2);
+
+      this.res2.data.probability_up.forEach((rankstock1) => {
+        this.RankStock1.push({
+          stockA_name: rankstock1.stockA_name + "\n(" + rankstock1.stockA_id + ")",
+          stockB_name: rankstock1.stockB_name + "\n(" + rankstock1.stockB_id + ")",
+          diff: rankstock1.diff,
+          up: rankstock1.up,
+          order: rankstock1.order,
+        })
+      })
+      this.res2.data.probability_down.forEach((rankstock2) => {
+        this.RankStock2.push({
+          stockA_name: rankstock2.stockA_name + "\n(" + rankstock2.stockA_id + ")",
+          stockB_name: rankstock2.stockB_name + "\n(" + rankstock2.stockB_id + ")",
+          diff: rankstock2.diff,
+          down: rankstock2.down,
+          order: rankstock2.order,
+        })
+      })
+      this.res2.data.relation_up.forEach((relatestock1) => {
+        this.RelateStock1.push({
+          stockA_name: relatestock1.stockA_name + "\n(" + relatestock1.stockA_id + ")",
+          stockB_name: relatestock1.stockB_name + "\n(" + relatestock1.stockB_id + ")",
+          diff: relatestock1.diff,
+          up: relatestock1.up,
+          order: relatestock1.order,
+        })
+      })
+      this.res2.data.relation_down.forEach((relatestock2) => {
+        this.RelateStock2.push({
+          stockA_name: relatestock2.stockA_name + "\n(" + relatestock2.stockA_id + ")",
+          stockB_name: relatestock2.stockB_name + "\n(" + relatestock2.stockB_id + ")",
+          diff: relatestock2.diff,
+          down: relatestock2.down,
+          order: relatestock2.order,
+        })
+      })
+    },
+
+    async res3() {
+      console.log(this.res3);
+
+      this.res3.data.stocks.forEach((stock) => {
+        this.stock_table.push({
+          stock_name: stock.stock_name,
+          stock_id: stock.stock_id,
+          day_change: stock.day_change + " %",
+          open: stock.open,
+          up: stock.up,
+          down: stock.down,
+          close: stock.close,
+          volume: stock.volume,
+          money: stock.money,
+          turnover: stock.turnover,
+          date: stock.date,
+
+        })
+      })
+    }
+  }
+
+
+
 });
 </script>
 
 <style scoped>
-@media only screen and (max-width: 1200px) {
-  .aboutstock {
-    z-index: 1;
-  }
+@media only screen and (max-width: 1200px) {}
 
-  .el-col {
-    border-radius: 4px;
-
-  }
-
+@media only screen and (min-width: 1200px) {
   .grid-content {
-    border-radius: 4px;
     height: 35vh;
-    overflow-x: auto;
   }
 
   .grid-content2 {
-    border-radius: 4px;
     height: 35vh;
-    overflow-x: auto;
-  }
-
-  .high {
-    height: 50vh;
   }
 }
 
-@media only screen and (min-width: 1200px) {
-  .aboutstock {
-    z-index: 1;
-  }
+/* .grid-content {
+  border-radius: 10px;
+  overflow-x: auto;
 
-  .el-col {
-    border-radius: 4px;
-  }
+} */
+/* .el-table,
+h3 {
+  border-radius: 20px;
+} */
+.el-table .cell {
+  white-space: pre-line;
+}
 
-  .grid-content {
-    border-radius: 4px;
-    height: 35vh;
-    overflow-x: auto;
-  }
+.grid-content2 {
+  border-radius: 10px;
+  overflow-x: auto;
+}
 
-  .grid-content2 {
-    border-radius: 4px;
-    height: 35vh;
-    overflow-x: auto;
-  }
+h3 {
+  background-color: white;
+}
 
+.el-row {
+  margin-bottom: 1%;
+}
+
+.aboutstock {
+  z-index: 1;
+}
+
+.el-col {
+  border-radius: 4px;
+
+}
+
+
+
+.high {
+  height: 50vh;
+}
+
+.el-row {
+  justify-content: space-evenly;
 }
 </style>
