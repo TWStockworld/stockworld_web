@@ -1,7 +1,8 @@
 <template>
     <el-row>
         <div>股票名稱 : {{ stock_name }} &nbsp&nbsp 收盤價 : {{ close }} &nbsp&nbsp 成交量: {{ volume }} &nbsp&nbsp 今日漲幅 : {{
-        day_change }} % </div>
+        day_change
+        }} % </div>
 
     </el-row>
     <el-row>
@@ -232,7 +233,10 @@ export default {
     },
     watch: {
         async res1() {
+            dispose('simple_chart');
+
             console.log(this.res1);
+            this.stockdatas = []
 
             // Init chart
             this.kLineChart = init('simple_chart');

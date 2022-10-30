@@ -161,7 +161,7 @@ export default defineComponent({
   data() {
     return {
       stockid: "",
-      token: this.$Cookies.get("token"),
+      token: this.$cookies.get("token"),
       toggle: false
     };
   },
@@ -186,11 +186,11 @@ export default defineComponent({
           }
         })
         .then((res) => {
-          this.$Cookies.remove("token");
+          this.$cookies.remove("token");
           this.$router.push("/ranking");
           this.$emit('keytest');
         })
-      // this.$Cookies.remove("token");
+      // this.$cookies.remove("token");
       // this.$router.push("/ranking");
       // this.$emit('keytest');
     },

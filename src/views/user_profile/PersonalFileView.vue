@@ -32,7 +32,7 @@ export default {
       name: "",
       account: "",
       email: "",
-      token: this.$Cookies.get("token"),
+      token: this.$cookies.get("token"),
     }
   },
   mounted() {

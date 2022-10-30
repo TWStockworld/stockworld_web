@@ -63,7 +63,7 @@ export default {
   name: "CalculateView",
   data() {
     return {
-      token: this.$Cookies.get("token"),
+      token: this.$cookies.get("token"),
       startdate: "2012-01-01",
       enddate: "2022-09-01",
       diff: "8",

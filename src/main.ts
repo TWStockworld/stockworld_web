@@ -10,7 +10,6 @@ import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";
 
-import Cookies from "js-cookie";
 import Tradingview from "./assets/js/tradingview";
 
 //下雪特效
@@ -27,7 +26,11 @@ const app = createApp(App);
 app.use(ElementPlus, {
   locale: zhtw,
 });
-app.config.globalProperties.$Cookies = Cookies;
 // app.config.globalProperties.$Snow = Snow;
 app.config.globalProperties.$Tradingview = Tradingview;
-app.use(router).use(VueAxios, axios).use(head).mount("#app");
+app
+  .use(router)
+  .use(VueAxios, axios)
+  .use(head)
+  .use(require("vue-cookies"))
+  .mount("#app");
