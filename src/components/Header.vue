@@ -37,7 +37,7 @@
       </el-form>
     </div>
 
-    <div class="navigation" :class="[this.toggle? 'active': '']">
+    <div class="navigation" :class="[this.toggle ? 'active' : '']">
       <div class=" userBx">
         <div class="imgBx">
           <img class="img-responsive1" src="@/assets/img/logo.png" />
@@ -377,6 +377,11 @@ export default defineComponent({
 }
 
 @media only screen and (min-width: 768px) {
+  nav {
+    padding: 22px;
+
+  }
+
   .phone_size {
     display: none;
   }
@@ -554,7 +559,6 @@ a {
 
 nav {
   box-sizing: border-box;
-  padding: 22px;
 }
 
 nav a {

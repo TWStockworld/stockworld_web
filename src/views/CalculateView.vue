@@ -25,7 +25,7 @@
           </div>
           <div class="block">
             <span class="demonstration">股票A</span>
-            <el-select v-model="stockA" filterable placeholder="請選擇">
+            <el-select v-model="stockA_id" filterable placeholder="請選擇">
               <el-option v-for="stock in stockA_options" :key="stock.stock_id"
                 :label="stock.stock_name + '(' + stock.stock_id + ')'" :value="stock.stock_id">
               </el-option>
@@ -33,7 +33,7 @@
           </div>
           <div class="block">
             <span class="demonstration">股票B</span>
-            <el-select v-model="stockB" filterable placeholder="請選擇">
+            <el-select v-model="stockB_id" filterable placeholder="請選擇">
               <el-option v-for="stock in stockB_options" :key="stock.stock_id"
                 :label="stock.stock_name + '(' + stock.stock_id + ')'" :value="stock.stock_id">
               </el-option>
@@ -68,8 +68,8 @@ export default {
       enddate: "2022-09-01",
       diff: "8",
       stock_category_id: 0,
-      stockA: "",
-      stockB: "",
+      stockA_id: "",
+      stockB_id: "",
       result: "",
       move: true,
       stock_category_options: [],
@@ -78,6 +78,7 @@ export default {
       stockA_datas: [],
       stockB_datas: [],
       componentKey: 0,
+      real_diff: 0
     };
   },
   mounted() {
@@ -104,8 +105,8 @@ export default {
   },
   watch: {
     async stock_category_id() {
-      this.stockA = "";
-      this.stockB = "";
+      this.stockA_id = "";
+      this.stockB_id = "";
       this.axios.post(
         "/api/stock/get_stock_name", {
         stock_category_id: this.stock_category_id,
@@ -124,8 +125,8 @@ export default {
           enddate: this.enddate,
           diff: this.diff,
           stock_category_id: this.stock_category_id,
-          stockA: this.stockA,
-          stockB: this.stockB,
+          stockA_id: this.stockA_id,
+          stockB_id: this.stockB_id,
         })
         .then((response) => {
           console.log(response.data);

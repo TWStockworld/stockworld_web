@@ -1,7 +1,7 @@
 <template>
   <div class="bak">
     <Header :key="componentKey" @keytest="keytest" />
-    <router-view @keytest="keytest" />
+    <router-view class="margintop" @keytest="keytest" />
   </div>
 </template>
 
@@ -76,6 +76,12 @@ export default {
   width: 100%;
   background-attachment: fixed;
   background-size: cover;
+}
+
+@media only screen and (max-width: 1200px) {
+  .margintop {
+    margin-top: 25% !important;
+  }
 }
 
 @media only screen and (min-width: 1200px) {

@@ -28,7 +28,13 @@
             <el-table-column prop="diff" label="天數" />
 
             <el-table-column prop="up" label="漲" />
-
+            <el-table-column label="操作">
+              <template #default="scope">
+                <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                  圖表
+                </el-button>
+              </template>
+            </el-table-column>
             <el-table-column prop="follow" label="追蹤" width="180" />
           </el-table>
         </el-row>
@@ -60,29 +66,52 @@
             <el-table-column prop="diff" label="天數" />
 
             <el-table-column prop="down" label="跌" />
-
+            <el-table-column label="操作">
+              <template #default="scope">
+                <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                  圖表
+                </el-button>
+              </template>
+            </el-table-column>
             <el-table-column prop="follow" label="追蹤" />
           </el-table>
         </el-row>
       </el-col>
     </el-row>
   </div>
+  <el-dialog v-model="dialogTableVisible" title="圖表" width="60%" destroy-on-close="true">
+    <CompareChart :startdate="data_start_date" :enddate="data_end_date" :diff="chart_diff" :stockA_id="chart_stockA_id"
+      :stockB_id="chart_stockB_id" :componentKey="componentKey" />
+  </el-dialog>
 </template>
 <script>
+import CompareChart from "@/components/CompareChart.vue";
 
 export default {
+
   name: "Stockkind",
+  components: {
+    CompareChart,
+  },
   data() {
     return {
       probability_up: [],
       probability_down: [],
-
+      dialogTableVisible: false,
+      data_start_date: '',
+      data_end_date: '',
+      chart_diff: 0,
+      chart_stockA_id: '',
+      chart_stockB_id: '',
+      componentKey: 0
     };
   },
   mounted() {
     this.axios
       .post("https://stock.bakerychu.com/api/stock/get_all_stock_probability")
       .then((res) => {
+        this.data_start_date = res.data.data_start_date
+        this.data_end_date = res.data.data_end_date
         res.data.probability_up.forEach((probability_up) => {
           this.probability_up.push({
             stockA_id: probability_up.stockA_id,
@@ -106,9 +135,16 @@ export default {
           })
         })
       })
-
-
-  }
+  },
+  methods: {
+    setchartvalue(chart_diff, chart_stockA_id, chart_stockB_id) {
+      this.chart_diff = chart_diff;
+      this.chart_stockA_id = chart_stockA_id;
+      this.chart_stockB_id = chart_stockB_id;
+      this.dialogTableVisible = true;
+      this.componentKey += 1;
+    }
+  },
 
 };
 </script>

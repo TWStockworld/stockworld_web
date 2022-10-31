@@ -27,7 +27,12 @@
           <el-table-column prop="diff" label="天數" />
 
           <el-table-column prop="up" label="機率" />
-
+          <el-table-column label="操作">
+            <template #default="scope">
+              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">圖表
+              </el-button>
+            </template>
+          </el-table-column>
           <el-table-column prop="follow" label="追蹤" />
 
         </el-table>
@@ -59,7 +64,12 @@
           <el-table-column prop="diff" label="天數" />
 
           <el-table-column prop="down" label="機率" />
-
+          <el-table-column label="操作">
+            <template #default="scope">
+              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">圖表
+              </el-button>
+            </template>
+          </el-table-column>
           <el-table-column prop="follow" label="追蹤" />
         </el-table>
       </el-main>
@@ -95,7 +105,12 @@
           <el-table-column prop="diff" label="天數" />
 
           <el-table-column prop="up" label="機率" />
-
+          <el-table-column label="操作">
+            <template #default="scope">
+              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">圖表
+              </el-button>
+            </template>
+          </el-table-column>
           <el-table-column prop="follow" label="追蹤" />
 
         </el-table>
@@ -128,7 +143,12 @@
           <el-table-column prop="diff" label="天數" />
 
           <el-table-column prop="down" label="機率" />
-
+          <el-table-column label="操作">
+            <template #default="scope">
+              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">圖表
+              </el-button>
+            </template>
+          </el-table-column>
           <el-table-column prop="follow" label="追蹤" />
 
         </el-table>
@@ -169,17 +189,24 @@
 
       </el-table>
     </el-main>
+    <el-dialog v-model="dialogTableVisible" title="圖表" width="60%" destroy-on-close="true">
+      <CompareChart :startdate="data_start_date" :enddate="data_end_date" :diff="chart_diff"
+        :stockA_id="chart_stockA_id" :stockB_id="chart_stockB_id" :componentKey="componentKey" />
+    </el-dialog>
   </el-row>
 </template>
 
 <script >
 
 import { defineComponent } from "vue";
+import CompareChart from "@/components/CompareChart.vue";
 
 export default defineComponent({
   name: "AboutStock",
   props: ["res2", "res3", "stock_id"],
-
+  components: {
+    CompareChart,
+  },
   data() {
     return {
       stock_category_id: null,
@@ -190,12 +217,26 @@ export default defineComponent({
       stock_table: [],
       page: 0,
       loading1: true,
-      loading2: true
+      loading2: true,
+      data_start_date: '',
+      data_end_date: '',
+      dialogTableVisible: false,
+      chart_diff: 0,
+      chart_stockA_id: '',
+      chart_stockB_id: '',
+      componentKey: 0
     };
   },
   methods: {
     load() {
       this.page += 1
+    },
+    setchartvalue(chart_diff, chart_stockA_id, chart_stockB_id) {
+      this.chart_diff = chart_diff;
+      this.chart_stockA_id = chart_stockA_id;
+      this.chart_stockB_id = chart_stockB_id;
+      this.dialogTableVisible = true;
+      this.componentKey += 1;
     }
   },
 
@@ -216,6 +257,8 @@ export default defineComponent({
     },
     res2: function (res2) {
       console.log(this.res2);
+      this.data_start_date = this.res2.data.data_start_date
+      this.data_end_date = this.res2.data.data_end_date
       this.res2.data.probability_up.forEach((rankstock1) => {
         this.RankStock1.push({
           stockA_id: rankstock1.stockA_id,

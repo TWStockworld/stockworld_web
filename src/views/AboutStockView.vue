@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :lg="9" :sm="24" :xs="24" class="high">
-      <Tradingtest :res1="res1" :stock_id="stock_id" />
+      <KlineChart :res1="res1" :stock_id="stock_id" />
     </el-col>
     <el-col :lg="15" :sm="24" :xs="24">
       <AboutStock :res2="res2" :res3="res3" :stock_id="stock_id" />
@@ -11,7 +11,7 @@
 
 <script>
 import AboutStock from "@/components/AboutStock.vue";
-import Tradingtest from '@/components/Tradingtest.vue'
+import KlineChart from '@/components/KlineChart.vue'
 export default {
   data() {
     return {
@@ -25,7 +25,7 @@ export default {
   },
   name: "aboutstock",
   components: {
-    AboutStock, Tradingtest
+    AboutStock, KlineChart
   },
 
   watch: {
