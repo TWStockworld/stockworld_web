@@ -31,37 +31,39 @@ export default {
   watch: {
     '$route.params.stockid': {
       handler: function (stockid) {
-        if (this.stock_id > 0) {
-          this.stock_id = stockid
-          if (this.stock_id < 34) {
-            this.stock_category_id = this.stock_id;
-          }
-
-          const get_stock = this.axios
-            .post("/api/stock/get_stock", {
-              stock_id: this.stock_id,
-            });
-          const get_stock_probability = this.axios
-            .post("/api/stock/get_stock_probability", {
-              stock_id: this.stock_id,
-              show_zero_diff: 0,
-              stock_category_id: this.stock_category_id
-            });
-          const get_category_last_stock = this.axios
-            .post("/api/stock/get_category_last_stock", {
-              stock_id: this.stock_id,
-              stock_category_id: this.stock_category_id,
-              page: 0
-            });
-
-          this.axios.all([get_stock, get_stock_probability, get_category_last_stock]).then(
-            this.axios.spread((res1, res2, res3) => {
-              this.res1 = res1
-              this.res2 = res2
-              this.res3 = res3
-            })
-          );
+        if (this.$route.name != "AboutStock") {
+          return;
         }
+        this.stock_id = stockid
+        if (this.stock_id < 34) {
+          this.stock_category_id = this.stock_id;
+        }
+
+        const get_stock = this.axios
+          .post("/api/stock/get_stock", {
+            stock_id: this.stock_id,
+          });
+        const get_stock_probability = this.axios
+          .post("/api/stock/get_stock_probability", {
+            stock_id: this.stock_id,
+            show_zero_diff: 0,
+            stock_category_id: this.stock_category_id
+          });
+        const get_category_last_stock = this.axios
+          .post("/api/stock/get_category_last_stock", {
+            stock_id: this.stock_id,
+            stock_category_id: this.stock_category_id,
+            page: 0
+          });
+
+        this.axios.all([get_stock, get_stock_probability, get_category_last_stock]).then(
+          this.axios.spread((res1, res2, res3) => {
+            this.res1 = res1
+            this.res2 = res2
+            this.res3 = res3
+          })
+        );
+
       },
       deep: true,
       immediate: true
