@@ -21,7 +21,11 @@ const head = createHead();
 
 import "./assets/css/common.css";
 
+import { Loading } from "@element-plus/icons-vue";
+
 const app = createApp(App);
+
+app.component(Loading.name, Loading);
 
 app.use(ElementPlus, {
   locale: zhtw,

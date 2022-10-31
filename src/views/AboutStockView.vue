@@ -1,10 +1,10 @@
 <template>
   <el-row>
     <el-col :lg="9" :sm="24" :xs="24" class="high">
-      <Tradingtest :res1="res1" />
+      <Tradingtest :res1="res1" :stock_id="stock_id" />
     </el-col>
     <el-col :lg="15" :sm="24" :xs="24">
-      <AboutStock :res2="res2" :res3="res3" />
+      <AboutStock :res2="res2" :res3="res3" :stock_id="stock_id" />
     </el-col>
   </el-row>
 </template>
@@ -20,7 +20,7 @@ export default {
       res1: '',
       res2: '',
       res3: '',
-      now_stock_category_id: '',
+
     };
   },
   name: "aboutstock",
@@ -28,72 +28,47 @@ export default {
     AboutStock, Tradingtest
   },
 
-  created() {
-    if (this.stock_id > 33) {
-      this.axios
-        .post("/api/stock/get_stock", {
-          stock_id: this.stock_id,
-        })
-        .then((res1) => {
-          this.res1 = res1;
-          this.now_stock_category_id = res1.data.stock_category_id;
-        })
-    } else {
-      this.stock_category_id = this.stock_id;
-      this.now_stock_category_id = this.stock_category_id;
-    }
-
-    this.axios
-      .post("/api/stock/get_stock_probability", {
-        stock_id: this.stock_id,
-        show_zero_diff: 0,
-        stock_category_id: this.stock_category_id
-      }).then((res2) => {
-        this.res2 = res2
-      });
-
-  },
   watch: {
     '$route.params.stockid': {
       handler: function (stockid) {
-        this.stock_id = stockid
+        if (this.stock_id > 0) {
+          this.stock_id = stockid
+          if (this.stock_id < 34) {
+            this.stock_category_id = this.stock_id;
+          }
+
+          const get_stock = this.axios
+            .post("/api/stock/get_stock", {
+              stock_id: this.stock_id,
+            });
+          const get_stock_probability = this.axios
+            .post("/api/stock/get_stock_probability", {
+              stock_id: this.stock_id,
+              show_zero_diff: 0,
+              stock_category_id: this.stock_category_id
+            });
+          const get_category_last_stock = this.axios
+            .post("/api/stock/get_category_last_stock", {
+              stock_id: this.stock_id,
+              stock_category_id: this.stock_category_id,
+              page: 0
+            });
+
+          this.axios.all([get_stock, get_stock_probability, get_category_last_stock]).then(
+            this.axios.spread((res1, res2, res3) => {
+              this.res1 = res1
+              this.res2 = res2
+              this.res3 = res3
+            })
+          );
+        }
       },
       deep: true,
       immediate: true
-    },
-    async stock_id() {
-      if (this.stock_id > 33) {
-        this.axios
-          .post("/api/stock/get_stock", {
-            stock_id: this.stock_id,
-          })
-          .then((res1) => {
-            this.res1 = res1;
-            this.now_stock_category_id = res1.data.stock_category_id;
-          })
-      } else {
-        this.stock_category_id = this.stock_id;
-        this.now_stock_category_id = this.stock_category_id;
-      }
+    }
+  },
 
-      this.axios
-        .post("/api/stock/get_stock_probability", {
-          stock_id: this.stock_id,
-          show_zero_diff: 0,
-          stock_category_id: this.stock_category_id
-        }).then((res2) => {
-          this.res2 = res2
-        });
-    },
-    async now_stock_category_id() {
-      this.axios
-        .post("/api/stock/get_category_last_stock", {
-          stock_category_id: this.now_stock_category_id,
-          page: 0
-        }).then((res3) => {
-          this.res3 = res3
-        })
-    },
-  }
+
 }
+
 </script>
