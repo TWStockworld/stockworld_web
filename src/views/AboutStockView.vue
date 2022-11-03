@@ -4,13 +4,13 @@
       <KlineChart :res1="res1" :stock_id="stock_id" />
     </el-col>
     <el-col :lg="15" :sm="24" :xs="24">
-      <AboutStock :res2="res2" :res3="res3" :stock_id="stock_id" />
+      <StockProbability :res2="res2" :res3="res3" :stock_id="stock_id" />
     </el-col>
   </el-row>
 </template>
 
 <script>
-import AboutStock from "@/components/AboutStock.vue";
+import StockProbability from "@/components/StockProbability.vue";
 import KlineChart from '@/components/KlineChart.vue'
 export default {
   data() {
@@ -25,7 +25,7 @@ export default {
   },
   name: "aboutstock",
   components: {
-    AboutStock, KlineChart
+    StockProbability, KlineChart
   },
 
   watch: {

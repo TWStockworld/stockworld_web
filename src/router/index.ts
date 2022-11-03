@@ -20,7 +20,7 @@ import FavoriteView from "../views/user_profile/FavoriteView";
 import Help_SupportView from "../views/user_profile/Help_SupportView";
 
 //bulletin 公告欄
-import RankingView from "../views/bulletin/RankingView";
+import BulletinView from "../views/bulletin/BulletinView";
 import TsmcView from "../views/bulletin/TsmcView";
 import CarView from "../views/bulletin/CarView.vue";
 import MetaView from "../views/bulletin/MetaView.vue";
@@ -77,7 +77,7 @@ const routes = [
   {
     path: "/ranking",
     name: "Ranking",
-    component: RankingView,
+    component: BulletinView,
   },
   {
     path: "/learning",

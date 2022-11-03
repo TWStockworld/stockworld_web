@@ -189,7 +189,7 @@
 
       </el-table>
     </el-main>
-    <el-dialog v-model="dialogTableVisible" title="圖表" width="60%" destroy-on-close="true">
+    <el-dialog customClass="el-dialog-width" v-model="dialogTableVisible" title="圖表" destroy-on-close="true">
       <CompareChart :startdate="data_start_date" :enddate="data_end_date" :diff="chart_diff"
         :stockA_id="chart_stockA_id" :stockB_id="chart_stockB_id" :componentKey="componentKey" />
     </el-dialog>
@@ -336,10 +336,25 @@ export default defineComponent({
 });
 </script>
 
+<style>
+@media only screen and (max-width: 1200px) {
+  .el-dialog-width {
+    width: 100% !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .el-dialog {
+    width: 60% !important;
+  }
+}
+</style>
+
 <style scoped>
 @media only screen and (max-width: 1200px) {}
 
 @media only screen and (min-width: 1200px) {
+
   .grid-content {
     height: 35vh;
   }

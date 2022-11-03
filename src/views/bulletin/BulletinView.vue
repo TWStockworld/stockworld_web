@@ -4,19 +4,19 @@
       <LeftBulletin />
     </el-col>
     <el-col :xs="24" :sm="24" :lg="20" class="bulletin_right-col">
-      <Stockkind />
+      <Ranking />
     </el-col>
   </el-row>
 </template>
 
 <script>
 import LeftBulletin from "@/components/LeftBulletin.vue";
-import Stockkind from "@/components/Stockkind.vue";
+import Ranking from "@/components/Ranking.vue";
 
 export default {
   components: {
     LeftBulletin,
-    Stockkind,
+    Ranking,
   },
   data() {
     return {

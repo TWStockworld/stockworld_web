@@ -1,5 +1,5 @@
 <template>
-  <div class="stockkind_computer" :class="[this.$route.path == '/ranking' ? 'move' : '']">
+  <div class="Ranking_computer" :class="[this.$route.path == '/ranking' ? 'move' : '']">
     <el-row>
       <el-col :lg="12" :sm="24" :xs="24">
         <el-row>
@@ -89,7 +89,7 @@ import CompareChart from "@/components/CompareChart.vue";
 
 export default {
 
-  name: "Stockkind",
+  name: "Ranking",
   components: {
     CompareChart,
   },
@@ -150,7 +150,7 @@ export default {
 </script>
 <style scoped>
 @media only screen and (min-width: 1200px) {
-  .stockkind_computer {
+  .Ranking_computer {
     box-shadow: 5px 7px #00000026;
     position: absolute;
     width: 60%;
@@ -177,7 +177,7 @@ export default {
     left: 25%;
   }
 
-  .stockkind_cellphone {
+  .Ranking_cellphone {
     display: none;
   }
 
@@ -198,11 +198,11 @@ export default {
 }
 
 @media only screen and (max-width: 1200px) {
-  .stockkind_computer {
+  .Ranking_computer {
     display: none;
   }
 
-  .stockkind_cellphone {
+  .Ranking_cellphone {
     /* position: absolute;
     width: 70%;
     top: 25vh;
