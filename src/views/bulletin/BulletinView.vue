@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     get() {
-      this.value = true;
+      // this.value = true;
     },
     onScroll(e) {
       if (this.value == true) {

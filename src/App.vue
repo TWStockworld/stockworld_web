@@ -78,6 +78,10 @@ export default {
   background-size: cover;
 }
 
+.tv-lightweight-charts {
+  border-radius: 3%;
+}
+
 @media only screen and (max-width: 1200px) {
   .margintop {
     margin-top: 25% !important;

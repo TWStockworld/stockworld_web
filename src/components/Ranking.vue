@@ -1,12 +1,14 @@
 <template>
-  <div class="Ranking_computer" :class="[this.$route.path == '/ranking' ? 'move' : '']">
-    <el-row>
-      <el-col :lg="12" :sm="24" :xs="24">
+  <div class="">
+    <el-row style="    padding: 1% 1% 0% 1%">
+      <el-col :lg="11" :sm="24" :xs="24">
         <el-row>
-
+          <RankingChart :startdate="data_start_date" :enddate="data_end_date" :diff="first_left_diff"
+            :stockA_id="first_left_stockA_id" :stockB_id="first_left_stockB_id" :componentKey=0
+            :result="first_left_result" />
         </el-row>
-        <el-row class="AllrankData_A2">
-          <el-table :data="probability_up">
+        <el-row class="" style="    margin-top:1%;">
+          <el-table :data="probability_up" height="100%">
             <el-table-column prop="order" label="排行" sortable />
 
             <el-table-column prop="stockA_name" label="股票A">
@@ -39,12 +41,16 @@
           </el-table>
         </el-row>
       </el-col>
-      <el-col :lg="12" :sm="24" :xs="24">
+      <el-col :lg="1">
+      </el-col>
+      <el-col :lg="11" :sm="24" :xs="24">
         <el-row>
-
+          <RankingChart :startdate="data_start_date" :enddate="data_end_date" :diff="first_right_diff"
+            :stockA_id="first_right_stockA_id" :stockB_id="first_right_stockB_id" :componentKey=1
+            :result="first_right_result" />
         </el-row>
-        <el-row class="AllrankData_B2">
-          <el-table :data="probability_down">
+        <el-row class="" style="    margin-top:1%;">
+          <el-table :data="probability_down" height="100%">
             <el-table-column prop="order" label="排行" sortable />
 
             <el-table-column prop="stockA_name" label="股票A">
@@ -86,12 +92,14 @@
 </template>
 <script>
 import CompareChart from "@/components/CompareChart.vue";
+import RankingChart from "@/components/RankingChart.vue";
 
 export default {
 
   name: "Ranking",
   components: {
     CompareChart,
+    RankingChart
   },
   data() {
     return {
@@ -103,7 +111,17 @@ export default {
       chart_diff: 0,
       chart_stockA_id: '',
       chart_stockB_id: '',
-      componentKey: 0
+      componentKey: 0,
+      firstcomponentKey: 0,
+      first_left_diff: 0,
+      first_left_stockA_id: '',
+      first_left_stockB_id: '',
+      first_left_result: '',
+      first_right_diff: 0,
+      first_right_stockA_id: '',
+      first_right_stockB_id: '',
+      first_right_result: '',
+
     };
   },
   mounted() {
@@ -134,6 +152,17 @@ export default {
             order: probability_down.order,
           })
         })
+        console.log(this.probability_up[0].stockA_id)
+        this.first_left_diff = this.probability_up[0].diff
+        this.first_left_stockA_id = this.probability_up[0].stockA_id
+        this.first_left_stockB_id = this.probability_up[0].stockB_id
+        this.first_left_result = this.probability_up[0].stockA_name + "黃線漲，" + this.probability_up[0].stockB_name + "藍線，" + this.first_left_diff + "天後也跟著漲機率為" + this.probability_up[0].up
+
+        this.first_right_diff = this.probability_down[0].diff
+        this.first_right_stockA_id = this.probability_down[0].stockA_id
+        this.first_right_stockB_id = this.probability_down[0].stockB_id
+        this.first_right_result = this.probability_down[0].stockA_name + "黃線漲，" + this.probability_down[0].stockB_name + "藍線，" + this.first_right_diff + "天後也跟著跌機率為" + this.probability_down[0].down
+
       })
   },
   methods: {
@@ -150,81 +179,13 @@ export default {
 </script>
 <style scoped>
 @media only screen and (min-width: 1200px) {
-  .Ranking_computer {
-    box-shadow: 5px 7px #00000026;
-    position: absolute;
-    width: 60%;
-    top: 5%;
-    left: 25%;
-    font-size: 20px;
-  }
-
-  .AllrankData_A1 {
-    top: 0%;
-  }
-
-  .AllrankData_A2 {
-    top: 10%;
-  }
-
-  .AllrankData_B1 {
-    top: 0%;
-    left: 25%;
-  }
-
-  .AllrankData_B2 {
-    top: 10%;
-    left: 25%;
-  }
-
-  .Ranking_cellphone {
-    display: none;
-  }
-
-  .move {
-    animation: movepoint1 2s ease-in-out;
-  }
-
-  @keyframes movepoint1 {
-    0% {
-      left: 100%;
-    }
-
-    50% {
-      left: 25%;
-    }
+  .el-row {
+    justify-content: center;
 
   }
 }
 
-@media only screen and (max-width: 1200px) {
-  .Ranking_computer {
-    display: none;
-  }
-
-  .Ranking_cellphone {
-    /* position: absolute;
-    width: 70%;
-    top: 25vh;
-    left: 15%;
-    font-size: 20px; */
-  }
-
-  .move1 {
-    animation: movepoint2 2s ease-in-out;
-  }
-
-  @keyframes movepoint2 {
-    0% {
-      left: 100%;
-    }
-
-    50% {
-      left: 15%;
-    }
-
-  }
-}
+@media only screen and (max-width: 1200px) {}
 </style>
 
 
