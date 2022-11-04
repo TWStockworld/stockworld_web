@@ -2,12 +2,12 @@
     <!-- :class="[this.$route.path == '/bulletin/tsmc' ? 'move' : '']" -->
     <el-row>
         <div class="picture">
-            <img alt="tsmc logo" src="@/assets/img/tsmc.png" style="width: 25%" />
+            <img :src="require('@/assets/img/' + this.$route.params.name + '.png')" />
         </div>
         <el-col :xs="24" :sm="24" :lg="12">
             <el-main style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
                 element-loading-background="rgba(0, 0, 0, 0.1)">
-                <h3>相關股票</h3>
+                <h3 style="background-color: white;">相關股票</h3>
                 <el-table :data="stocks" border stripe height="200" :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
 
                     <el-table-column prop="stock_name" label="股票">
@@ -123,9 +123,15 @@ export default {
 </style>
   
 <style scoped>
+.el-row {
+    height: 100%;
+    justify-content: center;
+}
+
 @media only screen and (min-width: 1200px) {
-    .el-row {
-        height: 100%;
+
+    img {
+        width: 20%;
     }
 
 
@@ -170,8 +176,10 @@ export default {
 }
 
 @media only screen and (max-width: 1200px) {
-    .tab10 {
-        height: 15vh;
+
+
+    img {
+        width: 50%;
     }
 
 }
