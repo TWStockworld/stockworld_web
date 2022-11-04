@@ -2,32 +2,30 @@
   <div class="stockkind_computer" :class="[this.$route.path == '/ranking' ? 'move' : '']">
     <el-row>
       <el-col :lg="12" :sm="24" :xs="24">
-        <el-row class="AllrankData_A1" border stripe height="200" :default-sort="{ prop: 'rank' }">
-          <el-table :data="AllrankData_A1_UP">
-            <el-table-column prop="order" label="排行" sortable />
+        <el-row>
 
-            <el-table-column prop="stockA_name" label="股票A" />
-
-            <el-table-column prop="stockB_name" label="股票B" />
-
-            <el-table-column prop="diff" label="天數" />
-
-            <el-table-column prop="up" label="機率" />
-
-            <el-table-column prop="follow" label="追蹤" />
-          </el-table>
         </el-row>
         <el-row class="AllrankData_A2">
           <el-table :data="probability_up">
             <el-table-column prop="order" label="排行" sortable />
 
-            <el-table-column prop="stockA_id" label="代號" />
+            <el-table-column prop="stockA_name" label="股票A">
+              <template v-slot="scope">
+                <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
+                </router-link>
+              </template>
 
-            <el-table-column prop="stockA_name" label="名稱" />
+            </el-table-column>
 
-            <el-table-column prop="stockA_id" label="代號" />
+            <el-table-column prop="stockB_name" label="股票B">
+              <template v-slot="scope">
+                <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
+                </router-link>
+              </template>
 
-            <el-table-column prop="stockB_name" label="名稱" />
+            </el-table-column>
+
+            <el-table-column prop="diff" label="天數" />
 
             <el-table-column prop="up" label="漲" />
 
@@ -36,32 +34,28 @@
         </el-row>
       </el-col>
       <el-col :lg="12" :sm="24" :xs="24">
-        <el-row class="AllrankData_B1" border stripe height="200" :default-sort="{ prop: 'rank' }">
-          <el-table :data="AllrankData_B1_DOWN">
-            <el-table-column prop="order" label="排行" sortable />
+        <el-row>
 
-            <el-table-column prop="stockA_name" label="股票A" />
-
-            <el-table-column prop="stockB_name" label="股票B" />
-
-            <el-table-column prop="diff" label="天數" />
-
-            <el-table-column prop="up" label="機率" />
-
-            <el-table-column prop="follow" label="追蹤" />
-          </el-table>
         </el-row>
         <el-row class="AllrankData_B2">
           <el-table :data="probability_down">
             <el-table-column prop="order" label="排行" sortable />
 
-            <el-table-column prop="stockA_id" label="代號" />
+            <el-table-column prop="stockA_name" label="股票A">
+              <template v-slot="scope">
+                <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
+                </router-link>
+              </template>
 
-            <el-table-column prop="stockA_name" label="名稱" />
+            </el-table-column>
 
-            <el-table-column prop="stockA_id" label="代號" />
+            <el-table-column prop="stockB_name" label="股票B">
+              <template v-slot="scope">
+                <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
+                </router-link>
+              </template>
 
-            <el-table-column prop="stockB_name" label="名稱" />
+            </el-table-column>
 
             <el-table-column prop="diff" label="天數" />
 
@@ -72,7 +66,6 @@
         </el-row>
       </el-col>
     </el-row>
-
   </div>
 </template>
 <script>
@@ -81,19 +74,40 @@ export default {
   name: "Stockkind",
   data() {
     return {
-      probability_up:[],
-      probability_down:[],
+      probability_up: [],
+      probability_down: [],
+
     };
   },
   mounted() {
     this.axios
-      .get("https://stock.bakerychu.com/api/stock/get_all_stock_probability")
-        .then((res) => {
-          console.log(res.data.probability_up,res.data.probability_down);
-          this.probability_up=res.data.probability_up;
-          this.probability_down=res.data.probability_down;
-
+      .post("https://stock.bakerychu.com/api/stock/get_all_stock_probability")
+      .then((res) => {
+        res.data.probability_up.forEach((probability_up) => {
+          this.probability_up.push({
+            stockA_id: probability_up.stockA_id,
+            stockA_name: probability_up.stockA_name + "\n(" + probability_up.stockA_id + ")",
+            stockB_id: probability_up.stockB_id,
+            stockB_name: probability_up.stockB_name + "\n(" + probability_up.stockB_id + ")",
+            diff: probability_up.diff,
+            up: probability_up.up,
+            order: probability_up.order,
+          })
         })
+        res.data.probability_down.forEach((probability_down) => {
+          this.probability_down.push({
+            stockA_id: probability_down.stockA_id,
+            stockA_name: probability_down.stockA_name + "\n(" + probability_down.stockA_id + ")",
+            stockB_id: probability_down.stockB_id,
+            stockB_name: probability_down.stockB_name + "\n(" + probability_down.stockB_id + ")",
+            diff: probability_down.diff,
+            down: probability_down.down,
+            order: probability_down.order,
+          })
+        })
+      })
+
+
   }
 
 };

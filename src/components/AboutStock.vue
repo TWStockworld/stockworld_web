@@ -6,12 +6,21 @@
 
         <el-table-column prop="order" label="排行" sortable />
 
+        <el-table-column prop="stockA_name" label="股票A">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
+            </router-link>
+          </template>
 
-        <el-table-column prop="stockA_name" label="股票A" />
+        </el-table-column>
 
+        <el-table-column prop="stockB_name" label="股票B">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
+            </router-link>
+          </template>
 
-
-        <el-table-column prop="stockB_name" label="股票B" />
+        </el-table-column>
 
         <el-table-column prop="diff" label="天數" />
 
@@ -27,12 +36,21 @@
       <el-table :data="RankStock2" border stripe height="200" :default-sort="{ prop: 'rank' }">
         <el-table-column prop="order" label="排行" sortable />
 
+        <el-table-column prop="stockA_name" label="股票A">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
+            </router-link>
+          </template>
 
-        <el-table-column prop="stockA_name" label="股票A" />
+        </el-table-column>
 
+        <el-table-column prop="stockB_name" label="股票B">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
+            </router-link>
+          </template>
 
-
-        <el-table-column prop="stockB_name" label="股票B" />
+        </el-table-column>
 
         <el-table-column prop="diff" label="天數" />
 
@@ -52,11 +70,21 @@
         <el-table-column prop="order" label="排行" sortable />
 
 
-        <el-table-column prop="stockA_name" label="股票A" />
+        <el-table-column prop="stockA_name" label="股票A">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
+            </router-link>
+          </template>
 
+        </el-table-column>
 
+        <el-table-column prop="stockB_name" label="股票B">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
+            </router-link>
+          </template>
 
-        <el-table-column prop="stockB_name" label="股票B" />
+        </el-table-column>
 
         <el-table-column prop="diff" label="天數" />
 
@@ -68,17 +96,26 @@
     </el-col>
     <el-col :lg="11" :sm="24" :xs="24">
 
-      <h3>相關漲跌機率(跌){{ page }}</h3>
-      <el-table v-infinite-scroll="handleInfiniteOnLoad" :data="RelateStock2" border stripe height="200"
-        :default-sort="{ prop: 'rank' }">
+      <h3>相關漲跌機率(跌)</h3>
+      <el-table :data="RelateStock2" border stripe height="200" :default-sort="{ prop: 'rank' }">
         <el-table-column prop="order" label="排行" sortable />
 
 
-        <el-table-column prop="stockA_name" label="股票A" />
+        <el-table-column prop="stockA_name" label="股票A">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
+            </router-link>
+          </template>
 
+        </el-table-column>
 
+        <el-table-column prop="stockB_name" label="股票B">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
+            </router-link>
+          </template>
 
-        <el-table-column prop="stockB_name" label="股票B" />
+        </el-table-column>
 
         <el-table-column prop="diff" label="天數" />
 
@@ -94,9 +131,13 @@
     <h3>相關產業股票 </h3>
     <el-table :data="stock_table" border stripe height="200" :default-sort="{ prop: 'time' }">
 
-      <el-table-column prop="stock_name" label="名稱" />
+      <el-table-column prop="stock_name" label="股票">
+        <template v-slot="scope">
+          <router-link :to="{ path: '/aboutstock/' + scope.row.stock_id }">{{ scope.row.stock_name }}
+          </router-link>
+        </template>
 
-      <el-table-column prop="stock_id" label="代號" />
+      </el-table-column>
 
       <el-table-column prop="day_change" label="漲跌幅" />
 
@@ -144,11 +185,16 @@ export default defineComponent({
     }
   },
   watch: {
-    async res2() {
+    res2: function (res2) {
       console.log(this.res2);
-
+      this.RankStock1 = []
+      this.RankStock2 = []
+      this.RelateStock1 = []
+      this.RelateStock2 = []
       this.res2.data.probability_up.forEach((rankstock1) => {
         this.RankStock1.push({
+          stockA_id: rankstock1.stockA_id,
+          stockB_id: rankstock1.stockB_id,
           stockA_name: rankstock1.stockA_name + "\n(" + rankstock1.stockA_id + ")",
           stockB_name: rankstock1.stockB_name + "\n(" + rankstock1.stockB_id + ")",
           diff: rankstock1.diff,
@@ -158,6 +204,8 @@ export default defineComponent({
       })
       this.res2.data.probability_down.forEach((rankstock2) => {
         this.RankStock2.push({
+          stockA_id: rankstock2.stockA_id,
+          stockB_id: rankstock2.stockB_id,
           stockA_name: rankstock2.stockA_name + "\n(" + rankstock2.stockA_id + ")",
           stockB_name: rankstock2.stockB_name + "\n(" + rankstock2.stockB_id + ")",
           diff: rankstock2.diff,
@@ -167,6 +215,8 @@ export default defineComponent({
       })
       this.res2.data.relation_up.forEach((relatestock1) => {
         this.RelateStock1.push({
+          stockA_id: relatestock1.stockA_id,
+          stockB_id: relatestock1.stockB_id,
           stockA_name: relatestock1.stockA_name + "\n(" + relatestock1.stockA_id + ")",
           stockB_name: relatestock1.stockB_name + "\n(" + relatestock1.stockB_id + ")",
           diff: relatestock1.diff,
@@ -176,6 +226,8 @@ export default defineComponent({
       })
       this.res2.data.relation_down.forEach((relatestock2) => {
         this.RelateStock2.push({
+          stockA_id: relatestock2.stockA_id,
+          stockB_id: relatestock2.stockB_id,
           stockA_name: relatestock2.stockA_name + "\n(" + relatestock2.stockA_id + ")",
           stockB_name: relatestock2.stockB_name + "\n(" + relatestock2.stockB_id + ")",
           diff: relatestock2.diff,
@@ -185,12 +237,13 @@ export default defineComponent({
       })
     },
 
-    async res3() {
+    res3: function (res3) {
       console.log(this.res3);
+      this.stock_table = []
 
       this.res3.data.stocks.forEach((stock) => {
         this.stock_table.push({
-          stock_name: stock.stock_name,
+          stock_name: stock.stock_name + "\n(" + stock.stock_id + ")",
           stock_id: stock.stock_id,
           day_change: stock.day_change + " %",
           open: stock.open,

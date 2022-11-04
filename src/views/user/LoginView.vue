@@ -73,7 +73,7 @@ export default {
         .then((res) => {
           console.log(res);
           const token = res.data.token;
-          this.$Cookies.set("token", token), { expires: 1 };
+          this.$cookies.set("token", token, "1h");
           this.$router.push("/personalfile");
           this.$emit('keytest');
         })
