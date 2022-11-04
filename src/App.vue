@@ -86,6 +86,14 @@ export default {
   display: inline;
 }
 
+a {
+  color: #598ef6;
+}
+
+/* a:visited {
+  color: blue;
+} */
+
 @media only screen and (max-width: 1200px) {
   .margintop {
     margin-top: 25% !important;

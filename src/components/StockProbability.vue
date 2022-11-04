@@ -1,182 +1,172 @@
 <template>
-  <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+  <el-button size="mini" @click="show('a')">
     漲跌機率(漲)
   </el-button>
-  <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+  <el-button size="mini" @click="show('b')">
     漲跌機率(跌)
   </el-button>
-  <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+  <el-button size="mini" @click="show('c')">
     相關漲跌機率(漲)
   </el-button>
-  <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+  <el-button size="mini" @click="show('d')">
     相關漲跌機率(跌)
   </el-button>
   <el-row>
-    <el-col :lg="11" :sm="24" :xs="24">
-      <el-main style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
-        element-loading-background="rgba(0, 0, 0, 0.1)">
-        <h3>漲跌機率(漲)</h3>
-        <el-table :data="RankStock1" border stripe height="200" :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
+    <el-main v-if="cur == 'a'" style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
+      element-loading-background="rgba(0, 0, 0, 0.1)">
+      <h3>漲跌機率(漲)</h3>
+      <el-table :data="RankStock1" border stripe height="200" :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
 
-          <el-table-column prop="order" label="排行" sortable />
+        <el-table-column prop="order" label="排行" sortable />
 
-          <el-table-column prop="stockA_name" label="股票A">
-            <template v-slot="scope">
-              <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
-              </router-link>
-            </template>
+        <el-table-column prop="stockA_name" label="股票A">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
+            </router-link>
+          </template>
 
-          </el-table-column>
+        </el-table-column>
 
-          <el-table-column prop="stockB_name" label="股票B">
-            <template v-slot="scope">
-              <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
-              </router-link>
-            </template>
+        <el-table-column prop="stockB_name" label="股票B">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
+            </router-link>
+          </template>
 
-          </el-table-column>
+        </el-table-column>
 
-          <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
-          <el-table-column label="操作">
-            <template #default="scope">
-              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
-                圖表
-              </el-button>
-              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
-                追蹤
-              </el-button>
-            </template>
-          </el-table-column>
+        <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
+        <el-table-column label="操作">
+          <template #default="scope">
+            <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+              圖表
+            </el-button>
+            <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+              追蹤
+            </el-button>
+          </template>
+        </el-table-column>
 
-        </el-table>
-      </el-main>
-    </el-col>
-    <el-col :lg="11" :sm="24" :xs="24">
-      <el-main style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
-        element-loading-background="rgba(0, 0, 0, 0.1)">
-        <h3>漲跌機率(跌)</h3>
-        <el-table :data="RankStock2" border stripe height="200" :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
-          <el-table-column prop="order" label="排行" sortable />
+      </el-table>
+    </el-main>
+    <el-main v-if="cur == 'b'" style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
+      element-loading-background="rgba(0, 0, 0, 0.1)">
+      <h3>漲跌機率(跌)</h3>
+      <el-table :data="RankStock2" border stripe height="200" :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
+        <el-table-column prop="order" label="排行" sortable />
 
-          <el-table-column prop="stockA_name" label="股票A">
-            <template v-slot="scope">
-              <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
-              </router-link>
-            </template>
+        <el-table-column prop="stockA_name" label="股票A">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
+            </router-link>
+          </template>
 
-          </el-table-column>
+        </el-table-column>
 
-          <el-table-column prop="stockB_name" label="股票B">
-            <template v-slot="scope">
-              <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
-              </router-link>
-            </template>
+        <el-table-column prop="stockB_name" label="股票B">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
+            </router-link>
+          </template>
 
-          </el-table-column>
+        </el-table-column>
 
-          <el-table-column prop="result" label="A漲,B幾天後跌的機率" />
-          <el-table-column label="操作">
-            <template #default="scope">
-              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
-                圖表
-              </el-button>
-              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
-                追蹤
-              </el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-      </el-main>
-    </el-col>
+        <el-table-column prop="result" label="A漲,B幾天後跌的機率" />
+        <el-table-column label="操作">
+          <template #default="scope">
+            <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+              圖表
+            </el-button>
+            <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+              追蹤
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-main>
+    <el-main v-if="cur == 'c'" style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
+      element-loading-background="rgba(0, 0, 0, 0.1)">
+      <h3>相關漲跌機率(漲)</h3>
+      <el-table :data="RelateStock1" border stripe height="200" :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
 
-  </el-row>
-  <el-row>
-    <el-col :lg="11" :sm="24" :xs="24">
-      <el-main style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
-        element-loading-background="rgba(0, 0, 0, 0.1)">
-        <h3>相關漲跌機率(漲)</h3>
-        <el-table :data="RelateStock1" border stripe height="200" :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
-
-          <el-table-column prop="order" label="排行" sortable />
+        <el-table-column prop="order" label="排行" sortable />
 
 
-          <el-table-column prop="stockA_name" label="股票A">
-            <template v-slot="scope">
-              <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
-              </router-link>
-            </template>
+        <el-table-column prop="stockA_name" label="股票A">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
+            </router-link>
+          </template>
 
-          </el-table-column>
+        </el-table-column>
 
-          <el-table-column prop="stockB_name" label="股票B">
-            <template v-slot="scope">
-              <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
-              </router-link>
-            </template>
+        <el-table-column prop="stockB_name" label="股票B">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
+            </router-link>
+          </template>
 
-          </el-table-column>
+        </el-table-column>
 
-          <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
-          <el-table-column label="操作">
-            <template #default="scope">
-              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
-                圖表
-              </el-button>
-              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
-                追蹤
-              </el-button>
-            </template>
-          </el-table-column>
+        <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
+        <el-table-column label="操作">
+          <template #default="scope">
+            <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+              圖表
+            </el-button>
+            <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+              追蹤
+            </el-button>
+          </template>
+        </el-table-column>
 
-        </el-table>
-      </el-main>
-    </el-col>
-    <el-col :lg="11" :sm="24" :xs="24">
-      <el-main style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
-        element-loading-background="rgba(0, 0, 0, 0.1)">
-        <h3>相關漲跌機率(跌) </h3>
-        <el-table :data="RelateStock2" border stripe height="200" :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
-          <el-table-column prop="order" label="排行" sortable />
+      </el-table>
+    </el-main>
+    <el-main v-if="cur == 'd'" style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
+      element-loading-background="rgba(0, 0, 0, 0.1)">
+      <h3>相關漲跌機率(跌) </h3>
+      <el-table :data="RelateStock2" border stripe height="200" :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
+        <el-table-column prop="order" label="排行" sortable />
 
 
-          <el-table-column prop="stockA_name" label="股票A">
-            <template v-slot="scope">
-              <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
-              </router-link>
-            </template>
+        <el-table-column prop="stockA_name" label="股票A">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_id }">{{ scope.row.stockA_name }}
+            </router-link>
+          </template>
 
-          </el-table-column>
+        </el-table-column>
 
-          <el-table-column prop="stockB_name" label="股票B">
-            <template v-slot="scope">
-              <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
-              </router-link>
-            </template>
+        <el-table-column prop="stockB_name" label="股票B">
+          <template v-slot="scope">
+            <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
+            </router-link>
+          </template>
 
-          </el-table-column>
+        </el-table-column>
 
-          <el-table-column prop="result" label="A漲,B幾天後跌的機率" />
-          <el-table-column label="操作">
-            <template #default="scope">
-              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
-                圖表
-              </el-button>
-              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
-                追蹤
+        <el-table-column prop="result" label="A漲,B幾天後跌的機率" />
+        <el-table-column label="操作">
+          <template #default="scope">
+            <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+              圖表
+            </el-button>
+            <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+              追蹤
 
-              </el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-      </el-main>
-    </el-col>
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-main>
 
   </el-row>
   <el-row>
     <el-main style="padding:0" v-loading="loading2" element-loading-text="讀取資料中"
       element-loading-background="rgba(0, 0, 0, 0.1)">
       <h3>相關產業股票 </h3>
-      <el-table :data="stock_table" border stripe height="200" :default-sort="{ prop: 'time' }" empty-text="無相關資料">
+      <el-table v-el-table-infinite-scroll="load" :data="stock_table" border stripe height="200"
+        :default-sort="{ prop: 'time' }" empty-text="無相關資料">
 
         <el-table-column prop="stock_name" label="股票">
           <template v-slot="scope">
@@ -200,10 +190,10 @@
 
         <el-table-column prop="volume" label="成交量" />
 
-        <el-table-column prop="turnover" label="成交筆數" />
         <el-table-column prop="date" label="時間" sortable />
 
       </el-table>
+
     </el-main>
     <el-dialog customClass="el-dialog-width" v-model="dialogTableVisible" title="圖表" destroy-on-close="true">
       <CompareChart :startdate="data_start_date" :enddate="data_end_date" :diff="chart_diff"
@@ -211,6 +201,22 @@
     </el-dialog>
   </el-row>
 </template>
+
+<script setup>
+import { default as vElTableInfiniteScroll } from "el-table-infinite-scroll";
+
+import { ref } from 'vue';
+
+const cc = ref(0);
+const emit = defineEmits(['pageupdate'])
+
+const load = () => {
+  cc.value++;
+  emit("pageupdate", cc.value)
+  // console.log(cc.value)
+};
+
+</script>
 
 <script >
 
@@ -231,7 +237,6 @@ export default defineComponent({
       RelateStock1: [],
       RelateStock2: [],
       stock_table: [],
-      page: 0,
       loading1: true,
       loading2: true,
       data_start_date: '',
@@ -240,19 +245,34 @@ export default defineComponent({
       chart_diff: 0,
       chart_stockA_id: '',
       chart_stockB_id: '',
-      componentKey: 0
+      componentKey: 0,
+      cur: 'a',
     };
   },
   methods: {
-    load() {
-      this.page += 1
-    },
+
     setchartvalue(chart_diff, chart_stockA_id, chart_stockB_id) {
       this.chart_diff = chart_diff;
       this.chart_stockA_id = chart_stockA_id;
       this.chart_stockB_id = chart_stockB_id;
       this.dialogTableVisible = true;
       this.componentKey += 1;
+    },
+    show(input) {
+      switch (input) {
+        case 'a':
+          this.cur = 'a'
+          break;
+        case 'b':
+          this.cur = 'b'
+          break;
+        case 'c':
+          this.cur = 'c'
+          break;
+        case 'd':
+          this.cur = 'd'
+          break;
+      }
     }
   },
 
@@ -332,11 +352,9 @@ export default defineComponent({
 
     res3: function (res3) {
       console.log(this.res3);
-      this.stock_table = []
-
       this.res3.data.stocks.forEach((stock) => {
         this.stock_table.push({
-          stock_name: stock.stock_name + "\n(" + stock.stock_id + ")",
+          stock_name: stock.stock_name + "(" + stock.stock_id + ")",
           stock_id: stock.stock_id,
           day_change: stock.day_change + " %",
           open: stock.open,

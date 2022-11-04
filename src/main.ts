@@ -32,6 +32,8 @@ app.use(ElementPlus, {
 });
 // app.config.globalProperties.$Snow = Snow;
 app.config.globalProperties.$Tradingview = Tradingview;
+app.config.globalProperties.$axios = axios;
+
 app
   .use(router)
   .use(VueAxios, axios)
