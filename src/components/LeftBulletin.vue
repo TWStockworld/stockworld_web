@@ -3,27 +3,27 @@
     <ul class="leftbulletin_ul">
       <li class="leftbulletin_li">
         <el-button @click="ranking" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[ this.$route.path=='/ranking' ? 'select': '']">關係度總排行</el-button>
+          :class="[ this.$route.params.name=='ranking' ? 'select': '']">關係度總排行</el-button>
       </li>
       <li class="leftbulletin_li">
         <el-button @click="tsmc" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[this.$route.path == '/tsmc' ? 'select' : '']">台積電</el-button>
+          :class="[this.$route.params.name == 'tsmc' ? 'select' : '']">台積電</el-button>
       </li>
       <li class="leftbulletin_li">
         <el-button @click="HHcar" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[this.$route.path == '/HHcar' ? 'select' : '']">鴻海電動車</el-button>
-      </li>
-      <li class="leftbulletin_li">
-        <el-button @click="car" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[this.$route.path == '/car' ? 'select' : '']">電動車</el-button>
+          :class="[this.$route.params.name == 'HHcar' ? 'select' : '']">鴻海電動車</el-button>
       </li>
       <li class="leftbulletin_li">
         <el-button @click="meta" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[this.$route.path == '/meta' ? 'select' : '']">元宇宙概念股</el-button>
+          :class="[this.$route.params.name == 'meta' ? 'select' : '']">元宇宙概念股</el-button>
+      </li>
+      <li class="leftbulletin_li">
+        <el-button @click="car" style="width: auto; height: 50px; font-size: 2vh"
+          :class="[this.$route.params.name == 'car' ? 'select' : '']">電動車</el-button>
       </li>
       <li class="leftbulletin_li">
         <el-button @click="ic" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[this.$route.path == '/IC' ? 'select' : '']">IC設計產業</el-button>
+          :class="[this.$route.params.name == 'ic' ? 'select' : '']">IC設計產業</el-button>
       </li>
       <!-- <li class="leftbulletin_li" :class="[ this.$route.path=='/cloud' ? 'select': '']">
         <el-button @click="cloud" style="width: auto; height: 50px; font-size: 2vh">雲端相關</el-button>
@@ -49,31 +49,68 @@ export default {
       });
     },
     tsmc() {
-      this.$router.push("/tsmc");
-    },
-    sort() {
-      this.$router.push("/sort");
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'tsmc',
+        }
+      });
     },
     HHcar() {
-      this.$router.push("/HHcar");
-    },
-    car() {
-      this.$router.push("/car");
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'HHcar',
+        }
+      });
     },
     meta() {
-      this.$router.push("/meta");
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'meta',
+        }
+      });
+    },
+    car() {
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'car',
+        }
+      });
     },
     ic() {
-      this.$router.push("/IC");
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'ic',
+        }
+      });
     },
     cloud() {
-      this.$router.push("/cloud");
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'cloud',
+        }
+      });
     },
     city() {
-      this.$router.push("/city");
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'city',
+        }
+      });
     },
     internet() {
-      this.$router.push("/internet");
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'internet',
+        }
+      });
     },
   },
 };

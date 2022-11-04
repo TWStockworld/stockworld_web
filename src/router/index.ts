@@ -4,7 +4,6 @@ import StartView from "../views/StartView";
 import CalculateView from "../views/CalculateView.vue";
 import AboutStockView from "../views/AboutStockView.vue";
 import SortView from "../views/SortView";
-import LearningView from "../views/LearningView";
 
 //test
 import pm25 from "../views/test/pm25.vue";
@@ -20,16 +19,8 @@ import FavoriteView from "../views/user_profile/FavoriteView";
 import Help_SupportView from "../views/user_profile/Help_SupportView";
 
 //bulletin 公告欄
-import BulletinView from "../views/bulletin/BulletinView";
-import TsmcView from "../views/bulletin/TsmcView";
-import CarView from "../views/bulletin/CarView.vue";
-import MetaView from "../views/bulletin/MetaView.vue";
-import CityView from "../views/bulletin/CityView.vue";
-import ICView from "../views/bulletin/ICView.vue";
-import InternetView from "../views/bulletin/InternetView.vue";
-import CloudView from "../views/bulletin/CloudView.vue";
-import HHcarView from "../views/bulletin/HHcarView.vue";
-import Vue from "vue";
+import BulletinView from "../views/BulletinView";
+
 //ttt
 const routes = [
   {
@@ -64,25 +55,16 @@ const routes = [
     component: AboutStockView,
     props: true,
   },
-  {
-    path: "/tsmc",
-    name: "tsmc",
-    component: TsmcView,
-  },
-  {
-    path: "/sort",
-    name: "sort",
-    component: SortView,
-  },
+
   {
     path: "/bulletin/:name",
     name: "bulletin",
     component: BulletinView,
   },
   {
-    path: "/learning",
-    name: "Learning",
-    component: LearningView,
+    path: "/sort",
+    name: "sort",
+    component: SortView,
   },
   // {
   //   path: "/userprofile",
@@ -109,41 +91,6 @@ const routes = [
     path: "/help_support",
     name: "help_support",
     component: Help_SupportView,
-  },
-  {
-    path: "/city",
-    name: "city",
-    component: CityView,
-  },
-  {
-    path: "/cloud",
-    name: "cloud",
-    component: CloudView,
-  },
-  {
-    path: "/IC",
-    name: "IC",
-    component: ICView,
-  },
-  {
-    path: "/internet",
-    name: "internet",
-    component: InternetView,
-  },
-  {
-    path: "/meta",
-    name: "meta",
-    component: MetaView,
-  },
-  {
-    path: "/car",
-    name: "car",
-    component: CarView,
-  },
-  {
-    path: "/hhcar",
-    name: "hhcar",
-    component: HHcarView,
   },
 ];
 

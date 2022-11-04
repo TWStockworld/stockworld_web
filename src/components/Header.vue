@@ -13,11 +13,6 @@
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
-      <router-link to="/learning">
-        <span class="txt">投資小學堂<span class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
-      </router-link>
-
       <router-link to="/sort">
         <span class="txt">台股分類<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
@@ -74,15 +69,6 @@
                 </a>
               </router-link>
             </li>
-
-            <li class="phone_size_li">
-              <router-link to="/learning" class="menuset" @click="canclemenu">
-                <a class="menuset2" href="#">
-                  <ion-icon name="pencil-outline"></ion-icon>投資小學堂
-                </a>
-              </router-link>
-            </li>
-
             <li class="phone_size_li">
               <router-link to="/sort" class="menuset" @click="canclemenu">
                 <a class="menuset2" href="#">
