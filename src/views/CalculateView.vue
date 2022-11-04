@@ -174,4 +174,9 @@ export default {
   font-size: 14px;
   margin-bottom: 20px;
 }
+
+.block {
+  background-color: #ffffff5e;
+  border-radius: 30px;
+}
 </style>
