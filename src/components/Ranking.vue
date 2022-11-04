@@ -27,17 +27,18 @@
 
             </el-table-column>
 
-            <el-table-column prop="diff" label="天數" />
-
-            <el-table-column prop="up" label="漲" />
+            <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
             <el-table-column label="操作">
               <template #default="scope">
                 <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
                   圖表
                 </el-button>
+                <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                  追蹤
+                </el-button>
               </template>
             </el-table-column>
-            <el-table-column prop="follow" label="追蹤" width="180" />
+
           </el-table>
         </el-row>
       </el-col>
@@ -68,18 +69,17 @@
               </template>
 
             </el-table-column>
-
-            <el-table-column prop="diff" label="天數" />
-
-            <el-table-column prop="down" label="跌" />
+            <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
             <el-table-column label="操作">
               <template #default="scope">
                 <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
                   圖表
                 </el-button>
+                <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                  追蹤
+                </el-button>
               </template>
             </el-table-column>
-            <el-table-column prop="follow" label="追蹤" />
           </el-table>
         </el-row>
       </el-col>
@@ -139,6 +139,7 @@ export default {
             diff: probability_up.diff,
             up: probability_up.up,
             order: probability_up.order,
+            result: probability_up.diff + "天後 " + probability_up.up
           })
         })
         res.data.probability_down.forEach((probability_down) => {
@@ -150,6 +151,8 @@ export default {
             diff: probability_down.diff,
             down: probability_down.down,
             order: probability_down.order,
+            result: probability_down.diff + "天後 " + probability_down.down
+
           })
         })
         console.log(this.probability_up[0].stockA_id)

@@ -2,7 +2,7 @@
   <nav v-if="this.$route.path != '/'">
     <div class="computer_size">
       <img src="../assets/img/logo2.png" alt="e" class="logo">
-      <router-link to="/ranking">
+      <router-link to="/bulletin/ranking">
         <span class="txt">
           主頁<span class="bar" style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span>
         </span>
@@ -43,7 +43,6 @@
           <img class="img-responsive1" src="@/assets/img/logo.png" />
         </div>
         <!--加入姓名錢-->
-        <p class="username1">目前剩餘:1000元</p>
       </div>
       <div class="menuToggle" @click="menutoggle"></div>
       <div class="menu">
@@ -61,7 +60,7 @@
             </li>
 
             <li class="phone_size_li">
-              <router-link to="/ranking" class="menuset" @click="canclemenu">
+              <router-link to="/bulletin/ranking" class="menuset" @click="canclemenu">
                 <a class="menuset2" href="#">
                   <ion-icon name="home-outline"></ion-icon>主頁
                 </a>
@@ -187,7 +186,12 @@ export default defineComponent({
         })
         .then((res) => {
           this.$cookies.remove("token");
-          this.$router.push("/ranking");
+          this.$router.push({
+            name: 'bulletin',
+            params: {
+              name: 'ranking',
+            }
+          });
           this.$emit('keytest');
         })
       // this.$cookies.remove("token");

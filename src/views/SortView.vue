@@ -8,7 +8,7 @@
         <el-container>
           <el-header class="sort_title">台股分類查詢-上市</el-header>
           <el-main>
-            <el-button v-for="category in categories" :key="category.id">
+            <el-button v-for="category in categories" :key="category.id" @click="go(category.id)">
               {{ category.category }}
             </el-button>
 
@@ -157,6 +157,16 @@ export default {
       kindtable5: false,
 
     };
+  },
+  methods: {
+    go(stock_id) {
+      this.$router.push({
+        name: 'AboutStock',
+        params: {
+          stockid: stock_id,
+        }
+      });
+    },
   },
   mounted() {
     this.axios

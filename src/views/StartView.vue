@@ -11,7 +11,12 @@
 export default {
   methods: {
     start() {
-      this.$router.push("/ranking");
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'ranking',
+        }
+      });
     },
   },
 };

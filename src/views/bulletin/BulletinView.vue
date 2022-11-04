@@ -4,7 +4,9 @@
       <LeftBulletin />
     </el-col>
     <el-col :xs="24" :sm="24" :lg="20" class="bulletin_right-col">
-      <Ranking />
+
+      <Ranking v-if="this.now == 'ranking'" />
+
     </el-col>
   </el-row>
 </template>
@@ -21,7 +23,8 @@ export default {
   data() {
     return {
       timer: '',
-      value: false
+      value: false,
+      now: this.$route.params.name
     };
   },
   mounted() {

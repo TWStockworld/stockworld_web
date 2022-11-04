@@ -4,7 +4,7 @@
       <LeftBulletin />
     </el-col>
     <el-col :xs="24" :sm="24" :lg="20" class="bulletin_right-col">
-      <el-row :class="[ this.$route.path=='/tsmc' ? 'move': '']">
+      <el-row :class="[this.$route.path == '/tsmc' ? 'move' : '']">
         <div class="tab10"></div>
         <div class="picture">
           <img alt="tsmc logo" src="@/assets/img/tsmc.png" style="width: 25%" />
@@ -46,7 +46,10 @@
             <el-button @click="dialogTableVisible = true" class="corrbutton10">半導體檢測</el-button>
           </div>
         </el-col>
+        <StockProbability :res2="res2" :stock_id="stock_id" />
+
       </el-row>
+
     </el-col>
   </el-row>
 </template>
@@ -54,21 +57,30 @@
 <script>
 import LeftBulletin from "@/components/LeftBulletin.vue";
 import Competition from "@/components/Competition.vue";
+import StockProbability from "@/components/StockProbability.vue";
 
 export default {
   name: "tsmc",
   components: {
     LeftBulletin,
     Competition,
+    StockProbability
   },
   data() {
     return {
       dialogTableVisible: false,
       timer: '',
-      value: false
+      value: false,
+      res2: ''
     };
   },
   mounted() {
+    this.axios
+      .post("/api/stock/get_stock_probability", {
+        show_zero_diff: 0,
+        bulletin_id: 1
+      }).then((res) => { this.res2 = res });
+
     window.addEventListener("wheel", this.onScroll);
     this.timer = setTimeout(this.get, 1000);
   },

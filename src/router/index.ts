@@ -75,8 +75,8 @@ const routes = [
     component: SortView,
   },
   {
-    path: "/ranking",
-    name: "Ranking",
+    path: "/bulletin/:name",
+    name: "bulletin",
     component: BulletinView,
   },
   {

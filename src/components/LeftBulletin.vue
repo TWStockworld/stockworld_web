@@ -7,23 +7,23 @@
       </li>
       <li class="leftbulletin_li">
         <el-button @click="tsmc" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[ this.$route.path=='/tsmc' ? 'select': '']">台積電</el-button>
+          :class="[this.$route.path == '/tsmc' ? 'select' : '']">台積電</el-button>
       </li>
       <li class="leftbulletin_li">
         <el-button @click="HHcar" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[ this.$route.path=='/HHcar' ? 'select': '']">鴻海電動車</el-button>
+          :class="[this.$route.path == '/HHcar' ? 'select' : '']">鴻海電動車</el-button>
       </li>
       <li class="leftbulletin_li">
         <el-button @click="car" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[ this.$route.path=='/car' ? 'select': '']">電動車</el-button>
+          :class="[this.$route.path == '/car' ? 'select' : '']">電動車</el-button>
       </li>
       <li class="leftbulletin_li">
         <el-button @click="meta" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[ this.$route.path=='/meta' ? 'select': '']">元宇宙概念股</el-button>
+          :class="[this.$route.path == '/meta' ? 'select' : '']">元宇宙概念股</el-button>
       </li>
       <li class="leftbulletin_li">
         <el-button @click="ic" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[ this.$route.path=='/IC' ? 'select': '']">IC設計產業</el-button>
+          :class="[this.$route.path == '/IC' ? 'select' : '']">IC設計產業</el-button>
       </li>
       <!-- <li class="leftbulletin_li" :class="[ this.$route.path=='/cloud' ? 'select': '']">
         <el-button @click="cloud" style="width: auto; height: 50px; font-size: 2vh">雲端相關</el-button>
@@ -41,7 +41,12 @@
 export default {
   methods: {
     ranking() {
-      this.$router.push("/ranking");
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'ranking',
+        }
+      });
     },
     tsmc() {
       this.$router.push("/tsmc");

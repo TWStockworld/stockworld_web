@@ -1,4 +1,16 @@
 <template>
+  <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+    漲跌機率(漲)
+  </el-button>
+  <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+    漲跌機率(跌)
+  </el-button>
+  <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+    相關漲跌機率(漲)
+  </el-button>
+  <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+    相關漲跌機率(跌)
+  </el-button>
   <el-row>
     <el-col :lg="11" :sm="24" :xs="24">
       <el-main style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
@@ -24,16 +36,17 @@
 
           </el-table-column>
 
-          <el-table-column prop="diff" label="天數" />
-
-          <el-table-column prop="up" label="機率" />
+          <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
           <el-table-column label="操作">
             <template #default="scope">
-              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">圖表
+              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                圖表
+              </el-button>
+              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                追蹤
               </el-button>
             </template>
           </el-table-column>
-          <el-table-column prop="follow" label="追蹤" />
 
         </el-table>
       </el-main>
@@ -61,16 +74,17 @@
 
           </el-table-column>
 
-          <el-table-column prop="diff" label="天數" />
-
-          <el-table-column prop="down" label="機率" />
+          <el-table-column prop="result" label="A漲,B幾天後跌的機率" />
           <el-table-column label="操作">
             <template #default="scope">
-              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">圖表
+              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                圖表
+              </el-button>
+              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                追蹤
               </el-button>
             </template>
           </el-table-column>
-          <el-table-column prop="follow" label="追蹤" />
         </el-table>
       </el-main>
     </el-col>
@@ -102,16 +116,17 @@
 
           </el-table-column>
 
-          <el-table-column prop="diff" label="天數" />
-
-          <el-table-column prop="up" label="機率" />
+          <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
           <el-table-column label="操作">
             <template #default="scope">
-              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">圖表
+              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                圖表
+              </el-button>
+              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                追蹤
               </el-button>
             </template>
           </el-table-column>
-          <el-table-column prop="follow" label="追蹤" />
 
         </el-table>
       </el-main>
@@ -119,7 +134,7 @@
     <el-col :lg="11" :sm="24" :xs="24">
       <el-main style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
         element-loading-background="rgba(0, 0, 0, 0.1)">
-        <h3>相關漲跌機率(跌)</h3>
+        <h3>相關漲跌機率(跌) </h3>
         <el-table :data="RelateStock2" border stripe height="200" :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
           <el-table-column prop="order" label="排行" sortable />
 
@@ -140,17 +155,18 @@
 
           </el-table-column>
 
-          <el-table-column prop="diff" label="天數" />
-
-          <el-table-column prop="down" label="機率" />
+          <el-table-column prop="result" label="A漲,B幾天後跌的機率" />
           <el-table-column label="操作">
             <template #default="scope">
-              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">圖表
+              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                圖表
+              </el-button>
+              <el-button size="mini" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                追蹤
+
               </el-button>
             </template>
           </el-table-column>
-          <el-table-column prop="follow" label="追蹤" />
-
         </el-table>
       </el-main>
     </el-col>
@@ -268,6 +284,8 @@ export default defineComponent({
           diff: rankstock1.diff,
           up: rankstock1.up,
           order: rankstock1.order,
+          result: rankstock1.diff + "天後 " + rankstock1.up
+
         })
       })
       this.res2.data.probability_down.forEach((rankstock2) => {
@@ -279,6 +297,8 @@ export default defineComponent({
           diff: rankstock2.diff,
           down: rankstock2.down,
           order: rankstock2.order,
+          result: rankstock2.diff + "天後 " + rankstock2.down
+
         })
       })
       this.res2.data.relation_up.forEach((relatestock1) => {
@@ -290,6 +310,8 @@ export default defineComponent({
           diff: relatestock1.diff,
           up: relatestock1.up,
           order: relatestock1.order,
+          result: relatestock1.diff + "天後 " + relatestock1.up
+
         })
       })
       this.res2.data.relation_down.forEach((relatestock2) => {
@@ -301,6 +323,8 @@ export default defineComponent({
           diff: relatestock2.diff,
           down: relatestock2.down,
           order: relatestock2.order,
+          result: relatestock2.diff + "天後 " + relatestock2.down
+
         })
       })
       this.loading1 = false;

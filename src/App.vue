@@ -82,6 +82,10 @@ export default {
   border-radius: 3%;
 }
 
+.el-table .cell {
+  display: inline;
+}
+
 @media only screen and (max-width: 1200px) {
   .margintop {
     margin-top: 25% !important;
