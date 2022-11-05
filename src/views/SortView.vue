@@ -161,7 +161,7 @@ export default {
   methods: {
     go(stock_id) {
       this.$router.push({
-        name: 'AboutStock',
+        name: 'aboutstock',
         params: {
           stockid: stock_id,
         }

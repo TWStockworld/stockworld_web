@@ -163,7 +163,7 @@
   </el-row>
   <el-row>
     <el-main style="padding:0" v-loading="loading2" element-loading-text="讀取資料中 "
-      element-loading-background="rgba(0, 0, 0, 0.1)" v-if="this.$route.name == 'AboutStock'">
+      element-loading-background="rgba(0, 0, 0, 0.1)" v-if="this.$route.name == 'aboutstock'">
       <h3>相關產業股票 </h3>
       <el-table v-el-table-infinite-scroll="load" :data="stock_table" border stripe height="200"
         :default-sort="{ prop: 'time' }" empty-text="無相關資料">
@@ -224,7 +224,7 @@ import { defineComponent } from "vue";
 import CompareChart from "@/components/CompareChart.vue";
 
 export default defineComponent({
-  name: "AboutStock",
+  name: "aboutstock",
   props: ["res2", "res3", "stock_id"],
   components: {
     CompareChart,

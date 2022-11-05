@@ -3,23 +3,23 @@
     <div class="computer_size">
       <img src="../assets/img/logo2.png" alt="e" class="logo">
       <router-link to="/bulletin/ranking">
-        <span class="txt">
+        <span class="txt" :class="[this.$route.name == 'bulletin' ? 'nowsite' : '']">
           主頁<span class="bar" style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span>
         </span>
       </router-link>
 
       <router-link to="/calculate">
-        <span class="txt">漲幅機率計算<span class="bar"
+        <span class="txt" :class="[this.$route.name == 'calculate' ? 'nowsite' : '']">漲幅機率計算<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/sort">
-        <span class="txt">台股分類<span class="bar"
+        <span class="txt" :class="[this.$route.name == 'sort' ? 'nowsite' : '']">台股分類<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/aboutstock/2330">
-        <span class="txt">關於股票<span class="bar"
+        <span class="txt" :class="[this.$route.name == 'aboutstock' ? 'nowsite' : '']">關於股票<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
@@ -186,7 +186,7 @@ export default defineComponent({
     },
     stocksearch() {
       this.$router.push({
-        name: 'AboutStock',
+        name: 'aboutstock',
         params: {
           stockid: this.stockid,
         }
@@ -524,6 +524,12 @@ export default defineComponent({
 .txt {
   position: relative;
   display: block;
+  color: #ffffff94;
+}
+
+.nowsite {
+  color: #ffffff;
+
 }
 
 .bar {

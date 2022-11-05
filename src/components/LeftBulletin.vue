@@ -2,37 +2,63 @@
   <div class="LB1">
     <ul class="leftbulletin_ul">
       <li class="leftbulletin_li">
-        <el-button @click="ranking" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[ this.$route.params.name=='ranking' ? 'select': '']">關係度總排行</el-button>
+        <el-button @click="ranking" :class="[ this.$route.params.name=='ranking' ? 'select': '']">
+          <span>
+            <img :src="require('@/assets/img/ranking.svg')" style="width: 40%" />
+            關係度總排行
+
+          </span>
+        </el-button>
       </li>
       <li class="leftbulletin_li">
-        <el-button @click="tsmc" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[this.$route.params.name == 'tsmc' ? 'select' : '']">台積電</el-button>
+        <el-button @click="tsmc" :class="[this.$route.params.name == 'tsmc' ? 'select' : '']">
+          <span>
+            <img :src="require('@/assets/img/tsmc.png')" style="width: 40%" />
+            台積電
+          </span>
+        </el-button>
       </li>
       <li class="leftbulletin_li">
-        <el-button @click="HHcar" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[this.$route.params.name == 'HHcar' ? 'select' : '']">鴻海電動車</el-button>
+        <el-button @click="HHcar" :class="[this.$route.params.name == 'HHcar' ? 'select' : '']">
+          <span>
+            <img :src="require('@/assets/img/HHcar.png')" style="width: 40%" />
+            鴻海電動車
+          </span>
+
+        </el-button>
       </li>
       <li class="leftbulletin_li">
-        <el-button @click="meta" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[this.$route.params.name == 'meta' ? 'select' : '']">元宇宙概念股</el-button>
+        <el-button @click="meta" :class="[this.$route.params.name == 'meta' ? 'select' : '']">
+          <span>
+            <img :src="require('@/assets/img/meta.png')" style="width: 40%" />
+            元宇宙概念股
+          </span>
+        </el-button>
       </li>
       <li class="leftbulletin_li">
-        <el-button @click="car" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[this.$route.params.name == 'car' ? 'select' : '']">電動車</el-button>
+        <el-button @click="car" :class="[this.$route.params.name == 'car' ? 'select' : '']">
+          <span>
+            <img :src="require('@/assets/img/car.png')" style="width: 40%" />
+            電動車
+          </span>
+        </el-button>
       </li>
       <li class="leftbulletin_li">
-        <el-button @click="ic" style="width: auto; height: 50px; font-size: 2vh"
-          :class="[this.$route.params.name == 'ic' ? 'select' : '']">IC設計產業</el-button>
+        <el-button @click="ic" :class="[this.$route.params.name == 'ic' ? 'select' : '']">
+          <span>
+            <img :src="require('@/assets/img/IC.png')" style="width: 40%" />
+            IC設計產業
+          </span>
+        </el-button>
       </li>
       <!-- <li class="leftbulletin_li" :class="[ this.$route.path=='/cloud' ? 'select': '']">
-        <el-button @click="cloud" style="width: auto; height: 50px; font-size: 2vh">雲端相關</el-button>
+        <el-button @click="cloud">雲端相關</el-button>
       </li>
       <li class="leftbulletin_li" :class="[ this.$route.path=='/city' ? 'select8': '']">
-        <el-button @click="city" style="width: auto; height: 50px; font-size: 2vh">智慧城市</el-button>
+        <el-button @click="city">智慧城市</el-button>
       </li>
       <li class="leftbulletin_li" :class="[ this.$route.path=='/internet' ? 'select9': '']">
-        <el-button @click="internet" style="width: auto; height: 50px; font-size: 2vh">互聯網</el-button>
+        <el-button @click="internet">互聯網</el-button>
       </li> -->
     </ul>
   </div>
@@ -117,6 +143,20 @@ export default {
 </script>
 
 <style scoped>
+.el-button {
+  background-color: #ffffff69;
+  width: 50%;
+  height: 50px;
+  font-size: 2vh;
+
+}
+
+.el-button span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .select {
   border-radius: 10px;
   background: linear-gradient(to left, #72b6fa 50%, lightblue 50%) right;

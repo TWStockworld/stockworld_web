@@ -39,7 +39,7 @@ export default {
   watch: {
     '$route.params.stockid': {
       handler: function (stockid) {
-        if (this.$route.name != "AboutStock") {
+        if (this.$route.name != "aboutstock") {
           return;
         }
         this.page = 0
