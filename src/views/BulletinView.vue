@@ -44,6 +44,9 @@ export default {
           case 'meta':
             this.bulletin_id = 3
             break;
+          case 'ic':
+            this.bulletin_id = 4
+            break;
         }
       },
       deep: true,

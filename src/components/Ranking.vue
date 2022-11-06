@@ -89,7 +89,7 @@
       </el-col>
     </el-row>
   </div>
-  <el-dialog v-model="dialogTableVisible" title="圖表" width="60%" destroy-on-close=true>
+  <el-dialog customClass="el-dialog-width" v-model="dialogTableVisible" title="圖表" width="60%" destroy-on-close=true>
     <CompareChart :startdate="data_start_date" :enddate="data_end_date" :diff="chart_diff" :stockA_id="chart_stockA_id"
       :stockB_id="chart_stockB_id" :componentKey="componentKey" />
   </el-dialog>

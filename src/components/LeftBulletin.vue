@@ -36,6 +36,14 @@
         </el-button>
       </li>
       <li class="leftbulletin_li">
+        <el-button @click="ic" :class="[this.$route.params.name == 'ic' ? 'select' : '']">
+          <span>
+            <img :src="require('@/assets/img/ic.png')" style="width: 40%" />
+            IC設計產業
+          </span>
+        </el-button>
+      </li>
+      <li class="leftbulletin_li">
         <el-button @click="car" :class="[this.$route.params.name == 'car' ? 'select' : '']">
           <span>
             <img :src="require('@/assets/img/car.png')" style="width: 40%" />
@@ -43,14 +51,7 @@
           </span>
         </el-button>
       </li>
-      <li class="leftbulletin_li">
-        <el-button @click="ic" :class="[this.$route.params.name == 'ic' ? 'select' : '']">
-          <span>
-            <img :src="require('@/assets/img/IC.png')" style="width: 40%" />
-            IC設計產業
-          </span>
-        </el-button>
-      </li>
+
       <!-- <li class="leftbulletin_li" :class="[ this.$route.path=='/cloud' ? 'select': '']">
         <el-button @click="cloud">雲端相關</el-button>
       </li>
