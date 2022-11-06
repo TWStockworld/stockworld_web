@@ -2,7 +2,7 @@
     <!-- :class="[this.$route.path == '/bulletin/tsmc' ? 'move' : '']" -->
     <el-row>
         <div class="picture">
-            <img :src="require('@/assets/img/' + this.$route.params.name + '.png')" />
+            <img :src="require('@/assets/img/' + this.now + '.png')" />
         </div>
         <el-col :xs="24" :sm="24" :lg="12">
             <el-main style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
@@ -49,7 +49,7 @@ export default {
     components: {
         StockProbability
     },
-    props: ["bulletin_id"],
+    props: ["bulletin_id", "now"],
     data() {
         return {
             timer: '',
