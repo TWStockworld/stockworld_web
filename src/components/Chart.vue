@@ -13,7 +13,7 @@ export default {
   mounted() {
     const chartProperties = {
       width: 1000,
-      height: 400,
+      height: 300,
       timeScale: {
         timeVisible: false,
         secondsVisible: true,
