@@ -146,7 +146,6 @@ export default {
 <style scoped>
 .el-button {
   background-color: #ffffff69;
-  width: 50%;
   height: 50px;
   font-size: 2vh;
 
@@ -239,6 +238,10 @@ export default {
 }
 
 @media only screen and (max-width: 1200px) {
+  .el-button {
+    width: 100%;
+  }
+
   .leftbulletin_ul {
     display: grid;
     grid-auto-flow: column;
@@ -272,6 +275,10 @@ export default {
 }
 
 @media only screen and (min-width: 1200px) {
+  .el-button {
+    width: 50%;
+  }
+
   .leftbulletin_ul {
     list-style-type: none;
     /* height: 100vh; */

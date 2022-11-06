@@ -40,7 +40,7 @@
         <!--加入姓名錢-->
       </div>
       <div class="menuToggle" @click="menutoggle"></div>
-      <div class="menu">
+      <div class="menu" :class="[this.toggle ? 'menufixed' : '']">
         <!--在裡面加入row col-->
         <div class="phone_size">
           <ul class="phone_size_ul">
@@ -157,9 +157,12 @@ export default defineComponent({
 
     menutoggle() {
       if (this.toggle) {
+        document.getElementById('app').setAttribute("style", "overflow-y:auto")
+
         this.toggle = false;
       }
       else {
+        document.getElementById('app').setAttribute("style", "overflow-y:hidden")
         this.toggle = true;
       }
     },
@@ -229,11 +232,7 @@ export default defineComponent({
 
   .navigation {
     z-index: 10;
-    position: fixed;
-    top: 0%;
-    right: 0%;
-    width: 100%;
-    height: 10%;
+    position: relative;
     display: flex;
     justify-content: space-between;
     transition: height 0.05s, width 0.05s;
@@ -327,15 +326,20 @@ export default defineComponent({
     transform: translateY(0px) rotate(-45deg);
   }
 
-  .menu {
+  .menufixed {
+    position: fixed !important;
     z-index: 2;
-    position: absolute;
+    display: block !important;
     width: 100%;
     height: calc(100% - 75px);
     margin-top: 75px;
     padding: 0px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     background: rgb(240, 240, 240);
+  }
+
+  .menu {
+    display: none;
   }
 
   .menu .menuset {

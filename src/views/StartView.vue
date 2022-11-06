@@ -26,7 +26,8 @@ export default {
 
 @media only screen and (max-width: 768px) {
   .start {
-    font-size: 120px;
+    font-size: 1000%;
+    height: 100vh;
   }
 
   .startbutton {

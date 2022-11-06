@@ -2,17 +2,20 @@
   <div class="bak">
     <Header :key="componentKey" @keytest="keytest" />
     <router-view class="margintop" @keytest="keytest" />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
 import { useHead } from "@vueuse/head";
 
 export default {
   components: {
     Header,
+    Footer
   },
   created() {
     const html = document.documentElement // returns the html tag
@@ -95,24 +98,24 @@ a {
 } */
 
 @media only screen and (max-width: 1200px) {
-  .margintop {
+  /* .margintop {
     margin-top: 25% !important;
-  }
+  } */
 }
 
 @media only screen and (min-width: 1200px) {
   .bak {
     height: 100%;
   }
+
+  .bulletin_el-row {
+    padding: 0 1% 7% 0%;
+    height: 100vh;
+  }
 }
 
 .bulletin_right-col {
   background-color: #ffffff5e;
   border-radius: 30px;
-}
-
-.bulletin_el-row {
-  padding: 0 1% 7% 0%;
-  height: 100vh;
 }
 </style>

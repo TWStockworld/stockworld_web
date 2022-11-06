@@ -44,7 +44,7 @@
           </el-table>
         </el-row>
       </el-col>
-      <el-col :lg="1">
+      <el-col :lg="1" :sm="24" :xs="24">
       </el-col>
       <el-col :lg="11" :sm="24" :xs="24">
         <el-row>
