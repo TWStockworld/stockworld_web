@@ -45,19 +45,20 @@ export default {
     // this.$Snow.followMouse = false;
     // this.$Snow.flakesMaxActive = 35;
     // 下雪
-    window.addEventListener('scroll', this.onScroll);
-
+    window.addEventListener('scroll', this.handleScroll, true);
   },
-  // beforeDestroy() {
-  //   window.removeEventListener("scroll", this.onScroll, true)
-  // },
+  beforeDestroy() {
+    window.addEventListener('scroll', this.handleScroll, true);
+  },
   methods: {
     keytest() {
       this.componentKey += 1;
     },
-    onScroll(e) {
-      this.windowTop = e.target.scrollTop;
-      if (this.windowTop > 70) {
+    handleScroll(e) {
+      if (window.scrollY < 70) {
+        document.getElementById('navigation').setAttribute("style", "position: relative;background-color:#ffffff00;")
+      }
+      if (window.scrollY > 70) {
         document.getElementById('navigation').setAttribute("style", "position: fixed;background-color:#ffffffde;")
       }
     }
@@ -67,6 +68,10 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+
+.el-main {
+  z-index: 1;
+}
 
 .sticky {
   position: fixed;

@@ -195,7 +195,7 @@
       </el-table>
 
     </el-main>
-    <el-dialog customClass="el-dialog-width" v-model="dialogTableVisible" title="圖表" destroyOnClose=true>
+    <el-dialog customClass="el-dialog-width" v-model="dialogTableVisible" title="圖表" destroyOnClose=true center=true>
       <CompareChart :startdate="data_start_date" :enddate="data_end_date" :diff="chart_diff"
         :stockA_id="chart_stockA_id" :stockB_id="chart_stockB_id" :componentKey="componentKey" />
     </el-dialog>
@@ -279,6 +279,8 @@ export default defineComponent({
   watch: {
     'stock_id': {
       handler: function (stock_id) {
+        this.cur = 'a'
+
         this.loading1 = true;
         this.loading2 = true;
 
