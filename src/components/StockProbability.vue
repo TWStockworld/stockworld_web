@@ -294,62 +294,64 @@ export default defineComponent({
       deep: true,
     },
     res2: function (res2) {
-      console.log(this.res2);
-      this.data_start_date = this.res2.data.data_start_date
-      this.data_end_date = this.res2.data.data_end_date
-      this.res2.data.probability_up.forEach((rankstock1) => {
-        this.RankStock1.push({
-          stockA_id: rankstock1.stockA_id,
-          stockB_id: rankstock1.stockB_id,
-          stockA_name: rankstock1.stockA_name + "\n(" + rankstock1.stockA_id + ")",
-          stockB_name: rankstock1.stockB_name + "\n(" + rankstock1.stockB_id + ")",
-          diff: rankstock1.diff,
-          up: rankstock1.up,
-          order: rankstock1.order,
-          result: rankstock1.diff + "天後 " + rankstock1.up
+      if (this.res2 != '') {
+        console.log(this.res2);
+        this.data_start_date = this.res2.data.data_start_date
+        this.data_end_date = this.res2.data.data_end_date
+        this.res2.data.probability_up.forEach((rankstock1) => {
+          this.RankStock1.push({
+            stockA_id: rankstock1.stockA_id,
+            stockB_id: rankstock1.stockB_id,
+            stockA_name: rankstock1.stockA_name + "\n(" + rankstock1.stockA_id + ")",
+            stockB_name: rankstock1.stockB_name + "\n(" + rankstock1.stockB_id + ")",
+            diff: rankstock1.diff,
+            up: rankstock1.up,
+            order: rankstock1.order,
+            result: rankstock1.diff + "天後 " + rankstock1.up
 
+          })
         })
-      })
-      this.res2.data.probability_down.forEach((rankstock2) => {
-        this.RankStock2.push({
-          stockA_id: rankstock2.stockA_id,
-          stockB_id: rankstock2.stockB_id,
-          stockA_name: rankstock2.stockA_name + "\n(" + rankstock2.stockA_id + ")",
-          stockB_name: rankstock2.stockB_name + "\n(" + rankstock2.stockB_id + ")",
-          diff: rankstock2.diff,
-          down: rankstock2.down,
-          order: rankstock2.order,
-          result: rankstock2.diff + "天後 " + rankstock2.down
+        this.res2.data.probability_down.forEach((rankstock2) => {
+          this.RankStock2.push({
+            stockA_id: rankstock2.stockA_id,
+            stockB_id: rankstock2.stockB_id,
+            stockA_name: rankstock2.stockA_name + "\n(" + rankstock2.stockA_id + ")",
+            stockB_name: rankstock2.stockB_name + "\n(" + rankstock2.stockB_id + ")",
+            diff: rankstock2.diff,
+            down: rankstock2.down,
+            order: rankstock2.order,
+            result: rankstock2.diff + "天後 " + rankstock2.down
 
+          })
         })
-      })
-      this.res2.data.relation_up.forEach((relatestock1) => {
-        this.RelateStock1.push({
-          stockA_id: relatestock1.stockA_id,
-          stockB_id: relatestock1.stockB_id,
-          stockA_name: relatestock1.stockA_name + "\n(" + relatestock1.stockA_id + ")",
-          stockB_name: relatestock1.stockB_name + "\n(" + relatestock1.stockB_id + ")",
-          diff: relatestock1.diff,
-          up: relatestock1.up,
-          order: relatestock1.order,
-          result: relatestock1.diff + "天後 " + relatestock1.up
+        this.res2.data.relation_up.forEach((relatestock1) => {
+          this.RelateStock1.push({
+            stockA_id: relatestock1.stockA_id,
+            stockB_id: relatestock1.stockB_id,
+            stockA_name: relatestock1.stockA_name + "\n(" + relatestock1.stockA_id + ")",
+            stockB_name: relatestock1.stockB_name + "\n(" + relatestock1.stockB_id + ")",
+            diff: relatestock1.diff,
+            up: relatestock1.up,
+            order: relatestock1.order,
+            result: relatestock1.diff + "天後 " + relatestock1.up
 
+          })
         })
-      })
-      this.res2.data.relation_down.forEach((relatestock2) => {
-        this.RelateStock2.push({
-          stockA_id: relatestock2.stockA_id,
-          stockB_id: relatestock2.stockB_id,
-          stockA_name: relatestock2.stockA_name + "\n(" + relatestock2.stockA_id + ")",
-          stockB_name: relatestock2.stockB_name + "\n(" + relatestock2.stockB_id + ")",
-          diff: relatestock2.diff,
-          down: relatestock2.down,
-          order: relatestock2.order,
-          result: relatestock2.diff + "天後 " + relatestock2.down
+        this.res2.data.relation_down.forEach((relatestock2) => {
+          this.RelateStock2.push({
+            stockA_id: relatestock2.stockA_id,
+            stockB_id: relatestock2.stockB_id,
+            stockA_name: relatestock2.stockA_name + "\n(" + relatestock2.stockA_id + ")",
+            stockB_name: relatestock2.stockB_name + "\n(" + relatestock2.stockB_id + ")",
+            diff: relatestock2.diff,
+            down: relatestock2.down,
+            order: relatestock2.order,
+            result: relatestock2.diff + "天後 " + relatestock2.down
 
+          })
         })
-      })
-      this.loading1 = false;
+        this.loading1 = false;
+      }
     },
 
     res3: function (res3) {

@@ -2,8 +2,8 @@
   <el-main style="padding:0" v-loading="loading" element-loading-text="讀取資料中"
     element-loading-background="rgba(0, 0, 0, 0.1)">
     <h3> {{ result }}</h3>
-    <div id="show0" v-if="this.componentKey == 0" style="height: 400px;"></div>
-    <div id="show1" v-if="this.componentKey == 1" style="height: 400px;"></div>
+    <div id="show0" v-if="this.componentKey == 0" style="height: 300px;"></div>
+    <div id="show1" v-if="this.componentKey == 1" style="height: 300px;"></div>
   </el-main>
 </template>
 <script>
@@ -56,7 +56,7 @@ export default {
         this.stock_table = []
 
         const chartProperties = {
-          height: 400,
+          height: 300,
           timeScale: {
             timeVisible: false,
             secondsVisible: true,

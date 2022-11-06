@@ -55,11 +55,13 @@ export default {
       this.componentKey += 1;
     },
     handleScroll(e) {
-      if (window.scrollY < 70) {
-        document.getElementById('navigation').setAttribute("style", "position: relative;background-color:#ffffff00;")
-      }
-      if (window.scrollY > 70) {
-        document.getElementById('navigation').setAttribute("style", "position: fixed;background-color:#ffffffde;")
+      if (window.innerWidth < 1024) {
+        if (window.scrollY < 70) {
+          document.getElementById('navigation').setAttribute("style", "position: relative;background-color:#ffffff00;")
+        }
+        if (window.scrollY > 70) {
+          document.getElementById('navigation').setAttribute("style", "position: fixed;background-color:#ffffffde;")
+        }
       }
     }
   },

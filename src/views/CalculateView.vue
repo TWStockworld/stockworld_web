@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="    height: 100vh;">
     <el-form @submit.prevent="cal">
       <div class="form-group">
         <div class="demo-date-picker">

@@ -67,6 +67,7 @@ export default {
         'bulletin_id': {
             handler: function () {
                 this.stocks = []
+                this.res2 = ''
                 this.loading1 = true
 
                 const get_stock_special_kind_detail = this.axios
@@ -80,6 +81,8 @@ export default {
                     });
                 this.axios.all([get_stock_special_kind_detail, get_stock_probability]).then(
                     this.axios.spread((res1, res2) => {
+                        this.stocks = []
+                        this.res2 = ''
                         res1.data.success.forEach((res1) => {
                             this.stocks.push({
                                 stock_id: res1.stock_id,
