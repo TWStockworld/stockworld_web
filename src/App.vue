@@ -55,11 +55,12 @@ export default {
       this.componentKey += 1;
     },
     handleScroll(e) {
+      console.log(window.scrollY)
       if (window.innerWidth < 1024) {
-        if (window.scrollY < 70) {
+        if (window.scrollY < 150) {
           document.getElementById('navigation').setAttribute("style", "position: relative;background-color:#ffffff00;")
         }
-        if (window.scrollY > 70) {
+        if (window.scrollY > 150) {
           document.getElementById('navigation').setAttribute("style", "position: fixed;background-color:#ffffffde;")
         }
       }
