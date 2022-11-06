@@ -34,7 +34,11 @@
             </el-main>
         </el-col>
         <el-col :xs="24" :sm="24" :lg="12">
-            <StockProbability :res2="res2" :stock_id="bulletin_id" />
+            <el-row class="margintop">
+                <StockProbability :res2="res2" :stock_id="bulletin_id" />
+                <div class="box">
+                </div>
+            </el-row>
         </el-col>
 
     </el-row>
@@ -180,6 +184,10 @@ export default {
 
     img {
         width: 50%;
+    }
+
+    .margintop {
+        margin-top: 5%;
     }
 
 }

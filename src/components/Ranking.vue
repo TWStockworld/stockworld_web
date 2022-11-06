@@ -7,7 +7,7 @@
             :stockA_id="first_left_stockA_id" :stockB_id="first_left_stockB_id" :componentKey=0
             :result="first_left_result" />
         </el-row>
-        <el-row class="" style="    margin-top:1%;">
+        <el-row class="ranking">
           <el-table :data="probability_up" height="100%">
             <el-table-column prop="order" label="排行" sortable />
 
@@ -44,7 +44,7 @@
           </el-table>
         </el-row>
       </el-col>
-      <el-col :lg="1" :sm="24" :xs="24">
+      <el-col class="line" :lg="1" :sm="24" :xs="24">
       </el-col>
       <el-col :lg="11" :sm="24" :xs="24">
         <el-row>
@@ -52,7 +52,7 @@
             :stockA_id="first_right_stockA_id" :stockB_id="first_right_stockB_id" :componentKey=1
             :result="first_right_result" />
         </el-row>
-        <el-row class="" style="    margin-top:1%;">
+        <el-row class="ranking">
           <el-table :data="probability_down" height="100%">
             <el-table-column prop="order" label="排行" sortable />
 
@@ -86,6 +86,8 @@
             </el-table-column>
           </el-table>
         </el-row>
+        <div class="box">
+        </div>
       </el-col>
     </el-row>
   </div>
@@ -190,9 +192,27 @@ export default {
     justify-content: center;
 
   }
+
+  .el-row .ranking {
+    margin-top: 3%;
+    height: 30vh;
+  }
+
 }
 
-@media only screen and (max-width: 1200px) {}
+@media only screen and (max-width: 1200px) {
+
+  .el-row .ranking {
+    margin-top: 5%;
+    height: 40vh;
+  }
+
+  .line {
+    margin: 10% 0 5% 0;
+    height: 3px;
+    background-color: black;
+  }
+}
 </style>
 
 

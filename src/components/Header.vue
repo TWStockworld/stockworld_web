@@ -32,7 +32,7 @@
       </el-form>
     </div>
 
-    <div class="navigation" :class="[this.toggle ? 'active' : '']">
+    <div id="navigation" class="navigation" :class="[this.toggle ? 'active' : '']">
       <div class=" userBx">
         <div class="imgBx">
           <img class="img-responsive1" src="@/assets/img/logo.png" />
@@ -152,13 +152,13 @@ export default defineComponent({
   },
   methods: {
     canclemenu() {
+      document.getElementById('app').setAttribute("style", "overflow-y:auto")
       this.$emit('keytest');
     },
 
     menutoggle() {
       if (this.toggle) {
         document.getElementById('app').setAttribute("style", "overflow-y:auto")
-
         this.toggle = false;
       }
       else {
@@ -238,6 +238,7 @@ export default defineComponent({
     transition: height 0.05s, width 0.05s;
     transition-delay: 0s, 0.1s;
     overflow: hidden;
+    width: 100%;
   }
 
   .navigation.active {

@@ -45,10 +45,21 @@ export default {
     // this.$Snow.followMouse = false;
     // this.$Snow.flakesMaxActive = 35;
     // 下雪
+    window.addEventListener('scroll', this.onScroll);
+
   },
+  // beforeDestroy() {
+  //   window.removeEventListener("scroll", this.onScroll, true)
+  // },
   methods: {
     keytest() {
       this.componentKey += 1;
+    },
+    onScroll(e) {
+      this.windowTop = e.target.scrollTop;
+      if (this.windowTop > 70) {
+        document.getElementById('navigation').setAttribute("style", "position: fixed;background-color:#ffffffde;")
+      }
     }
   },
 };
@@ -56,6 +67,13 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+
+.sticky {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 11;
+}
 
 * {
   padding: 0;
@@ -79,6 +97,7 @@ export default {
   width: 100%;
   background-attachment: fixed;
   background-size: cover;
+
 }
 
 .tv-lightweight-charts {
@@ -98,6 +117,10 @@ a {
 } */
 
 @media only screen and (max-width: 1200px) {
+  .box {
+    height: 5vh;
+  }
+
   /* .margintop {
     margin-top: 25% !important;
   } */
