@@ -4,7 +4,7 @@
       <KlineChart :res1="res1" :stock_id="stock_id" />
     </el-col>
     <el-col :lg="15" :sm="24" :xs="24">
-      <StockProbability :res2="res2" :res3="res3" :stock_id="stock_id" @pageupdate="pageupdate" />
+      <StockProbability :res2="res2" :res3="res3" :stock_id="stock_id" @pageupdate="pageupdate" :now="now" />
     </el-col>
   </el-row>
 </template>
@@ -22,6 +22,7 @@ export default {
       res1: '',
       res2: '',
       res3: '',
+      now: this.$route.name,
 
     };
   },
