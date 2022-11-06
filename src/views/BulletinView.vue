@@ -5,7 +5,7 @@
     </el-col>
     <el-col :xs="24" :sm="24" :lg="20" class="bulletin_right-col">
       <Ranking v-if="this.now == 'ranking'" />
-      <BulletinDetail v-if="this.now != 'ranking'" :bulletin_id="bulletin_id" :now="now" />
+      <BulletinDetail v-if="this.now != 'ranking'" :bulletin_id="bulletin_id" />
     </el-col>
   </el-row>
 </template>

@@ -1,25 +1,25 @@
 <template>
-  <nav v-if="this.$route.path != '/'">
+  <nav v-if="$route.path != '/'">
     <div class="computer_size">
       <img src="../assets/img/logo2.png" alt="e" class="logo">
       <router-link to="/bulletin/ranking">
-        <span class="txt" :class="[this.$route.name == 'bulletin' ? 'nowsite' : '']">
+        <span class="txt" :class="[$route.name == 'bulletin' ? 'nowsite' : '']">
           主頁<span class="bar" style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span>
         </span>
       </router-link>
 
       <router-link to="/calculate">
-        <span class="txt" :class="[this.$route.name == 'calculate' ? 'nowsite' : '']">漲幅機率計算<span class="bar"
+        <span class="txt" :class="[$route.name == 'calculate' ? 'nowsite' : '']">漲幅機率計算<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/sort">
-        <span class="txt" :class="[this.$route.name == 'sort' ? 'nowsite' : '']">台股分類<span class="bar"
+        <span class="txt" :class="[$route.name == 'sort' ? 'nowsite' : '']">台股分類<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/aboutstock/2330">
-        <span class="txt" :class="[this.$route.name == 'aboutstock' ? 'nowsite' : '']">關於股票<span class="bar"
+        <span class="txt" :class="[$route.name == 'aboutstock' ? 'nowsite' : '']">關於股票<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
