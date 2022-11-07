@@ -4,7 +4,8 @@
       <KlineChart :res1="res1" :stock_id="stock_id" />
     </el-col>
     <el-col :lg="15" :sm="24" :xs="24">
-      <StockProbability :res2="res2" :res3="res3" :stock_id="stock_id" @pageupdate="pageupdate" />
+      <StockProbability :res2="res2" :res3="res3" :stock_id="stock_id" @pageupdate="pageupdate"
+        :stock_calculate_groups_id="stock_calculate_groups_id" />
     </el-col>
   </el-row>
 </template>
@@ -13,6 +14,7 @@
 import StockProbability from "@/components/StockProbability.vue";
 import KlineChart from '@/components/KlineChart.vue'
 export default {
+  props: ["stock_calculate_groups_id"],
   data() {
     return {
       token: this.$cookies.get("token"),
@@ -38,12 +40,12 @@ export default {
 
   watch: {
     '$route.params.stockid': {
-      handler: function (stockid) {
+      handler: function (stock_id) {
         if (this.$route.name != "aboutstock") {
           return;
         }
         this.page = 0
-        this.stock_id = stockid
+        this.stock_id = stock_id
         if (this.stock_id < 34) {
           this.stock_category_id = this.stock_id;
         }
@@ -56,7 +58,8 @@ export default {
           .post("/api/stock/get_stock_probability", {
             stock_id: this.stock_id,
             show_zero_diff: 0,
-            stock_category_id: this.stock_category_id
+            stock_category_id: this.stock_category_id,
+            stock_calculate_groups_id: this.stock_calculate_groups_id
           });
         const get_category_last_stock = this.axios
           .post("/api/stock/get_category_last_stock", {
@@ -76,6 +79,40 @@ export default {
       },
       deep: true,
       immediate: true
+    },
+    'stock_calculate_groups_id': {
+      handler: function () {
+        if (this.$route.name != "aboutstock") {
+          return;
+        }
+        this.page = 0
+        if (this.stock_id < 34) {
+          this.stock_category_id = this.stock_id;
+        }
+
+        const get_stock_probability = this.axios
+          .post("/api/stock/get_stock_probability", {
+            stock_id: this.stock_id,
+            show_zero_diff: 0,
+            stock_category_id: this.stock_category_id,
+            stock_calculate_groups_id: this.stock_calculate_groups_id
+          });
+        const get_category_last_stock = this.axios
+          .post("/api/stock/get_category_last_stock", {
+            stock_id: this.stock_id,
+            stock_category_id: this.stock_category_id,
+            page: 0
+          });
+
+        this.axios.all([get_stock_probability, get_category_last_stock]).then(
+          this.axios.spread((res2, res3) => {
+            this.res2 = res2
+            this.res3 = res3
+          })
+        );
+
+      },
+      deep: true,
     },
     page: function (page) {
       this.axios

@@ -11,7 +11,7 @@ import { createChart } from "lightweight-charts";
 
 export default {
   name: "RankingChart",
-  props: ["startdate", "enddate", "diff", "stockA_id", "stockB_id", "componentKey", "result"],
+  props: ["startdate", "enddate", "diff", "stockA_id", "stockB_id", "componentKey", "result", "stock_calculate_groups_id"],
   data() {
     return {
       stockA_datas: [],
@@ -22,7 +22,12 @@ export default {
   },
 
   watch: {
-    'stockB_id': {
+    stock_calculate_groups_id: function () {
+      this.loading = true
+      document.getElementById("show0").innerHTML = '';
+      document.getElementById("show1").innerHTML = '';
+    },
+    'startdate': {
       handler: function () {
         console.log(this.startdate, this.enddate, this.diff, this.stockA_id, this.stockB_id);
         this.axios

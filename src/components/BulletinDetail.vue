@@ -35,7 +35,8 @@
         </el-col>
         <el-col :xs="24" :sm="24" :lg="12">
             <el-row class="margintop">
-                <StockProbability :res2="res2" :stock_id="bulletin_id" />
+                <StockProbability :res2="res2" :stock_id="bulletin_id"
+                    :stock_calculate_groups_id="stock_calculate_groups_id" />
                 <div class="box">
                 </div>
             </el-row>
@@ -53,7 +54,7 @@ export default {
     components: {
         StockProbability
     },
-    props: ["bulletin_id"],
+    props: ["bulletin_id", "stock_calculate_groups_id"],
     data() {
         return {
             timer: '',
@@ -63,9 +64,14 @@ export default {
             loading1: true
         };
     },
-    watch: {
-        'bulletin_id': {
-            handler: function () {
+    created() {
+        this.$watch(
+            () => ({
+                stock_calculate_groups_id: this.stock_calculate_groups_id,
+                bulletin_id: this.bulletin_id
+            }),
+            () => {
+
                 this.stocks = []
                 this.res2 = ''
                 this.loading1 = true
@@ -77,7 +83,8 @@ export default {
                 const get_stock_probability = this.axios
                     .post("/api/stock/get_stock_probability", {
                         show_zero_diff: 0,
-                        bulletin_id: this.bulletin_id
+                        bulletin_id: this.bulletin_id,
+                        stock_calculate_groups_id: this.stock_calculate_groups_id
                     });
                 this.axios.all([get_stock_special_kind_detail, get_stock_probability]).then(
                     this.axios.spread((res1, res2) => {
@@ -98,13 +105,12 @@ export default {
                 );
 
             },
-            deep: true,
-            immediate: true
-        },
-
-        // window.addEventListener("wheel", this.onScroll);
-        // this.timer = setTimeout(this.get, 1000);
+            { deep: true, immediate: true }
+        );
     },
+
+    // window.addEventListener("wheel", this.onScroll);
+    // this.timer = setTimeout(this.get, 1000);
     // unmounted() {
     //     window.removeEventListener("wheel", this.onScroll);
     //     clearTimeout(this.timer);

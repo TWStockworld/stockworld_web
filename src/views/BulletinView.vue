@@ -4,8 +4,9 @@
       <LeftBulletin />
     </el-col>
     <el-col :xs="24" :sm="24" :lg="20" class="bulletin_right-col">
-      <Ranking v-if="this.now == 'ranking'" />
-      <BulletinDetail v-if="this.now != 'ranking'" :bulletin_id="bulletin_id" />
+      <Ranking v-if="this.now == 'ranking'" :stock_calculate_groups_id="stock_calculate_groups_id" />
+      <BulletinDetail v-if="this.now != 'ranking'" :bulletin_id="bulletin_id"
+        :stock_calculate_groups_id="stock_calculate_groups_id" />
     </el-col>
   </el-row>
 </template>
@@ -16,6 +17,7 @@ import Ranking from "@/components/Ranking.vue";
 import BulletinDetail from "@/components/BulletinDetail";
 
 export default {
+  props: ["stock_calculate_groups_id"],
   components: {
     LeftBulletin,
     Ranking,

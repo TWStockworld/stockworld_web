@@ -211,8 +211,8 @@ const cc = ref(0);
 const emit = defineEmits(['pageupdate'])
 
 const load = () => {
-  cc.value++;
-  emit("pageupdate", cc.value)
+  // cc.value++;
+  // emit("pageupdate", cc.value)
   // console.log(cc.value)
 };
 
@@ -225,7 +225,7 @@ import CompareChart from "@/components/CompareChart.vue";
 
 export default defineComponent({
   name: "aboutstock",
-  props: ["res2", "res3", "stock_id"],
+  props: ["res2", "res3", "stock_id", "stock_calculate_groups_id"],
   components: {
     CompareChart,
   },
@@ -275,10 +275,13 @@ export default defineComponent({
       }
     }
   },
-
-  watch: {
-    'stock_id': {
-      handler: function (stock_id) {
+  created() {
+    this.$watch(
+      () => ({
+        stock_calculate_groups_id: this.stock_calculate_groups_id,
+        stock_id: this.stock_id,
+      }),
+      () => {
         this.cur = 'a'
 
         this.loading1 = true;
@@ -289,10 +292,10 @@ export default defineComponent({
         this.RelateStock1 = []
         this.RelateStock2 = []
         this.stock_table = []
+      });
+  },
 
-      },
-      deep: true,
-    },
+  watch: {
     res2: function (res2) {
       if (this.res2 != '') {
         console.log(this.res2);
@@ -369,7 +372,6 @@ export default defineComponent({
           money: stock.money,
           turnover: stock.turnover,
           date: stock.date,
-
         })
       })
       this.loading2 = false;

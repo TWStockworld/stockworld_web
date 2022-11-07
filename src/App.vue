@@ -1,7 +1,8 @@
 <template>
   <div class="bak">
-    <Header :key="componentKey" @keytest="keytest" />
-    <router-view class="margintop" @keytest="keytest" />
+    <Header :key="componentKey" @keytest="keytest"
+      @change_stock_calculate_groups_id="change_stock_calculate_groups_id" />
+    <router-view class="margintop" @keytest="keytest" :stock_calculate_groups_id="stock_calculate_groups_id" />
     <Footer />
   </div>
 </template>
@@ -24,6 +25,7 @@ export default {
   data() {
     return {
       componentKey: 0,
+      stock_calculate_groups_id: 1,
     };
   },
   setup() {
@@ -45,12 +47,17 @@ export default {
     // this.$Snow.followMouse = false;
     // this.$Snow.flakesMaxActive = 35;
     // 下雪
+    console.log(window.innerWidth)
+
     window.addEventListener('scroll', this.handleScroll, true);
   },
   beforeDestroy() {
     window.addEventListener('scroll', this.handleScroll, true);
   },
   methods: {
+    change_stock_calculate_groups_id(stock_calculate_groups_id) {
+      this.stock_calculate_groups_id = stock_calculate_groups_id;
+    },
     keytest() {
       this.componentKey += 1;
     },

@@ -30,15 +30,15 @@
           <span>Search</span>
         </button>
       </el-form>
+      <el-select v-model="stock_calculate_groups_id" filterable placeholder="資料日期">
+        <el-option v-for="group in stock_calculate_groups" :key="group.id"
+          :label="group.startdate + '~' + group.enddate" :value="group.id">
+        </el-option>
+      </el-select>
+
     </div>
 
     <div id="navigation" class="navigation" :class="[this.toggle ? 'active' : '']">
-      <div class=" userBx">
-        <div class="imgBx">
-          <img class="img-responsive1" src="@/assets/img/logo.png" />
-        </div>
-        <!--加入姓名錢-->
-      </div>
       <div class="menuToggle" @click="menutoggle"></div>
       <div class="menu" :class="[this.toggle ? 'menufixed' : '']">
         <!--在裡面加入row col-->
@@ -147,8 +147,23 @@ export default defineComponent({
     return {
       stockid: "",
       token: this.$cookies.get("token"),
-      toggle: false
+      toggle: false,
+      stock_calculate_groups_id: 1,
+      stock_calculate_groups: []
     };
+  },
+  mounted() {
+    this.axios.get(
+      "/api/stock/get_stock_calculate_groups"
+    ).then(
+      (res1) => {
+        this.stock_calculate_groups = res1.data.success;
+      })
+  },
+  watch: {
+    stock_calculate_groups_id: function () {
+      this.$emit('change_stock_calculate_groups_id', this.stock_calculate_groups_id);
+    }
   },
   methods: {
     canclemenu() {

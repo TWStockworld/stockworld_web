@@ -5,10 +5,12 @@
         <el-row>
           <RankingChart :startdate="data_start_date" :enddate="data_end_date" :diff="first_left_diff"
             :stockA_id="first_left_stockA_id" :stockB_id="first_left_stockB_id" :componentKey=0
-            :result="first_left_result" />
+            :result="first_left_result" :stock_calculate_groups_id="stock_calculate_groups_id" />
         </el-row>
         <el-row class="ranking">
-          <el-table :data="probability_up" height="100%">
+
+          <el-table :data="probability_up" height="100%" v-loading="loading2" element-loading-text="讀取資料中"
+            element-loading-background="rgba(0, 0, 0, 0.1)">
             <el-table-column prop="order" label="排行" sortable />
 
             <el-table-column prop="stockA_name" label="股票A">
@@ -50,10 +52,12 @@
         <el-row>
           <RankingChart :startdate="data_start_date" :enddate="data_end_date" :diff="first_right_diff"
             :stockA_id="first_right_stockA_id" :stockB_id="first_right_stockB_id" :componentKey=1
-            :result="first_right_result" />
+            :result="first_right_result" :stock_calculate_groups_id="stock_calculate_groups_id" />
         </el-row>
         <el-row class="ranking">
-          <el-table :data="probability_down" height="100%">
+
+          <el-table :data="probability_down" height="100%" v-loading="loading2" element-loading-text="讀取資料中"
+            element-loading-background="rgba(0, 0, 0, 0.1)">
             <el-table-column prop="order" label="排行" sortable />
 
             <el-table-column prop="stockA_name" label="股票A">
@@ -88,6 +92,7 @@
         </el-row>
         <div class="box">
         </div>
+
       </el-col>
     </el-row>
   </div>
@@ -102,6 +107,7 @@ import CompareChart from "@/components/CompareChart.vue";
 import RankingChart from "@/components/RankingChart.vue";
 
 export default {
+  props: ["stock_calculate_groups_id"],
 
   name: "Ranking",
   components: {
@@ -128,52 +134,71 @@ export default {
       first_right_stockA_id: '',
       first_right_stockB_id: '',
       first_right_result: '',
-
+      loading1: true,
+      loading2: true,
     };
   },
-  mounted() {
-    this.axios
-      .post("https://stock.bakerychu.com/api/stock/get_all_stock_probability")
-      .then((res) => {
-        this.data_start_date = res.data.data_start_date
-        this.data_end_date = res.data.data_end_date
-        res.data.probability_up.forEach((probability_up) => {
-          this.probability_up.push({
-            stockA_id: probability_up.stockA_id,
-            stockA_name: probability_up.stockA_name + "\n(" + probability_up.stockA_id + ")",
-            stockB_id: probability_up.stockB_id,
-            stockB_name: probability_up.stockB_name + "\n(" + probability_up.stockB_id + ")",
-            diff: probability_up.diff,
-            up: probability_up.up,
-            order: probability_up.order,
-            result: probability_up.diff + "天後 " + probability_up.up
+
+  created() {
+    this.$watch(
+      () => ({
+        stock_calculate_groups_id: this.stock_calculate_groups_id,
+      }),
+      () => {
+        this.loading1 = true
+        this.loading2 = true
+        this.axios
+          .post("/api/stock/get_all_stock_probability", {
+            stock_calculate_groups_id: this.stock_calculate_groups_id
           })
-        })
-        res.data.probability_down.forEach((probability_down) => {
-          this.probability_down.push({
-            stockA_id: probability_down.stockA_id,
-            stockA_name: probability_down.stockA_name + "\n(" + probability_down.stockA_id + ")",
-            stockB_id: probability_down.stockB_id,
-            stockB_name: probability_down.stockB_name + "\n(" + probability_down.stockB_id + ")",
-            diff: probability_down.diff,
-            down: probability_down.down,
-            order: probability_down.order,
-            result: probability_down.diff + "天後 " + probability_down.down
+          .then((res) => {
+            this.probability_up = []
+            this.probability_down = []
+            this.data_start_date = res.data.data_start_date
+            this.data_end_date = res.data.data_end_date
+            res.data.probability_up.forEach((probability_up) => {
+              this.probability_up.push({
+                stockA_id: probability_up.stockA_id,
+                stockA_name: probability_up.stockA_name + "\n(" + probability_up.stockA_id + ")",
+                stockB_id: probability_up.stockB_id,
+                stockB_name: probability_up.stockB_name + "\n(" + probability_up.stockB_id + ")",
+                diff: probability_up.diff,
+                up: probability_up.up,
+                order: probability_up.order,
+                result: probability_up.diff + "天後 " + probability_up.up
+              })
+            })
+            res.data.probability_down.forEach((probability_down) => {
+              this.probability_down.push({
+                stockA_id: probability_down.stockA_id,
+                stockA_name: probability_down.stockA_name + "\n(" + probability_down.stockA_id + ")",
+                stockB_id: probability_down.stockB_id,
+                stockB_name: probability_down.stockB_name + "\n(" + probability_down.stockB_id + ")",
+                diff: probability_down.diff,
+                down: probability_down.down,
+                order: probability_down.order,
+                result: probability_down.diff + "天後 " + probability_down.down
 
+              })
+            })
+            console.log(this.probability_up[0].stockA_id)
+            this.first_left_diff = this.probability_up[0].diff
+            this.first_left_stockA_id = this.probability_up[0].stockA_id
+            this.first_left_stockB_id = this.probability_up[0].stockB_id
+            this.first_left_result = this.probability_up[0].stockA_name + "黃線漲，" + this.probability_up[0].stockB_name + "藍線，" + this.first_left_diff + "天後也跟著漲機率為" + this.probability_up[0].up
+
+            this.first_right_diff = this.probability_down[0].diff
+            this.first_right_stockA_id = this.probability_down[0].stockA_id
+            this.first_right_stockB_id = this.probability_down[0].stockB_id
+            this.first_right_result = this.probability_down[0].stockA_name + "黃線漲，" + this.probability_down[0].stockB_name + "藍線，" + this.first_right_diff + "天後也跟著跌機率為" + this.probability_down[0].down
+
+            this.loading1 = false
+            this.loading2 = false
           })
-        })
-        console.log(this.probability_up[0].stockA_id)
-        this.first_left_diff = this.probability_up[0].diff
-        this.first_left_stockA_id = this.probability_up[0].stockA_id
-        this.first_left_stockB_id = this.probability_up[0].stockB_id
-        this.first_left_result = this.probability_up[0].stockA_name + "黃線漲，" + this.probability_up[0].stockB_name + "藍線，" + this.first_left_diff + "天後也跟著漲機率為" + this.probability_up[0].up
 
-        this.first_right_diff = this.probability_down[0].diff
-        this.first_right_stockA_id = this.probability_down[0].stockA_id
-        this.first_right_stockB_id = this.probability_down[0].stockB_id
-        this.first_right_result = this.probability_down[0].stockA_name + "黃線漲，" + this.probability_down[0].stockB_name + "藍線，" + this.first_right_diff + "天後也跟著跌機率為" + this.probability_down[0].down
-
-      })
+      },
+      { deep: true, immediate: true }
+    );
   },
   methods: {
     setchartvalue(chart_diff, chart_stockA_id, chart_stockB_id) {
