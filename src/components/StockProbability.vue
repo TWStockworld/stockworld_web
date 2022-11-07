@@ -299,6 +299,10 @@ export default defineComponent({
     res2: function (res2) {
       if (this.res2 != '') {
         console.log(this.res2);
+        this.RankStock1 = []
+        this.RankStock2 = []
+        this.RelateStock1 = []
+        this.RelateStock2 = []
         this.data_start_date = this.res2.data.data_start_date
         this.data_end_date = this.res2.data.data_end_date
         this.res2.data.probability_up.forEach((rankstock1) => {
@@ -358,24 +362,27 @@ export default defineComponent({
     },
 
     res3: function (res3) {
-      console.log(this.res3);
-      this.res3.data.stocks.forEach((stock) => {
-        this.stock_table.push({
-          stock_name: stock.stock_name + "(" + stock.stock_id + ")",
-          stock_id: stock.stock_id,
-          day_change: stock.day_change + " %",
-          open: stock.open,
-          up: stock.up,
-          down: stock.down,
-          close: stock.close,
-          volume: stock.volume,
-          money: stock.money,
-          turnover: stock.turnover,
-          date: stock.date,
+      if (this.res3 != '') {
+        this.stock_table = []
+        console.log(this.res3);
+        this.res3.data.stocks.forEach((stock) => {
+          this.stock_table.push({
+            stock_name: stock.stock_name + "(" + stock.stock_id + ")",
+            stock_id: stock.stock_id,
+            day_change: stock.day_change + " %",
+            open: stock.open,
+            up: stock.up,
+            down: stock.down,
+            close: stock.close,
+            volume: stock.volume,
+            money: stock.money,
+            turnover: stock.turnover,
+            date: stock.date,
+          })
         })
-      })
-      this.loading2 = false;
+        this.loading2 = false;
 
+      }
     }
   }
 

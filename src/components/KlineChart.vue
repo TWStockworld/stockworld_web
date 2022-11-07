@@ -232,14 +232,21 @@ export default {
             day_change: "",
             volume: "",
             close: "",
-            loading: true
+            loading: true,
+            last_stock_id: ''
         }
     },
     watch: {
         'stock_id': {
             handler: function (stock_id) {
-                this.loading = true;
+                // if (this.last_stock_id != this.stock_id) {
+                init('simple_chart');
                 dispose('simple_chart');
+                // }
+                this.stockdatas = []
+                this.last_stock_id = stock_id;
+                this.loading = true;
+                // document.getElementById('simple_chart').remove();
                 this.stock_name = '';
                 this.day_change = '';
                 this.volume = '';
@@ -248,59 +255,59 @@ export default {
             deep: true,
         },
         res1: function (res1) {
+            if (res1 != '') {
+                console.log(this.res1);
+                this.stockdatas = []
+                if (this.res1.data != "") {
+                    // Init chart
+                    this.kLineChart = init('simple_chart');
+                    // Create main technical indicator MA
+                    this.kLineChart.createTechnicalIndicator('MA', false, { id: 'candle_pane' });
+                    // Create sub technical indicator VOL
+                    this.kLineChart.createTechnicalIndicator('VOL');
+                    this.res1.data.stock_data.forEach((stock_data) => {
+                        // Fill data
+                        const date = new Date(stock_data.date);
+                        const timestamp = date.getTime();
+                        this.stockdatas.push({
+                            close: stock_data.close,
+                            high: stock_data.up,
+                            low: stock_data.down,
+                            open: stock_data.open,
+                            timestamp: timestamp,
+                            volume: stock_data.volume,
+                        })
 
-            console.log(this.res1);
-            this.stockdatas = []
-            if (this.res1.data != "") {
-                // Init chart
-                this.kLineChart = init('simple_chart');
-                // Create main technical indicator MA
-                this.kLineChart.createTechnicalIndicator('MA', false, { id: 'candle_pane' });
-                // Create sub technical indicator VOL
-                this.kLineChart.createTechnicalIndicator('VOL');
-                this.res1.data.stock_data.forEach((stock_data) => {
-                    // Fill data
-                    const date = new Date(stock_data.date);
-                    const timestamp = date.getTime();
-                    this.stockdatas.push({
-                        close: stock_data.close,
-                        high: stock_data.up,
-                        low: stock_data.down,
-                        open: stock_data.open,
-                        timestamp: timestamp,
-                        volume: stock_data.volume,
                     })
-
-                })
-                this.kLineChart.applyNewData(this.stockdatas);
-                this.kLineChart.setStyleOptions({
-                    grid: {
-                        show: true,
-                        horizontal: {
+                    this.kLineChart.applyNewData(this.stockdatas);
+                    this.kLineChart.setStyleOptions({
+                        grid: {
                             show: true,
-                            size: 1,
-                            color: '#393939',
-                            // 'solid'|'dash'
-                            style: 'dash',
-                            dashValue: [2, 2]
+                            horizontal: {
+                                show: true,
+                                size: 1,
+                                color: '#393939',
+                                // 'solid'|'dash'
+                                style: 'dash',
+                                dashValue: [2, 2]
+                            },
+                            vertical: {
+                                show: true,
+                                size: 1,
+                                color: '#393939',
+                                // 'solid'|'dash'
+                                style: 'dash',
+                                dashValue: [2, 2]
+                            }
                         },
-                        vertical: {
-                            show: true,
-                            size: 1,
-                            color: '#393939',
-                            // 'solid'|'dash'
-                            style: 'dash',
-                            dashValue: [2, 2]
-                        }
-                    },
-                });
-                this.stock_name = this.res1.data.stock_name;
-                this.day_change = this.res1.data.last_data.day_change;
-                this.volume = this.res1.data.last_data.volume;
-                this.close = this.res1.data.last_data.close;
+                    });
+                    this.stock_name = this.res1.data.stock_name;
+                    this.day_change = this.res1.data.last_data.day_change;
+                    this.volume = this.res1.data.last_data.volume;
+                    this.close = this.res1.data.last_data.close;
+                }
+                this.loading = false;
             }
-            this.loading = false;
-
         }
     },
     destroyed: function () {
