@@ -1,7 +1,7 @@
 <template>
-  <el-main style="padding:0" v-loading="loading" element-loading-text="讀取資料中"
+  <el-main style="padding:0 ;text-align: center;" v-loading="loading" element-loading-text="讀取資料中"
     element-loading-background="rgba(0, 0, 0, 0.1)">
-    {{ result }}
+    <h3>{{ result }}</h3>
     <div id="show" style="height: 55vh;"></div>
   </el-main>
 </template>
@@ -10,7 +10,7 @@ import { createChart } from "lightweight-charts";
 
 export default {
   name: "Chart",
-  props: ["startdate", "enddate", "diff", "stockA_id", "stockB_id", "componentKey"],
+  props: ["startdate", "enddate", "diff", "stockA_id", "stockB_id", "componentKey", "upordown"],
   data() {
     return {
       stockA_datas: [],
@@ -32,6 +32,7 @@ export default {
             diff: this.diff,
             stockA_id: this.stockA_id,
             stockB_id: this.stockB_id,
+            upordown: this.upordown
           })
           .then((response) => {
             console.log(response.data);

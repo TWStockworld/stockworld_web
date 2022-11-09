@@ -21,23 +21,38 @@
 
             </el-table-column>
 
+            <el-table-column prop="stockA_category" label="種類">
+              <template v-slot="scope">
+                <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_category_id }">{{ scope.row.stockA_category
+                }}
+                </router-link>
+              </template>
+            </el-table-column>
+
             <el-table-column prop="stockB_name" label="股票B">
               <template v-slot="scope">
                 <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
                 </router-link>
               </template>
+            </el-table-column>
 
+            <el-table-column prop="stockB_category" label="種類">
+              <template v-slot="scope">
+                <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_category_id }">{{ scope.row.stockB_category
+                }}
+                </router-link>
+              </template>
             </el-table-column>
 
             <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
             <el-table-column label="操作">
               <template #default="scope">
                 <el-button size="default"
-                  @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                  @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 1)">
                   圖表
                 </el-button>
                 <el-button size="default"
-                  @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                  @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 1)">
                   追蹤
                 </el-button>
               </template>
@@ -68,22 +83,38 @@
 
             </el-table-column>
 
+            <el-table-column prop="stockA_category" label="種類">
+              <template v-slot="scope">
+                <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_category_id }">{{ scope.row.stockA_category
+                }}
+                </router-link>
+              </template>
+            </el-table-column>
+
             <el-table-column prop="stockB_name" label="股票B">
               <template v-slot="scope">
                 <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_id }">{{ scope.row.stockB_name }}
                 </router-link>
               </template>
-
             </el-table-column>
-            <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
+
+            <el-table-column prop="stockB_category" label="種類">
+              <template v-slot="scope">
+                <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_category_id }">{{ scope.row.stockB_category
+                }}
+                </router-link>
+              </template>
+            </el-table-column>
+
+            <el-table-column prop="result" label="A跌,B幾天後跌的機率" />
             <el-table-column label="操作">
               <template #default="scope">
                 <el-button size="default"
-                  @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                  @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 2)">
                   圖表
                 </el-button>
                 <el-button size="default"
-                  @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id)">
+                  @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 2)">
                   追蹤
                 </el-button>
               </template>
@@ -99,7 +130,7 @@
   <el-dialog customClass="el-dialog-width" v-model="dialogTableVisible" title="圖表" width="60%" destroy-on-close=true
     center=true>
     <CompareChart :startdate="data_start_date" :enddate="data_end_date" :diff="chart_diff" :stockA_id="chart_stockA_id"
-      :stockB_id="chart_stockB_id" :componentKey="componentKey" />
+      :stockB_id="chart_stockB_id" :componentKey="componentKey" :upordown="upordown" />
   </el-dialog>
 </template>
 <script>
@@ -124,6 +155,7 @@ export default {
       chart_diff: 0,
       chart_stockA_id: '',
       chart_stockB_id: '',
+      upordown: 0,
       componentKey: 0,
       firstcomponentKey: 0,
       first_left_diff: 0,
@@ -160,8 +192,12 @@ export default {
               this.probability_up.push({
                 stockA_id: probability_up.stockA_id,
                 stockA_name: probability_up.stockA_name + "\n(" + probability_up.stockA_id + ")",
+                stockA_category_id: probability_up.stockA_category_id,
+                stockA_category: probability_up.stockA_category,
                 stockB_id: probability_up.stockB_id,
                 stockB_name: probability_up.stockB_name + "\n(" + probability_up.stockB_id + ")",
+                stockB_category_id: probability_up.stockB_category_id,
+                stockB_category: probability_up.stockB_category,
                 diff: probability_up.diff,
                 up: probability_up.up,
                 order: probability_up.order,
@@ -172,8 +208,12 @@ export default {
               this.probability_down.push({
                 stockA_id: probability_down.stockA_id,
                 stockA_name: probability_down.stockA_name + "\n(" + probability_down.stockA_id + ")",
+                stockA_category_id: probability_down.stockA_category_id,
+                stockA_category: probability_down.stockA_category,
                 stockB_id: probability_down.stockB_id,
                 stockB_name: probability_down.stockB_name + "\n(" + probability_down.stockB_id + ")",
+                stockB_category_id: probability_down.stockB_category_id,
+                stockB_category: probability_down.stockB_category,
                 diff: probability_down.diff,
                 down: probability_down.down,
                 order: probability_down.order,
@@ -190,7 +230,7 @@ export default {
             this.first_right_diff = this.probability_down[0].diff
             this.first_right_stockA_id = this.probability_down[0].stockA_id
             this.first_right_stockB_id = this.probability_down[0].stockB_id
-            this.first_right_result = this.probability_down[0].stockA_name + "黃線漲，" + this.probability_down[0].stockB_name + "藍線，" + this.first_right_diff + "天後也跟著跌機率為" + this.probability_down[0].down
+            this.first_right_result = this.probability_down[0].stockA_name + "黃線跌，" + this.probability_down[0].stockB_name + "藍線，" + this.first_right_diff + "天後也跟著跌機率為" + this.probability_down[0].down
 
             this.loading1 = false
             this.loading2 = false
@@ -201,11 +241,12 @@ export default {
     );
   },
   methods: {
-    setchartvalue(chart_diff, chart_stockA_id, chart_stockB_id) {
+    setchartvalue(chart_diff, chart_stockA_id, chart_stockB_id, upordown) {
       this.chart_diff = chart_diff;
       this.chart_stockA_id = chart_stockA_id;
       this.chart_stockB_id = chart_stockB_id;
       this.dialogTableVisible = true;
+      this.upordown = upordown;
       this.componentKey += 1;
     }
   },

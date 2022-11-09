@@ -24,7 +24,7 @@ export default {
       res1: '',
       res2: '',
       res3: '',
-
+      abortController: new AbortController()
     };
   },
   name: "aboutstock",
@@ -37,10 +37,17 @@ export default {
       console.log(this.page)
     }
   },
-
+  beforeDestroy() {
+    this.abortController.abort()
+  },
   watch: {
+    // stock_id: function () {
+    //   this.abortController.abort()
+
+    // },
     '$route.params.stockid': {
       handler: function (stock_id) {
+
         if (this.$route.name != "aboutstock") {
           return;
         }
@@ -56,6 +63,8 @@ export default {
         const get_stock = this.axios
           .post("/api/stock/get_stock", {
             stock_id: this.stock_id,
+          }, {
+            signal: this.abortController.signal
           });
         const get_stock_probability = this.axios
           .post("/api/stock/get_stock_probability", {

@@ -167,13 +167,13 @@ export default defineComponent({
   },
   methods: {
     canclemenu() {
-      document.getElementById('app').setAttribute("style", "overflow-y:auto")
+      document.getElementById('app').style.removeProperty("overflow-y")
       this.$emit('keytest');
     },
 
     menutoggle() {
       if (this.toggle) {
-        document.getElementById('app').setAttribute("style", "overflow-y:auto")
+        document.getElementById('app').style.removeProperty("overflow-y")
         this.toggle = false;
       }
       else {

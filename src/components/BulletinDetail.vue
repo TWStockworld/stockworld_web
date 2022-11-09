@@ -4,7 +4,7 @@
         <div class="picture">
             <img :src="require('@/assets/img/' + $route.params.name + '.png')" />
         </div>
-        <el-col :xs="24" :sm="24" :lg="12">
+        <el-col :xs="24" :sm="24" :lg="6">
             <el-main style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
                 element-loading-background="rgba(0, 0, 0, 0.1)">
                 <h3 style="background-color: white;">相關股票</h3>
@@ -33,9 +33,9 @@
                 </el-table>
             </el-main>
         </el-col>
-        <el-col :xs="24" :sm="24" :lg="12">
+        <el-col :xs="24" :sm="24" :lg="18">
             <el-row class="margintop">
-                <StockProbability :res2="res2" :stock_id="bulletin_id"
+                <StockProbability :res2="res2" :bulletin_id="bulletin_id"
                     :stock_calculate_groups_id="stock_calculate_groups_id" />
                 <div class="box">
                 </div>
