@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import StartView from "../views/StartView";
 import CalculateView from "../views/CalculateView.vue";
 import AboutStockView from "../views/AboutStockView.vue";
-import SortView from "../views/SortView";
 
 //test
 import pm25 from "../views/test/pm25.vue";
@@ -61,11 +60,7 @@ const routes = [
     name: "bulletin",
     component: BulletinView,
   },
-  {
-    path: "/sort",
-    name: "sort",
-    component: SortView,
-  },
+
   // {
   //   path: "/userprofile",
   //   name: "userprofile",

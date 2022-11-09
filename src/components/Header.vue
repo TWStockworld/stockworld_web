@@ -13,11 +13,6 @@
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
-      <router-link to="/sort">
-        <span class="txt" :class="[$route.name == 'sort' ? 'nowsite' : '']">台股分類<span class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
-      </router-link>
-
       <router-link to="/aboutstock/2330">
         <span class="txt" :class="[$route.name == 'aboutstock' ? 'nowsite' : '']">關於股票<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>

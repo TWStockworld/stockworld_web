@@ -11,6 +11,14 @@
         </el-button>
       </li>
       <li class="leftbulletin_li">
+        <el-button @click="sort" :class="[$route.params.name == 'sort' ? 'select' : '']">
+          <span>
+            <img :src="require('@/assets/img/sort.svg')" style="width: 40%" />
+            台股分類
+          </span>
+        </el-button>
+      </li>
+      <li class="leftbulletin_li">
         <el-button @click="tsmc" :class="[$route.params.name == 'tsmc' ? 'select' : '']">
           <span>
             <img :src="require('@/assets/img/tsmc.png')" style="width: 40%" />
@@ -43,24 +51,6 @@
           </span>
         </el-button>
       </li>
-      <li class="leftbulletin_li">
-        <el-button @click="car" :class="[$route.params.name == 'car' ? 'select' : '']">
-          <span>
-            <img :src="require('@/assets/img/car.png')" style="width: 40%" />
-            電動車
-          </span>
-        </el-button>
-      </li>
-
-      <!-- <li class="leftbulletin_li" :class="[ $route.path=='/cloud' ? 'select': '']">
-        <el-button @click="cloud">雲端相關</el-button>
-      </li>
-      <li class="leftbulletin_li" :class="[ $route.path=='/city' ? 'select8': '']">
-        <el-button @click="city">智慧城市</el-button>
-      </li>
-      <li class="leftbulletin_li" :class="[ $route.path=='/internet' ? 'select9': '']">
-        <el-button @click="internet">互聯網</el-button>
-      </li> -->
     </ul>
   </div>
 </template>
@@ -72,6 +62,14 @@ export default {
         name: 'bulletin',
         params: {
           name: 'ranking',
+        }
+      });
+    },
+    sort() {
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'sort',
         }
       });
     },
@@ -99,43 +97,11 @@ export default {
         }
       });
     },
-    car() {
-      this.$router.push({
-        name: 'bulletin',
-        params: {
-          name: 'car',
-        }
-      });
-    },
     ic() {
       this.$router.push({
         name: 'bulletin',
         params: {
           name: 'ic',
-        }
-      });
-    },
-    cloud() {
-      this.$router.push({
-        name: 'bulletin',
-        params: {
-          name: 'cloud',
-        }
-      });
-    },
-    city() {
-      this.$router.push({
-        name: 'bulletin',
-        params: {
-          name: 'city',
-        }
-      });
-    },
-    internet() {
-      this.$router.push({
-        name: 'bulletin',
-        params: {
-          name: 'internet',
         }
       });
     },

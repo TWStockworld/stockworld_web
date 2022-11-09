@@ -58,7 +58,7 @@
       </el-table-column>
 
       <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
-      <el-table-column label="操作">
+      <!-- <el-table-column label="操作">
         <template #default="scope">
           <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 1)">
             圖表
@@ -67,7 +67,7 @@
             追蹤
           </el-button>
         </template>
-      </el-table-column>
+      </el-table-column> -->
 
     </el-table>
   </el-main>
@@ -116,7 +116,7 @@
       </el-table-column>
 
       <el-table-column prop="result" label="A漲,B幾天後跌的機率" />
-      <el-table-column label="操作">
+      <!-- <el-table-column label="操作">
         <template #default="scope">
           <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 2)">
             圖表
@@ -125,7 +125,7 @@
             追蹤
           </el-button>
         </template>
-      </el-table-column>
+      </el-table-column> -->
     </el-table>
   </el-main>
   <el-main v-if="cur == 'c'" style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
@@ -175,7 +175,7 @@
       </el-table-column>
 
       <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
-      <el-table-column label="操作">
+      <!-- <el-table-column label="操作">
         <template #default="scope">
           <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 1)">
             圖表
@@ -184,7 +184,7 @@
             追蹤
           </el-button>
         </template>
-      </el-table-column>
+      </el-table-column> -->
 
     </el-table>
   </el-main>
@@ -234,16 +234,16 @@
       </el-table-column>
 
       <el-table-column prop="result" label="A漲,B幾天後跌的機率" />
-      <el-table-column label="操作">
-        <template #default="scope">
-          <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 2)">
-            圖表
-          </el-button>
-          <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 2)">
-            追蹤
-          </el-button>
-        </template>
-      </el-table-column>
+      <!-- <el-table-column label="操作">
+          <template #default="scope">
+            <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id,2)">
+              圖表
+            </el-button>
+            <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id,2)">
+              追蹤
+            </el-button>
+          </template>
+        </el-table-column> -->
     </el-table>
   </el-main>
 
