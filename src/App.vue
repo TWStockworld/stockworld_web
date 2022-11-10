@@ -156,4 +156,8 @@ a {
   background-color: #ffffff5e;
   border-radius: 30px;
 }
+
+.el-table {
+  border-radius: 10px;
+}
 </style>

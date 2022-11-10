@@ -1,7 +1,7 @@
 <template>
   <nav v-if="$route.path != '/'">
     <div class="computer_size">
-      <img src="../assets/img/logo2.png" alt="e" class="logo">
+      <img src="../assets/img/logo3.png" alt="e" class="logo" @click="home">
       <router-link to="/bulletin/ranking">
         <span class="txt" :class="[$route.name == 'bulletin' ? 'nowsite' : '']">
           主頁<span class="bar" style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span>
@@ -25,69 +25,52 @@
           <span>Search</span>
         </button>
       </el-form>
-      <el-select v-model="stock_calculate_groups_id" filterable placeholder="資料日期">
+      <el-select class="pc_select" v-model="stock_calculate_groups_id" filterable placeholder="資料日期">
         <el-option v-for="group in stock_calculate_groups" :key="group.id"
           :label="group.startdate + '~' + group.enddate" :value="group.id">
         </el-option>
       </el-select>
 
+
     </div>
 
     <div id="navigation" class="navigation" :class="[this.toggle ? 'active' : '']">
+      <img src="../assets/img/logo3.png" alt="e" class="logo" @click="home">
       <div class="menuToggle" @click="menutoggle"></div>
       <div class="menu" :class="[this.toggle ? 'menufixed' : '']">
         <!--在裡面加入row col-->
         <div class="phone_size">
-          <ul class="phone_size_ul">
-            <li class="phone_size_li">
-              <el-form @submit.prevent="stocksearch">
 
-                <el-input size="large" placeholder="輸入股票代號或名稱" v-model="stockid" class="input-with-select"
-                  type="search">
-                </el-input>
+          <router-link to="/bulletin/ranking" class="menuset" @click="canclemenu">
+            <a class="menuset2" href="#">
+              <ion-icon name="home-outline"></ion-icon>主頁
+            </a>
+          </router-link>
 
-              </el-form>
-            </li>
+          <router-link to="/calculate" class="menuset" @click="canclemenu">
+            <a class="menuset2" href="#">
+              <ion-icon name="calculator-outline"></ion-icon>相關度計算
+            </a>
+          </router-link>
 
-            <li class="phone_size_li">
-              <router-link to="/bulletin/ranking" class="menuset" @click="canclemenu">
-                <a class="menuset2" href="#">
-                  <ion-icon name="home-outline"></ion-icon>主頁
-                </a>
-              </router-link>
-            </li>
+          <router-link to="/aboutstock/2330" class="menuset" @click="canclemenu">
+            <a class="menuset2" href="#">
+              <ion-icon name="bar-chart-outline"></ion-icon>關於股票
+            </a>
+          </router-link>
+          <el-form @submit.prevent="stocksearch">
+            <el-input size="large" placeholder="輸入股票代號" v-model="stockid" class="input-with-select" type="search">
+            </el-input>
 
-            <li class="phone_size_li">
-              <router-link to="/calculate" class="menuset" @click="canclemenu">
-                <a class="menuset2" href="#">
-                  <ion-icon name="calculator-outline"></ion-icon>相關度計算
-                </a>
-              </router-link>
-            </li>
-            <li class="phone_size_li">
-              <router-link to="/sort" class="menuset" @click="canclemenu">
-                <a class="menuset2" href="#">
-                  <ion-icon name="funnel-outline"></ion-icon>股票分類
-                </a>
-              </router-link>
-            </li>
+          </el-form>
 
-            <li class="phone_size_li">
-              <router-link to="/aboutstock/2330" class="menuset" @click="canclemenu">
-                <a class="menuset2" href="#">
-                  <ion-icon name="bar-chart-outline"></ion-icon>關於股票
-                </a>
-              </router-link>
-            </li>
+          <el-select v-model="stock_calculate_groups_id" filterable placeholder="資料日期">
+            <el-option v-for="group in stock_calculate_groups" :key="group.id"
+              :label="group.startdate + '~' + group.enddate" :value="group.id">
+            </el-option>
+          </el-select>
+          <h3>資料週期</h3>
 
-            <li class="phone_size_li">
-              <router-link to="/logout" v-if="token" @click="logout" class="menuset">
-                <a class="menuset2" href="#">
-                  <ion-icon name="log-out-outline"></ion-icon>登出
-                </a>
-              </router-link>
-            </li>
-          </ul>
         </div>
         <!--*****************************************************-->
         <!-- <ul class="phone_size_ul">
@@ -158,6 +141,8 @@ export default defineComponent({
   watch: {
     stock_calculate_groups_id: function () {
       this.$emit('change_stock_calculate_groups_id', this.stock_calculate_groups_id);
+      this.toggle = false;
+
     }
   },
   methods: {
@@ -198,10 +183,20 @@ export default defineComponent({
       // this.$emit('keytest');
     },
     stocksearch() {
+      this.toggle = false;
       this.$router.push({
         name: 'aboutstock',
         params: {
           stockid: this.stockid,
+        }
+      });
+      this.stockid = ''
+    },
+    home() {
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'ranking',
         }
       });
     }
@@ -215,6 +210,12 @@ export default defineComponent({
 }
 
 @media only screen and (max-width: 768px) {
+  .logo {
+    width: 19%;
+    border-radius: 5px;
+    margin: 10px 0 10px 20px;
+  }
+
   nav {
     height: 10%;
   }
@@ -223,16 +224,13 @@ export default defineComponent({
     display: none;
   }
 
-  .phone_size_ul {
-    padding: 0;
-  }
-
-  .phone_size_li a {
-    margin: 0;
-  }
-
   .phone_size {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50vh;
+    justify-content: space-evenly;
+    margin-top: 10%;
   }
 
   .input-with-select2 {
@@ -298,6 +296,7 @@ export default defineComponent({
   }
 
   .navigation .menuToggle {
+    z-index: 10;
     position: relative;
     width: 80px;
     height: 80px;
@@ -342,11 +341,10 @@ export default defineComponent({
     z-index: 2;
     display: block !important;
     width: 100%;
-    height: calc(100% - 75px);
-    margin-top: 75px;
+    height: 100%;
     padding: 0px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgb(240, 240, 240);
+    background: rgb(240 240 240 / 95%);
   }
 
   .menu {
@@ -379,9 +377,26 @@ export default defineComponent({
     list-style: none;
     padding: 2%;
   }
+
+  .pc_select {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 768px) {
+  .logo {
+    left: 6%;
+    position: absolute;
+    width: 4%;
+    border-radius: 5px;
+  }
+
+  .pc_select {
+    position: absolute;
+    right: 10%;
+    top: 4%;
+  }
+
   nav {
     padding: 22px;
 
@@ -620,9 +635,6 @@ input {
 }
 
 .logo {
-  left: 6%;
-  position: absolute;
-  width: 3.5%;
-  border-radius: 5px;
+  z-index: 20;
 }
 </style>

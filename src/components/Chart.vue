@@ -12,7 +12,6 @@ export default {
   },
   mounted() {
     const chartProperties = {
-      width: 1000,
       height: 300,
       timeScale: {
         timeVisible: false,

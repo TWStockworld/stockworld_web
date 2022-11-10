@@ -12,11 +12,10 @@
     相關漲跌機率(跌)
   </el-button>
 
-  <el-main v-if="cur == 'a'" style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
-    element-loading-background="rgba(0, 0, 0, 0.1)">
+  <el-main :class="[$route.name == 'bulletin' ? 'smallmargin' : '']" v-if="cur == 'a'" style="padding:0"
+    v-loading="loading1" element-loading-text="讀取資料中" element-loading-background="rgba(0, 0, 0, 0.1)">
     <h3>漲跌機率(漲)</h3>
-    <el-table width="100%" :data="RankStock1" border stripe height="200" :default-sort="{ prop: 'rank' }"
-      empty-text="無相關資料">
+    <el-table width="100%" :data="RankStock1" border stripe :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
 
       <el-table-column prop="order" label="排行" sortable />
 
@@ -58,21 +57,20 @@
       </el-table-column>
 
       <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
-      <!-- <el-table-column label="操作">
+      <el-table-column label="操作">
         <template #default="scope">
           <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 1)">
             圖表
           </el-button>
         </template>
-      </el-table-column> -->
+      </el-table-column>
 
     </el-table>
   </el-main>
-  <el-main v-if="cur == 'b'" style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
-    element-loading-background="rgba(0, 0, 0, 0.1)">
+  <el-main :class="[$route.name == 'bulletin' ? 'smallmargin' : '']" v-if="cur == 'b'" style="padding:0"
+    v-loading="loading1" element-loading-text="讀取資料中" element-loading-background="rgba(0, 0, 0, 0.1)">
     <h3>漲跌機率(跌)</h3>
-    <el-table width="100%" :data="RankStock2" border stripe height="200" :default-sort="{ prop: 'rank' }"
-      empty-text="無相關資料">
+    <el-table width="100%" :data="RankStock2" border stripe :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
       <el-table-column prop="order" label="排行" sortable />
 
       <el-table-column prop="stockA_name" label="股票A">
@@ -113,20 +111,19 @@
       </el-table-column>
 
       <el-table-column prop="result" label="A漲,B幾天後跌的機率" />
-      <!-- <el-table-column label="操作">
+      <el-table-column label="操作">
         <template #default="scope">
           <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 2)">
             圖表
           </el-button>
         </template>
-      </el-table-column> -->
+      </el-table-column>
     </el-table>
   </el-main>
-  <el-main v-if="cur == 'c'" style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
-    element-loading-background="rgba(0, 0, 0, 0.1)">
+  <el-main :class="[$route.name == 'bulletin' ? 'smallmargin' : '']" v-if="cur == 'c'" style="padding:0"
+    v-loading="loading1" element-loading-text="讀取資料中" element-loading-background="rgba(0, 0, 0, 0.1)">
     <h3>相關漲跌機率(漲)</h3>
-    <el-table width="100%" :data="RelateStock1" border stripe height="200" :default-sort="{ prop: 'rank' }"
-      empty-text="無相關資料">
+    <el-table width="100%" :data="RelateStock1" border stripe :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
 
       <el-table-column prop="order" label="排行" sortable />
 
@@ -169,21 +166,20 @@
       </el-table-column>
 
       <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
-      <!-- <el-table-column label="操作">
+      <el-table-column label="操作">
         <template #default="scope">
           <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 1)">
             圖表
           </el-button>
         </template>
-      </el-table-column> -->
+      </el-table-column>
 
     </el-table>
   </el-main>
-  <el-main v-if="cur == 'd'" style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
-    element-loading-background="rgba(0, 0, 0, 0.1)">
+  <el-main :class="[$route.name == 'bulletin' ? 'smallmargin' : '']" v-if="cur == 'd'" style="padding:0"
+    v-loading="loading1" element-loading-text="讀取資料中" element-loading-background="rgba(0, 0, 0, 0.1)">
     <h3>相關漲跌機率(跌) </h3>
-    <el-table width="100%" :data="RelateStock2" border stripe height="200" :default-sort="{ prop: 'rank' }"
-      empty-text="無相關資料">
+    <el-table width="100%" :data="RelateStock2" border stripe :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
       <el-table-column prop="order" label="排行" sortable />
 
 
@@ -225,13 +221,13 @@
       </el-table-column>
 
       <el-table-column prop="result" label="A漲,B幾天後跌的機率" />
-      <!-- <el-table-column label="操作">
-          <template #default="scope">
-            <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id,2)">
-              圖表
-            </el-button>
-          </template>
-        </el-table-column> -->
+      <el-table-column label="操作">
+        <template #default="scope">
+          <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 2)">
+            圖表
+          </el-button>
+        </template>
+      </el-table-column>
     </el-table>
   </el-main>
 
@@ -240,7 +236,7 @@
   <el-main style="padding:0" v-loading="loading2" element-loading-text="讀取資料中 "
     element-loading-background="rgba(0, 0, 0, 0.1)" v-if="$route.name == 'aboutstock'">
     <h3>相關產業股票 </h3>
-    <el-table width="100%" v-el-table-infinite-scroll="load" :data="stock_table" border stripe height="200"
+    <el-table width="100%" v-el-table-infinite-scroll="load" :data="stock_table" border stripe
       :default-sort="{ prop: 'time' }" empty-text="無相關資料">
 
       <el-table-column prop="stock_name" label="股票">
@@ -563,28 +559,31 @@ export default defineComponent({
 </style>
 
 <style scoped>
-@media only screen and (max-width: 1200px) {}
-
-@media only screen and (min-width: 1200px) {
-
-  .grid-content {
-    height: 35vh;
+@media only screen and (max-width: 1200px) {
+  .el-main {
+    margin-top: 5%;
   }
 
-  .grid-content2 {
-    height: 35vh;
+  .el-table {
+    height: 300px;
   }
 }
 
-/* .grid-content {
-  border-radius: 10px;
-  overflow-x: auto;
+@media only screen and (min-width: 1200px) {
 
-} */
-/* .el-table,
-h3 {
-  border-radius: 20px;
-} */
+  .smallmargin {
+    margin-top: 1% !important;
+  }
+
+  .el-main {
+    margin-top: 5%;
+  }
+
+  .el-table {
+    height: 200px;
+  }
+}
+
 .el-table .cell {
   white-space: pre-line;
 }

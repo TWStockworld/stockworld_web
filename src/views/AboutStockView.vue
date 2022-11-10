@@ -1,9 +1,10 @@
 <template>
   <el-row>
-    <el-col :lg="9" :sm="24" :xs="24" class="high">
+    <el-col class="leftcol high" :lg="9" :sm="24" :xs="24">
       <KlineChart :res1="res1" :stock_id="stock_id" />
     </el-col>
-    <el-col :lg="15" :sm="24" :xs="24">
+
+    <el-col class="rightcol" :lg="15" :sm="24" :xs="24">
       <StockProbability :res2="res2" :res3="res3" :stock_id="stock_id" @pageupdate="pageupdate"
         :stock_calculate_groups_id="stock_calculate_groups_id" />
     </el-col>
@@ -141,3 +142,29 @@ export default {
 }
 
 </script>
+<style scoped>
+@media only screen and (max-width: 768px) {
+  .rightcol {
+    margin-top: 5%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .el-row {
+    padding: 0 1% 15% 1%;
+    height: 100vh;
+  }
+
+}
+
+.rightcol {
+  background-color: #ffffff5e;
+  border-radius: 30px;
+
+}
+
+.leftcol {
+  background-color: #ffffff5e;
+  border-radius: 30px;
+}
+</style>

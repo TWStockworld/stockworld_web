@@ -4,6 +4,7 @@
         <div class="picture">
             <img :src="require('@/assets/img/' + $route.params.name + '.png')" />
         </div>
+        <el-col :xs="24" :sm="24" :lg="1"></el-col>
         <el-col :xs="24" :sm="24" :lg="6">
             <el-main style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
                 element-loading-background="rgba(0, 0, 0, 0.1)">
@@ -33,13 +34,17 @@
                 </el-table>
             </el-main>
         </el-col>
-        <el-col :xs="24" :sm="24" :lg="18">
-            <el-row class="margintop">
+        <el-col :xs="24" :sm="24" :lg="1">
+        </el-col>
+        <el-col :xs="24" :sm="24" :lg="15">
+            <el-col :xs="24" :sm="24" :lg="1">
+            </el-col>
+            <div class="margintop">
                 <StockProbability :res2="res2" :bulletin_id="bulletin_id"
                     :stock_calculate_groups_id="stock_calculate_groups_id" />
                 <div class="box">
                 </div>
-            </el-row>
+            </div>
         </el-col>
 
     </el-row>
@@ -142,6 +147,17 @@ export default {
 }
 
 @media only screen and (min-width: 1200px) {
+    .picture {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .el-main {
+        margin-top: 12%;
+
+    }
 
     img {
         width: 20%;

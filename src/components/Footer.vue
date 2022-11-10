@@ -8,7 +8,9 @@
 export default {}
 </script>
 <style scoped>
-.footer {
-    height: 10vh;
+@media only screen and (max-width: 768px) {
+    .footer {
+        height: 10vh;
+    }
 }
 </style>

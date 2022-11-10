@@ -1,57 +1,50 @@
 <template>
   <div class="LB1">
-    <ul class="leftbulletin_ul">
-      <li class="leftbulletin_li">
-        <el-button @click="ranking" :class="[ $route.params.name=='ranking' ? 'select': '']">
-          <span>
-            <img :src="require('@/assets/img/ranking.svg')" style="width: 40%" />
-            關係度總排行
 
-          </span>
-        </el-button>
-      </li>
-      <li class="leftbulletin_li">
-        <el-button @click="sort" :class="[$route.params.name == 'sort' ? 'select' : '']">
-          <span>
-            <img :src="require('@/assets/img/sort.svg')" style="width: 40%" />
-            台股分類
-          </span>
-        </el-button>
-      </li>
-      <li class="leftbulletin_li">
-        <el-button @click="tsmc" :class="[$route.params.name == 'tsmc' ? 'select' : '']">
-          <span>
-            <img :src="require('@/assets/img/tsmc.png')" style="width: 40%" />
-            台積電
-          </span>
-        </el-button>
-      </li>
-      <li class="leftbulletin_li">
-        <el-button @click="HHcar" :class="[$route.params.name == 'HHcar' ? 'select' : '']">
-          <span>
-            <img :src="require('@/assets/img/HHcar.png')" style="width: 40%" />
-            鴻海電動車
-          </span>
+    <el-button @click="ranking" :class="[ $route.params.name=='ranking' ? 'select': '']">
+      <span>
+        <img :src="require('@/assets/img/ranking.svg')" style="width: 40%" />
+        關係度總排行
 
-        </el-button>
-      </li>
-      <li class="leftbulletin_li">
-        <el-button @click="meta" :class="[$route.params.name == 'meta' ? 'select' : '']">
-          <span>
-            <img :src="require('@/assets/img/meta.png')" style="width: 40%" />
-            元宇宙概念股
-          </span>
-        </el-button>
-      </li>
-      <li class="leftbulletin_li">
-        <el-button @click="ic" :class="[$route.params.name == 'ic' ? 'select' : '']">
-          <span>
-            <img :src="require('@/assets/img/ic.png')" style="width: 40%" />
-            IC設計產業
-          </span>
-        </el-button>
-      </li>
-    </ul>
+      </span>
+    </el-button>
+
+    <el-button @click="sort" :class="[$route.params.name == 'sort' ? 'select' : '']">
+      <span>
+        <img :src="require('@/assets/img/sort.svg')" style="width: 40%" />
+        台股分類
+      </span>
+    </el-button>
+
+    <el-button @click="tsmc" :class="[$route.params.name == 'tsmc' ? 'select' : '']">
+      <span>
+        <img :src="require('@/assets/img/tsmc.png')" style="width: 40%" />
+        台積電
+      </span>
+    </el-button>
+
+    <el-button @click="HHcar" :class="[$route.params.name == 'HHcar' ? 'select' : '']">
+      <span>
+        <img :src="require('@/assets/img/HHcar.png')" style="width: 40%" />
+        鴻海電動車
+      </span>
+
+    </el-button>
+
+    <el-button @click="meta" :class="[$route.params.name == 'meta' ? 'select' : '']">
+      <span>
+        <img :src="require('@/assets/img/meta.png')" style="width: 40%" />
+        元宇宙概念股
+      </span>
+    </el-button>
+
+    <el-button @click="ic" :class="[$route.params.name == 'ic' ? 'select' : '']">
+      <span>
+        <img :src="require('@/assets/img/ic.png')" style="width: 40%" />
+        IC設計產業
+      </span>
+    </el-button>
+
   </div>
 </template>
 <script>
@@ -132,69 +125,6 @@ export default {
   color: white;
 }
 
-.select2 {
-  background-color: red;
-  background: linear-gradient(to left, rgb(255, 98, 0) 50%, lightblue 50%) right;
-  background-size: 200%;
-  transition: .5s ease-in-out;
-  animation: movepoint1 1s;
-}
-
-.select3 {
-  background-color: red;
-  background: linear-gradient(to left, rgb(255, 225, 0) 50%, lightblue 50%) right;
-  background-size: 200%;
-  transition: .5s ease-in-out;
-  animation: movepoint1 1s;
-}
-
-.select4 {
-  background-color: red;
-  background: linear-gradient(to left, rgb(136, 255, 0) 50%, lightblue 50%) right;
-  background-size: 200%;
-  transition: .5s ease-in-out;
-  animation: movepoint1 1s;
-}
-
-.select5 {
-  background-color: red;
-  background: linear-gradient(to left, rgb(0, 255, 242) 50%, lightblue 50%) right;
-  background-size: 200%;
-  transition: .5s ease-in-out;
-  animation: movepoint1 1s;
-}
-
-.select6 {
-  background-color: red;
-  background: linear-gradient(to left, rgb(13, 0, 255) 50%, lightblue 50%) right;
-  background-size: 200%;
-  transition: .5s ease-in-out;
-  animation: movepoint1 1s;
-}
-
-.select7 {
-  background-color: red;
-  background: linear-gradient(to left, rgb(137, 3, 255) 50%, lightblue 50%) right;
-  background-size: 200%;
-  transition: .5s ease-in-out;
-  animation: movepoint1 1s;
-}
-
-.select8 {
-  background-color: red;
-  background: linear-gradient(to left, rgb(255, 3, 234) 50%, lightblue 50%) right;
-  background-size: 200%;
-  transition: .5s ease-in-out;
-  animation: movepoint1 1s;
-}
-
-.select9 {
-  background-color: red;
-  background: linear-gradient(to left, rgb(85, 78, 78) 50%, lightblue 50%) right;
-  background-size: 200%;
-  transition: .5s ease-in-out;
-  animation: movepoint1 1s;
-}
 
 @keyframes movepoint1 {
   0% {
@@ -204,18 +134,16 @@ export default {
 }
 
 @media only screen and (max-width: 1200px) {
-  .el-button {
-    width: 100%;
+  .LB1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: scroll;
+    margin: 3% 2% 5% 2%;
   }
 
-  .leftbulletin_ul {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 8rem;
-    grid-gap: 3rem;
-    list-style-type: none;
+  .el-button {
     width: 100%;
-    overflow-x: scroll;
   }
 
   .leftbulletin_li {
@@ -223,16 +151,13 @@ export default {
 
   }
 
-  .leftbulletin_li1 {
-    display: inline;
-    background-color: brown;
-  }
 
-  .leftbulletin_ul::-webkit-scrollbar {
+
+  .LB1::-webkit-scrollbar {
     background-color: #f5f5f500;
   }
 
-  .leftbulletin_ul::-webkit-scrollbar-thumb {
+  .LB1::-webkit-scrollbar-thumb {
     border: 6px solid transparent;
     border-radius: 100px;
     background-color: #8070d4;
@@ -241,6 +166,14 @@ export default {
 }
 
 @media only screen and (min-width: 1200px) {
+  .LB1 {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
   .el-button {
     width: 50%;
   }
@@ -263,11 +196,6 @@ export default {
     background-clip: content-box;
   }
 
-  .LB1 {
-    position: relative;
-    left: 0%;
-    line-height: 100px;
 
-  }
 }
 </style>
