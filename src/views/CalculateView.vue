@@ -142,6 +142,7 @@ export default {
             } else {
               this.result = '無法比較 因兩股筆數不同';
             }
+            this.stockA_datas = null;
 
 
           } else {
