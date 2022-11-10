@@ -33,22 +33,6 @@ const routes = [
     component: CalculateView,
   },
   {
-    path: "/pm25",
-    name: "pm25",
-    component: pm25,
-  },
-  {
-    path: "/register",
-    name: "register",
-    component: RegisterView,
-  },
-  {
-    path: "/login",
-    name: "login",
-    component: LoginView,
-  },
-  {
-    // /:stockid
     path: "/aboutstock/:stockid",
     name: "aboutstock",
     component: AboutStockView,
@@ -60,6 +44,21 @@ const routes = [
     name: "bulletin",
     component: BulletinView,
   },
+  // {
+  //   path: "/pm25",
+  //   name: "pm25",
+  //   component: pm25,
+  // },
+  // {
+  //   path: "/register",
+  //   name: "register",
+  //   component: RegisterView,
+  // },
+  // {
+  //   path: "/login",
+  //   name: "login",
+  //   component: LoginView,
+  // },
 
   // {
   //   path: "/userprofile",
@@ -67,26 +66,26 @@ const routes = [
   //   component: UserProfileView,
   // },
 
-  {
-    path: "/personalfile",
-    name: "personalfile",
-    component: PersonalFileView,
-  },
-  {
-    path: "/changepassword",
-    name: "changepassword",
-    component: ChangePasswordView,
-  },
-  {
-    path: "/favorite",
-    name: "favorite",
-    component: FavoriteView,
-  },
-  {
-    path: "/help_support",
-    name: "help_support",
-    component: Help_SupportView,
-  },
+  // {
+  //   path: "/personalfile",
+  //   name: "personalfile",
+  //   component: PersonalFileView,
+  // },
+  // {
+  //   path: "/changepassword",
+  //   name: "changepassword",
+  //   component: ChangePasswordView,
+  // },
+  // {
+  //   path: "/favorite",
+  //   name: "favorite",
+  //   component: FavoriteView,
+  // },
+  // {
+  //   path: "/help_support",
+  //   name: "help_support",
+  //   component: Help_SupportView,
+  // },
 ];
 
 const router = createRouter({

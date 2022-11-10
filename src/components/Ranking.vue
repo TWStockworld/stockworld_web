@@ -51,10 +51,6 @@
                   @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 1)">
                   圖表
                 </el-button>
-                <el-button size="default"
-                  @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 1)">
-                  追蹤
-                </el-button>
               </template>
             </el-table-column>
 
@@ -112,10 +108,6 @@
                 <el-button size="default"
                   @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 2)">
                   圖表
-                </el-button>
-                <el-button size="default"
-                  @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 2)">
-                  追蹤
                 </el-button>
               </template>
             </el-table-column>

@@ -90,7 +90,7 @@
           </ul>
         </div>
         <!--*****************************************************-->
-        <ul class="phone_size_ul">
+        <!-- <ul class="phone_size_ul">
           <li class="phone_size_li">
             <router-link to="/personalfile" v-if="token" class="menuset" @click="canclemenu">
               <a class="menuset2" href="#">
@@ -123,7 +123,7 @@
             </button>
 
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
 
@@ -398,141 +398,7 @@ export default defineComponent({
   }
 
   .navigation {
-    z-index: 10;
-    position: fixed;
-    top: 0px;
-    right: 20px;
-    width: 280px;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    transition: height 0.05s, width 0.05s;
-    transition-delay: 0s, 0.1s;
-    overflow: hidden;
-  }
-
-  .navigation.active {
-    width: 280px;
-    height: 320px;
-    transition: width 0.05s, height 0.05s;
-    transition-delay: 0s, 0.1s;
-  }
-
-  .navigation .userBx {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    transition: 0.2s;
-    transition-delay: 0.2s;
-  }
-
-  .navigation.active .userBx {
-    width: calc(100% - 80px);
-    transition-delay: 0s;
-  }
-
-  .navigation .userBx .username1 {
-    white-space: nowrap;
-    color: #555;
-    font-size: 1.1em;
-  }
-
-  .navigation .userBx .imgBx {
-    position: relative;
-    min-width: 50px;
-    height: 50px;
-    overflow: hidden;
-    background: rgb(0, 0, 0);
-    border-radius: 50%;
-  }
-
-  .navigation .userBx .imgBx .img-responsive1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .navigation .menuToggle {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .navigation .menuToggle::before {
-    content: "";
-    position: absolute;
-    width: 48px;
-    height: 4px;
-    background: #555;
-    transform: translateY(-10px);
-    box-shadow: 0 10px #555;
-    transition: 0.2s;
-  }
-
-  .navigation .menuToggle::after {
-    content: "";
-    position: absolute;
-    width: 48px;
-    height: 4px;
-    background: #555;
-    transform: translateY(10px);
-    transition: 0.2s;
-  }
-
-  .navigation.active .menuToggle::before {
-    transform: translateY(0px) rotate(45deg);
-    box-shadow: 0 0 #555;
-  }
-
-  .navigation.active .menuToggle::after {
-    transform: translateY(0px) rotate(-45deg);
-  }
-
-  .menu {
-    z-index: 2;
-    position: absolute;
-    width: 100%;
-    height: calc(100% - 80px);
-    margin-top: 80px;
-    padding: 0px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgb(240, 240, 240);
-
-  }
-
-  .menu .menuset {
-    list-style: none;
-  }
-
-  .menu .menuset .menuset2 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 20px;
-    font-size: 1.1em;
-    text-decoration: none;
-    color: #555;
-  }
-
-  .menu .menuset .menuset2:hover {
-    color: #4e65ff;
-  }
-
-  .menu .menuset .menuset2 ion-icon {
-    font-size: 1.5em;
-  }
-
-  .phone_size_li {
-    list-style: none;
+    display: none;
   }
 }
 
