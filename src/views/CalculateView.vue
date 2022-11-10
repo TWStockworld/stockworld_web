@@ -50,9 +50,8 @@
 
         <el-button plain type="primary" native-type="submit">送出</el-button>
         <h3 style="margin-bottom: 2%;">{{ result }}</h3>
-        <div class="pcchart" v-if="stockA_datas.length != 0">
-          <Chart :stockA_datas="stockA_datas" :stockB_datas="stockB_datas" :real_diff="real_diff" :move="move"
-            :key="componentKey" />
+        <div class="pcchart" v-if="this.stockA_datas != null">
+          <Chart :stockA_datas="stockA_datas" :stockB_datas="stockB_datas" :move="move" :key="componentKey" />
         </div>
       </el-form>
     </div>
@@ -78,11 +77,12 @@ export default {
       stock_category_options: [],
       stockA_options: [],
       stockB_options: [],
-      stockA_datas: [],
+      stockA_datas: null,
       stockB_datas: [],
       componentKey: 0,
       real_diff: 0,
-      diffs: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      diffs: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      vv: 0
     };
   },
   created() {
@@ -134,11 +134,21 @@ export default {
         })
         .then((response) => {
           console.log(response.data);
+          if (response.data.stockA_datas == null) {
+            this.vv++;
+            if (this.vv % 2 == 1) {
+              this.result = '兩股筆數不同 無法比較';
 
-          this.result = response.data.success;
-          this.stockA_datas = response.data.stockA_datas;
-          this.stockB_datas = response.data.stockB_datas;
-          this.real_diff = response.data.real_diff;
+            } else {
+              this.result = '無法比較 因兩股筆數不同';
+            }
+
+
+          } else {
+            this.result = response.data.success;
+            this.stockA_datas = response.data.stockA_datas;
+            this.stockB_datas = response.data.stockB_datas;
+          }
 
 
           this.componentKey += 1;
