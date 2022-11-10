@@ -70,12 +70,10 @@ export default {
 
   @keyframes slide {
     0% {
-      background-color: white;
       left: 0%;
     }
 
     100% {
-      background-color: white;
       left: 100%;
     }
   }
