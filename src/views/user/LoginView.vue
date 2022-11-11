@@ -220,6 +220,7 @@ export default {
   margin-right: auto;
   margin-bottom: auto;
   margin-left: auto;
+  height: 100vh;
 }
 </style>
 

@@ -6,14 +6,13 @@ import { createChart } from "lightweight-charts";
 
 export default {
   name: "Chart",
-  props: ["stockA_datas", "stockB_datas", "real_diff", "move"],
+  props: ["stockA_datas", "stockB_datas", "move"],
   data() {
     return {};
   },
   mounted() {
     const chartProperties = {
-      width: 1000,
-      height: 400,
+      height: 300,
       timeScale: {
         timeVisible: false,
         secondsVisible: true,

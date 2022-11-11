@@ -1,18 +1,22 @@
 <template>
   <div class="bak">
-    <Header :key="componentKey" @keytest="keytest" />
-    <router-view @keytest="keytest" />
+    <Header :key="componentKey" @keytest="keytest"
+      @change_stock_calculate_groups_id="change_stock_calculate_groups_id" />
+    <router-view class="margintop" @keytest="keytest" :stock_calculate_groups_id="stock_calculate_groups_id" />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
 import { useHead } from "@vueuse/head";
 
 export default {
   components: {
     Header,
+    Footer
   },
   created() {
     const html = document.documentElement // returns the html tag
@@ -21,6 +25,7 @@ export default {
   data() {
     return {
       componentKey: 0,
+      stock_calculate_groups_id: 1,
     };
   },
   setup() {
@@ -42,17 +47,48 @@ export default {
     // this.$Snow.followMouse = false;
     // this.$Snow.flakesMaxActive = 35;
     // 下雪
+    console.log(window.innerWidth)
+
+    window.addEventListener('scroll', this.handleScroll, true);
+  },
+  beforeDestroy() {
+    window.addEventListener('scroll', this.handleScroll, true);
   },
   methods: {
+    change_stock_calculate_groups_id(stock_calculate_groups_id) {
+      this.stock_calculate_groups_id = stock_calculate_groups_id;
+    },
     keytest() {
       this.componentKey += 1;
-    }
+    },
+    // handleScroll(e) {
+    //   console.log(window.scrollY)
+    //   if (window.innerWidth < 1024) {
+    //     if (window.scrollY < 150) {
+    //       document.getElementById('navigation').setAttribute("style", "position: relative;background-color:#ffffff00;")
+    //     }
+    //     if (window.scrollY > 150) {
+    //       document.getElementById('navigation').setAttribute("style", "position: fixed;background-color:#ffffffde;")
+    //     }
+    //   }
+    // }
   },
 };
 </script>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+
+.el-main {
+  z-index: 1;
+}
+
+.sticky {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 11;
+}
 
 * {
   padding: 0;
@@ -76,11 +112,43 @@ export default {
   width: 100%;
   background-attachment: fixed;
   background-size: cover;
+
+}
+
+.tv-lightweight-charts {
+  border-radius: 3%;
+}
+
+.el-table .cell {
+  display: inline;
+}
+
+a {
+  color: #598ef6;
+}
+
+/* a:visited {
+  color: blue;
+} */
+
+@media only screen and (max-width: 1200px) {
+  .box {
+    height: 5vh;
+  }
+
+  /* .margintop {
+    margin-top: 25% !important;
+  } */
 }
 
 @media only screen and (min-width: 1200px) {
   .bak {
     height: 100%;
+  }
+
+  .bulletin_el-row {
+    padding: 0 1% 7% 0%;
+    height: 100vh;
   }
 }
 
@@ -89,8 +157,7 @@ export default {
   border-radius: 30px;
 }
 
-.bulletin_el-row {
-  padding: 0 1% 7% 0%;
-  height: 100vh;
+.el-table {
+  border-radius: 10px;
 }
 </style>

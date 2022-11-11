@@ -1,30 +1,20 @@
 <template>
-  <nav v-if="this.$route.path != '/'">
+  <nav v-if="$route.path != '/'">
     <div class="computer_size">
-      <img src="../assets/img/logo2.png" alt="e" class="logo">
-      <router-link to="/ranking">
-        <span class="txt">
+      <img src="../assets/img/logo3.png" alt="e" class="logo" @click="home">
+      <router-link to="/bulletin/ranking">
+        <span class="txt" :class="[$route.name == 'bulletin' ? 'nowsite' : '']">
           主頁<span class="bar" style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span>
         </span>
       </router-link>
 
       <router-link to="/calculate">
-        <span class="txt">漲幅機率計算<span class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
-      </router-link>
-
-      <router-link to="/learning">
-        <span class="txt">投資小學堂<span class="bar"
-            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
-      </router-link>
-
-      <router-link to="/sort">
-        <span class="txt">台股分類<span class="bar"
+        <span class="txt" :class="[$route.name == 'calculate' ? 'nowsite' : '']">漲幅機率計算<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
       <router-link to="/aboutstock/2330">
-        <span class="txt">關於股票<span class="bar"
+        <span class="txt" :class="[$route.name == 'aboutstock' ? 'nowsite' : '']">關於股票<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
 
@@ -35,82 +25,55 @@
           <span>Search</span>
         </button>
       </el-form>
+      <el-select class="pc_select" v-model="stock_calculate_groups_id" filterable placeholder="資料日期">
+        <el-option v-for="group in stock_calculate_groups" :key="group.id"
+          :label="group.startdate + '~' + group.enddate" :value="group.id">
+        </el-option>
+      </el-select>
+
+
     </div>
 
-    <div class="navigation" :class="[this.toggle? 'active': '']">
-      <div class=" userBx">
-        <div class="imgBx">
-          <img class="img-responsive1" src="@/assets/img/logo.png" />
-        </div>
-        <!--加入姓名錢-->
-        <p class="username1">目前剩餘:1000元</p>
-      </div>
+    <div id="navigation" class="navigation" :class="[this.toggle ? 'active' : '']">
+      <img src="../assets/img/logo3.png" alt="e" class="logo" @click="home">
       <div class="menuToggle" @click="menutoggle"></div>
-      <div class="menu">
+      <div class="menu" :class="[this.toggle ? 'menufixed' : '']">
         <!--在裡面加入row col-->
         <div class="phone_size">
-          <ul class="phone_size_ul">
-            <li class="phone_size_li">
-              <el-form @submit.prevent="stocksearch">
 
-                <el-input size="large" placeholder="輸入股票代號或名稱" v-model="stockid" class="input-with-select"
-                  type="search">
-                </el-input>
+          <router-link to="/bulletin/ranking" class="menuset" @click="canclemenu">
+            <a class="menuset2" href="#">
+              <ion-icon name="home-outline"></ion-icon>主頁
+            </a>
+          </router-link>
 
-              </el-form>
-            </li>
+          <router-link to="/calculate" class="menuset" @click="canclemenu">
+            <a class="menuset2" href="#">
+              <ion-icon name="calculator-outline"></ion-icon>相關度計算
+            </a>
+          </router-link>
 
-            <li class="phone_size_li">
-              <router-link to="/ranking" class="menuset" @click="canclemenu">
-                <a class="menuset2" href="#">
-                  <ion-icon name="home-outline"></ion-icon>主頁
-                </a>
-              </router-link>
-            </li>
+          <router-link to="/aboutstock/2330" class="menuset" @click="canclemenu">
+            <a class="menuset2" href="#">
+              <ion-icon name="bar-chart-outline"></ion-icon>關於股票
+            </a>
+          </router-link>
+          <el-form @submit.prevent="stocksearch">
+            <el-input size="large" placeholder="輸入股票代號" v-model="stockid" class="input-with-select" type="search">
+            </el-input>
 
-            <li class="phone_size_li">
-              <router-link to="/calculate" class="menuset" @click="canclemenu">
-                <a class="menuset2" href="#">
-                  <ion-icon name="calculator-outline"></ion-icon>相關度計算
-                </a>
-              </router-link>
-            </li>
+          </el-form>
 
-            <li class="phone_size_li">
-              <router-link to="/learning" class="menuset" @click="canclemenu">
-                <a class="menuset2" href="#">
-                  <ion-icon name="pencil-outline"></ion-icon>投資小學堂
-                </a>
-              </router-link>
-            </li>
+          <el-select v-model="stock_calculate_groups_id" filterable placeholder="資料日期">
+            <el-option v-for="group in stock_calculate_groups" :key="group.id"
+              :label="group.startdate + '~' + group.enddate" :value="group.id">
+            </el-option>
+          </el-select>
+          <h3>資料週期</h3>
 
-            <li class="phone_size_li">
-              <router-link to="/sort" class="menuset" @click="canclemenu">
-                <a class="menuset2" href="#">
-                  <ion-icon name="funnel-outline"></ion-icon>股票分類
-                </a>
-              </router-link>
-            </li>
-
-            <li class="phone_size_li">
-              <router-link to="/aboutstock/2330" class="menuset" @click="canclemenu">
-                <a class="menuset2" href="#">
-                  <ion-icon name="bar-chart-outline"></ion-icon>關於股票
-                </a>
-              </router-link>
-            </li>
-
-            <li class="phone_size_li">
-              <router-link to="/logout" v-if="token" @click="logout" class="menuset">
-                <a class="menuset2" href="#">
-                  <ion-icon name="log-out-outline"></ion-icon>登出
-                </a>
-              </router-link>
-            </li>
-          </ul>
         </div>
         <!--*****************************************************-->
-        <ul class="phone_size_ul">
+        <!-- <ul class="phone_size_ul">
           <li class="phone_size_li">
             <router-link to="/personalfile" v-if="token" class="menuset" @click="canclemenu">
               <a class="menuset2" href="#">
@@ -143,7 +106,7 @@
             </button>
 
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
 
@@ -162,19 +125,39 @@ export default defineComponent({
     return {
       stockid: "",
       token: this.$cookies.get("token"),
-      toggle: false
+      toggle: false,
+      stock_calculate_groups_id: 1,
+      stock_calculate_groups: []
     };
+  },
+  mounted() {
+    this.axios.get(
+      "/api/stock/get_stock_calculate_groups"
+    ).then(
+      (res1) => {
+        this.stock_calculate_groups = res1.data.success;
+      })
+  },
+  watch: {
+    stock_calculate_groups_id: function () {
+      this.$emit('change_stock_calculate_groups_id', this.stock_calculate_groups_id);
+      this.toggle = false;
+
+    }
   },
   methods: {
     canclemenu() {
+      document.getElementById('app').style.removeProperty("overflow-y")
       this.$emit('keytest');
     },
 
     menutoggle() {
       if (this.toggle) {
+        document.getElementById('app').style.removeProperty("overflow-y")
         this.toggle = false;
       }
       else {
+        document.getElementById('app').setAttribute("style", "overflow-y:hidden")
         this.toggle = true;
       }
     },
@@ -187,7 +170,12 @@ export default defineComponent({
         })
         .then((res) => {
           this.$cookies.remove("token");
-          this.$router.push("/ranking");
+          this.$router.push({
+            name: 'bulletin',
+            params: {
+              name: 'ranking',
+            }
+          });
           this.$emit('keytest');
         })
       // this.$cookies.remove("token");
@@ -195,10 +183,20 @@ export default defineComponent({
       // this.$emit('keytest');
     },
     stocksearch() {
+      this.toggle = false;
       this.$router.push({
-        name: 'AboutStock',
+        name: 'aboutstock',
         params: {
           stockid: this.stockid,
+        }
+      });
+      this.stockid = ''
+    },
+    home() {
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'ranking',
         }
       });
     }
@@ -212,6 +210,12 @@ export default defineComponent({
 }
 
 @media only screen and (max-width: 768px) {
+  .logo {
+    width: 19%;
+    border-radius: 5px;
+    margin: 10px 0 10px 20px;
+  }
+
   nav {
     height: 10%;
   }
@@ -220,16 +224,13 @@ export default defineComponent({
     display: none;
   }
 
-  .phone_size_ul {
-    padding: 0;
-  }
-
-  .phone_size_li a {
-    margin: 0;
-  }
-
   .phone_size {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50vh;
+    justify-content: space-evenly;
+    margin-top: 10%;
   }
 
   .input-with-select2 {
@@ -239,16 +240,13 @@ export default defineComponent({
 
   .navigation {
     z-index: 10;
-    position: fixed;
-    top: 0%;
-    right: 0%;
-    width: 100%;
-    height: 10%;
+    position: relative;
     display: flex;
     justify-content: space-between;
     transition: height 0.05s, width 0.05s;
     transition-delay: 0s, 0.1s;
     overflow: hidden;
+    width: 100%;
   }
 
   .navigation.active {
@@ -298,6 +296,7 @@ export default defineComponent({
   }
 
   .navigation .menuToggle {
+    z-index: 10;
     position: relative;
     width: 80px;
     height: 80px;
@@ -337,15 +336,19 @@ export default defineComponent({
     transform: translateY(0px) rotate(-45deg);
   }
 
-  .menu {
+  .menufixed {
+    position: fixed !important;
     z-index: 2;
-    position: absolute;
+    display: block !important;
     width: 100%;
-    height: calc(100% - 75px);
-    margin-top: 75px;
+    height: 100%;
     padding: 0px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgb(240, 240, 240);
+    background: rgb(240 240 240 / 95%);
+  }
+
+  .menu {
+    display: none;
   }
 
   .menu .menuset {
@@ -374,9 +377,31 @@ export default defineComponent({
     list-style: none;
     padding: 2%;
   }
+
+  .pc_select {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 768px) {
+  .logo {
+    left: 6%;
+    position: absolute;
+    width: 4%;
+    border-radius: 5px;
+  }
+
+  .pc_select {
+    position: absolute;
+    right: 10%;
+    top: 4%;
+  }
+
+  nav {
+    padding: 22px;
+
+  }
+
   .phone_size {
     display: none;
   }
@@ -388,147 +413,19 @@ export default defineComponent({
   }
 
   .navigation {
-    z-index: 10;
-    position: fixed;
-    top: 0px;
-    right: 20px;
-    width: 280px;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    transition: height 0.05s, width 0.05s;
-    transition-delay: 0s, 0.1s;
-    overflow: hidden;
-  }
-
-  .navigation.active {
-    width: 280px;
-    height: 320px;
-    transition: width 0.05s, height 0.05s;
-    transition-delay: 0s, 0.1s;
-  }
-
-  .navigation .userBx {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    transition: 0.2s;
-    transition-delay: 0.2s;
-  }
-
-  .navigation.active .userBx {
-    width: calc(100% - 80px);
-    transition-delay: 0s;
-  }
-
-  .navigation .userBx .username1 {
-    white-space: nowrap;
-    color: #555;
-    font-size: 1.1em;
-  }
-
-  .navigation .userBx .imgBx {
-    position: relative;
-    min-width: 50px;
-    height: 50px;
-    overflow: hidden;
-    background: rgb(0, 0, 0);
-    border-radius: 50%;
-  }
-
-  .navigation .userBx .imgBx .img-responsive1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .navigation .menuToggle {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .navigation .menuToggle::before {
-    content: "";
-    position: absolute;
-    width: 48px;
-    height: 4px;
-    background: #555;
-    transform: translateY(-10px);
-    box-shadow: 0 10px #555;
-    transition: 0.2s;
-  }
-
-  .navigation .menuToggle::after {
-    content: "";
-    position: absolute;
-    width: 48px;
-    height: 4px;
-    background: #555;
-    transform: translateY(10px);
-    transition: 0.2s;
-  }
-
-  .navigation.active .menuToggle::before {
-    transform: translateY(0px) rotate(45deg);
-    box-shadow: 0 0 #555;
-  }
-
-  .navigation.active .menuToggle::after {
-    transform: translateY(0px) rotate(-45deg);
-  }
-
-  .menu {
-    z-index: 2;
-    position: absolute;
-    width: 100%;
-    height: calc(100% - 80px);
-    margin-top: 80px;
-    padding: 0px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgb(240, 240, 240);
-
-  }
-
-  .menu .menuset {
-    list-style: none;
-  }
-
-  .menu .menuset .menuset2 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 20px;
-    font-size: 1.1em;
-    text-decoration: none;
-    color: #555;
-  }
-
-  .menu .menuset .menuset2:hover {
-    color: #4e65ff;
-  }
-
-  .menu .menuset .menuset2 ion-icon {
-    font-size: 1.5em;
-  }
-
-  .phone_size_li {
-    list-style: none;
+    display: none;
   }
 }
 
 .txt {
   position: relative;
   display: block;
+  color: #ffffff94;
+}
+
+.nowsite {
+  color: #ffffff;
+
 }
 
 .bar {
@@ -554,7 +451,6 @@ a {
 
 nav {
   box-sizing: border-box;
-  padding: 22px;
 }
 
 nav a {
@@ -739,9 +635,6 @@ input {
 }
 
 .logo {
-  left: 6%;
-  position: absolute;
-  width: 3.5%;
-  border-radius: 5px;
+  z-index: 20;
 }
 </style>

@@ -21,13 +21,19 @@ const head = createHead();
 
 import "./assets/css/common.css";
 
+import { Loading } from "@element-plus/icons-vue";
+
 const app = createApp(App);
+
+app.component(Loading.name, Loading);
 
 app.use(ElementPlus, {
   locale: zhtw,
 });
 // app.config.globalProperties.$Snow = Snow;
 app.config.globalProperties.$Tradingview = Tradingview;
+app.config.globalProperties.$axios = axios;
+
 app
   .use(router)
   .use(VueAxios, axios)

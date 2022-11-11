@@ -11,7 +11,12 @@
 export default {
   methods: {
     start() {
-      this.$router.push("/ranking");
+      this.$router.push({
+        name: 'bulletin',
+        params: {
+          name: 'ranking',
+        }
+      });
     },
   },
 };
@@ -21,7 +26,8 @@ export default {
 
 @media only screen and (max-width: 768px) {
   .start {
-    font-size: 120px;
+    font-size: 1000%;
+    height: 100vh;
   }
 
   .startbutton {
@@ -64,12 +70,10 @@ export default {
 
   @keyframes slide {
     0% {
-      background-color: white;
       left: 0%;
     }
 
     100% {
-      background-color: white;
       left: 100%;
     }
   }

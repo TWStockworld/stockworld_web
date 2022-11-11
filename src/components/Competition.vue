@@ -1,32 +1,32 @@
 <template>
   <div class="competition_computer">
     <!---->
-  <td>
-      <el-table :data="stockkind" class="table2" style="width: 100%" max-height="250">
-        <el-table-column prop="stockname" label="股票種類" width="130"/>
+    <td>
+      <el-table :data="Ranking" class="table2" style="width: 100%" max-height="250">
+        <el-table-column prop="stockname" label="股票種類" width="130" />
       </el-table>
     </td>
     <td>
       <el-table :data="rankData" class="table1" style="width: 100%" max-height="250">
-        <el-table-column prop="rank" label="排行" sortable width="80"/>
+        <el-table-column prop="rank" label="排行" sortable width="80" />
 
-        <el-table-column prop="code1" label="代號" width="70"/>
+        <el-table-column prop="code1" label="代號" width="70" />
 
-        <el-table-column prop="name1" label="名稱" width="70"/>
+        <el-table-column prop="name1" label="名稱" width="70" />
 
-        <el-table-column prop="VS" label="VS" width="60"/>
+        <el-table-column prop="VS" label="VS" width="60" />
 
-        <el-table-column prop="code2" label="代號" width="80"/>
+        <el-table-column prop="code2" label="代號" width="80" />
 
-        <el-table-column prop="name2" label="名稱" width="80"/>
+        <el-table-column prop="name2" label="名稱" width="80" />
 
-        <el-table-column prop="day" label="天數" width="60"/>
+        <el-table-column prop="day" label="天數" width="60" />
 
         <el-table-column prop="follow" label="追蹤" width="60" />
       </el-table>
     </td>
   </div>
-  
+
 </template>
 
 <script>
@@ -98,7 +98,7 @@ export default {
           follow: "",
         },
       ],
-      stockkind: [
+      Ranking: [
         {
           stockname: "1711 永光",
         },
@@ -149,10 +149,10 @@ export default {
 
 .table1 {
   position: relative;
-  
+
 }
+
 .table2 {
   position: relative;
 }
-
 </style>
