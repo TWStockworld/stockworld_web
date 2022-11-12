@@ -282,9 +282,9 @@ const cc = ref(0);
 const emit = defineEmits(['pageupdate'])
 
 const load = () => {
-  // cc.value++;
-  // emit("pageupdate", cc.value)
-  // console.log(cc.value)
+  cc.value++;
+  emit("pageupdate", cc.value)
+  console.log(cc.value)
 };
 
 </script>
@@ -516,7 +516,6 @@ export default defineComponent({
 
     res3: function (res3) {
       if (this.res3 != '') {
-        this.stock_table = []
         console.log(this.res3);
         this.res3.data.stocks.forEach((stock) => {
           this.stock_table.push({

@@ -142,7 +142,7 @@ export default defineComponent({
     stock_calculate_groups_id: function () {
       this.$emit('change_stock_calculate_groups_id', this.stock_calculate_groups_id);
       this.toggle = false;
-
+      document.getElementById('app').style.removeProperty("overflow-y")
     }
   },
   methods: {
