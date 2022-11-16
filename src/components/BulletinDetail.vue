@@ -1,51 +1,58 @@
 <template>
     <!-- :class="[$route.path == '/bulletin/tsmc' ? 'move' : '']" -->
     <el-row>
-        <div class="picture">
-            <img :src="require('@/assets/img/' + $route.params.name + '.png')" />
-        </div>
-        <el-col :xs="24" :sm="24" :lg="1"></el-col>
-        <el-col :xs="24" :sm="24" :lg="6">
-            <el-main style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
-                element-loading-background="rgba(0, 0, 0, 0.1)">
-                <h3 style="background-color: white;">相關股票</h3>
-                <el-table :data="stocks" border stripe height="200" :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
 
-                    <el-table-column prop="stock_name" label="股票">
-                        <template v-slot="scope">
-                            <router-link :to="{ path: '/aboutstock/' + scope.row.stock_id }">{{ scope.row.stock_name
-                            }}
-                            </router-link>
-                        </template>
-
-                    </el-table-column>
-
-                    <el-table-column prop="title" label="特別種類" />
-                    <el-table-column prop="stock_category" label="種類">
-                        <template v-slot="scope">
-                            <router-link :to="{ path: '/aboutstock/' + scope.row.stock_category_id }">{{
-                                    scope.row.stock_category
-                            }}
-                            </router-link>
-                        </template>
-
-                    </el-table-column>
-
-                </el-table>
-            </el-main>
-        </el-col>
-        <el-col :xs="24" :sm="24" :lg="1">
-        </el-col>
-        <el-col :xs="24" :sm="24" :lg="15">
-            <el-col :xs="24" :sm="24" :lg="1">
+        <el-row>
+            <el-col :xs="24" :sm="24" :lg="11">
+                <img :src="require('@/assets/img/' + $route.params.name + '.png')" />
             </el-col>
-            <div class="margintop">
-                <StockProbability :res2="res2" :bulletin_id="bulletin_id"
-                    :stock_calculate_groups_id="stock_calculate_groups_id" />
-                <div class="box">
+            <el-col :xs="24" :sm="24" :lg="12">
+                <el-main style="padding:0" v-loading="loading1" element-loading-text="讀取資料中"
+                    element-loading-background="rgba(0, 0, 0, 0.1)">
+                    <h3 style="background-color: white;">相關股票</h3>
+                    <el-table :data="stocks" border stripe height="200" :default-sort="{ prop: 'rank' }"
+                        empty-text="無相關資料">
+
+                        <el-table-column prop="stock_name" label="股票">
+                            <template v-slot="scope">
+                                <router-link :to="{ path: '/aboutstock/' + scope.row.stock_id }">{{ scope.row.stock_name
+                                }}
+                                </router-link>
+                            </template>
+
+                        </el-table-column>
+
+                        <el-table-column prop="stock_category" label="主類別">
+                            <template v-slot="scope">
+                                <router-link :to="{ path: '/aboutstock/' + scope.row.stock_category_id }">{{
+                                        scope.row.stock_category
+                                }}
+                                </router-link>
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="title" label="次類別" />
+
+
+                    </el-table>
+                </el-main>
+            </el-col>
+            <el-col :xs="24" :sm="24" :lg="1" />
+
+        </el-row>
+        <el-row>
+            <el-col :xs="24" :sm="24" :lg="1" />
+
+            <el-col :xs="24" :sm="24" :lg="22">
+                <div class="margintop">
+                    <StockProbability :res2="res2" :bulletin_id="bulletin_id"
+                        :stock_calculate_groups_id="stock_calculate_groups_id" />
+                    <div class="box">
+                    </div>
                 </div>
-            </div>
-        </el-col>
+            </el-col>
+            <el-col :xs="24" :sm="24" :lg="1" />
+
+        </el-row>
 
     </el-row>
 
@@ -142,8 +149,11 @@ export default {
   
 <style scoped>
 .el-row {
-    height: 100%;
-    justify-content: center;
+    width: 100%;
+}
+
+img {
+    width: 50%;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -159,9 +169,7 @@ export default {
 
     }
 
-    img {
-        width: 20%;
-    }
+
 
 
     /* .picture {
@@ -202,14 +210,15 @@ export default {
         }
 
     }
+
+    .margintop {
+        margin-top: 2%;
+    }
 }
 
 @media only screen and (max-width: 1200px) {
 
 
-    img {
-        width: 50%;
-    }
 
     .margintop {
         margin-top: 5%;

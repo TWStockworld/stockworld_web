@@ -166,6 +166,10 @@ export default {
 }
 
 @media only screen and (min-width: 1200px) {
+  .el-button {
+    margin-left: 0;
+  }
+
   .LB1 {
     display: flex;
     flex-direction: column;

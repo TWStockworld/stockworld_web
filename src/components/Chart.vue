@@ -1,12 +1,12 @@
 <template>
-  <div id="show"></div>
+  <div :id="'show' + componentKey"></div>
 </template>
 <script>
 import { createChart } from "lightweight-charts";
 
 export default {
   name: "Chart",
-  props: ["stockA_datas", "stockB_datas", "move"],
+  props: ["stockA_datas", "stockB_datas", "componentKey"],
   data() {
     return {};
   },
@@ -32,21 +32,16 @@ export default {
       //   textColor: "#ffffff",
       // },
     };
-    const domElement = document.getElementById("show");
+    var domElement = '';
+
+    if (this.componentKey == 0) {
+      domElement = document.getElementById("show0");
+
+    } else {
+      domElement = document.getElementById("show1");
+    }
     const chart = createChart(domElement, chartProperties);
-    // const candlestickSeries = chart.addCandlestickSeries();
 
-    // const cdata = this.stockA_datas.map((stock) => {
-    //   return {
-    //     time: stock["date"],
-    //     open: stock["open"],
-    //     high: stock["up"],
-    //     low: stock["down"],
-    //     close: stock["close"],
-    //   };
-    // });
-
-    // candlestickSeries.setData(cdata);
     const lineSeries_A = chart.addLineSeries();
     lineSeries_A.applyOptions({
       color: "rgba(255, 192, 0, 1)", //黃
@@ -66,16 +61,8 @@ export default {
       lineWidth: 3,
     });
     const dataB = this.stockB_datas.map((stock) => {
-      var d = '';
-      if (this.move == true) {
-        d = new Date(stock["date"]);
-        d.setDate(d.getDate() - this.real_diff + 1);
-        d = d.toLocaleDateString();
-      } else {
-        d = stock["date"];
-      }
       return {
-        time: d,
+        time: stock["date"],
         value: stock["close"],
       };
     });

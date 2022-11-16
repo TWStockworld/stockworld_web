@@ -1,27 +1,51 @@
 <template>
-  <el-main style="padding:0" v-loading="loading" element-loading-text="讀取資料中"
-    element-loading-background="rgba(0, 0, 0, 0.1)">
+
+  <el-main :id="'main' + this.componentKey" :class="[this.componentKey == 1 ? 'hiding' : '']"
+    style="padding:0; width: 100%" v-loading="loading" element-loading-text="讀取資料中"
+    element-loading-background="rgba(0, 0, 0, 0.1)" v-show="show">
     <h3> {{ result }}</h3>
-    <div id="show0" v-if="this.componentKey == 0" style="height: 300px;"></div>
-    <div id="show1" v-if="this.componentKey == 1" style="height: 300px;"></div>
+    <div class="show" :id="'show' + this.componentKey"></div>
   </el-main>
+
 </template>
 <script>
 import { createChart } from "lightweight-charts";
 
 export default {
   name: "RankingChart",
-  props: ["startdate", "enddate", "diff", "stockA_id", "stockB_id", "componentKey", "result", "stock_calculate_groups_id"],
+  props: ["startdate", "enddate", "diff", "stockA_id", "stockB_id", "componentKey", "result", "stock_calculate_groups_id", "cur"],
   data() {
     return {
       stockA_datas: [],
       stockB_datas: [],
-      real_diff: 0,
-      loading: true
+      loading: true,
+      show: true,
     };
   },
 
+
   watch: {
+    cur: function () {
+      document.getElementById('main1').classList.remove("hiding");
+
+      console.log(this.componentKey + this.cur)
+      if (this.loading == false) {
+        if (this.componentKey == 0) {
+          if (this.cur == 'up') {
+            this.show = true;
+          } else {
+            this.show = false;
+          }
+        }
+        else if (this.componentKey == 1) {
+          if (this.cur == 'down') {
+            this.show = true;
+          } else {
+            this.show = false;
+          }
+        }
+      }
+    },
     stock_calculate_groups_id: function () {
       this.loading = true
       document.getElementById("show0").innerHTML = '';
@@ -43,7 +67,6 @@ export default {
 
             this.stockA_datas = response.data.stockA_datas;
             this.stockB_datas = response.data.stockB_datas;
-            this.real_diff = response.data.real_diff;
 
           });
       },
@@ -51,9 +74,6 @@ export default {
     },
     'stockB_datas': {
       handler: function () {
-        this.loading1 = true;
-        this.loading2 = true;
-
         this.RankStock1 = []
         this.RankStock2 = []
         this.RelateStock1 = []
@@ -61,7 +81,6 @@ export default {
         this.stock_table = []
 
         const chartProperties = {
-          height: 300,
           timeScale: {
             timeVisible: false,
             secondsVisible: true,
@@ -82,6 +101,8 @@ export default {
           // },
         };
         var domElement = '';
+        console.log(this.componentKey)
+
         if (this.componentKey == 0) {
           domElement = document.getElementById("show0");
 
@@ -89,19 +110,15 @@ export default {
           domElement = document.getElementById("show1");
         }
         const chart = createChart(domElement, chartProperties);
-        // const candlestickSeries = chart.addCandlestickSeries();
 
-        // const cdata = this.stockA_datas.map((stock) => {
-        //   return {
-        //     time: stock["date"],
-        //     open: stock["open"],
-        //     high: stock["up"],
-        //     low: stock["down"],
-        //     close: stock["close"],
-        //   };
-        // });
 
-        // candlestickSeries.setData(cdata);
+        if (this.componentKey == 0) {
+          this.show = true;
+        } else {
+          this.show = false;
+        }
+
+
         const lineSeries_A = chart.addLineSeries();
         lineSeries_A.applyOptions({
           color: "rgba(255, 192, 0, 1)", //黃
@@ -135,6 +152,7 @@ export default {
           };
         });
         lineSeries_B.setData(dataB);
+
         this.loading = false
       },
       deep: true,
@@ -143,9 +161,21 @@ export default {
 };
 </script>
 <style scoped>
-#show {
-  display: flex;
-  justify-content: center;
+.show {
+  height: 300px;
+  background-color: white;
+}
+
+.hiding {
+  position: absolute;
+  left: -9999px
+}
+
+@media only screen and (min-width: 1200px) {
+
+  h3 {
+    height: 5vh;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -153,6 +183,8 @@ export default {
   h3 {
     margin-top: 5%;
     margin-bottom: 5%;
+    height: 5vh;
+
   }
 }
 </style>

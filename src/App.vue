@@ -107,6 +107,13 @@ export default {
   font-family: "Noto Sans TC", sans-serif;
 }
 
+.el-button>span {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .bak {
   background-image: linear-gradient(to top left, #467a91ed, #b7cbd2b5);
   width: 100%;

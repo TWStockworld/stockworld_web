@@ -8,25 +8,24 @@
             <h3 class="demonstration">開始日</h3>
             <el-date-picker v-model="startdate" type="date" placeholder="Pick a day" />
           </el-col>
+          <el-col :lg="1" :sm="24" :xs="24" />
+
           <el-col :lg="4" :sm="24" :xs="24">
             <h3 class="demonstration">結束日</h3>
             <el-date-picker v-model="enddate" type="date" placeholder="Pick a day" />
           </el-col>
+          <el-col :lg="1" :sm="24" :xs="24" />
+
           <el-col :lg="4" :sm="24" :xs="24">
-            <h3 class="demonstration">相差日(實際開盤天)</h3>
-            <el-select v-model="diff" filterable placeholder="請選擇數字">
-              <el-option v-for="diff in diffs" :key="diff" :label="diff" :value="diff">
-              </el-option>
-            </el-select>
-          </el-col>
-          <el-col :lg="4" :sm="24" :xs="24">
-            <h3 class="demonstration">股票種類</h3>
+            <h3 class="demonstration">股票主類別</h3>
             <el-select v-model="stock_category_id" filterable placeholder="請選擇">
               <el-option v-for="category in stock_category_options" :key="category.id" :label="category.category"
                 :value="category.id">
               </el-option>
             </el-select>
           </el-col>
+          <el-col :lg="1" :sm="24" :xs="24" />
+
           <el-col :lg="4" :sm="24" :xs="24">
             <h3 class="demonstration">股票A</h3>
             <el-select v-model="stockA_id" filterable placeholder="請選擇">
@@ -35,6 +34,8 @@
               </el-option>
             </el-select>
           </el-col>
+          <el-col :lg="1" :sm="24" :xs="24" />
+
           <el-col :lg="4" :sm="24" :xs="24">
             <h3 class="demonstration">股票B</h3>
             <el-select v-model="stockB_id" filterable placeholder="請選擇">
@@ -49,10 +50,24 @@
 
 
         <el-button plain type="primary" native-type="submit">送出</el-button>
-        <h3 style="margin-bottom: 2%;">{{ result }}</h3>
-        <div class="pcchart" v-if="this.stockA_datas != null">
-          <Chart :stockA_datas="stockA_datas" :stockB_datas="stockB_datas" :move="move" :key="componentKey" />
-        </div>
+        <h3>{{ result }}</h3>
+        <el-row v-loading="loading" element-loading-text="讀取資料中" element-loading-background="rgba(0, 0, 0, 0.1)">
+          <el-col :xs="24" :sm="24" :lg="12">
+            <h3 style="margin-bottom: 2%;">{{ result1 }}</h3>
+            <div class="pcchart" v-if="this.out_up_stockA_datas != null">
+              <Chart :stockA_datas="out_up_stockA_datas" :stockB_datas="out_up_stockB_datas" :componentKey="0" />
+            </div>
+            <h3 v-html="up_list"></h3>
+
+          </el-col>
+          <el-col :xs="24" :sm="24" :lg="12">
+            <h3 style="margin-bottom: 2%;">{{ result2 }}</h3>
+            <div class="pcchart" v-if="this.out_down_stockA_datas != null">
+              <Chart :stockA_datas="out_down_stockA_datas" :stockB_datas="out_down_stockB_datas" :componentKey="1" />
+            </div>
+            <h3 v-html="down_list"></h3>
+          </el-col>
+        </el-row>
       </el-form>
     </div>
   </el-row>
@@ -70,19 +85,25 @@ export default {
       enddate: "2022-10-01",
       diff: "0",
       stock_category_id: 0,
-      stockA_id: "",
-      stockB_id: "",
+      stockA_id: "2330",
+      stockB_id: "1101",
       result: "",
+      result1: "",
+      result2: "",
       move: false,
       stock_category_options: [],
       stockA_options: [],
       stockB_options: [],
-      stockA_datas: null,
-      stockB_datas: [],
+      out_up_stockA_datas: null,
+      out_up_stockB_datas: [],
+      out_down_stockA_datas: null,
+      out_down_stockB_datas: [],
+      up_list: '',
+      down_list: '',
       componentKey: 0,
-      real_diff: 0,
       diffs: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      vv: 0
+      vv: 0,
+      loading: false
     };
   },
   created() {
@@ -123,37 +144,66 @@ export default {
   },
   methods: {
     cal() {
-      this.axios
-        .post("/api/stock/cal_stock", {
-          startdate: this.startdate,
-          enddate: this.enddate,
-          diff: this.diff,
-          stock_category_id: this.stock_category_id,
-          stockA_id: this.stockA_id,
-          stockB_id: this.stockB_id,
-        })
-        .then((response) => {
-          console.log(response.data);
-          if (response.data.stockA_datas == null) {
-            this.vv++;
-            if (this.vv % 2 == 1) {
-              this.result = '兩股筆數不同 無法比較';
+      this.result = "";
+      this.result1 = "";
+      this.result2 = "";
+      this.out_up_stockA_datas = null;
+      this.out_down_stockA_datas = null;
+      this.up_list = "";
+      this.down_list = "";
+      if (this.stockA_id != "" && this.stockB_id != "") {
+        this.loading = true;
+        this.axios
+          .post("/api/stock/cal_stock_withoutdiff", {
+            startdate: this.startdate,
+            enddate: this.enddate,
+            stockA_id: this.stockA_id,
+            stockB_id: this.stockB_id,
+          })
+          .then((response) => {
+            console.log(response.data);
+            if (response.data.out_up_stockA_datas == "") {
+              this.vv++;
+              if (this.vv % 2 == 1) {
+                this.result = '兩股筆數不同 無法比較';
+
+              } else {
+                this.result = '無法比較 因兩股筆數不同';
+              }
+
 
             } else {
-              this.result = '無法比較 因兩股筆數不同';
+              this.result1 = response.data.up_sendresult;
+              this.result2 = response.data.down_sendresult;
+              this.out_up_stockA_datas = response.data.out_up_stockA_datas;
+              this.out_up_stockB_datas = response.data.out_up_stockB_datas;
+              this.out_down_stockA_datas = response.data.out_down_stockA_datas;
+              this.out_down_stockB_datas = response.data.out_down_stockB_datas;
+              var key = 0;
+              response.data.up_list.map((data) => {
+                if (key % 4 == 0) {
+                  this.up_list += key + "天:" + data + "%<br>";
+                } else {
+                  this.up_list += key + "天:" + data + "%   ";
+                }
+                key++;
+              });
+              key = 0
+              response.data.down_list.map((data) => {
+                if (key % 4 == 0) {
+                  this.down_list += key + "天:" + data + "%<br>";
+                } else {
+                  this.down_list += key + "天:" + data + "%   ";
+                } key++;
+              });
             }
-            this.stockA_datas = null;
 
 
-          } else {
-            this.result = response.data.success;
-            this.stockA_datas = response.data.stockA_datas;
-            this.stockB_datas = response.data.stockB_datas;
-          }
-
-
-          this.componentKey += 1;
-        });
+            this.loading = false;
+          });
+      } else {
+        this.result = "請選擇股票A 與 股票B";
+      }
     },
   },
   components: {
@@ -164,7 +214,6 @@ export default {
 <style scoped>
 @media only screen and (max-width: 768px) {
   .cal {
-    height: 85vh;
     background-color: #ffffff5e;
     border-radius: 30px;
     width: 100%;
@@ -178,7 +227,7 @@ export default {
 
 @media only screen and (min-width: 768px) {
   .pcchart {
-    width: 50%;
+    width: 80%;
     margin: auto;
   }
 
@@ -191,7 +240,7 @@ export default {
 
   .el-col,
   .el-button {
-    margin-top: 5%;
+    margin-top: 1%;
   }
 }
 

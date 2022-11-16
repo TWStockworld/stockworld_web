@@ -1,15 +1,15 @@
 <template>
   <el-button size="default" @click="show('a')">
-    漲跌機率(漲)
+    漲機率
   </el-button>
   <el-button size="default" @click="show('b')">
-    漲跌機率(跌)
+    跌機率
   </el-button>
   <el-button size="default" @click="show('c')">
-    相關漲跌機率(漲)
+    相關漲機率
   </el-button>
   <el-button size="default" @click="show('d')">
-    相關漲跌機率(跌)
+    相關跌機率
   </el-button>
 
   <el-main :class="[$route.name == 'bulletin' ? 'smallmargin' : '']" v-if="cur == 'a'" style="padding:0"
@@ -26,7 +26,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockA_category" label="種類">
+      <el-table-column prop="stockA_category" label="主類別">
         <template v-slot="scope">
           <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_category_id }">{{ scope.row.stockA_category
           }}
@@ -34,7 +34,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockA_spectial_category" label="特別種類" v-if="$route.name != 'aboutstock'">
+      <el-table-column prop="stockA_spectial_category" label="次類別" v-if="$route.name != 'aboutstock'">
 
       </el-table-column>
 
@@ -45,7 +45,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockB_category" label="種類">
+      <el-table-column prop="stockB_category" label="主類別">
         <template v-slot="scope">
           <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_category_id }">{{ scope.row.stockB_category
           }}
@@ -53,10 +53,10 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockB_spectial_category" label="特別種類" v-if="$route.name != 'aboutstock'">
+      <el-table-column prop="stockB_spectial_category" label="次類別" v-if="$route.name != 'aboutstock'">
       </el-table-column>
 
-      <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
+      <el-table-column prop="result" label="A->B漲" />
       <el-table-column label="操作">
         <template #default="scope">
           <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 1)">
@@ -80,7 +80,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockA_category" label="種類">
+      <el-table-column prop="stockA_category" label="主類別">
         <template v-slot="scope">
           <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_category_id }">{{ scope.row.stockA_category
           }}
@@ -88,7 +88,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockA_spectial_category" label="特別種類" v-if="$route.name != 'aboutstock'">
+      <el-table-column prop="stockA_spectial_category" label="次類別" v-if="$route.name != 'aboutstock'">
 
       </el-table-column>
 
@@ -99,7 +99,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockB_category" label="種類">
+      <el-table-column prop="stockB_category" label="主類別">
         <template v-slot="scope">
           <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_category_id }">{{ scope.row.stockB_category
           }}
@@ -107,10 +107,10 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockB_spectial_category" label="特別種類" v-if="$route.name != 'aboutstock'">
+      <el-table-column prop="stockB_spectial_category" label="次類別" v-if="$route.name != 'aboutstock'">
       </el-table-column>
 
-      <el-table-column prop="result" label="A漲,B幾天後跌的機率" />
+      <el-table-column prop="result" label="A->B跌" />
       <el-table-column label="操作">
         <template #default="scope">
           <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 2)">
@@ -135,7 +135,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockA_category" label="種類">
+      <el-table-column prop="stockA_category" label="主類別">
         <template v-slot="scope">
           <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_category_id }">{{ scope.row.stockA_category
           }}
@@ -143,7 +143,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockA_spectial_category" label="特別種類" v-if="$route.name != 'aboutstock'">
+      <el-table-column prop="stockA_spectial_category" label="次類別" v-if="$route.name != 'aboutstock'">
 
       </el-table-column>
 
@@ -154,7 +154,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockB_category" label="種類">
+      <el-table-column prop="stockB_category" label="主類別">
         <template v-slot="scope">
           <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_category_id }">{{ scope.row.stockB_category
           }}
@@ -162,10 +162,10 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockB_spectial_category" label="特別種類" v-if="$route.name != 'aboutstock'">
+      <el-table-column prop="stockB_spectial_category" label="次類別" v-if="$route.name != 'aboutstock'">
       </el-table-column>
 
-      <el-table-column prop="result" label="A漲,B幾天後漲的機率" />
+      <el-table-column prop="result" label="A->B漲" />
       <el-table-column label="操作">
         <template #default="scope">
           <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 1)">
@@ -190,7 +190,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockA_category" label="種類">
+      <el-table-column prop="stockA_category" label="主類別">
         <template v-slot="scope">
           <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_category_id }">{{ scope.row.stockA_category
           }}
@@ -198,7 +198,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockA_spectial_category" label="特別種類" v-if="$route.name != 'aboutstock'">
+      <el-table-column prop="stockA_spectial_category" label="次類別" v-if="$route.name != 'aboutstock'">
 
       </el-table-column>
 
@@ -209,7 +209,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockB_category" label="種類">
+      <el-table-column prop="stockB_category" label="主類別">
         <template v-slot="scope">
           <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_category_id }">{{ scope.row.stockB_category
           }}
@@ -217,10 +217,10 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="stockB_spectial_category" label="特別種類" v-if="$route.name != 'aboutstock'">
+      <el-table-column prop="stockB_spectial_category" label="次類別" v-if="$route.name != 'aboutstock'">
       </el-table-column>
 
-      <el-table-column prop="result" label="A漲,B幾天後跌的機率" />
+      <el-table-column prop="result" label="A->B跌" />
       <el-table-column label="操作">
         <template #default="scope">
           <el-button size="default" @click="setchartvalue(scope.row.diff, scope.row.stockA_id, scope.row.stockB_id, 2)">
