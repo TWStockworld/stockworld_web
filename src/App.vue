@@ -143,6 +143,15 @@ a {
     height: 5vh;
   }
 
+  .el-table .cell {
+    white-space: pre-line;
+    padding: 0;
+  }
+
+  .el-table .el-table__cell {
+    text-align: center;
+  }
+
   /* .margintop {
     margin-top: 25% !important;
   } */

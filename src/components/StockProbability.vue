@@ -519,7 +519,7 @@ export default defineComponent({
         console.log(this.res3);
         this.res3.data.stocks.forEach((stock) => {
           this.stock_table.push({
-            stock_name: stock.stock_name + "(" + stock.stock_id + ")",
+            stock_name: stock.stock_name + "\n(" + stock.stock_id + ")",
             stock_id: stock.stock_id,
             day_change: stock.day_change + " %",
             open: stock.open,

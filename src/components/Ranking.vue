@@ -36,7 +36,7 @@
               <el-table-column prop="stockA_category" label="主類別">
                 <template v-slot="scope">
                   <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_category_id }">{{
-                  scope.row.stockA_category
+                      scope.row.stockA_category
                   }}
                   </router-link>
                 </template>
@@ -52,7 +52,7 @@
               <el-table-column prop="stockB_category" label="主類別">
                 <template v-slot="scope">
                   <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_category_id }">{{
-                  scope.row.stockB_category
+                      scope.row.stockB_category
                   }}
                   </router-link>
                 </template>
@@ -95,7 +95,7 @@
               <el-table-column prop="stockA_category" label="主類別">
                 <template v-slot="scope">
                   <router-link :to="{ path: '/aboutstock/' + scope.row.stockA_category_id }">{{
-                  scope.row.stockA_category
+                      scope.row.stockA_category
                   }}
                   </router-link>
                 </template>
@@ -111,7 +111,7 @@
               <el-table-column prop="stockB_category" label="主類別">
                 <template v-slot="scope">
                   <router-link :to="{ path: '/aboutstock/' + scope.row.stockB_category_id }">{{
-                  scope.row.stockB_category
+                      scope.row.stockB_category
                   }}
                   </router-link>
                 </template>
@@ -274,6 +274,7 @@ export default {
 
 };
 </script>
+
 <style scoped>
 .color {
   border-radius: 10px;
@@ -283,6 +284,7 @@ export default {
   animation: movepoint1 1s;
   color: white;
 }
+
 
 @keyframes movepoint1 {
   0% {
@@ -319,6 +321,7 @@ export default {
 }
 
 @media only screen and (max-width: 1200px) {
+
   .el-button {
     background-color: #ffffff69;
     height: 40px;
