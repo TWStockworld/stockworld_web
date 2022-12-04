@@ -57,6 +57,7 @@ export default {
         this.res1 = ''
         this.res2 = ''
         this.res3 = ''
+        this.stock_category_id = '';
         if (this.stock_id < 34) {
           this.stock_category_id = this.stock_id;
         }
