@@ -211,9 +211,9 @@ export default defineComponent({
 
 @media only screen and (max-width: 768px) {
   .logo {
-    width: 19%;
+    height: 7vh;
     border-radius: 5px;
-    margin: 10px 0 10px 20px;
+    margin: 15px 0 10px 20px;
   }
 
   nav {

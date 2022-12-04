@@ -47,7 +47,9 @@ export default {
       }
     },
     stock_calculate_groups_id: function () {
-      this.loading = true
+      this.show = true;
+      this.loading = true;
+      document.getElementById('main1').classList.add("hiding");
       document.getElementById("show0").innerHTML = '';
       document.getElementById("show1").innerHTML = '';
     },
@@ -110,14 +112,6 @@ export default {
           domElement = document.getElementById("show1");
         }
         const chart = createChart(domElement, chartProperties);
-
-
-        if (this.componentKey == 0) {
-          this.show = true;
-        } else {
-          this.show = false;
-        }
-
 
         const lineSeries_A = chart.addLineSeries();
         lineSeries_A.applyOptions({
