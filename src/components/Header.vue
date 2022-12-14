@@ -17,6 +17,11 @@
         <span class="txt" :class="[$route.name == 'aboutstock' ? 'nowsite' : '']">關於股票<span class="bar"
             style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
       </router-link>
+      <router-link to="/opensource">
+        <span class="txt" :class="[$route.name == 'aboutstock' ? 'nowsite' : '']"><ion-icon
+            name="logo-github"></ion-icon>開源<span class="bar"
+            style="left: auto; right: 0px; /* width: calc(0px + 0%); */"></span></span>
+      </router-link>
 
 
       <el-form @submit.prevent="stocksearch" class="search-bar">
@@ -58,6 +63,7 @@
               <ion-icon name="bar-chart-outline"></ion-icon>關於股票
             </a>
           </router-link>
+
           <el-form @submit.prevent="stocksearch">
             <el-input size="large" placeholder="輸入股票代號" v-model="stockid" class="input-with-select" type="search">
             </el-input>
@@ -70,6 +76,10 @@
             </el-option>
           </el-select>
           <h3>資料週期</h3>
+
+          <a style="margin: 0;" href="https://github.com/TWStockworld">
+            <ion-icon name="logo-github"></ion-icon>專案Github</a>
+
 
         </div>
         <!--*****************************************************-->

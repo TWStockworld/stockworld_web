@@ -19,9 +19,17 @@ import Help_SupportView from "../views/user_profile/Help_SupportView";
 
 //bulletin 公告欄
 import BulletinView from "../views/BulletinView";
+const opensource = { template: "<div>opensource</div>" };
 
 //ttt
 const routes = [
+  {
+    path: "/opensource",
+    beforeEnter() {
+      location.href = "https://github.com/TWStockworld";
+    },
+    component: opensource,
+  },
   {
     path: "/",
     name: "start",
