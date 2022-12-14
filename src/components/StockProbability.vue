@@ -14,7 +14,7 @@
 
   <el-main :class="[$route.name == 'bulletin' ? 'smallmargin' : '']" v-if="cur == 'a'" style="padding:0"
     v-loading="loading1" element-loading-text="讀取資料中" element-loading-background="rgba(0, 0, 0, 0.1)">
-    <h3>漲跌機率(漲)</h3>
+    <h3>漲機率</h3>
     <el-table width="100%" :data="RankStock1" border stripe :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
 
       <el-table-column prop="order" label="排行" sortable />
@@ -69,7 +69,7 @@
   </el-main>
   <el-main :class="[$route.name == 'bulletin' ? 'smallmargin' : '']" v-if="cur == 'b'" style="padding:0"
     v-loading="loading1" element-loading-text="讀取資料中" element-loading-background="rgba(0, 0, 0, 0.1)">
-    <h3>漲跌機率(跌)</h3>
+    <h3>跌機率</h3>
     <el-table width="100%" :data="RankStock2" border stripe :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
       <el-table-column prop="order" label="排行" sortable />
 
@@ -122,7 +122,7 @@
   </el-main>
   <el-main :class="[$route.name == 'bulletin' ? 'smallmargin' : '']" v-if="cur == 'c'" style="padding:0"
     v-loading="loading1" element-loading-text="讀取資料中" element-loading-background="rgba(0, 0, 0, 0.1)">
-    <h3>相關漲跌機率(漲)</h3>
+    <h3>相關漲機率</h3>
     <el-table width="100%" :data="RelateStock1" border stripe :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
 
       <el-table-column prop="order" label="排行" sortable />
@@ -178,7 +178,7 @@
   </el-main>
   <el-main :class="[$route.name == 'bulletin' ? 'smallmargin' : '']" v-if="cur == 'd'" style="padding:0"
     v-loading="loading1" element-loading-text="讀取資料中" element-loading-background="rgba(0, 0, 0, 0.1)">
-    <h3>相關漲跌機率(跌) </h3>
+    <h3>相關跌機率</h3>
     <el-table width="100%" :data="RelateStock2" border stripe :default-sort="{ prop: 'rank' }" empty-text="無相關資料">
       <el-table-column prop="order" label="排行" sortable />
 

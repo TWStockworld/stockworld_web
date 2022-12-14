@@ -20,7 +20,7 @@
 
 
       <el-form @submit.prevent="stocksearch" class="search-bar">
-        <input type="search" name="search" v-model="stockid" required autocomplete="off">
+        <input type="search" name="search" v-model="stockid" required autocomplete="off" placeholder="輸入股票代號">
         <button class="search-btn" type="submit">
           <span>Search</span>
         </button>
